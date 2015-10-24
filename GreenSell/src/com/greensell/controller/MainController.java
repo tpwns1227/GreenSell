@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greensell.model.sell.SellDao;
 
@@ -21,7 +22,27 @@ public class MainController {
 	}
 	
 	@RequestMapping("/home")
-	public String home(){
+	public String home(@RequestParam String pname,
+					   @RequestParam String selltype,
+					   @RequestParam String category,
+					   @RequestParam String price,
+					   @RequestParam String state,
+					   @RequestParam String img_1,
+					   Model m){
+		System.out.println(pname);
+		System.out.println(selltype);
+		System.out.println(category);
+		System.out.println(price);
+		System.out.println(state);
+		System.out.println(img_1);
+		
+		m.addAttribute("pname",pname);
+		m.addAttribute("selltype",selltype);
+		m.addAttribute("category",category);
+		m.addAttribute("price",price);
+		m.addAttribute("state",state);
+		m.addAttribute("img_1",img_1);
+		
 		return "home";
 	}
 	
