@@ -15,6 +15,7 @@ ${name }
 <!-- 아아아 -->
 =======
 <%-- ${name } --%>123
+<%--테스트세트ㅡ --%>
 
 >>>>>>> branch 'master' of https://github.com/tpwns1227/GreenSell
 </body>
