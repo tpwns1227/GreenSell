@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd ">
-	<!-- controller의 어노테이션을 사용하겠다. -->
-	<mvc:annotation-driven />
-	<!-- JSP파일이 오면 기본적으로 톰켓으로 처리한다. -->
-	<mvc:default-servlet-handler />
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd ">
+   <!-- controller의 어노테이션을 사용하겠다. -->
+   <mvc:annotation-driven />
+   <!-- JSP파일이 오면 기본적으로 톰켓으로 처리한다. -->
+   <mvc:default-servlet-handler />
 
-	<!-- 뷰 리졸버 -->
-	<mvc:view-resolvers>
-		<mvc:jsp prefix="/WEB-INF/view/" />
-		<!-- MvcSpring/WEB-INF/view/ 전달될 뷰이름.jsp -->
-	</mvc:view-resolvers>
+   <!-- 뷰 리졸버 -->
+   <mvc:view-resolvers>
+      <mvc:jsp prefix="/WEB-INF/view/" />
+      <!-- MvcSpring/WEB-INF/view/ 전달될 뷰이름.jsp -->
+   </mvc:view-resolvers>
 
-	<!-- 컨트롤러 스캔 (팩키지안의 컨트롤러들은 모두 모아두면 따로 bean 등록하지 않아도 읽어준다. -->
-	<context:component-scan base-package="com.greensell.controller" />
+   <!-- 컨트롤러 스캔 (팩키지안의 컨트롤러들은 모두 모아두면 따로 bean 등록하지 않아도 읽어준다. -->
+   <context:component-scan base-package="com.greensell.controller" />
 
 
-	<!-- DataSource설정 (DB연결) -->
-	<bean class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource" id="driverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="javauser" />
-		<property name="password" value="1234" />
-	</bean>
+   <!-- DataSource설정 (DB연결) -->
+   <bean class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource" id="driverManagerDataSource">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+      <property name="username" value="javauser" />
+      <property name="password" value="1234" />
+   </bean>
 
-	<!-- MyBatis 연결 SqlSessionFactoryBean을 사용하기위해 DB연결한 내용을 참조. (DataSource) -->
-	 <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
-		<property name="dataSource" ref="driverManagerDataSource" />
-		<property value="/WEB-INF/xml/sqlMapper/sell.xml"
-			name="mapperLocations">
-		</property>
-	</bean>
-	
-	
-	<!-- SqlSession 객체 생성 (탬플릿이 동일한 역활을 수행 Spring-mybatis 연동의 클래스) -->
-	<bean class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactoryBean" index="0"/>
-	</bean>
-	<!-- 추가적으로 트랜잭션 설정 dataSource를 얻어와서 사용. -->
-	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
-	id="dataSourceTransactionManager">
-		<property name="dataSource" ref="driverManagerDataSource"/>
-	</bean>
-	
+   <!-- MyBatis 연결 SqlSessionFactoryBean을 사용하기위해 DB연결한 내용을 참조. (DataSource) -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+      <property name="dataSource" ref="driverManagerDataSource" />
+      <property value="/WEB-INF/xml/sqlMapper/*.xml"
+         name="mapperLocations">
+      </property>
+   </bean>
+   
+   
+   <!-- SqlSession 객체 생성 (탬플릿이 동일한 역활을 수행 Spring-mybatis 연동의 클래스) -->
+   <bean class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg ref="sqlSessionFactoryBean" index="0"/>
+   </bean>
+   <!-- 추가적으로 트랜잭션 설정 dataSource를 얻어와서 사용. -->
+   <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
+   id="dataSourceTransactionManager">
+      <property name="dataSource" ref="driverManagerDataSource"/>
+   </bean>
+   
 </beans>

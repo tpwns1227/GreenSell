@@ -28,7 +28,8 @@ public class SellController {
 						   @RequestParam String price,
 						   @RequestParam String state,
 						   @RequestParam String img_1,
-						   Model m){	
+						   Model m){
+			
 			m.addAttribute("pname",pname);
 			m.addAttribute("selltype",selltype);
 			m.addAttribute("category",category);
