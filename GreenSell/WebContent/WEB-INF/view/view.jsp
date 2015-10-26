@@ -5,192 +5,161 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/GreenSellEX/js/jquery.glide.min.js"></script>
-<script type="text/javascript" src="/GreenSellEX/js/jquery-1.10.2.min.js"></script>
-
-
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript">
+	//슬라이드 관련
 
-	function inputnext(nextid, did){
-		var nexttag = document.getElementById(nextid);
-		nexttag.style.display = '';
-		inputdisabled(did);
-		buttondisabled(did);
-		location.href='#a'+nextid;
-	}
-	
-	function inputbefore(beforeid, id, beforeattr){	
-		var tag = document.getElementById(id);
-		tag.style.display = 'none';
-		reinput(beforeattr);
-		rebutton(beforeattr);
-		location.href='#a'+beforeid;
-	}
-	
-	function selectionNext(nextid, dname){
-		var str = eval('document.inputproduct.'+dname+'.value');	
-		if(str!=null && str!=''){
-			var nextele = document.getElementById(nextid);
-			nextele.style.display='';
-			buttondisabled(dname);
-			var list = document.getElementsByName(dname);
-			for(i=0;i<list.length;i++){
-				var rd = eval('document.inputproduct.'+dname+'[i]');
-				rd.disabled = true;
-			}
-			location.href='#a'+nextid;
-		}else{
-			alert("항목을 선택해 주세요.");
+	var t = 0; //top 값으로 인해 보여줄 값 변경
+
+	//슬라이드 형식으로 이전값으로 올림.
+	function up() {
+		t = t + 900;
+		if (t > -6000 && t < 1) {
+			$("#slidebox").animate({
+				top : t
+			}, 500);
+		} else {
 			return;
 		}
 	}
-	
-	function Beforeselection(beforeid, id, beforeattr){
-		document.getElementById(id).style.display = 'none';
-		var list = document.getElementsByName(beforeattr);
-		for(i=0;i<list.length;i++){
-			var rd = eval('document.inputproduct.'+beforeattr+'[i]');
-			rd.disabled = false;
-		}
-		rebutton(beforeattr);
-		location.href='#a'+beforeid;
-	}
-	
-	function buttondisabled(id){
-		var btnele = document.getElementById("n"+id+"btn");
-		btnele.setAttribute("disabled", "disabled");
-		var btnele2 = document.getElementById("b"+id+"btn");
-		if(btnele2!=null){
-			btnele2.setAttribute("disabled", "disabled");
-		}
-	}
-	function rebutton(beforeattr){
-		var btnele = document.getElementById("n"+beforeattr+"btn");
-			btnele.removeAttribute("disabled");
-		var btnele2 = document.getElementById("b"+beforeattr+"btn");
-		if(btnele2!=null){
-			btnele2.removeAttribute("disabled");
-		}
-	}
-	
-	function inputdisabled(id){
-		var ele = document.getElementById(id);
-		ele.setAttribute("readOnly", true);
-	}
-	
-	function reinput(beforeattr){
-		var ele = document.getElementById(beforeattr);
-		ele.removeAttribute("readOnly");
-	}
-	
-	
-	
-</script>
 
+	//슬라이드형식으로 다음 값으로 넘김
+	function down() {
+		t = t - 900;
+		if (t > -6000 && t < 1) {
+			$("#slidebox").animate({
+				top : t
+			}, 500);
+		} else {
+			return;
+		}
+	}
+	//jquery이용해서 스페이스바가 입력됬을때 아무 효과 없도록
+	$(document).keyup(function(e) {
+		if (e.keyCode == 32) {
+			return false;
+		}
+	});
+
+	//jquery이용해서 엔터가 입력됬을때 아무 효과 없도록
+	$(document).keypress(function(e) {
+		if (e.keyCode == 13) {
+
+			return false;
+		}
+	})
+
+	//다음버튼 입력에 대한 다음 값
+	function Next(rtype) {
+		var str = eval('document.inputproduct.' + rtype + '.value');
+		if (str != null && str != '') {
+			down();
+		} else {
+			alert("물품 정보를 입력해 주세요.");
+			return;
+		}
+	}
+</script>
+<style type="text/css">
+</style>
 </head>
 <body>
+
 	<form name="inputproduct" action="home">
-	<center>
-		<a id="aproductpname"></a>
-		<fieldset id="productname" style="border: none;">
-			<fieldset style="width: 660px; margin: 400px;">
-				<legend>제품명을 입력해 주세요.</legend>
-				<input type="text" id="pname">&nbsp;&nbsp;&nbsp;&nbsp;<input
-					type="button" id="npnamebtn" value="다음" onclick="inputnext('selection','pname')">
-			</fieldset>
-		</fieldset>
-		
-		
-			<a id="aselection"></a>
-		<fieldset id="selection" style="border: none; display: none">
-			<fieldset style="width: 660px; margin: 400px;">
-				<legend>판매 방법</legend>
-				<input type="radio" value="auction" name="selltype" id="selltype">경매 <input
-					type="radio" value="sell" name="selltype" id="selltype">판매
-					<br>
-					<input type="button" id="nselltypebtn" value="다음" onclick="selectionNext('categorys','selltype')">&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" id="bselltypebtn" value="이전" onclick="inputbefore('productname','selection', 'pname')">			</fieldset>
-		</fieldset>
-		
-		
-		
-			<a id="acategorys"></a>
-		<fieldset id="categorys" style="border: none; display: none">
-			<fieldset style="width: 660px; margin: 400px;">
-				<legend>카테고리 선택</legend>
-				<input type="radio" name="category" id="category" value="cg">의류/잡화 <input
-					type="radio" name="category" id="category" value="fe">가구/전자 <input
-					type="radio" name="category" id="category" value="ts">여행/스포츠 <input
-					type="radio" name="category" id="category" value="bt">도서/티켓 <input
-					type="radio" name="category" id="category" value="besides">기타
-					<br>
-					<input type="button" id="ncategorybtn" value="다음" onclick="selectionNext('pprice','category')">&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" id="bcategorybtn" value="이전" onclick="Beforeselection('selection','categorys','selltype')">
-			</fieldset>
-		</fieldset>
-		
-		
-			<a id="apprice"></a>
-		<fieldset id="pprice"  style="border: none; display: none">
-			<fieldset style="width: 660px; margin: 400px;">
-				<legend>가격 설정</legend>
-				<input type="text" id="price">&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" id="npricebtn" value="다음" onclick="inputnext('pstate', 'price')">&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" id="bpricebtn" value="이전" onclick="Beforeselection('categorys','pprice','category')">
-			</fieldset>
-		</fieldset>
-		
+		<center>
 
-		<a id="apstate"></a>
-		<fieldset id="pstate" style="border: none; display: none">
-			<fieldset  style="width: 660px; margin: 400px;">
-				<legend>판매 방법</legend>
-				<input type="radio" name="state" id="state" value="beforerelease">미개봉
-				<input type="radio" name="state" id="state" value="Aclass">A급 <input
-					type="radio" name="state" id="state" value="Bclass">B급 <input
-					type="radio" name="state" id="state" value="Cclass">C급
-					<br>
-					<input type="button" id="nstatebtn" value="다음" onclick="selectionNext('pcontent','state')">&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" id="bstatebtn" value="이전" onclick="inputbefore('pprice','pstate', 'price')">
-					
-			</fieldset>
-		</fieldset>
-		
-		
-		
-		<a id="apcontent"></a>
-		<fieldset id="pcontent" style="border: none; display: none">
-			<fieldset style="width: 660px; margin: 400px;">
-				<legend>추가정보 입력</legend>
-				<textarea id="content" cols="80" rows="10"></textarea><br>
-				<input type="button" value="다음" id="ncontentbtn" onclick="inputnext('pphoto', 'content')">
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" id="bcontentbtn" value="이전" onclick="Beforeselection('pstate', 'pcontent', 'state')">
-			</fieldset>
-		</fieldset>
-		
-		
-		<a id="apphoto"></a>
-		<fieldset id="pphoto" style="border: none; display: none">
-			<fieldset style="width: 660px; margin: 400px;">
-				<legend>사진 추가</legend>
-				
-				
-				
-				<input type="submit" value="완료">
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="button" id="bphotobtn" value="이전" onclick="Beforeselection('pcontent', 'pphoto', 'content')">
-				
-				
-				
-				
-			</fieldset>
-		</fieldset>
+			<div id="slide"
+				style="width: 1500px; height: 900px; overflow: hidden; position: relative;">
+				<div id="slidebox" style="top: 0px; position: absolute;">
 
 
-	</center>
-</form>
+					<fieldset id="productname"
+						style="border: none; width: 1500px; height: 900px">
+						<fieldset style="width: 660px; margin: 400px;">
+							<legend>제품명을 입력해 주세요.</legend>
+							<input type="text" name="pname"
+								onkeypress="if(event.keyCode == 13) {return false;}">&nbsp;&nbsp;&nbsp;&nbsp;<input
+								type="button" name="npnamebtn" value="다음"
+								onclick="Next('pname')">
 
+						</fieldset>
+					</fieldset>
+
+
+
+					<fieldset id="selection" style="border: none;">
+						<fieldset style="width: 660px; margin: 400px;">
+							<legend>판매 방법</legend>
+							<input type="radio" value="경매" name="selltype">경매 <input
+								type="radio" value="판매" name="selltype">판매 <br> <input
+								type="button" id="nselltypebtn" value="다음"
+								onclick="Next('selltype')">&nbsp;&nbsp;&nbsp;&nbsp; <input
+								type="button" value="이전" onclick="up()">
+						</fieldset>
+					</fieldset>
+
+
+
+
+					<fieldset id="categorys" style="border: none;">
+						<fieldset style="width: 660px; margin: 400px;">
+							<legend>카테고리 선택</legend>
+							<input type="radio" name="category" value="의류/잡화">의류/잡화 <input
+								type="radio" name="category" value="가구/전자">가구/전자 <input
+								type="radio" name="category" value="여행/스포츠">여행/스포츠 <input
+								type="radio" name="category" value="도서/티켓">도서/티켓 <input
+								type="radio" name="category" value="기타">기타 <br>
+							<input type="button" id="ncategorybtn" value="다음"
+								onclick="Next('category')">&nbsp;&nbsp;&nbsp;&nbsp; <input
+								type="button" id="bcategorybtn" value="이전" onclick="up()">
+
+						</fieldset>
+					</fieldset>
+
+
+					<fieldset id="pprice" style="border: none;">
+						<fieldset style="width: 660px; margin: 400px;">
+							<legend>가격 설정</legend>
+							<input type="text" name="price"
+								onkeypress="if(event.keyCode == 13) {return false;}">&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="button" name="npricebtn" value="다음"
+								onclick="Next('price')">&nbsp;&nbsp;&nbsp;&nbsp; <input
+								type="button" id="bpricebtn" value="이전" onclick="up()">
+						</fieldset>
+					</fieldset>
+
+
+
+					<fieldset id="pstate" style="border: none">
+						<fieldset style="width: 660px; margin: 400px;">
+							<legend>판매 방법</legend>
+							<input type="radio" name="state" id="state" value="미개봉">미개봉
+							<input type="radio" name="state" id="state" value="A급">A급
+							<input type="radio" name="state" id="state" value="B급">B급
+							<input type="radio" name="state" id="state" value="C급">C급
+							<br> <input type="button" id="nstatebtn" value="다음"
+								onclick="Next('state')">&nbsp;&nbsp;&nbsp;&nbsp; <input
+								type="button" id="bstatebtn" value="이전" onclick="up()">
+						</fieldset>
+					</fieldset>
+
+
+					<fieldset id="pphoto" style="border: none;">
+						<fieldset style="width: 660px; margin: 400px;">
+							<legend>사진 추가</legend>
+
+							<input type="file" name="img_1">
+							<input type="submit" value="다음"> &nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="button" id="bphotobtn" value="이전" onclick="up()">
+						</fieldset>
+					</fieldset>
+
+				</div>
+			</div>
+
+		</center>
+	</form>
 
 </body>
 </html>
