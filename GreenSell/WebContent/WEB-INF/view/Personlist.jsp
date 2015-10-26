@@ -10,7 +10,7 @@
 </head>
 <body>
 	
-<<<<<<< HEAD
+<<<<<<< HEADaaa
 ${name }
 <!-- 아아아 -->
 =======sdfasfdsf
