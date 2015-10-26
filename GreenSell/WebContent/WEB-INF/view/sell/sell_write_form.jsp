@@ -66,7 +66,7 @@
 </head>
 <body>
 
-	<form name="inputproduct" action="home">
+	<form name="inputproduct" action="sellcontent_write_form">
 		<center>
 
 			<div id="slide"

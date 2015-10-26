@@ -16,26 +16,19 @@ public class MainController {
 	@Autowired
 	SellDao dao;
 	
-	@RequestMapping("/view")
+	@RequestMapping("/sell_write_form")
 	public String view(){
-		return "view";
+		return "/sell/sell_write_form";
 	}
 	
-	@RequestMapping("/home")
+	@RequestMapping("/sellcontent_write_form")
 	public String home(@RequestParam String pname,
 					   @RequestParam String selltype,
 					   @RequestParam String category,
 					   @RequestParam String price,
 					   @RequestParam String state,
 					   @RequestParam String img_1,
-					   Model m){
-		System.out.println(pname);
-		System.out.println(selltype);
-		System.out.println(category);
-		System.out.println(price);
-		System.out.println(state);
-		System.out.println(img_1);
-		
+					   Model m){	
 		m.addAttribute("pname",pname);
 		m.addAttribute("selltype",selltype);
 		m.addAttribute("category",category);
@@ -43,15 +36,7 @@ public class MainController {
 		m.addAttribute("state",state);
 		m.addAttribute("img_1",img_1);
 		
-		return "home";
-	}
-	
-	@RequestMapping("/person")
-	public String person(Model model){	
-		System.out.println("일단 시작");
-		String name = dao.personList();
-		model.addAttribute("name", name);
-		return "Personlist";
+		return "/sell/sellcontent_write_form";
 	}
 	
 	
