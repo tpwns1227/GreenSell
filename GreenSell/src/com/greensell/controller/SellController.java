@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.greensell.model.sell.SellDao;
 
 @Controller
-public class MainController {
+public class SellController {
 	//자동 매핑
 	@Autowired
 	SellDao dao;
 	
 	//판매 글 쓰기 폼 매핑
 		@RequestMapping("/sell_write_form")
-		public String view(){
+		public String writeform(){
 			return "/sell/sell_write_form";
 		}
 		

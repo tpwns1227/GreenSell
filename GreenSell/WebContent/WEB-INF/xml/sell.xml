@@ -29,7 +29,7 @@
    </bean>
 
    <!-- MyBatis 연결 SqlSessionFactoryBean을 사용하기위해 DB연결한 내용을 참조. (DataSource) -->
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+   <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
       <property name="dataSource" ref="driverManagerDataSource" />
       <property value="/WEB-INF/xml/sqlMapper/*.xml"
          name="mapperLocations">
@@ -41,6 +41,7 @@
    <bean class="org.mybatis.spring.SqlSessionTemplate">
       <constructor-arg ref="sqlSessionFactoryBean" index="0"/>
    </bean>
+   
    <!-- 추가적으로 트랜잭션 설정 dataSource를 얻어와서 사용. -->
    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" 
    id="dataSourceTransactionManager">
