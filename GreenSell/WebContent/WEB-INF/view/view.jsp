@@ -56,7 +56,7 @@
 		if (str != null && str != '') {
 			down();
 		} else {
-			alert("물픔 정보를 입력해 주세요.");
+			alert("물품 정보를 입력해 주세요.");
 			return;
 		}
 	}
