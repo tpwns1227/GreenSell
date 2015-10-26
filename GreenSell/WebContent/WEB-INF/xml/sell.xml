@@ -31,7 +31,7 @@
 	<!-- MyBatis 연결 SqlSessionFactoryBean을 사용하기위해 DB연결한 내용을 참조. (DataSource) -->
 	 <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 		<property name="dataSource" ref="driverManagerDataSource" />
-		<property value="/WEB-INF/xml/sqlMapper/*.xml"
+		<property value="/WEB-INF/xml/sqlMapper/sell.xml"
 			name="mapperLocations">
 		</property>
 	</bean>
