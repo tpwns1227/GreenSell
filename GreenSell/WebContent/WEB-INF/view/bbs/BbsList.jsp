@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-게시판 목록입니다
+게시판 목록입니다.
 </body>
 </html>
