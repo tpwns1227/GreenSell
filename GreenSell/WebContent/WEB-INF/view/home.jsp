@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<!-- 주ㅇ우우우우우석 -->
 <body>
 	<table border="1">
 		<tr>
