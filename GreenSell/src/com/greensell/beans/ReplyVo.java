@@ -1,6 +1,6 @@
 package com.greensell.beans;
 
-import java.sql.Date;
+import java.sql.Date;//
 
 public class ReplyVo {
 	private int cmno;//´ñ±Û ¹øÈ£
