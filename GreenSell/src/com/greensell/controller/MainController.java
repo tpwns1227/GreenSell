@@ -16,11 +16,12 @@ public class MainController {
 	@Autowired
 	SellDao dao;
 	
+	//판매 글 쓰기 폼 매핑
 	@RequestMapping("/sell_write_form")
 	public String view(){
 		return "/sell/sell_write_form";
 	}
-	
+	//판매 글 추가 content form으로 매핑.
 	@RequestMapping("/sellcontent_write_form")
 	public String home(@RequestParam String pname,
 					   @RequestParam String selltype,
