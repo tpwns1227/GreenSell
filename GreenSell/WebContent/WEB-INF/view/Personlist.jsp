@@ -10,7 +10,7 @@
 </head>
 <body>
 	
-${name }
+<%-- ${name } --%>
 
 </body>
 </html>
