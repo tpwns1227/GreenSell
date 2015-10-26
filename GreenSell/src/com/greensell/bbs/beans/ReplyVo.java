@@ -1,4 +1,4 @@
-package com.greensell.beans;
+package com.greensell.bbs.beans;
 
 import java.sql.Date;
 

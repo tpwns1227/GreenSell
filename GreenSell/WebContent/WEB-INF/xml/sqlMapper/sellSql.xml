@@ -2,9 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="emp">
-  <!-- emp사원을 뽑아올 연동 확인용 -->
-  <select id="empname" resultType="String">
-  	select ename from emp where empno=7788
-  </select>
+
   
 </mapper>

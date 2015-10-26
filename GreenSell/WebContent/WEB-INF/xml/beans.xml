@@ -6,6 +6,8 @@
 	
 	<bean class="com.greensell.model.sell.SellDaoImpl" />
 	
+	<bean class="com.greensell.model.member.MemberDaoImpl" />
+	
 </beans>
 
 

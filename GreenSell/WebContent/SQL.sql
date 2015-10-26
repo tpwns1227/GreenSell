@@ -4,7 +4,7 @@ create table Member( -- 회원 테이블
    password varchar2(50) not null,
    name varchar2(20) not null,
    nickname varchar2(30) not null,
-   phone varchar2(11) not null,
+   phone varchar2(20) not null,
    address varchar2(100) not null,
    bank varchar2(15) not null,
    account varchar2(20) not null,
@@ -16,11 +16,16 @@ create table Member( -- 회원 테이블
    joindate date not null
 );
 
+insert into member values('tpwns1227','123123','윤세준','세준스','010','경기도 고양시','농협','217053-56-124278','엄마는?','김혜숙',0,0,0,SYSDATE)
+select * from member;
+
 create table bbsSort( --게시판 구분
    bbsno number primary key not null,
    bbsname varchar2(50) not null,
    bbscm char not null
 );
+
+insert into BBSSORT values (1,'공지사항','f')
 
 create table BBS( --게시판 
 no number primary key not null,
@@ -112,3 +117,25 @@ create table buy( --구매목록
    foreign key(itemno) REFERENCES itemsell(no),
    foreign key(email) REFERENCES member(email)
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
