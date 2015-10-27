@@ -11,7 +11,7 @@
   
 
   <insert id="bbsinsert" parameterType="com.greensell.bbs.beans.BbsVo">
-   insert into bbs (title,bbscontent,email,bbsdate,hits,bbsno) values()
+   insert into bbs values(no_bbs_seq.nextval,#{title},#{content},#{email},sysdate,1,1)
   </insert>
   
 
