@@ -74,7 +74,7 @@
 				<input type="button" value="목록" onclick="goUrl('list');"/>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="submit"" value="글쓰기" />
-			</td>
+			</td> 
 		</tr>
 	</table>
 	</form>
