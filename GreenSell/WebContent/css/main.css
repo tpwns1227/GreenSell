@@ -43,6 +43,19 @@ input[type='button']:hover {
 	/*input type='button' hover 시 #08572C*/
 }
 
+input[type='submit'] {
+	border: 0 none;
+	color: white;
+	background-color: #12CC66;
+	/*input type='button' 은 배경색이 #12CC66*/
+}
+
+input[type='submit']:hover {
+	transition: 1s ease;
+	background-color: #08572C;
+	/*input type='button' hover 시 #08572C*/
+}
+
 hr {
 	border: solid 1px #12CC66;
 }
