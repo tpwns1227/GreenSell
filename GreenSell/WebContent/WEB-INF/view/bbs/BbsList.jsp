@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
+<jsp:include page="../main/header.jsp"></jsp:include>
 <body>
 게시판 목록입니다.12
 </body>
