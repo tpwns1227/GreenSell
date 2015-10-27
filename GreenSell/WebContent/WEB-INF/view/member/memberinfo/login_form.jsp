@@ -24,7 +24,7 @@
 			<hr width="170px" style="margin-right: 50px; float: right">
 		</div>
 		<input class='button' type='button' value='회원가입'
-			onclick="location.href='register'">
+			onclick="location.href='register_form'">
 	</div>
 </body>
 </html>

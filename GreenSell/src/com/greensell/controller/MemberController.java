@@ -40,11 +40,11 @@ public class MemberController {
 	      return "/member/memberinfo/result";
 	   }
 	
-	   @RequestMapping("/login")
+	   @RequestMapping("/login_form")
 	   public String loginView(){
 		   return "/member/memberinfo/login_form";
 	   }
-	   @RequestMapping("/register")
+	   @RequestMapping("/register_form")
 	   public String registerView(){
 		   return "/member/memberinfo/register_form";
 	   }
