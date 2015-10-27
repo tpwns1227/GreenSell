@@ -23,13 +23,13 @@ public class MemberController {
 	
 	   @RequestMapping("/result")
 	    public String insert(MemberVO v, Model m){
-	      //DB�Է�      
+	      //DB연동      
 	      try {
 	    	  
 	    	  System.out.println(v.getAddress());
 	    	  
 	         if(dao.insert(v)){
-	            m.addAttribute("msg","������ �����մϴ�!!^^*");
+	            m.addAttribute("msg","가입을 축하해 !!^^*");
 	          
 	         }
 	         
@@ -40,4 +40,13 @@ public class MemberController {
 	      return "/member/memberinfo/result";
 	   }
 	
+	   @RequestMapping("/login")
+	   public String loginView(){
+		   return "/member/memberinfo/login_form";
+	   }
+	   @RequestMapping("/register")
+	   public String registerView(){
+		   return "/member/memberinfo/register_form";
+	   }
+	   
 }

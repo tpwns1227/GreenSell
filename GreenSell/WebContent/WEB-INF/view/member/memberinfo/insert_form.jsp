@@ -19,8 +19,8 @@
     <input type="text" name="bank"><br>
     <input type="text" name="account"><br>
     <select name="question">
-       <option value="니엄마">니엄마?</option>
-       <option value="니애비">니애비?</option>
+       <option value="니엄마">부모님의 결혼기념일은?</option>
+       <option value="니애비">자신이 태어난 곳은?</option>
     </select>
     <input type="text" name="answer">
     <input type="text" name="point">

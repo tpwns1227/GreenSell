@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.greensell.bbs.beans.BbsVo;
 import com.greensell.member.beans.*;
+import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
 
 public class MemberDaoImpl implements MemberDao {
@@ -46,6 +48,42 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public List<ItemSellVO> selected(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ItemSellVO> sellItem(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MemberVO> membercheck(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ItemSellVO> buyItem(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AuctionVO> AuctionItem(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PointVO> pointcheck(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BbsVo bbscheck(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}
