@@ -8,19 +8,19 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public interface SellDao {
 	
-	public List<ItemSellVO> allitemList() throws SQLException; //ÀüÃ¼ ¸ñ·Ï »Ñ¸®±â  
+	public List<ItemSellVO> allitemList() throws SQLException; //ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ ï¿½Ñ¸ï¿½ï¿½ï¿½  
 	
-	public List<ItemSellVO> olditemList(String category) throws SQLException; //Áß°í ¸®½ºÆ®
+	public List<ItemSellVO> olditemList(String howsell) throws SQLException; //ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	
-	public List<AuctionVO> auctionitemList(String category) throws SQLException; //°æ¸Å ¸®½ºÆ®
+	public List<AuctionVO> auctionitemList() throws SQLException; //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	
-	public List<String> getImagenames(int no) throws SQLException; //»óÇ° ÀÌ¹ÌÁö ÀÌ¸§ °¡Á®¿À±â
+	public List<String> getImagenames(int no) throws SQLException; //ï¿½ï¿½Ç° ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	public boolean itemInsert(ItemSellVO itsv) throws SQLException; //»óÇ° Ãß°¡ÇÏ±â
+	public boolean itemInsert(ItemSellVO itsv) throws SQLException; //ï¿½ï¿½Ç° ï¿½ß°ï¿½ï¿½Ï±ï¿½
 	
-	public List<ItemSellVO> itemDetail(int no) throws SQLException;//»óÇ° »ó¼¼º¸±â
+	public List<ItemSellVO> itemDetail(int no) throws SQLException;//ï¿½ï¿½Ç° ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	
-	public boolean itemUpdate(int no) throws SQLException; //»óÇ° °Ô½Ã±Û ¾÷µ¥ÀÌÆ®
+	public boolean itemUpdate(int no) throws SQLException; //ï¿½ï¿½Ç° ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	
-	public boolean itemDelete(int no) throws SQLException;//»óÇ° °Ô½Ã±Û »èÁ¦
+	public boolean itemDelete(int no) throws SQLException;//ï¿½ï¿½Ç° ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 }
