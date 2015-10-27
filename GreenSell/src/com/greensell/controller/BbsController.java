@@ -23,5 +23,11 @@ public class BbsController {
 		return "bbs/BbsList";
 	}
 	
+	//게시글 상세보기
+		@RequestMapping("/view")
+		public String view(){
+			return "bbs/BbsView";
+		}
+	
 	
 }
