@@ -2,46 +2,47 @@
 
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
-body, html, input, a, div {
+@media screen and (max-width:900px) {
+	body {
+		width: 900px;
+	}
+}
 
+body {
+	margin: 0px auto;
+	max-width: 1200px;
+}
+
+body, html, input, a, div {
 	font-family: 'Nanum Gothic', sans-serif;
 	/*폰트 나눔고딕*/
-
 }
 
 a {
-
 	text-decoration: none;
 	color: black;
 	/*하이퍼링크 밑줄 제거한뒤 검정색*/
-
-} 
+}
 
 a:hover {
-
-	color: #08572C;
+	transition: 0.5s ease;
+	color: #12CC66;
 	/*하이퍼링크에 마우스올리면 색상변경*/
-
 }
 
 input[type='button'] {
-
+	border: 0 none;
+	color: white;
 	background-color: #12CC66;
 	/*input type='button' 은 배경색이 #12CC66*/
-
 }
 
 input[type='button']:hover {
-
 	transition: 1s ease;
 	background-color: #08572C;
 	/*input type='button' hover 시 #08572C*/
-
 }
 
-input[type='text'], input[type='password'] {
-
-	border: 1px solid #EEE;
-	/*텍스트박스 조금 이쁘게*/
-
+hr {
+	border: solid 1px #12CC66;
 }

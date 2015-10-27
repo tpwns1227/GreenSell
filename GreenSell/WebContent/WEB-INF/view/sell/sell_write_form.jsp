@@ -65,7 +65,7 @@
 </style>
 </head>
 <body>
-
+<jsp:include page="../main/header.jsp"></jsp:include>
 	<form name="inputproduct" action="sellcontent_write_form">
 		<center>
 

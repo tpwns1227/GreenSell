@@ -1,46 +1,21 @@
 @CHARSET "UTF-8";
 
-
-@media screen and (max-width:900px) {
-	body {
-		width: 900px;
-	}
-
-
+.container1 {
+	padding: 25px 25px 100px 25px;
 }
 
-body {
-	margin: 0px;
-	max-width: 1300px;
-	margin: 0 auto;
-	font-family: 'Nanum Gothic', sans-serif;
+.container2 {
+	height: 50px;
 }
 
-.header {
-	padding: 50px 25px 100px 25px;
-}
-
-.menubar {
-	/*background-color: #EEA200;*/
-	/* menubar 색상 */
+.menu {
 	padding: 10px;
-	/* menubar 높이 */
-	/*text-align: center;*/
-	/*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);*/
 	float: left;
 }
 
-.menubar a {
+.menu a {
 	font-size: 18px;
-	color: #12CC66;
-	text-decoration: none;
-	/* menubar 색상 */
 	margin-left: 30px;
-}
-
-.menubar a:hover {
-	transition: 1s ease;
-	color: #08572c;
 }
 
 .top {
@@ -56,65 +31,29 @@ body {
 	text-align: right;
 }
 
-	.test {
-	height: 50px;
-}
-
 #site a {
-	
 	font-size: 13px;
-	color: #12CC66;
-	text-decoration: none;
 	margin-left: 5px;
 	margin-right: 5px;
 }
 
-
-#site a:hover {
-	transition: 1s ease;
-	color: #08572c;
-	
-}
-
 .search {
-
 	padding: 0 25px 10px 25px;
 	text-align: right;
 }
 
-input[type='text'] {
-	margin-top: 5px;
-	height: auto;
+#box {
 	padding: .6em .6em;
-	height: auto;
-}
-
-
-
-/*#search-btn {
-	background-color: #12CC66;
-	color: white;
-	padding: 11.5px 10px;
-	font-size: 15px;
-	border: none;
-}*/
-#search-btn {
-	background: #12CC66;
-	color: white;
-	padding: 10px 20px;
 	border: 0 none;
-	font-size: 15px;
-	font-family: 'Nanum Gothic', sans-serif;
-	border-radius: 5px 5px 5px 5px;
-	
-}
-
-#namanyay-search-box {
-	border-radius: 5px 5px 5px 5px;
-	border: 0 none;
-	background-color: #eee;
 	padding: 10px;
-	font-family: 'Nanum Gothic', sans-serif;
 	width: 200px;
 	font-size: 15px;
+	border: 1px solid #EEE;
+}
+
+#button {
+	color: white;
+	padding: 11px 20px;
+	font-size: 15px;
+	font-family: 'Nanum Gothic', sans-serif;
 }
