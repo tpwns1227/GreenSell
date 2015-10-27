@@ -23,13 +23,13 @@ public class MemberController {
 	
 	   @RequestMapping("/result")
 	    public String insert(MemberVO v, Model m){
-	      //DBÀÔ·Â      
+	      //DBï¿½Ô·ï¿½      
 	      try {
 	    	  
 	    	  System.out.println(v.getAddress());
 	    	  
 	         if(dao.insert(v)){
-	            m.addAttribute("msg","°¡ÀÔÀ» ÃàÇÏÇÕ´Ï´Ù!!^^*");
+	            m.addAttribute("msg","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½!!^^*");
 	          
 	         }
 	         
@@ -38,7 +38,6 @@ public class MemberController {
 	      }
 	       
 	      return "/member/memberinfo/result";
-	    }
-	
+	   }
 	
 }
