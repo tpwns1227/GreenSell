@@ -2,8 +2,10 @@ package com.greensell.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.greensell.bbs.beans.BbsVo;
 import com.greensell.model.bbs.BbsDao;
 
 @Controller
@@ -39,5 +41,25 @@ public class BbsController {
 			return "bbs/BbsView";
 		}
 	
-	
+	//게시글 쓰기 완료
+			@RequestMapping("/writeok")
+				
+			public String ok(BbsVo b,Model m){
+				try{
+					if(dao.Insert(b)){
+						System.out.println("여기는?");
+						m.addAttribute("msg","입력되었습니다.");
+						return "bbs/BbsWriteOk";
+					}
+					
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+					}
+					
+					return "bbs/BbsWrite";
+				}
 }
+	
+
