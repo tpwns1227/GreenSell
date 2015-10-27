@@ -40,12 +40,12 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	public List<BbsDao> selectAll() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
-	public List<BbsDao> selectnum() {
+	public List<BbsDao> selecttarget() {
 		// TODO Auto-generated method stub
 		return null;
 	}
