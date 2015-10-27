@@ -17,4 +17,11 @@ public class BbsController {
 		return "bbs/BbsWrite";
 	}
 	
+	//게시글 보기
+	@RequestMapping("/list")
+	public String list(){
+		return "bbs/BbsList";
+	}
+	
+	
 }
