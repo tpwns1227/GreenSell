@@ -8,7 +8,7 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public interface SellDao {
 	
-	public List<ItemSellVO> allitemList() throws SQLException; //전체 목록 뿌리기 
+	public List<ItemSellVO> allitemList() throws SQLException; //전체 목록 뿌리기  
 	
 	public List<ItemSellVO> olditemList(String category) throws SQLException; //중고 리스트
 	

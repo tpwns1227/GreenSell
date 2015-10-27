@@ -13,7 +13,7 @@ public class SellDaoImpl implements SellDao {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+	 
 
 	@Override
 	public List<ItemSellVO> allitemList() throws SQLException {
