@@ -1,5 +1,8 @@
 package com.greensell.controller;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,20 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greensell.model.sell.SellDao;
+import com.greensell.sell.beans.AuctionVO;
+import com.greensell.sell.beans.ItemSellVO;
 
 @Controller
 public class SellController {
-	//ÀÚµ¿ ¸ÅÇÎ
+	//ìë™ ë§¤í•‘
 	@Autowired
 	SellDao dao;
 	
-	//ÆÇ¸Å ±Û ¾²±â Æû ¸ÅÇÎ
+	//íŒë§¤ ê¸€ ì“°ê¸° í¼ ë§¤í•‘
 		@RequestMapping("/sell_write_form")
 		public String writeform(){
 			return "/sell/sell_write_form";
 		}
 		
-		//ÆÇ¸Å ±Û Ãß°¡ content formÀ¸·Î ¸ÅÇÎ.
+		//íŒë§¤ ê¸€ ì¶”ê°€ content formìœ¼ë¡œ ë§¤í•‘.
 		@RequestMapping("/sellcontent_write_form")
 		public String home(@RequestParam String pname,
 						   @RequestParam String selltype,
@@ -40,5 +45,38 @@ public class SellController {
 			return "/sell/sellcontent_write_form";
 		}
 	
+		
+		@RequestMapping("/home") //home í˜ì´ì§€ ì¶œë ¥
+		public String viewHome(Model m){
+			
+			try {
+				List<ItemSellVO> list = dao.allitemList();
+				
+				m.addAttribute("itemlist", list);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return "/main/home";
+		}
+		
+		@RequestMapping("/itemList")
+		public String viewitemlist(@RequestParam(required=false) String howsell,
+										Model m) throws SQLException{
+			if(howsell == null || howsell.equals("ì¤‘ê³ ")){
+				List<ItemSellVO> list = dao.olditemList(howsell);
+				m.addAttribute("itemlist", list);
+			}else{
+				List<AuctionVO> list = dao.auctionitemList();
+				m.addAttribute("itemlist", list);
+			}
+			return "/sell/itemList";
+		
+		}
+		
+		
+		
+		
 	
 }

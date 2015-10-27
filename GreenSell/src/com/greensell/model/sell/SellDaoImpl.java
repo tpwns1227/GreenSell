@@ -16,21 +16,28 @@ public class SellDaoImpl implements SellDao {
 	 
 
 	@Override
-	public List<ItemSellVO> allitemList() throws SQLException {
+	public List<ItemSellVO> allitemList() throws SQLException { //전체 item리스트 출력
 		// TODO Auto-generated method stub
-		return null;
+		List<ItemSellVO> list = sqlSession.selectList("selectAll");
+		return list;
 	}
 
 	@Override
-	public List<ItemSellVO> olditemList(String category) throws SQLException {
+	public List<ItemSellVO> olditemList(String howsell) throws SQLException { //중고 itemlist출력
 		// TODO Auto-generated method stub
-		return null;
+		List<ItemSellVO> list;
+		if(howsell==null){
+			howsell = "중고";
+		}
+		list = sqlSession.selectList("selectolditem", howsell);
+		return list;
 	}
 
 	@Override
-	public List<AuctionVO> auctionitemList(String category) throws SQLException {
+	public List<AuctionVO> auctionitemList() throws SQLException { //경매 itemList출력
 		// TODO Auto-generated method stub
-		return null;
+		List<AuctionVO>	list = sqlSession.selectList("selectauctionitem");
+			return list;
 	}
 
 	@Override
