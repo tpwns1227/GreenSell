@@ -51,7 +51,7 @@
 	<div>
 		<hr>
 	</div>
-	<br><br><br>
+	<br><br><br> 
 	<table border="1" align="center">
 		<tr>
 			<th align="center">제목</th>

@@ -18,8 +18,10 @@ public class BbsController {
 	}
 	
 	//게시글 보기
-		@RequestMapping("/list")
-		public String list(){
-			return "bbs/BbsList";
-		}
+	@RequestMapping("/list")
+	public String list(){
+		return "bbs/BbsList";
+	}
+	
+	
 }
