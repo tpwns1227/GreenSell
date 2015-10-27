@@ -23,7 +23,14 @@ from itemsell i, auction a where i.no = a.itemno order by i.no desc
   	<delete id="deleteauction" parameterType="int">
   		delete from auction where no=(select no from auction where itemno=#{no})
   	</delete>
- 
   	
+  	<update id="updateitem" parameterType="com.greensell.sell.beans.ItemSellVO">
+  		update itemsell set itemname=#{itemname}, itemprice=#{itemprice}, itemstate=#{itemstate}, category=#{category}, itemdetail=#{itemdetail}
+  			where no=#{no}  			
+  	</update>
+  	
+  	<insert id="insert" parameterType="com.greensell.sell.beans.ItemSellVO">
+     	insert into itemsell values (nextval,#{name}, #{age}, #{job},#{},#{})
+   </insert>
   
 </mapper>
