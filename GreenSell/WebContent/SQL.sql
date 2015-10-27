@@ -120,7 +120,15 @@ create table buy( --���Ÿ��
 
 
 
-
+create sequence no_bbs_seq start with 1 increment by 1;
+create sequence no_com_seq start with 1 increment by 1;
+create sequence no_postscript_seq start with 1 increment by;
+create sequence no_point_seq start with 1 increment by 1;
+create sequence no_itemsell_seq start with 1 increment by 1;
+create sequence no_itemimg_seq start with 1 increment by 1;
+create sequence no_auction_seq start with 1 increment by 1;
+create sequence no_selected_seq start with 1 increment by 1;
+create sequence no_buy_seq start with 1 increment by 1;
 
 
 
