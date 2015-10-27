@@ -21,5 +21,6 @@
 		<input class='button' type='button' value='질문'>
 
 	</div>
+	<jsp:include page="../main/bottom.jsp"></jsp:include>
 </body>
 </html>
