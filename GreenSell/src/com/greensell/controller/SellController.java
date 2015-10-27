@@ -75,6 +75,7 @@ public class SellController {
 		
 		}
 		
+		//UTF
 		@RequestMapping("deleteitem")//delete 기능구현 
 		public String deleteitem(@RequestParam int no, @RequestParam String howsell) throws SQLException{
 			
