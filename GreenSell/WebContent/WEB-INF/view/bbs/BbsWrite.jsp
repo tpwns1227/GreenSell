@@ -52,10 +52,13 @@
 		<hr>
 	</div>
 	<br><br><br> 
-	<table border="1" align="center">
+	<form name="boardWriteForm" action="BbsWriteOk.jsp" method="post" onsubmit="return boardWriteCheck();">
+	<input type="hidden" name="mode" value="W" />
+	<table border="1"  align="center" summary="게시판 글쓰기">
+		<caption><font size="20">게시판 글쓰기</font></caption>
 		<tr>
 			<th align="center">제목</th>
-			<td><input type="text" name="title" size="60" maxlength="30" /></td>
+			<td><input type="text" name="title" size="60" maxlength="30" placeholder="제목을 입력해 주세요"/></td>
 		</tr>
 		<tr>
 			<th align="center">작성자</th>
@@ -63,7 +66,7 @@
 		</tr>
 		<tr>
 				<td colspan="2">
-					<textarea name="contents" cols="80" rows="10"></textarea>
+					<textarea name="content" cols="80" rows="10" placeholder="내용을 입력해 주세요"></textarea>
 				</td>
 		</tr>
 		<tr>
@@ -74,5 +77,6 @@
 			</td>
 		</tr>
 	</table>
+	</form>
 </body>
 </html>
