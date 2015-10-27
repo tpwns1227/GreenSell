@@ -41,25 +41,26 @@ public class SellDaoImpl implements SellDao {
    }
 
    @Override
-   public List<String> getImagenames(int no) throws SQLException {
+   public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기 
       // TODO Auto-generated method stub
       return null;
    }
 
    @Override
-   public boolean itemInsert(ItemSellVO itsv) throws SQLException {
+   public boolean itemInsert(ItemSellVO itsv) throws SQLException {//판매 글 추가 
       // TODO Auto-generated method stub
-      return false;
+	  int i = sqlSession.insert("insertitem", itsv);
+      return (i>0)? true:false;
    }
 
    @Override
-   public List<ItemSellVO> itemDetail(int no) throws SQLException {
+   public List<ItemSellVO> itemDetail(int no) throws SQLException { // 판매 글 상세보기
       // TODO Auto-generated method stub
       return null;
    }
 
    @Override
-   public boolean itemUpdate(ItemSellVO itsv) throws SQLException {
+   public boolean itemUpdate(ItemSellVO itsv) throws SQLException {//올린 게시글 수정
       // TODO Auto-generated method stub
 	   int i =	sqlSession.update("sell.update",itsv);
 	   return (i>0)? true:false;
