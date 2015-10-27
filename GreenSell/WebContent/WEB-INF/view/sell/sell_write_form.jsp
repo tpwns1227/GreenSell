@@ -70,12 +70,12 @@
 		<center>
 
 			<div id="slide"
-				style="width: 1500px; height: 900px; overflow: hidden; position: relative;">
+				style="width: 1200px; height: 900px; overflow: hidden; position: relative;">
 				<div id="slidebox" style="top: 0px; position: absolute;">
 
 
 					<fieldset id="productname"
-						style="border: none; width: 1500px; height: 900px">
+						style="border: none; width: 1200px; height: 900px">
 						<fieldset style="width: 660px; margin: 400px;">
 							<legend>제품명을 입력해 주세요.</legend>
 							<input type="text" name="pname"

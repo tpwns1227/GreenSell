@@ -12,7 +12,7 @@
 			<img src='img/useimg/logo.png' height='70'>
 		</div>
 		<div class='top' id='site'>
-			<a href="#">로그인</a> <a href="#">내 정보</a>
+			<a href="">내 정보</a><a href="login_form">로그인</a>
 		</div>
 	</div>
 

@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .container1 {
-	padding: 25px 25px 100px 25px;
+	padding: 0px 25px 100px 25px;
 }
 
 .container2 {
@@ -55,5 +55,4 @@
 	color: white;
 	padding: 11px 20px;
 	font-size: 15px;
-	font-family: 'Nanum Gothic', sans-serif;
 }

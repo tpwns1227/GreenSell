@@ -10,6 +10,7 @@ public class ItemSellVO {
 	private String howsell;
 	private String itemdetail;
 	private String email;
+	
 	public int getNo() {
 		return no;
 	}
