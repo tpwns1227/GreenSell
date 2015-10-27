@@ -10,6 +10,7 @@ public interface BbsDao {
 	public boolean Update(BbsVo dao)throws SQLException;
 	public BbsDao select(String name) throws SQLException;
 	public List<BbsDao> selectAll();
+	public List<BbsDao> selectnum();
 }
 
 

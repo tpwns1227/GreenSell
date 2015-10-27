@@ -44,4 +44,10 @@ public class BbsDaoImpl implements BbsDao {
 		return null;
 	}
 
+	@Override
+	public List<BbsDao> selectnum() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
