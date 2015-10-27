@@ -3,6 +3,8 @@ package com.greensell.model.sell;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSessionException;
+
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
 
@@ -23,4 +25,7 @@ public interface SellDao {
 	public boolean itemUpdate(int no) throws SQLException; //물품 글 업데이트
 	
 	public boolean itemDelete(int no) throws SQLException;//물품 게시글 삭제
+	
+	public boolean auctionDelete(int no) throws SQLException;//경매일 경우 삭제 
+	
 }

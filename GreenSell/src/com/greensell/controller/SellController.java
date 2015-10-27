@@ -75,6 +75,27 @@ public class SellController {
 		
 		}
 		
+		//UTF
+		@RequestMapping("deleteitem")//delete 기능구현 
+		public String deleteitem(@RequestParam int no, @RequestParam String howsell) throws SQLException{
+			
+			
+			if(howsell.equals("경매")){
+			boolean r =	dao.auctionDelete(no);
+			System.out.println(r);
+			}
+			
+			boolean b = dao.itemDelete(no);
+			
+			if(b){
+				System.out.println("삭제에 성공하셨습니다.");
+			}else{
+				System.out.println("삭제에 실패하였습니다.");
+			}
+			
+			return "/sell/main";
+		}
+		
 		
 		
 		
