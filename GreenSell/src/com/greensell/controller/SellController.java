@@ -45,7 +45,7 @@ public class SellController {
          return "/sell/sellcontent_write_form";
       }
    
-      //88456456
+    
       @RequestMapping("/home") //home 페이지 출력
       public String viewHome(Model m){
          
@@ -113,12 +113,19 @@ public class SellController {
   		return "1023/update_form";
       }
       
-      @RequestMapping("")
-      public String insertitem(@RequestParam ItemSellVO itsv) throws SQLException{
-    	  if(dao.itemInsert(itsv)){
-				System.out.println("");
-				return "redirect:list";
+      @RequestMapping("/inputform")
+		public String viewitemlist() throws SQLException{
+				
+			return "/sell/inputItem";
+		}
+		
+		@RequestMapping("/List")
+		public String viewitemlist(ItemSellVO itsv) throws SQLException{
+			
+			if(dao.itemInsert(itsv)){
+				System.out.println("나는된다.");
 			}
-    	  return "";
-      }
+			return "/main/home";
+		
+		}
 }
