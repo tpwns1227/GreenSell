@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="emp">
+<mapper namespace="sell">
 
+	<select id="selectAll" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell
+	</select>
+	
+	<select id="selectolditem" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell where howsell=#{howsell}
+	</select>
+  
+  
   
 </mapper>
