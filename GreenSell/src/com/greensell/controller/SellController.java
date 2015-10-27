@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greensell.model.sell.SellDao;
+import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
 
 @Controller
@@ -60,13 +61,21 @@ public class SellController {
 			return "/main/home";
 		}
 		
-		@RequestMapping("/olditemList")
-		public String viewolditemlist(@RequestParam(required=false) String category,
+		@RequestMapping("/itemList")
+		public String viewitemlist(@RequestParam(required=false) String howsell,
 										Model m) throws SQLException{
-			List<ItemSellVO> list = dao.olditemList(category);
-			m.addAttribute("itemlist", list);
+			if(howsell == null || howsell.equals("중고")){
+				List<ItemSellVO> list = dao.olditemList(howsell);
+				m.addAttribute("itemlist", list);
+			}else{
+				List<AuctionVO> list = dao.auctionitemList();
+				m.addAttribute("itemlist", list);
+			}
 			return "/sell/itemList";
+		
 		}
+		
+		
 		
 		
 	
