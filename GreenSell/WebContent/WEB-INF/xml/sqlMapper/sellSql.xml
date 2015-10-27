@@ -11,6 +11,10 @@
 		select * from itemsell where howsell=#{howsell}
 	</select>
   
+  	<select id="selectauctionitem"  resultType="com.greensell.sell.beans.AuctionVO">
+  		select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
+from itemsell i, auction a where i.no = a.itemno order by i.no desc
+  	</select>
   
   
 </mapper>
