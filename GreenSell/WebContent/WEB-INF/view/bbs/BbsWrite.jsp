@@ -12,7 +12,7 @@
 		location.href=url;
 	}
 	// 등록 폼 체크
-	function boardWriteCheck() {
+	function BbsWriteCheck() {
 		var form = document.boardWriteForm;
 		if (form.subject.value == '') {
 			alert('제목을 입력하세요.');
@@ -29,30 +29,9 @@
 </script>
 </head>
 <body>
-		<div class='container1'>
-		<div class='top' id='logo'>
-			<img src='img/useimg/logo.png' height='70'>
-		</div>
-		<div class='top' id='site'>
-			<a href="">내 정보</a><a href="login_form">로그인</a>
-		</div>
-	</div>
-
-	<div class='container2'>
-		<div class='menu'>
-			<a href="#">홈</a> <a href="#">판매하기</a> <a href="#">경매 게시판</a> <a
-				href="#">중고 게시판</a> <a href="#">고객지원</a>
-		</div>
-		<div class='search'>
-				<input id='box' type='text' placeholder='Search...' /> <input
-					id='button' value='검색' type='button' />
-		</div>
-	</div>
-	<div>
-		<hr>
-	</div>
+<jsp:include page="../main/header.jsp"></jsp:include>
 	<br><br><br> 
-	<form name="BbsWriteForm" action="BbsWriteOk.jsp" method="post" onsubmit="return boardWriteCheck();">
+	<form name="BbsWriteForm" action="writeok" method="post">
 	<input type="hidden" name="mode" value="W" />
 	<table border="1"  align="center" summary="게시판 글쓰기">
 		<caption><font size="20">게시판 글쓰기</font></caption>
