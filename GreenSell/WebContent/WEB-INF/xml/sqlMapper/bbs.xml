@@ -5,10 +5,13 @@
   
   <!-- 게시글 리스트 받아오기 -->
 
-  <select id="bbsselect" parameterType="String" resultType="com.greensell.bbs.beans.BbsVo">
-   select * from bbs
+  <select id="bbsselectall" parameterType="String" resultType="com.greensell.bbs.beans.BbsVo">
+   select * from bbs where bbsno=#{bbsno}
   </select>
   
+  <select id="bbsselecttarget" parameterType="String" resultType="com.greensell.bbs.beans.BbsVo">
+   select * from bbs where bbsno=#{bbsno} and title=#{title}
+  </select>
 
   <insert id="bbsinsert" parameterType="com.greensell.bbs.beans.BbsVo">
    insert into bbs values(no_bbs_seq.nextval,#{title},#{content},#{email},sysdate,1,1)
@@ -16,12 +19,11 @@
   
 
   <update id="bbsupdate" parameterType="String">
-  
+   
   </update>
   
 
   <delete id="bbsdelete" parameterType="int">
-  no로 삭제
   
   </delete>
   
