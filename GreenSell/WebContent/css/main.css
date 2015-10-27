@@ -25,7 +25,7 @@ a {
 }
 
 a:hover {
-	transition: 0.5s ease;
+	transition: 0.3s ease;
 	color: #12CC66;
 	/*하이퍼링크에 마우스올리면 색상변경*/
 }
@@ -38,9 +38,9 @@ input[type='button'] {
 }
 
 input[type='button']:hover {
-	transition: 1s ease;
-	background-color: #08572C;
-	/*input type='button' hover 시 #08572C*/
+	transition: 0.3s ease;
+	background-color: #0e9d4f;
+	/*input type='button' hover 시 #0e9d4f*/
 }
 
 input[type='submit'] {
@@ -51,8 +51,8 @@ input[type='submit'] {
 }
 
 input[type='submit']:hover {
-	transition: 1s ease;
-	background-color: #08572C;
+	transition: 0.3s ease;
+	background-color: #0e9d4f;
 	/*input type='button' hover 시 #08572C*/
 }
 
