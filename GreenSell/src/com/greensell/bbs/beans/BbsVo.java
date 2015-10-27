@@ -4,13 +4,16 @@ import java.sql.Date;
 
 public class BbsVo {
 
-	private int no;//°Ô½Ã±Û ¹øÈ£
-	private int bbsno;//°Ô½ÃÆÇ ºĞ·ù ¹øÈ£
-	private String title;//°Ô½Ã±ÛÁ¦¸ñ
-	private Date bbsdate;//±Û¾´ ³¯Â¥
-	private String content;//°Ô½Ã±Û³»¿ë
-	private String email;//ÀÛ¼ºÀÚ
-	private int hits;//Á¶È¸¼ö	
+	private int no;//ê¸€ë²ˆí˜¸
+	private int bbsno;//ê²Œì‹œíŒ ë²ˆí˜¸
+	private String title;//ê¸€ì´ë¦„
+	private Date bbsdate;//ê²Œì‹œê¸€ ë‚ ì§œ
+	private String content;//ê²Œì‹œê¸€
+	private String email;//ìœ ì € ë„¤ì„
+	private int hits;//ì¡°íšŒìˆ˜
+	
+	public BbsVo(){}
+
 	
 	public int getNo() {
 		return no;
