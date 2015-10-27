@@ -2,18 +2,21 @@ package com.greensell.model.bbs;
 
 import java.sql.SQLException;
 import java.util.List;
+import com.greensell.bbs.beans.BbsVo;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class BbsDaoImpl implements BbsDao {
 	
-	@Autowired //µ¥ÀÌÅÍ Å¸ÀÔÀÌ °°Àº beanÀ» Ã£¾Æ Àû¿ë
+	@Autowired //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ beanï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private SqlSession sqlsession;
 
 	@Override
-	public boolean Insert(BbsDao dao) {
-		// TODO Auto-generated method stub
+	public boolean Insert(BbsVo b) throws SQLException{
+		int t = sqlsession.insert("bbs.bbsinsert", b);
+		
+		if(t==1){return true;}
 		return false;
 	}
 
@@ -24,7 +27,7 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public boolean Update(BbsDao dao) {
+	public boolean Update(BbsVo dao) {
 		// TODO Auto-generated method stub
 		return false;
 	}
