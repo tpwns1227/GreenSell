@@ -29,7 +29,7 @@ from itemsell i, auction a where i.no = a.itemno order by i.no desc
   			where no=#{no}  			
   	</update>
   	
-  	<insert id="insert" parameterType="com.greensell.sell.beans.ItemSellVO">
+  	<insert id="insertitem" parameterType="com.greensell.sell.beans.ItemSellVO">
      	insert into itemsell values(no_itemsell_seq.nextval,#{itemname},#{itemprice},#{itemstate},#{category},#{howsell},#{itemdetail},#{email})
    </insert>
   
