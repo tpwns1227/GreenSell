@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+.body {
+	margin-right: 40px;
+	max-width: 1200px;	
+	text-align: center;
+}
+
+.containerb {
+	width: 95pt;
+	font-size: 10pt;
+	margin: auto;
+	display: inline-block;
+}
+
+ul li {
+	margin-bottom: 5pt;
+	list-style: none;
+
+}
+
+.bold {
+
+font-weight: bold;
+
+}
+
+#logob {
+	margin: 30 100;
+	float: center;
+}

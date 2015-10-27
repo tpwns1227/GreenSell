@@ -6,6 +6,16 @@
 	body {
 		width: 900px;
 	}
+
+	.body {
+
+		width: 900px;
+
+	}
+}
+
+.body {
+	max-width: 1200px;	
 }
 
 body {

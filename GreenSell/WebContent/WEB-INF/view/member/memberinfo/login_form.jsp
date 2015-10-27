@@ -26,5 +26,6 @@
 		<input class='button' type='button' value='회원가입'
 			onclick="location.href='register_form'">
 	</div>
+	<jsp:include page="../../main/bottom.jsp"></jsp:include>
 </body>
 </html>

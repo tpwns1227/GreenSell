@@ -53,5 +53,6 @@
 			<input class='button' type="submit" value='회원가입' style="margin-top: 30px">
 		</div>
 	</form>
+	<jsp:include page="../../main/bottom.jsp"></jsp:include>
 </body>
 </html>

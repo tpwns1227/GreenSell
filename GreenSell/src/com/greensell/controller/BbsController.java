@@ -17,10 +17,20 @@ public class BbsController {
 		return "bbs/BbsWrite";
 	}
 	
+	@RequestMapping("/write2")
+	public String write2(){
+		return "bbs/BbsWrite2";
+	}
+	
 	//게시글 보기
 	@RequestMapping("/list")
 	public String list(){
 		return "bbs/BbsList";
+	}
+	
+	@RequestMapping("/qna")
+	public String qna(){
+		return "bbs/BbsQNA";
 	}
 	
 	//게시글 상세보기

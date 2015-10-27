@@ -13,7 +13,7 @@
 	<div class='container1'>
 		<div class='top' id='logo'>
 			<a href='../main/home'> <img src='img/useimg/logo.png'
-				height='70'>
+				height='80'>
 			</a>
 		</div>
 		<div class='top' id='site'>
