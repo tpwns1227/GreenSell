@@ -9,7 +9,9 @@
 <body>
 	<div class='container1'>
 		<div class='top' id='logo'>
+		<a href='../main/home'>
 			<img src='img/useimg/logo.png' height='70'>
+			</a>
 		</div>
 		<div class='top' id='site'>
 			<a href="">내 정보</a><a href="login_form">로그인</a>

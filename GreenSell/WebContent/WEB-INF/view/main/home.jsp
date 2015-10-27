@@ -6,43 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/home.css">
 
-<style>
-.container {
-		margin:auto;
-		width: 250px;
-		height: 250px;
-		display: inline-block;
-
-	}
-
-	.img {
-		width: 250px;
-		height: 200px;
-		border: 1px solid #EEE;
-
-	}
-
-	.item {
-		text-align: right;
-		margin-top: 5px;
-		height: 15px;
-		font-size: 13px;
-
-	}
-
-	.price {
-		text-align: right;
-		height: 30px;
-
-	}
-	 .body {
-
-	max-width: 1200px;
-	margin: 50px auto;
-	text-align: center;
-}
-</style>
 <script>
 	
 	
