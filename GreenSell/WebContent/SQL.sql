@@ -1,5 +1,5 @@
 
-create table Member( -- È¸¿ø Å×ÀÌºí
+create table Member( -- È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
    email varchar2(50) primary key not null,
    password varchar2(50) not null,
    name varchar2(20) not null,
@@ -16,18 +16,19 @@ create table Member( -- È¸¿ø Å×ÀÌºí
    joindate date not null
 );
 
-insert into member values('tpwns1227','123123','À±¼¼ÁØ','¼¼ÁØ½º','010','°æ±âµµ °í¾ç½Ã','³óÇù','217053-56-124278','¾ö¸¶´Â?','±èÇý¼÷',0,0,0,SYSDATE)
+insert into member values('tpwns1227','1234','ìœ¤ì„¸ì¤€','ì„¸ì¤€','010','ì„¸ì¤€0','ì„¸ì¤€','217053-56-124278','ìœ¤ì„¸ì¤€?','ì„¸ì¤€',0,0,0,SYSDATE)
 select * from member;
 
-create table bbsSort( --°Ô½ÃÆÇ ±¸ºÐ
+create table bbsSort( --ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
    bbsno number primary key not null,
    bbsname varchar2(50) not null,
    bbscm char not null
 );
 
-insert into BBSSORT values (1,'°øÁö»çÇ×','f')
+insert into BBSSORT values (1,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','f')
+select * from BBSSORT
 
-create table BBS( --°Ô½ÃÆÇ 
+create table BBS( --ï¿½Ô½ï¿½ï¿½ï¿½ 
 no number primary key not null,
 title varchar2(100) not null,
 bbscontent long not null, 
@@ -39,7 +40,7 @@ foreign key (email) references member(email),
 foreign key (bbsno) references bbsSort(bbsno)
 );
 
-create table replycomment( -- ´ñ±Û
+create table replycomment( -- ï¿½ï¿½ï¿½
    cmno number primary key not null,
    no number not null,
    email varchar2(50) not null,
@@ -49,7 +50,7 @@ create table replycomment( -- ´ñ±Û
    foreign key (email) references member(email)
 );
 
-create table postscript( --ÈÄ±â
+create table postscript( --ï¿½Ä±ï¿½
    no number primary key not null,
    email varchar2(50) not null,
    wdate date not null,
@@ -60,7 +61,7 @@ create table postscript( --ÈÄ±â
    foreign key (wemail) references member(email)
 );
 
-create table point( -- Æ÷ÀÎÆ® ³»¿ª
+create table point( 
    no number primary key not null,
    email varchar2(50) not null,
    pdate date not null,
@@ -70,15 +71,7 @@ create table point( -- Æ÷ÀÎÆ® ³»¿ª
    foreign key (email) references member(email)
 );
 
-
-create table itemImg( -- »óÇ° ÀÌ¹ÌÁö
-no number primary key not null,
-imgno number not null,
-imgname varchar2(100) not null,
-foreign key(imgno) REFERENCES itemsell(no)
-);
-
-create table itemsell( -- »óÇ°ÆÇ¸Å
+create table itemsell( -- ï¿½ï¿½Ç°ï¿½Ç¸ï¿½
    no number primary key not null,
    itemname varchar2(20) not null,
    itemprice number not null,
@@ -90,7 +83,14 @@ create table itemsell( -- »óÇ°ÆÇ¸Å
    foreign key(email) REFERENCES member(email)
 );
 
-create table auction( --°æ¸Å
+create table itemImg( -- 
+no number primary key not null,
+imgno number not null,
+imgname varchar2(100) not null,
+foreign key(imgno) REFERENCES itemsell(no)
+);
+
+create table auction( --ï¿½ï¿½ï¿½
    no number primary key,
    itemno number not null,
    startprice number not null,
@@ -102,7 +102,7 @@ create table auction( --°æ¸Å
    foreign key(itemno) REFERENCES itemsell(no)
 );
 
-create table selected( -- Âò¸ñ·Ï
+create table selected( -- ï¿½ï¿½ï¿½ï¿½
    no number primary key,
    itemno number not null,
    email varchar2(50) not null,
@@ -110,7 +110,7 @@ create table selected( -- Âò¸ñ·Ï
    foreign key(email) REFERENCES member(email)
 ); 
 
-create table buy( --±¸¸Å¸ñ·Ï
+create table buy( --ï¿½ï¿½ï¿½Å¸ï¿½ï¿½
    no number primary key,
    itemno number not null,
    email varchar2(50) not null,

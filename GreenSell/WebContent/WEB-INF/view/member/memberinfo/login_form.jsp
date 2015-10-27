@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css/member.css">
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"></jsp:include>
+	<jsp:include page="../../main/header.jsp"></jsp:include>
 	<div class='container'>
 		<div class='border'>로그인</div>
 		<div class='p'>이메일</div>
@@ -24,7 +24,7 @@
 			<hr width="170px" style="margin-right: 50px; float: right">
 		</div>
 		<input class='button' type='button' value='회원가입'
-			onclick="location.href='3.jsp'">
+			onclick="location.href='register'">
 	</div>
 </body>
 </html>
