@@ -52,7 +52,7 @@
 		<hr>
 	</div>
 	<br><br><br> 
-	<form name="boardWriteForm" action="BbsWriteOk.jsp" method="post" onsubmit="return boardWriteCheck();">
+	<form name="BbsWriteForm" action="BbsWriteOk.jsp" method="post" onsubmit="return boardWriteCheck();">
 	<input type="hidden" name="mode" value="W" />
 	<table border="1"  align="center" summary="게시판 글쓰기">
 		<caption><font size="20">게시판 글쓰기</font></caption>
@@ -74,7 +74,7 @@
 				<input type="button" value="목록" onclick="goUrl('list');"/>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="submit"" value="글쓰기" />
-			</td> 
+			</td>
 		</tr>
 	</table>
 	</form>
