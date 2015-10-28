@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 
 import com.greensell.bbs.beans.BbsVo;
 import com.greensell.member.beans.*;
@@ -13,9 +14,10 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public class MemberDaoImpl implements MemberDao {
 	
+		private MemberVO mv;
 	  @Autowired
 	   private SqlSession sqlSession;
-	   
+	
 	   @Override
 	   public boolean insert(MemberVO membervo) throws SQLException { // 회원정보 입력
 	      int t = sqlSession.insert("member.insert", membervo);
@@ -25,7 +27,7 @@ public class MemberDaoImpl implements MemberDao {
 	   
 
 	   @Override
-	   public boolean delete(String email) throws SQLException {
+	   public boolean delete(String email) throws SQLException {//회원삭제하기
 	      // TODO Auto-generated method stub
 	      int t = sqlSession.delete("member.delete", email);
 	      if(t>0) return true;
@@ -33,7 +35,7 @@ public class MemberDaoImpl implements MemberDao {
 	   }
 
 	   @Override
-	   public boolean update(MemberVO membervo) throws SQLException {
+	   public boolean update(MemberVO membervo) throws SQLException {//회원정보업데이트
 	      // TODO Auto-generated method stub
 	      int t = sqlSession.update("member.update", membervo);
 	      if(t>0) return true;
@@ -41,57 +43,58 @@ public class MemberDaoImpl implements MemberDao {
 	   }
 
 	   @Override
-	   public MemberVO selectpwd(String email) {
+	   public MemberVO selectpwd(String email) {//비밀번호찾기
 	      // TODO Auto-generated method stub
 	      sqlSession.selectOne("member.selectpwd", email);
 	      return null;
 	   }
 
 	@Override
-	public List<ItemSellVO> selected(String email) {
+	public List<ItemSellVO> selected(String email) {//찜목록보기
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ItemSellVO> sellItem(String email) {
+	public List<ItemSellVO> sellItem(String email) {//판매할 상품보기
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<MemberVO> membercheck(String email) {
+	public MemberVO memberdetail(String email) {//회원정보 상세보기
+		// TODO Auto-generated method stub
+		MemberVO mem = sqlSession.selectOne("member.selectDetail", email);
+		return mem;
+	}
+
+	@Override
+	public List<ItemSellVO> buyItem(String email) {//구매목록보기
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ItemSellVO> buyItem(String email) {
+	public List<AuctionVO> AuctionItem(String email) {//경매한 상품보기
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<AuctionVO> AuctionItem(String email) {
+	public List<PointVO> pointcheck(String email) {// 포인트내역
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<PointVO> pointcheck(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BbsVo> bbsidcheck(String email) throws SQLException {
+	public List<BbsVo> bbsidcheck(String email) throws SQLException {//게시판에 있는 글을 이메일로 찾기
 		// TODO Auto-generated method stub
 		List<BbsVo> list = sqlSession.selectList("member.bbsidcheck",email);
 		return list;	
 
 	}
 	@Override
-	public boolean logincheck(String email, String password) throws SQLException {
+	public boolean logincheck(String email, String password) throws SQLException {//로그인 성공
 		// TODO Auto-generated method stub
 		String pw = sqlSession.selectOne("member.logincheck", email);
 		if(pw == null){
@@ -104,7 +107,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public boolean idcheck(String email) throws SQLException {
+	public boolean idcheck(String email) throws SQLException {//아이디 중복여부
 		// TODO Auto-generated method stub
 		
 		String eml = sqlSession.selectOne("member.idcheck", email);
@@ -116,7 +119,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public boolean nickcheck(String nickname) throws SQLException {
+	public boolean nickcheck(String nickname) throws SQLException {//닉네임 존재여부
 		// TODO Auto-generated method stub
 		String nick = sqlSession.selectOne("member.nickcheck", nickname);
 		if(nick==null)
