@@ -11,11 +11,11 @@
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class="container3">
 		<div class='img'>
-			<img src='img/useimg/1.jpg' class='mimg'> <img
-				src='img/useimg/1.jpg' class='simg'> <img
-				src='img/useimg/2.jpg' class='simg'> <img
-				src='img/useimg/3.jpg' class='simg'> <img
-				src='img/useimg/4.jpg' class='simg'>
+			<img src='img/useimg/logo.png' class='mimg'> <img
+				src='img/useimg/logo.png' class='simg'> <img
+				src='img/useimg/logo.png' class='simg'> <img
+				src='img/useimg/logo.png' class='simg'> <img
+				src='img/useimg/logo.png' class='simg'>
 		</div>
 		<div class='info'>
 			<div class='bold2'>제품명</div>
