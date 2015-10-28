@@ -88,5 +88,35 @@ public class MemberDaoImpl implements MemberDao {
 		return null;
 	}
 
+	@Override
+	public boolean logincheck(String email, String password) throws SQLException {
+		// TODO Auto-generated method stub
+		String pw = sqlSession.selectOne("member.logincheck", email);
+		if(pw == null){
+			return false;
+		}else if(pw.equals(password)){
+			return true;
+		}
+		return false;
+	
+	}
+
+	@Override
+	public boolean idcheck(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		String eml = sqlSession.selectOne("member.idcheck", email);
+		
+		if(eml == null)
+		return false; //아이디가 디비에 없어 시발
+		else
+		return true; // 아이디가 디비에 존재해
+	}
+
+	@Override
+	public boolean nickname(String nickname) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }
