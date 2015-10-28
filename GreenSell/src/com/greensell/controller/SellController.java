@@ -123,7 +123,7 @@ public class SellController {
 				
 			return "/sell/sell_write";
 		}
-		
+		  
 		@RequestMapping("/List")
 		public String viewitemlist(ItemSellVO itsv) throws SQLException{
 			if(dao.itemInsert(itsv)){
