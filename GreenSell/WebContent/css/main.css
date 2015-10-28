@@ -69,3 +69,10 @@ input[type='submit']:hover {
 hr {
 	border: solid 1px #12CC66;
 }
+
+label:hover {
+	transition: 0.3s ease;
+	background-color: #12CC66;
+	color: #FFFFFF;
+	/*하이퍼링크에 마우스올리면 색상변경*/
+}

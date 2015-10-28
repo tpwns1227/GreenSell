@@ -1,0 +1,94 @@
+@CHARSET "UTF-8";
+
+.container {
+	margin: 50px auto;
+	width: 500px;
+	border: none;
+	text-align: center;
+}
+
+#textbox {
+	background-color: white;
+	border: 1px solid #eee;
+	padding: 0px 1.1em;
+	width: 400px;
+	height: 40px;
+	font-size: 15px;
+}
+
+.p {
+	text-align: left;
+	font-size: 16px;
+	margin: 20px 0px 10px 50px;
+}
+
+.button {
+	width: 100px;
+	height: 40px;
+	border: 0px none;
+	font-size: 16px;
+}
+
+.next {
+	margin-top: 250px;
+	height: 350px;
+}
+
+#slide {
+	width: 500px;
+	height: 600px;
+	overflow: hidden;
+	position: relative;
+	overflow: hidden;
+}
+
+.bt {
+	
+}
+
+.pb {
+	float: left;
+	margin-top: 5px;
+	margin-left: 50px;
+	text-align: left;
+	margin-top: 5px;
+}
+
+.nb {
+	float: right;
+	margin-top: 5px;
+	text-align: right;
+	margin-right: 50px;
+}
+
+input[type='file'] {
+	display: none;
+}
+
+label {
+	margin: 5 0 0 50;
+	padding: 10px;
+	background-color: #FFFFFF;
+	display: block;
+	width: 380px;
+	cursor: pointer;
+	color: #666;
+	font-size: 13pt;
+	border: 1px solid #eee;
+}
+
+textarea {
+	border: 1px solid #EEE;
+	padding: 1.1em 1.1em;
+	width: 400px;
+	height: 200px;
+	font-size: 13pt;
+}
+
+select {
+    background-color: white;
+    width: 400px;
+    height: 40px;
+    border: 1px solid #eee;
+    font-size: 15px;
+}
