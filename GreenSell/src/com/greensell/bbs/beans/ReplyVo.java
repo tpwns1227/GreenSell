@@ -3,11 +3,13 @@ package com.greensell.bbs.beans;
 import java.sql.Date;
 
 public class ReplyVo {
-	private int cmno;//´ñ±Û ¹øÈ£
-	private int no;//±Û¹øÈ£
-	private String email;//ÀÛ¼ºÀÚ
-	private Date cmdate;//´ñ±Û´Ü ½Ã°£
-	private String cmcontent;//´ñ±Û³»¿ë
+	private int cmno;//ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+	private int no;//ï¿½Û¹ï¿½È£
+	private String email;//ï¿½Û¼ï¿½ï¿½ï¿½
+	private Date cmdate;//ï¿½ï¿½Û´ï¿½ ï¿½Ã°ï¿½
+	private String cmcontent;//ï¿½ï¿½Û³ï¿½ï¿½ï¿½
+	
+	public ReplyVo(){}
 	
 	public int getCmno() {
 		return cmno;
