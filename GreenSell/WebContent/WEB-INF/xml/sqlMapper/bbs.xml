@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="bbs">
+<mapper namespace="bbs"> 
   
 	<!-- 각 게시판 별로 글 리스트 받아오기 -->
   <select id="bbsselectall" parameterType="String" resultType="com.greensell.bbs.beans.BbsVo">
