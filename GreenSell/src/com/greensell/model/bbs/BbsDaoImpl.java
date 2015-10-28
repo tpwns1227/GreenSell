@@ -60,4 +60,10 @@ public class BbsDaoImpl implements BbsDao {
 		return false;
 	}
 
+	@Override
+	public BbsVo view(int no) throws SQLException {
+		BbsVo bbsVo = sqlsession.selectOne("bbs.view",no);
+		return bbsVo;
+	}
+
 }

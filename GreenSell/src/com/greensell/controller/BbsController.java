@@ -10,6 +10,7 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -60,16 +61,23 @@ public class BbsController {
 	
 	//게시글 상세보기
 		@RequestMapping("/view")
-		public String view(@RequestParam int no,BbsVo b){
+		public String view(@RequestParam int no,BbsVo b,Model m){
+			System.out.println(no);
 			try{
+				BbsVo bbsVo = dao.view(no);
+				//System.out.println(bbsVo.getBbscontent());
+				m.addAttribute("view", bbsVo);
 				
 				if(dao.Hitup(b)){
-				}
+				}				
+				
 				}
 				catch(Exception e)
 				{
 					e.printStackTrace();
 				}
+			
+			
 			return "bbs/BbsView";
 		}
 	
