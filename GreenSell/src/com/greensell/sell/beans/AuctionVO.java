@@ -2,21 +2,21 @@ package com.greensell.sell.beans;
 
 public class AuctionVO {
 	
+		private int no;
+		private String itemname;
+	   private int itemprice;
+	   private String itemstate;
+	   private String category;
+	   private String howsell;
+	   private String itemdetail;
+	   private String email;
 	
-	private String itemname;
-	private int itemprice;
-	private String itemstate;
-	private String category;
-	private String howsell;
-	private String itemdetail;
-	private String email;
-	private int no;
-	private int itemno;
 	private int startprice;
 	private int nowprice;
 	private String finishtime;
 	private int tendernumber;
 	private String nowemail;
+	
 	
 	
 	public String getItemname() {
@@ -67,12 +67,7 @@ public class AuctionVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public int getItemno() {
-		return itemno;
-	}
-	public void setItemno(int itemno) {
-		this.itemno = itemno;
-	}
+	
 	public int getStartprice() {
 		return startprice;
 	}
