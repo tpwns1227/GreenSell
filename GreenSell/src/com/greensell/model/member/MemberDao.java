@@ -23,6 +23,9 @@ public interface MemberDao {
 	   public BbsVo bbscheck(String email);//입력한 글 찾아보기
 	   public List<ItemSellVO> sellItem(String email);// 판매할 상품보기
 	   public List<MemberVO> membercheck(String email);//회원 정보 상세보기
+	   public boolean logincheck(String email,String password)throws SQLException;//로그인 확인
+	   public boolean idcheck(String email)throws SQLException;//아이디중복확인
+	   public boolean nickname(String nickname) throws SQLException;//닉네임중복확인
 	   
 
 }
