@@ -19,36 +19,17 @@ public class SellController {
    @Autowired
    SellDao dao;
    
-   //판매 글 쓰기 폼 매핑
-      @RequestMapping("/sell_write_form")
-      public String writeform(){
-         return "/sell/sell_write_form";
-      }
+    
       
       @RequestMapping("/sell_detail")
-      public String detailform(){
+      public String detailform(@RequestParam int no, Model m) throws SQLException{
+    	  
+    	  ItemSellVO ivo = dao.itemDetail(no);
+    	  	m.addAttribute("itemone", ivo);
          return "/sell/sell_detail";
       }
       
-      //판매 글 추가 content form으로 매핑.
-      @RequestMapping("/sellcontent_write_form")
-      public String home(@RequestParam String pname,
-                     @RequestParam String selltype,
-                     @RequestParam String category,
-                     @RequestParam String price,
-                     @RequestParam String state,
-                     @RequestParam String img_1,
-                     Model m){
-         
-         m.addAttribute("pname",pname);
-         m.addAttribute("selltype",selltype);
-         m.addAttribute("category",category);
-         m.addAttribute("price",price);
-         m.addAttribute("state",state);
-         m.addAttribute("img_1",img_1);
-         
-         return "/sell/sellcontent_write_form";
-      }
+   
    
     
       @RequestMapping("/home") //home 페이지 출력
@@ -132,7 +113,7 @@ public class SellController {
 			return "/main/home";
 		}
 		
-		@RequestMapping("/detail")
+		@RequestMapping("/detail") //연습용
 		public String viewimg(Model m, @RequestParam int no) throws SQLException{
 			List<String> list = dao.getImagenames(no);
 			m.addAttribute("imglist", list);
