@@ -2,42 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 
-<insert id="insert" parameterType="com.greensell.member.beans.MemberVO">
-insert into member 
-values(#{email},#{password},#{name},#{nickname},#{phone},#{address},
-#{bank},#{account},#{question},#{answer},0,0,0,SYSDATE)
-</insert>
+	<insert id="insert" parameterType="com.greensell.member.beans.MemberVO"> <!-- 회원가입 클리어 -->
+		insert into member
+		values(#{email},#{password},#{name},#{nickname},#{phone},#{address},
+		#{bank},#{account},#{question},#{answer},0,0,0,SYSDATE)
+	</insert>
 
-<select id="logincheck" parameterType="String" resultType="String">
-SELECT password FROM member WHERE email=#{email}
-</select>	
+	<select id="logincheck" parameterType="String" resultType="String"> <!-- 로그인 클리어 --> 
+		SELECT password FROM member WHERE email=#{email}
+	</select>
 
-<select id="idcheck" parameterType="String" resultType="String">
-select email from member where email=#{email}
-</select>
+	<select id="idcheck" parameterType="String" resultType="String"> <!-- 아이디 존재 여부 찾기 클리어 -->
+		select email from member where email=#{email}
+	</select>
 
-<select id="nickcheck" parameterType="String" resultType="String">
-select nickname from member where nickname=#{nickname}
-</select>
+	<select id="nickcheck" parameterType="String" resultType="String"> <!-- 닉네임 중복찾기  -->
+		select nickname from member where nickname=#{nickname}
+	</select>
 
-<select id="selectpwd" resultType="com.greensell.member.beans.MemberVO">
-select password from member where name=#{name} and email=#{email}
-</select>
+	<select id="selectpwd" resultType="com.greensell.member.beans.MemberVO"> <!-- 비밀번호 찾기  -->
+		select password from member where name=#{name} and email=#{email}    
+	</select>
 
-<update id="update" parameterType="String">
-update member set email=#{email}, nickname=#{nickname}, address=#{address} where password=#{password} and email=#{email}
-</update>
+	<update id="update" parameterType="String"> <!-- 회원정보 업데이트 -->
+		update member set email=#{email}, nickname=#{nickname}, address=#{address}
+		where password=#{password} and email=#{email}
+	</update>
 
- <select id="login">
-select email,password from member where email=#{email} and password=#{password}
-</select>
+	<delete id="delete" parameterType="String"> <!-- 회원정보 탈퇴하기 -->
+		delete from member where email=#{email}
+	</delete>
 
-<delete id="delete" parameterType="String">
-delete from member where email=#{email}
-</delete> 
+	<select id="bbsidcheck" parameterType="String"
+		resultType="com.greensell.bbs.beans.BbsVo">  <!-- 내가 글쓴 목록 조회 -->
+		select * from bbs where email=#{email} 
+	</select>
 
-<select id="bbsidcheck" parameterType="String" resultType="com.greensell.bbs.beans.BbsVo">
-select * from bbs where email=#{email}
-</select>
-	
 </mapper>

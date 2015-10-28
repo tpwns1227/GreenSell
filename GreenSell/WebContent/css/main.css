@@ -18,12 +18,14 @@
 	max-width: 1200px;	
 }
 
+
 body {
+
 	margin: 50px auto 25px auto;
 	max-width: 1200px;
 }
 
-body, html, input, a, div {
+body, html, input, a, div, option, select, textarea {
 	font-family: 'Nanum Gothic', sans-serif;
 	/*폰트 나눔고딕*/
 }
@@ -68,4 +70,11 @@ input[type='submit']:hover {
 
 hr {
 	border: solid 1px #12CC66;
+}
+
+label:hover {
+	transition: 0.3s ease;
+	background-color: #12CC66;
+	color: #FFFFFF;
+	/*하이퍼링크에 마우스올리면 색상변경*/
 }

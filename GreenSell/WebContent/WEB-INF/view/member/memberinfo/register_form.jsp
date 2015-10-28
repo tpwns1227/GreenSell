@@ -9,7 +9,9 @@
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 
 <script>
-	
+function go(){
+	alert("회원가입을 축하드립니다");
+}
 	/* function idchk(){
 		var param = "email=" + $("input[name='email']").val();
 		new sendRequest('idchk', param, idchkresult,'POST'); 

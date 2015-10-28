@@ -8,7 +8,9 @@
 </head>
 <body>
 ${result}
- 
+ <%
+response.setHeader("Refresh","3;url=http://localhost:8888/GreenSell/home=?");
+%>
  
 </body>
 </html>

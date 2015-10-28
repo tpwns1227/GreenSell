@@ -40,10 +40,10 @@ $(document).ready(function(){
 		<div id="slidebox" style="left: 0px; position: absolute">
 			<table border="0" cellpadding="0" cellspacing="0"><tr>
 			<c:forEach var="img" items="${imglist}">
-				<td>
+				
 				<img src="/GreenSell/img/item/${img}"
 					style="width: 400px; height: 400px">
-				</td>
+				
 			</c:forEach>
 			<td><img src="/GreenSell/img/item/${imglist.get(0)}" style="width: 400px; height: 400px"></td>
 			</tr></table>

@@ -17,7 +17,7 @@ public class MemberDaoImpl implements MemberDao {
 	   private SqlSession sqlSession;
 	   
 	   @Override
-	   public boolean insert(MemberVO membervo) throws SQLException {
+	   public boolean insert(MemberVO membervo) throws SQLException { // 회원정보 입력
 	      int t = sqlSession.insert("member.insert", membervo);
 	      if(t==1)return true;
 	      return false;

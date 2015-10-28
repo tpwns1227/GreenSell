@@ -100,5 +100,5 @@ public class MemberController {
 		   return "/member/memberinfo/register_form";
 	   }
 	   
-	   
+	   //@RequestMapping("/")
 }

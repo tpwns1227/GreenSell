@@ -3,7 +3,7 @@
 .container3 {
 	margin: 50px auto;
 	width: 900px;
-	height: 504px;
+	height: 704px;
 	border: none;
 	text-align: center;
 }
@@ -13,6 +13,7 @@
 	width: 400px;
 	float: left;
 	text-align: center;
+	margin-top: 100px;
 
 }
 

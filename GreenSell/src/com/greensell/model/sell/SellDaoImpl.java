@@ -43,7 +43,7 @@ public class SellDaoImpl implements SellDao {
    @Override
    public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기 
       // TODO Auto-generated method stub
-	  List<String> list = sqlSession.selectList("selectimgname",no);
+	  List<String> list = sqlSession.selectList("sell.selectimgname",no);
       return list;
    }
 
@@ -60,6 +60,13 @@ public class SellDaoImpl implements SellDao {
 	   	ItemSellVO vo = sqlSession.selectOne("sell.selectdetail",no);
 	   	return vo;
    }
+   
+   @Override
+ 	public AuctionVO auctionitemDetail(int no) throws SQLException {
+ 		// TODO Auto-generated method stub
+ 	   AuctionVO vo = sqlSession.selectOne("sell.selectdetailAuction",no); 
+ 		return vo;
+ 	}
 
    @Override
    public boolean itemUpdate(ItemSellVO itsv) throws SQLException {//올린 게시글 수정
@@ -81,6 +88,8 @@ public class SellDaoImpl implements SellDao {
       int i = sqlSession.delete("deleteauction", no);
       return (i>0)? true:false;
    }
+   
+ 
 
    
    
