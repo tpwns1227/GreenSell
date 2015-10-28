@@ -14,14 +14,19 @@
   </select>
   
   <!-- 게시판 상세보기 -->
-  <select id="view" parameterType="int" resultType="com.greensell.bbs.beans.BbsVo">
+  <select id="view" parameterType="com.greensell.bbs.beans.BbsVo" resultType="com.greensell.bbs.beans.BbsVo">
    select * from bbs where no=#{no}
   </select>
   
 	<!-- 댓글 가져오기 -->
-  <select id="cmselect">
-  	select * from replycomment where no=#{no} 
+  <select id="cmselect" parameterType="int" resultType="com.greensell.bbs.beans.ReplyVo">
+  	select * from replycomment where no=#{no}
   </select>
+  
+  <!-- 댓글 올리기 -->
+  <insert id="cminsert" parameterType="com.greensell.bbs.beans.ReplyVo">
+   insert into replycomment values(no_com_seq.nextval,#{no},#{email},sysdate,#{cmcontent})
+  </insert>
   
 	<!-- 댓글 지우기 -->
   <delete id="cmdelete">
