@@ -16,7 +16,6 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	public boolean Insert(BbsVo b) throws SQLException{
 		int t = sqlsession.insert("bbs.bbsinsert", b);
-		
 		if(t==1){return true;}
 		return false;
 	}
@@ -29,13 +28,13 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	public boolean Update(BbsVo dao) {
-		// TODO Auto-generated method stub
+		int t = sqlsession.insert("bbs.update", dao);
+		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
 	public List<ReplyVo> selectcommet() throws SQLException {
-
 		List<ReplyVo> list=sqlsession.selectList("bbs.cmselect");
 		return list;
 	}
@@ -46,7 +45,7 @@ public class BbsDaoImpl implements BbsDao {
 		return list;
 	}
 
-	@Override
+	@Override	
 	public List<BbsVo> selecttarget() throws SQLException{
 		List<BbsVo> list = sqlsession.selectList("bbs.bbsselecttarget");
 		return list;
