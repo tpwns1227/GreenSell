@@ -62,6 +62,7 @@ public class MemberController {
 		  }  
 	   }
 	   
+	   
 	   @RequestMapping("/id_check")
 	   public String idCheck(@RequestParam String email,@RequestParam String password,
 			   				Model m)throws SQLException{
