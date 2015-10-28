@@ -19,16 +19,22 @@
 		</div>
 		<div class='info'>
 			<div class='bold2'>제품명</div>
-			<div class='font'>챔피언 맨투맨</div>
+			<div class='font'>${itemone.getItemname()}</div>
 			<div class='bold2'>상태</div>
-			<div class='font'>미개봉</div>
+			<div class='font'>${itemone.getItemstate()}</div>
 			<div class='bold2'>가격</div>
-			<div class='font'>30,000원</div>
-			<div class='bold2'>거래방법</div>
-			<div class='font'>직거래, 안전거래</div>
+			<div class='font'>${itemone.getItemprice()}</div>
+			<div class='bold2'>판매방법</div>
+			<div class='font'>${itemone.getHowsell()}</div>
+			<div class='bold2'>카테고리</div>
+			<div class='font'>${itemone.getCategory()}</div>
+			<div class='bold2'>판매자</div>
+			<div class='font'>${itemone.getEmail()}</div>
 			<div class='bold2'>설명</div>
-			<textarea class='tb' readonly="">입고 섹스한번 밖에 안했어요. 개꿀</textarea>
-			<input class='callbtn' type="button" value="연락하기">
+			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
+			<input class='callbtn' type="button" value="직거래">
+			<input class='callbtn' type="button" value="안전거래">
+			
 		</div>
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>

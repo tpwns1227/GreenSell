@@ -52,7 +52,7 @@
 	<div class="imgbox">
 	
 	<div class='img'>
-		<img src='img.png' class='img'>
+		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
 	  ${list.itemname}
