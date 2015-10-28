@@ -25,6 +25,11 @@ public class SellController {
          return "/sell/sell_write_form";
       }
       
+      @RequestMapping("/sell_detail")
+      public String detailform(){
+         return "/sell/sell_detail";
+      }
+      
       //판매 글 추가 content form으로 매핑.
       @RequestMapping("/sellcontent_write_form")
       public String home(@RequestParam String pname,
