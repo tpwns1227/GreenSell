@@ -6,7 +6,7 @@ function inputCheck() {
 		return;
 	}
 	var str = document.register_form.email.value;
-
+  
 	var atPos = str.indexOf('@');
 
 	var atLastPos = str.lastIndexOf('@');
