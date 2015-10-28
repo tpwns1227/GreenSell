@@ -21,17 +21,24 @@ public class SellController {
    
     
       
-      @RequestMapping("/sell_detail")
+      @RequestMapping("/sell_detail") //글 클릭시 상세보기로 이동
       public String detailform(@RequestParam int no, Model m) throws SQLException{
-    	  
-    	  ItemSellVO ivo = dao.itemDetail(no);
-    	  	m.addAttribute("itemone", ivo);
+    	  	
+    	  	ItemSellVO ivo = dao.itemDetail(no); //게시글 한가지의 정보를 가져온다.
+
+    	  	if(ivo.getHowsell().equals("경매")){
+    	  		AuctionVO avo = dao.auctionitemDetail(no);
+    	  		m.addAttribute("auctionitem",avo);
+    	  	}else{
+    	  		m.addAttribute("itemone", ivo); 
+    	  	}
+    	  	
+    	  	List<String> list = dao.getImagenames(no);  //이미지 뿌리기
+			m.addAttribute("imglist", list);
+			System.out.println(list.size());
          return "/sell/sell_detail";
       }
       
-   
-   
-    
       @RequestMapping("/home") //home 페이지 출력
       public String viewHome(Model m){
          
