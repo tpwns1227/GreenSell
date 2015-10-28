@@ -8,55 +8,29 @@
 <title>Insert title here</title>
 </head>
 <jsp:include page="../main/header.jsp"></jsp:include>
-<body>
-<table width="550" align="center">
-    	<tr>
-    		<td align="center">
-    		<font size="4">게시판 이름</font>
-    		</td>
-    	</tr>
-    </table><br><hr>
-    <table width="550" align="center">
-    	<tr>
-    		<td width="10%" align="center" bgcolor="#47CFF2">&nbsp;번호</td>
-    		<td width="45%" align="center" bgcolor="#47CFF2">&nbsp;제목</td>
-    		<td width="20%" align="center" bgcolor="#47CFF2">&nbsp;이름</td>
-    		<td width="13%" align="center" bgcolor="#47CFF2">&nbsp;일자</td>
-    		<td width="12%" align="center" bgcolor="#47CFF2">&nbsp;조회수</td>
-    	</tr>
-    	<tr>
-    		<td align="center">&nbsp;글번호</td>
-    		<td align="center">&nbsp;제목</a></td>
-    		<td align="center">&nbsp;작성자</td>
-    		<td align="center">&nbsp;글쓴날짜</td>
-    		<td align="center">&nbsp;조회수</td>
-    	</tr>
-    	<tr>
-    		<td align="center">&nbsp;글번호</td>
-    		<td align="center">&nbsp;제목</a></td>
-    		<td align="center">&nbsp;작성자</td>
-    		<td align="center">&nbsp;글쓴날짜</td>
-    		<td align="center">&nbsp;조회수</td>
-    	</tr>
-
-    </table>
-     <br>
-     <!-- //////////////////////////////// -->
-     <form action="search.jsp" method="post" name="sform">
-     	<table width="550" align="center">
-     		<tr>
-     			<td align="center">
-     			<select name="find">
-     				<option value=title selected>제 목</option>
-     				<option value=content>내 용</option>
-     			</select>
-     			<input type="text" name="search" size="20">
-     			<input type="button" value="글찾기">
-     			<input type="button" value="글쓰기">
-     			</td>
-     		</tr>
-     	</table>
-     </form>
+<body><br><br><br>
+	<form>
+	<table width="550" align="center">
+       <tr>
+          <td width="8%" align="center" bgcolor="#47CFF2">&nbsp;번호</td>
+          <td width="40%" align="center" bgcolor="#47CFF2">&nbsp;제목</td>
+          <td width="20%" align="center" bgcolor="#47CFF2">&nbsp;이름</td>
+          <td width="22%" align="center" bgcolor="#47CFF2">&nbsp;일자</td>
+          <td width="10%" align="center" bgcolor="#47CFF2">&nbsp;조회수</td>
+       </tr>
+	<tr>
+    <c:forEach var="list" items="${selectAll}">	
+			<div class='container'>
+				<td align="center"><div class='no'>${list.no}</div></td>
+				<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
+				<td align="center"><div class='email'>${list.email}</div></td>
+				<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
+				<td align="center"><div class='hits'>${list.hits}</div></td>
+			</div>
+		</c:forEach>
+		</tr>
+		</table>
+</form>
 </body>
 <jsp:include page="../main/bottom.jsp"></jsp:include>
 </html>
