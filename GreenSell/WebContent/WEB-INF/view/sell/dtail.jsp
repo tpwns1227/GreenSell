@@ -12,7 +12,7 @@ var l=0;
 $(document).ready(function(){
 	$("img").click(function(){
 		l -= 400;
-		$("#slidebox").animate({left: l},500,function(){
+		$("#slidebox").animate({left: 1},3000,function(){
 			$("img").blur();
 			var imgs = ${imglist.size()};
 			if(l<(imgs*-399)){
@@ -30,12 +30,13 @@ $(document).ready(function(){
 	}); */
 	
 });
+
 </script>
 </head>
 <body>
 
 	<div id="slide"
-		style="width: 400px; height: 400px; overflow:hidden; position: relative">
+		style="width: 400px; height: 400px; overflow:hidden; position: relative" onclick="">
 		<div id="slidebox" style="left: 0px; position: absolute">
 			<table border="0" cellpadding="0" cellspacing="0"><tr>
 			<c:forEach var="img" items="${imglist}">

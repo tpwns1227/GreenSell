@@ -13,28 +13,21 @@
 		width: 250px;
 		height: 250px;
 		display: inline-block;
-
 	}
-
 	.img {
 		width: 250px;
 		height: 200px;
 		border: 1px solid #EEE;
-
 	}
-
 	.item {
 		text-align: right;
 		margin-top: 5px;
 		height: 15px;
 		font-size: 13px;
-
 	}
-
 	.price {
 		text-align: right;
 		height: 30px;
-
 	}
 	 .body {
 
@@ -44,8 +37,7 @@
 }
 </style>
 <script>
-	
-	
+
 	
 </script>
 </head>
@@ -54,8 +46,11 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 <div class='body'>
 
+<form action="detail" method="post" name="listform">
 <c:forEach var="list" items="${itemlist}">
 <div class='container'>
+	<div class="imgbox">
+	
 	<div class='img'>
 		<img src='img.png' class='img'>
 	</div>
@@ -65,9 +60,10 @@
 	<div class='price'>
 		${list.itemprice}
 	</div>
+	</div>
 </div>
 </c:forEach>
-
+</form>
 </div>
 
 
