@@ -1,6 +1,7 @@
 package com.greensell.controller;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -73,7 +74,7 @@ public class MemberController {
 	   }
 	   
 	   
-	   @RequestMapping("/id_check") // 아이디 중복확인
+	 /*  @RequestMapping("/id_check") // 아이디 중복확인
 	   public String idCheck(@RequestParam String email,@RequestParam String password,
 			   				Model m)throws SQLException{
 		   
@@ -84,7 +85,7 @@ public class MemberController {
 			   m.addAttribute("check",false);
 		   }   
 		   return "member/memberinfo/register_form";
-	   }
+	   }*/
 	   
 	   @RequestMapping("/idchk") //아이디 중복검사 (윤세준)
 	   public String registeridchk(@RequestParam String email, Model m) throws SQLException{
@@ -97,8 +98,17 @@ public class MemberController {
 			   m.addAttribute("chkresult", "이미 존재하는 아이디입니다.");
 		   }
 		   
-		   return "/member/memberinfo/register_form";
+		   return "member/memberinfo/register_form";
+	   }
+
+	   @RequestMapping("/memberDetail")//회원정보 상세보기
+	   public String list(Model m,@RequestParam String email) throws SQLException{
+		   MemberVO mVO = dao.memberdetail(email);
+			m.addAttribute("mvo",mVO);	   
+		   
+		   return "member/memberinfo/member_Detail";
 	   }
 	   
-	   //@RequestMapping("/")
+	   
+	   
 }
