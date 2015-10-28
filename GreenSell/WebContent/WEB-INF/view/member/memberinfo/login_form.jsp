@@ -60,5 +60,6 @@ if(password == "" || password == null){
 			onclick="location.href='register_form'">
 	</div>
 	</form>
+	<jsp:include page="../../main/bottom.jsp"></jsp:include>
 </body>
 </html>

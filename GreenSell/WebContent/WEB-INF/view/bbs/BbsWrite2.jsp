@@ -14,8 +14,8 @@
 		<div class='p'>제목</div>
 		<input id='textbox' type='text' placeholder="제목"> <br>
 		<div class='p'>내용</div>
-		<textarea></textarea>
-		<input class='button' type='button' value='질문'>
+		<textarea placeholder="내용"></textarea>
+		<input class='button' type='button' value='작성'>
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>
 </body>
