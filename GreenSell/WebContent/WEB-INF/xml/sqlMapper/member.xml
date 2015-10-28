@@ -5,8 +5,17 @@
 <insert id="insert" parameterType="com.greensell.member.beans.MemberVO">
 insert into member 
 values(#{email},#{password},#{name},#{nickname},#{phone},#{address},
-#{bank},#{account},#{question},#{answer},#{point},#{grade},#{report},SYSDATE)
+#{bank},#{account},#{question},#{answer},0,0,0,SYSDATE)
 </insert>
+
+<select id="logincheck" parameterType="String" resultType="String">
+SELECT password FROM member WHERE email=#{email}
+</select>	
+
+<select id="idcheck" parameterType="String" resultType="String">
+select email from member where email=#{email}
+</select>
+
 
 <!-- <select id="selectpwd" resultType="com.greensell.beans.MemberVO">
 select password from member where name=#{name} and email=#{email}
@@ -23,6 +32,7 @@ select email,password from member where email=#{email} and password=#{password}
 <delete id="delete" parameterType="String">
 delete from member where email=#{email}
 </delete> -->
+
 	
 	
 </mapper>
