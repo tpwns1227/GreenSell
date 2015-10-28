@@ -84,11 +84,12 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public BbsVo bbscheck(String email) {
+	public List<BbsVo> bbsidcheck(String email) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		List<BbsVo> list = sqlSession.selectList("member.bbsidcheck",email);
+		return list;	
 
+	}
 	@Override
 	public boolean logincheck(String email, String password) throws SQLException {
 		// TODO Auto-generated method stub
@@ -115,9 +116,13 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public boolean nickname(String nickname) throws SQLException {
+	public boolean nickcheck(String nickname) throws SQLException {
 		// TODO Auto-generated method stub
-		return false;
+		String nick = sqlSession.selectOne("member.nickcheck", nickname);
+		if(nick==null)
+			return false;
+		else
+			return true;
 	}
 	
 }
