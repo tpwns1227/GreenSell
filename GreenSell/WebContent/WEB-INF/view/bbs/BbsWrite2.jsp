@@ -14,7 +14,7 @@
 		<div class='p'>제목</div>
 		<input id='textbox' type='text' placeholder="제목"> <br>
 		<div class='p'>내용</div>
-		<textarea></textarea>
+		<textarea></textarea>z
 		<input class='button' type='button' value='질문'>
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>

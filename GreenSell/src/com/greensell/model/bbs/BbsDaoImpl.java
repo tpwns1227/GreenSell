@@ -16,26 +16,27 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	public boolean Insert(BbsVo b) throws SQLException{
 		int t = sqlsession.insert("bbs.bbsinsert", b);
-		
 		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
-	public boolean Delete(String name) {
-		// TODO Auto-generated method stub
+	//게시글 번호를 받아 삭제
+	public boolean Delete(int no) {
+		int t = sqlsession.insert("bbs.delete", no);
+		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
 	public boolean Update(BbsVo dao) {
-		// TODO Auto-generated method stub
+		int t = sqlsession.insert("bbs.update", dao);
+		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
 	public List<ReplyVo> selectcommet() throws SQLException {
-
 		List<ReplyVo> list=sqlsession.selectList("bbs.cmselect");
 		return list;
 	}
@@ -46,7 +47,7 @@ public class BbsDaoImpl implements BbsDao {
 		return list;
 	}
 
-	@Override
+	@Override	
 	public List<BbsVo> selecttarget() throws SQLException{
 		List<BbsVo> list = sqlsession.selectList("bbs.bbsselecttarget");
 		return list;
