@@ -12,7 +12,7 @@
 		SELECT password FROM member WHERE email=#{email}
 	</select>
 
-	<select id="idcheck" parameterType="String" resultType="String"> <!-- 아이디 존재 여부 찾기 클리어 -->
+	<select id="idcheck" parameterType="String" resultType="String"> <!-- 아이디 존재 여부 찾기  -->
 		select email from member where email=#{email}
 	</select>
 
@@ -36,6 +36,10 @@
 	<select id="bbsidcheck" parameterType="String"
 		resultType="com.greensell.bbs.beans.BbsVo">  <!-- 내가 글쓴 목록 조회 -->
 		select * from bbs where email=#{email} 
+	</select>
+	
+	<select id="selectDetail" parameterType="String" resultType="com.greensell.member.beans.MemberVO">
+		select * from member where email=#{email}
 	</select>
 
 </mapper>
