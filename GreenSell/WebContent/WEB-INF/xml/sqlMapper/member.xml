@@ -17,6 +17,7 @@ select email from member where email=#{email}
 </select>
 
 
+
 <!-- <select id="selectpwd" resultType="com.greensell.beans.MemberVO">
 select password from member where name=#{name} and email=#{email}
 </select>
