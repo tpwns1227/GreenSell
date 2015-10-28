@@ -35,8 +35,9 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	public List<ReplyVo> selectcommet() throws SQLException {
-		// TODO ��� ��������
-		return null;
+
+		List<ReplyVo> list=sqlsession.selectList("bbs.cmselect");
+		return list;
 	}
 
 	@Override
