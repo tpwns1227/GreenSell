@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css/member.css">
 <script type="text/javascript" src='/GreenSell/js/register.js'></script>
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
-<script type="text/javascript" src="/GreenSell/js/ajax.js"></script>
+
 <script>
 	
 	/* function idchk(){
@@ -23,7 +23,7 @@
 		}
 	} */
 	
-	$(document).ready(function(){
+/* 	$(document).ready(function(){
 	    $("#email").click(function(){
 	        $("#email").load("idchk", function(responseTxt, statusTxt, xhr){
 	            if(statusTxt == "success")
@@ -32,7 +32,7 @@
 	                alert("Error: " + xhr.status + ": " + xhr.statusText);
 	        });
 	    });
-	});
+	}); */
 	
 	
 </script>
@@ -43,10 +43,11 @@
 	<form name='register_form' action="result">
 		<div class='container'>
 			<div class='border'>회원가입</div>
-			<div class='p'>이메일</div>
+			<div class='p'>이메일1</div>
 			<input name='email' id='textbox' type='text' placeholder="이메일"
-				style='width: 300px'> <input class='button2' type='button'
-				value='중복' id='email'>
+				style='width: 300px'> 
+		    <input class='button2' type='button'
+				value='중복' id='emailBtn'>
 			<div class='p'>이름</div>
 			<input name='name' id='textbox' type='text' placeholder="이름">
 			<div class='p'>별명</div>
