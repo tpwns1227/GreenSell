@@ -36,8 +36,8 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public List<ReplyVo> selectcommet() throws SQLException {
-		List<ReplyVo> list=sqlsession.selectList("bbs.cmselect");
+	public List<ReplyVo> selectcomment(ReplyVo reply) throws SQLException {
+		List<ReplyVo> list=sqlsession.selectList("bbs.cmselect",reply);
 		return list;
 	}
 
@@ -64,6 +64,13 @@ public class BbsDaoImpl implements BbsDao {
 	public BbsVo view(int no) throws SQLException {
 		BbsVo bbsVo = sqlsession.selectOne("bbs.view",no);
 		return bbsVo;
+	}
+
+	@Override
+	public boolean Insert(ReplyVo Vo) throws SQLException {
+		int t = sqlsession.insert("bbs.cminsert", Vo);
+		if(t==1){return true;}
+		return false;
 	}
 
 }
