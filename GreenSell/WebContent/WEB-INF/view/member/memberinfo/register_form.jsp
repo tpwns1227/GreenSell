@@ -47,7 +47,7 @@
 			<input name='email' id='textbox' type='text' placeholder="이메일"
 				style='width: 300px'> 
 		    <input class='button2' type='button'
-				value='중복' id='emailBtn'>
+				value='중복' id='emailbtn'>
 			<div class='p'>이름</div>
 			<input name='name' id='textbox' type='text' placeholder="이름">
 			<div class='p'>별명</div>
