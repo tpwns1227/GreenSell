@@ -25,7 +25,7 @@ body {
 	max-width: 1200px;
 }
 
-body, html, input, a, div {
+body, html, input, a, div, option, select, textarea {
 	font-family: 'Nanum Gothic', sans-serif;
 	/*폰트 나눔고딕*/
 }
