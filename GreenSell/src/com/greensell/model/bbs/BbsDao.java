@@ -8,9 +8,9 @@ public interface BbsDao {
 	public boolean Insert(BbsVo bean) throws SQLException;
 	public boolean Delete(String name)throws SQLException;
 	public boolean Update(BbsVo dao)throws SQLException;
-	public BbsDao select(String name) throws SQLException;
-	public List<BbsDao> selectAll();
-	public List<BbsDao> selecttarget();
+	public BbsDao select(String name)throws SQLException;
+	public List<BbsVo> selectAll()throws SQLException;
+	public List<BbsVo> selecttarget()throws SQLException;
 }
 
 
