@@ -55,9 +55,10 @@ public class SellDaoImpl implements SellDao {
    }
 
    @Override
-   public List<ItemSellVO> itemDetail(int no) throws SQLException { // 판매 글 상세보기
+   public ItemSellVO itemDetail(int no) throws SQLException { // 판매 글 상세보기
       // TODO Auto-generated method stub
-      return null;
+	   	ItemSellVO vo = sqlSession.selectOne("sell.selectdetail",no);
+	   	return vo;
    }
 
    @Override
