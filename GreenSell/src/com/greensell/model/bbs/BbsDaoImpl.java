@@ -23,7 +23,8 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	//게시글 번호를 받아 삭제
 	public boolean Delete(int no) {
-		// TODO Auto-generated method stub
+		int t = sqlsession.insert("bbs.delete", no);
+		if(t==1){return true;}
 		return false;
 	}
 
