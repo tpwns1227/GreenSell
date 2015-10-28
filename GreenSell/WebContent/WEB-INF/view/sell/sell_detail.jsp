@@ -19,7 +19,9 @@
 </script>
 </head>
 <body>
+
 	<jsp:include page="../main/header.jsp"></jsp:include>
+	<div class='test'>
 	<div class="container3">
 		<div class='img'>
 			<img src='/GreenSell/img/item/${imglist.get(0)}' class='mimg'>
@@ -45,10 +47,11 @@
 			<div class='font'>${itemone.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
-			<input class='callbtn' type="button" value="직거래">
+			<input class='callbtn' type="button" value="연락처">
 			<input class='callbtn' type="button" value="안전거래">
 			
 		</div>
+	</div>
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>
 </body>
