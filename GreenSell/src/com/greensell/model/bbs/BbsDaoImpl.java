@@ -34,20 +34,20 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	public BbsDao select(String name) throws SQLException {
-		// TODO Auto-generated method stub
+		// TODO 댓글 가져오기
 		return null;
 	}
 
 	@Override
 	public List<BbsDao> selectAll() {
 		
-		return null;
+		return sqlsession.selectList("bbs.bbsselectall");
 	}
 
 	@Override
 	public List<BbsDao> selecttarget() {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlsession.selectList("bbs.bbsselecttarget");
 	}
 
 }
