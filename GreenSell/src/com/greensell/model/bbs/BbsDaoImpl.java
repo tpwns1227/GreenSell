@@ -21,7 +21,8 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public boolean Delete(String name) {
+	//게시글 번호를 받아 삭제
+	public boolean Delete(int no) {
 		// TODO Auto-generated method stub
 		return false;
 	}
