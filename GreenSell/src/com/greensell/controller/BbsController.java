@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greensell.bbs.beans.BbsVo;
+import com.greensell.bbs.beans.ReplyVo;
 import com.greensell.model.bbs.BbsDao;
 import com.greensell.sell.beans.ItemSellVO;
 
@@ -61,12 +62,13 @@ public class BbsController {
 	
 	//게시글 상세보기
 		@RequestMapping("/view")
-		public String view(@RequestParam int no,BbsVo b,Model m){
-			System.out.println(no);
+		public String view(@RequestParam int no,BbsVo b,Model m,ReplyVo r){
+			
 			try{
 				BbsVo bbsVo = dao.view(no);
-				//System.out.println(bbsVo.getBbscontent());
+				List<ReplyVo> replyvo=dao.selectcomment(r);
 				m.addAttribute("view", bbsVo);
+				m.addAttribute("comment",replyvo);
 				
 				if(dao.Hitup(b)){
 				}				
@@ -98,6 +100,27 @@ public class BbsController {
 					}
 					
 					return "bbs/BbsWrite";
+				}
+			
+			@RequestMapping("/cmok")
+			public String cmok(ReplyVo v,Model m){
+				try{
+					System.out.println(v.getEmail());
+					System.out.println(v.getCmcontent());
+					System.out.println(v.getNo());
+					
+					
+					if(dao.Insert(v)){
+						return "bbs/BbsView";
+					}
+					
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+					}
+					
+					return "bbs/BbsView";
 				}
 }
 	
