@@ -37,5 +37,5 @@ from itemsell i, auction a where i.no = a.itemno order by i.no desc
   		select imgname from itemimg where imgno=#{imgno}
   	</select>
   	
-  
+    
 </mapper>
