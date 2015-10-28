@@ -1,6 +1,5 @@
 function inputCheck() {
-	if (document.register_form.email.value == ""
-			|| document.register_form.email.value == null) {
+	if (document.register_form.email.value == "" && document.register_form.email.value == null) {
 		alert("이메일을 입력해주세요");
 		document.register_form.email.focus();
 		return;
@@ -20,14 +19,13 @@ function inputCheck() {
 	var eMailSize = str.length;
 
 	if (atPos > 1 && atPos == atLastPos && dotPos > 3 && spacePos == -1
-			&& commaPos == -1 && atPos + 1 < dotPos && dotPos + 1 < eMailSize)
-		;
-
+			&& commaPos == -1 && atPos + 1 < dotPos && dotPos + 1 < eMailSize);
+	
 	else {
 		alert("이메일 형식이 올바르지 않습니다. 확인해주세요");
 		document.register_form.email.focus();
 		return;
-	}
+		}
 	if (document.register_form.name.value == ""
 			|| document.register_form.name.value == null) {
 		alert("이름을 입력해주세요");
