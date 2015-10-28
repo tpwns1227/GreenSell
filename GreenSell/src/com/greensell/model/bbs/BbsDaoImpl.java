@@ -46,8 +46,8 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	public List<BbsVo> selecttarget() throws SQLException{
-		// TODO Auto-generated method stub
-		return sqlsession.selectList("bbs.bbsselecttarget");
+		List<BbsVo> list = sqlsession.selectList("bbs.bbsselecttarget");
+		return list;
 	}
 
 }
