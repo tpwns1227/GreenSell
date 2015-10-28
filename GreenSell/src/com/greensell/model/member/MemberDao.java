@@ -28,5 +28,7 @@ public interface MemberDao {
 	   public boolean nickcheck(String nickname) throws SQLException;//닉네임중복확인
 	   
 	   
+	   
+	   
 
 }

@@ -67,6 +67,8 @@ public class MemberDaoImpl implements MemberDao {
 		MemberVO mem = sqlSession.selectOne("member.selectDetail", email);
 		return mem;
 	}
+	
+	
 
 	@Override
 	public List<ItemSellVO> buyItem(String email) {//구매목록보기
