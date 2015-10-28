@@ -37,5 +37,8 @@ from itemsell i, auction a where i.no = a.itemno order by i.no desc
   		select imgname from itemimg where imgno=#{imgno}
   	</select>
   	   
+  	<select id="selectdetail" parameterType="int" resultType="com.greensell.sell.beans.ItemSellVO">
+  		select * from itemsell where no=#{no}
+  	</select>
     
 </mapper>
