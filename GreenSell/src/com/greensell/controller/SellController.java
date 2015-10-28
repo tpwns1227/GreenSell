@@ -116,16 +116,28 @@ public class SellController {
       @RequestMapping("/inputform")
 		public String viewitemlist() throws SQLException{
 				
-			return "/sell/inputItem";
+			return "/sell/sell_write";
 		}
 		
 		@RequestMapping("/List")
 		public String viewitemlist(ItemSellVO itsv) throws SQLException{
-			
 			if(dao.itemInsert(itsv)){
 				System.out.println("나는된다.");
 			}
 			return "/main/home";
-		
 		}
+		
+		@RequestMapping("/detail")
+		public String viewimg(Model m, @RequestParam int no) throws SQLException{
+			List<String> list = dao.getImagenames(no);
+			m.addAttribute("imglist", list);
+			return "/sell/dtail";
+		}
+		
+		
+		
+		
+		
+		
+		
 }
