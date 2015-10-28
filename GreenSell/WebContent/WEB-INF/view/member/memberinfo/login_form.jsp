@@ -27,6 +27,21 @@ if(email == "" || email == null){
 	alert('email을 입력하세요');
 	return;
 	}
+
+var str = email;
+var atPos = str.indexOf('@');
+var atLastPos = str.lastIndexOf('@');
+var dotPos = str.indexOf('.');
+var spacePos = str.indexOf(' ');
+var commaPos = str.indexOf(',');
+var eMailSize = str.length;
+if (atPos > 1 && atPos == atLastPos && dotPos > 3 && spacePos == -1
+		&& commaPos == -1 && atPos + 1 < dotPos && dotPos + 1 < eMailSize);
+else {
+	alert("이메일 형식이 올바르지 않습니다. 확인해주세요");
+	document.login_form.email.focus();
+	return;
+	}
 	
 if(password == "" || password == null){
 	alert('비밀번호를 입력하세요');
