@@ -5,7 +5,7 @@
   
 	<!-- 각 게시판 별로 글 리스트 받아오기 -->
   <select id="bbsselectall" parameterType="String" resultType="com.greensell.bbs.beans.BbsVo">
-   select * from bbs where bbsno=#{bbsno} order by no desc
+   select * from bbs where bbsno=1 order by no desc
   </select>
   
 	<!-- 각 게시판 별로 글 리스트 제목으로 검색하기 -->
@@ -24,9 +24,9 @@
   </delete>
   
 	<!-- 조회수 올리기 로직 -->
-  <select id="hitup">
-  	update bbs set hits +=1 where no=#{no}
-  </select>
+  <update id="hitup" parameterType="com.greensell.bbs.beans.BbsVo">
+  	update bbs set hits=hits+1 where no=#{no}
+  </update>
 	
 	<!-- 게시판 글올리기 (현제 게시판별로 글올리기 불가능) -->
   <insert id="bbsinsert" parameterType="com.greensell.bbs.beans.BbsVo">
