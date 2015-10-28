@@ -8,7 +8,7 @@ public class BbsVo {
 	private int bbsno;//게시판 번호
 	private String title;//글이름
 	private Date bbsdate;//게시글 날짜
-	private String content;//게시글
+	private String bbscontent;//게시글
 	private String email;//유저 네임
 	private int hits;//조회수
 	
@@ -39,11 +39,11 @@ public class BbsVo {
 	public void setBbsdate(Date bbsdate) {
 		this.bbsdate = bbsdate;
 	}
-	public String getContent() {
-		return content;
+	public String getBbscontent() {
+		return bbscontent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setBbscontent(String bbscontent) {
+		this.bbscontent = bbscontent;
 	}
 	public String getEmail() {
 		return email;

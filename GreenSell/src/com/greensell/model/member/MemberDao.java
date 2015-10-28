@@ -20,12 +20,12 @@ public interface MemberDao {
 	   public List<ItemSellVO> buyItem(String email);//구매목록보기
 	   public List<AuctionVO> AuctionItem(String email);//경매한 상품보기
 	   public List<PointVO> pointcheck(String email);//포인트 내역조회
-	   public BbsVo bbscheck(String email);//입력한 글 찾아보기
+	   public List<BbsVo> bbsidcheck(String email)throws SQLException;//입력한 글 찾아보기
 	   public List<ItemSellVO> sellItem(String email);// 판매할 상품보기
 	   public List<MemberVO> membercheck(String email);//회원 정보 상세보기
 	   public boolean logincheck(String email,String password)throws SQLException;//로그인 확인
 	   public boolean idcheck(String email)throws SQLException;//아이디중복확인
-	   public boolean nickname(String nickname) throws SQLException;//닉네임중복확인
+	   public boolean nickcheck(String nickname) throws SQLException;//닉네임중복확인
 	   
 	   
 

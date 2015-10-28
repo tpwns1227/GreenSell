@@ -17,7 +17,7 @@ function CM() {
 }
 
 function list(){
-	location.href="BbsList";
+	location.href="";
 }
 </script>
 <title>Insert title here</title>
@@ -29,19 +29,21 @@ function list(){
 		<tr>
 		
 			<td>
-				제목 <input type="text" name="title" readonly="readonly">
+				제목 : ${view.title}
 				<p>
-				작성자 : <input type="text" name="email" readonly="readonly">
-				날짜 : <input type="text" name="date" readonly="readonly">
-				조회수 : <input type="text" name="hits">
+				작성자 : ${view.email}
+				날짜 : ${view.bbsdate}
+				조회수 : ${view.hits}
 				<hr>
 				<p>
-				내용<textarea rows="3" cols="90" name="centent" ></textarea><br>
+				내용<textarea rows="3" cols="90" name="content" >${view.bbscontent}</textarea><br>
 				<hr>
 			</td>
 		</tr>
 		<tr>
-			<td align="left"><input type="button" value="목록" onclick="list()"></td>
+			<td align="right"><input type="button" value="수정"><input type="button" value="삭제">
+			<input type="button" value="목록" onclick="list()">
+			</td>
 		</tr>
 		<tr>
 			<td>

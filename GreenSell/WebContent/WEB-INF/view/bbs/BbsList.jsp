@@ -19,7 +19,7 @@
           <td width="10%" align="center" bgcolor="#47CFF2">&nbsp;Á¶È¸¼ö</td>
        </tr>
 	<tr>
-    <c:forEach var="list" items="${selectAll}">	
+    <c:forEach var="list" items="${selectAll}">
 			<div class='container'>
 				<td align="center"><div class='no'>${list.no}</div></td>
 				<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>

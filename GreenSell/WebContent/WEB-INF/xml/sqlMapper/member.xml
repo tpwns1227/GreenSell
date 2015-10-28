@@ -16,24 +16,28 @@ SELECT password FROM member WHERE email=#{email}
 select email from member where email=#{email}
 </select>
 
+<select id="nickcheck" parameterType="String" resultType="String">
+select nickname from member where nickname=#{nickname}
+</select>
 
-
-<!-- <select id="selectpwd" resultType="com.greensell.beans.MemberVO">
+<select id="selectpwd" resultType="com.greensell.member.beans.MemberVO">
 select password from member where name=#{name} and email=#{email}
 </select>
 
 <update id="update" parameterType="String">
 update member set email=#{email}, nickname=#{nickname}, address=#{address} where password=#{password} and email=#{email}
-</update> -->
+</update>
 
-<!-- <select id="login">
+ <select id="login">
 select email,password from member where email=#{email} and password=#{password}
 </select>
 
 <delete id="delete" parameterType="String">
 delete from member where email=#{email}
-</delete> -->
+</delete> 
 
-	
+<select id="bbsidcheck" parameterType="String" resultType="com.greensell.bbs.beans.BbsVo">
+select * from bbs where email=#{email}
+</select>
 	
 </mapper>

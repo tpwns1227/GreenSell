@@ -13,6 +13,11 @@
    select * from bbs where bbsno=#{bbsno} and title=#{title}
   </select>
   
+  <!-- 게시판 상세보기 -->
+  <select id="view" parameterType="int" resultType="com.greensell.bbs.beans.BbsVo">
+   select * from bbs where no=#{no}
+  </select>
+  
 	<!-- 댓글 가져오기 -->
   <select id="cmselect">
   	select * from replycomment where no=#{no} 

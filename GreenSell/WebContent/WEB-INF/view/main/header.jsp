@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String email = (String) session.getAttribute("email");
+	String email = (String) session.getAttribute("skey");
 %>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <body>
 	<div class='container1'>
 		<div class='top' id='logo'>
-			<a href='../main/home'> <img src='img/useimg/logo.png'
+			<a href='home'> <img src='img/useimg/logo.png'
 				height='80'>
 			</a>
 		</div>
@@ -26,7 +26,7 @@
 				} else {
 			%>
 			<a href="">내 정보</a>
-			<a href="">로그아웃</a>
+			<a href="logout">로그아웃</a>
 			<%
 				}
 			%>
