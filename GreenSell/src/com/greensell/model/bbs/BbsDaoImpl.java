@@ -23,14 +23,14 @@ public class BbsDaoImpl implements BbsDao {
 	@Override
 	//게시글 번호를 받아 삭제
 	public boolean Delete(int no) {
-		int t = sqlsession.insert("bbs.delete", no);
+		int t = sqlsession.delete("bbs.delete", no);
 		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
 	public boolean Update(BbsVo dao) {
-		int t = sqlsession.insert("bbs.update", dao);
+		int t = sqlsession.update("bbs.update", dao);
 		if(t==1){return true;}
 		return false;
 	}
@@ -51,6 +51,13 @@ public class BbsDaoImpl implements BbsDao {
 	public List<BbsVo> selecttarget() throws SQLException{
 		List<BbsVo> list = sqlsession.selectList("bbs.bbsselecttarget");
 		return list;
+	}
+
+	@Override
+	public boolean Hitup(BbsVo dao) throws SQLException {
+		int t = sqlsession.update("bbs.hitup", dao);
+		if(t==1){return true;}
+		return false;
 	}
 
 }
