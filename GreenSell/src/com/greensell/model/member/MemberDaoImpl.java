@@ -22,6 +22,7 @@ public class MemberDaoImpl implements MemberDao {
 	      if(t==1)return true;
 	      return false;
 	   }
+	   
 
 	   @Override
 	   public boolean delete(String email) throws SQLException {
