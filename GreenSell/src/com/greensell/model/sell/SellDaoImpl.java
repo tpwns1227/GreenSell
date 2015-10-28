@@ -43,7 +43,8 @@ public class SellDaoImpl implements SellDao {
    @Override
    public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기 
       // TODO Auto-generated method stub
-      return null;
+	  List<String> list = sqlSession.selectList("selectimgname",no);
+      return list;
    }
 
    @Override
