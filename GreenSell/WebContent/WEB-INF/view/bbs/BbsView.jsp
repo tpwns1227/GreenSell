@@ -10,12 +10,13 @@
 <script type="text/javascript">
 
 function CM() {
-	if(document.view.cm.value==""){
+	if(document.cmreply.cmcontent.value==""){
 		alert("댓글을 넣어주세요.");
-		document.view.cm.focus();
+		document.cmreply.cmcontent.focus();
+		return false;
 	}
 	else{
-		return location.href='cmok';
+		return true;
 	}
 }
 
@@ -75,7 +76,7 @@ function list(){
                      <input type="hidden" value="<%= email %>" name="email">
                      <input type="hidden" value="${view.no}" name="no">
                      <textarea name="cmcontent" rows="2" cols="80"></textarea>  
-                      <input type="submit" value="확인">
+                      <input type="submit" value="확인" onclick="return CM()">
                       
                    </form> 
                  </p>
