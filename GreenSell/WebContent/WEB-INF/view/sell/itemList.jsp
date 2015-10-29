@@ -32,7 +32,7 @@
 	 .body {
 
 	max-width: 1200px;
-	margin: 50px auto;
+	margin: 50px 88px auto;
 	text-align: left;
 }
 </style>

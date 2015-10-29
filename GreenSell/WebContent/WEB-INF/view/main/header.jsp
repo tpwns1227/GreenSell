@@ -36,7 +36,7 @@
 
 	<div class='container2'>
 		<div class='menu'>
-			<a href="#">홈</a> <a href="#">판매하기</a> <a href="#">경매 게시판</a> <a
+			<a href="#">홈</a> <a href="inputform">판매하기</a> <a href="#">경매 게시판</a> <a
 				href="#">중고 게시판</a> <a href="#">고객지원</a>
 		</div>
 		<div class='search'>
