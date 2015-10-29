@@ -67,7 +67,7 @@ function list(){
 		<tr>
 		</tr>
 		
-		
+		 
 		<tr>
 			<td>
 			댓글 입력
