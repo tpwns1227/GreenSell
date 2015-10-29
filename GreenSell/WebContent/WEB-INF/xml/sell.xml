@@ -6,7 +6,15 @@
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd ">
    <!-- controller의 어노테이션을 사용하겠다. -->
-   <mvc:annotation-driven />
+   <mvc:annotation-driven>
+   	<mvc:message-converters>
+   		<bean class="org.springframework.http.converter.StringHttpMessageConverter"> <!-- ajax시 한글처리 -->
+   			<property name="supportedMediaTypes">
+   				<value>text/plain;charset=UTF-8</value>
+   			</property>
+   		</bean>
+   	</mvc:message-converters>
+   </mvc:annotation-driven>
    <!-- JSP파일이 오면 기본적으로 톰켓으로 처리한다. -->
    <mvc:default-servlet-handler />
 
