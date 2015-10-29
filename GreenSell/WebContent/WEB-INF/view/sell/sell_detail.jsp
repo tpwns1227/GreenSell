@@ -51,7 +51,7 @@
 		</div>
 		</c:if>
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
-		<div class='info'>
+		<div class='info2'>
 			<div class='bold2'>제품명</div>
 			<div class='font'>${auctionitem.getItemname()}</div>
 			<div class='bold2'>상태</div>
