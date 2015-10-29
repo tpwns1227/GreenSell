@@ -87,7 +87,15 @@ public class BbsController {
 			@RequestMapping("/writeok")
 				
 			public String ok(BbsVo b,Model m){
+				
+			/*	System.out.println(b.getEmail());
+				System.out.println(b.getTitle());
+				System.out.println(b.getBbscontent());
+				System.out.println(b.getBbsno());
+				System.out.println(b.getBbsdate());*/
+				
 				try{
+					System.out.println(dao.Insert(b));
 					if(dao.Insert(b)){
 						m.addAttribute("msg","입력되었습니다.");
 						return "bbs/BbsWriteOk";
@@ -102,6 +110,11 @@ public class BbsController {
 					return "bbs/BbsWrite";
 				}
 			
+			private void alert(String email) {
+				// TODO Auto-generated method stub
+				
+			}
+
 			@RequestMapping("/cmok")
 			public String cmok(ReplyVo v,Model m){
 				try{
