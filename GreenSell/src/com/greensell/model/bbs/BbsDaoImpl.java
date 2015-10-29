@@ -48,14 +48,14 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override	
-	public List<BbsVo> selecttitle() throws SQLException{
-		List<BbsVo> list = sqlsession.selectList("bbs.bbsselecttitle");
+	public List<BbsVo> selecttitle(String title) throws SQLException{
+		List<BbsVo> list = sqlsession.selectList("bbs.bbsselecttitle", title);
 		return list;
 	}
 	
 	@Override	
-	public List<BbsVo> selectcontent() throws SQLException{
-		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent");
+	public List<BbsVo> selectcontent(String content) throws SQLException{
+		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent", content);
 		return list;
 	}
 

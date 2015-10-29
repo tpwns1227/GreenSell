@@ -15,9 +15,9 @@ public interface BbsDao {
 	
 	public List<BbsVo> selectAll()throws SQLException;
 	
-	public List<BbsVo> selecttitle()throws SQLException;
+	public List<BbsVo> selecttitle(String title)throws SQLException;
 	
-	public List<BbsVo> selectcontent()throws SQLException;
+	public List<BbsVo> selectcontent(String content)throws SQLException;
 	
 	public boolean Hitup(BbsVo dao)throws SQLException;
 	
