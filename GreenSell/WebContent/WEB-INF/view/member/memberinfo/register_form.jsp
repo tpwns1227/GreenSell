@@ -78,7 +78,7 @@ function go(){
 			</select> 
 			<input name="account" id='textbox' type='text' placeholder="계좌번호" style='width: 200px;'>
 			<div class='p'>비밀번호 Q&A</div>
-			<select name='question'>
+			<select name='question' class='rf'>
 				<option value='a1'>질문1</option>
 				<option value='a2'>질문2</option>
 				<option value='a3'>질문3</option>

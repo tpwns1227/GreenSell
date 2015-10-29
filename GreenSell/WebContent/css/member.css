@@ -47,10 +47,19 @@
 	font-size: 16px;
 }
 
-select {
+.rf {
 	text-align: center;
 	background-color: white;
 	width: 200px;
+	height: 40px;
+	border: 1px solid #eee;
+	font-size: 13px;
+}
+
+.pf {
+	text-align: center;
+	background-color: white;
+	width: 400px;
 	height: 40px;
 	border: 1px solid #eee;
 	font-size: 13px;
