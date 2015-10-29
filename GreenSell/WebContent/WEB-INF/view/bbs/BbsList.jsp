@@ -52,9 +52,9 @@
           <td width="10%" align="center" bgcolor="#47CFF2">&nbsp;Á¶È¸¼ö</td>
        </tr>
        <c:choose>
-       <c:if test="find.title">
-       <c:forEach var="list"  items="${selecttitle}">
-    <tr>
+          <c:when test="find.title != null">
+           <c:forEach var="list"  items="${selecttitle}">
+           <tr>
 			<div class='container'>
 				<td align="center"><div class='no'>${list.no}</div></td>
 				<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
@@ -62,37 +62,37 @@
 				<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
 				<td align="center"><div class='hits'>${list.hits}</div></td>
 			</div>
-	</tr>
-	</c:forEach>
-    </c:if>
-    <c:if test="find.bbscontent">
-    <c:forEach var="list"  items="${seleccontent}">
-    	<tr>
-			<div class='container'>
-				<td align="center"><div class='no'>${list.no}</div></td>
-				<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
-				<td align="center"><div class='email'>${list.email}</div></td>
-				<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
-				<td align="center"><div class='hits'>${list.hits}</div></td>
-			</div>
+	      </tr>
+	      </c:forEach>
+         </c:when>
+         <c:when test="find.bbscontent != null">
+            <c:forEach var="list"  items="${seleccontent}">
+	    	<tr>
+				<div class='container'>
+					<td align="center"><div class='no'>${list.no}</div></td>
+					<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
+					<td align="center"><div class='email'>${list.email}</div></td>
+					<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
+					<td align="center"><div class='hits'>${list.hits}</div></td>
+				</div>
+			</tr>
+	        </c:forEach>
+        </c:when>    
+	    <c:otherwise>
+	    <c:forEach var="list"  items="${selectAll}">
+	    <tr>
+				<div class='container'>
+					<td align="center"><div class='no'>${list.no}</div></td>
+					<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
+					<td align="center"><div class='email'>${list.email}</div></td>
+					<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
+					<td align="center"><div class='hits'>${list.hits}</div></td>
+				</div>
 		</tr>
-	</c:forEach>
-       </c:if>
-    <c:otherwise>
-    <c:forEach var="list"  items="${selectAll}">
-    <tr>
-			<div class='container'>
-				<td align="center"><div class='no'>${list.no}</div></td>
-				<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
-				<td align="center"><div class='email'>${list.email}</div></td>
-				<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
-				<td align="center"><div class='hits'>${list.hits}</div></td>
-			</div>
-	</tr>
-	</c:forEach>
-	</c:otherwise>
-	</c:choose>
-		</table>
+		</c:forEach>
+		</c:otherwise>
+	   </c:choose>
+	</table>
 </form>
 <form>
      <table width="550" align="center" border="1">
