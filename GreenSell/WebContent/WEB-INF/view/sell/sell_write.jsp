@@ -17,7 +17,7 @@
 
 	<jsp:include page="../main/header.jsp"></jsp:include>
 
-	<form name="sellForm" action="sellinput" method="post">
+	<form name="sellForm" action="sellinput" method="post" enctype="multipart/form-data">
 		<div class='container'>
 
 			<div id="slide">
