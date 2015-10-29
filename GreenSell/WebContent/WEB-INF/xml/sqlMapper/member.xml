@@ -25,7 +25,7 @@
 	</select>
 
 	<update id="update" parameterType="String"> <!-- 회원정보 업데이트 -->
-		update member set email=#{email}, nickname=#{nickname}, address=#{address}
+		update member set password=#{password}, bank=#{bank}, address=#{address}
 		where password=#{password} and email=#{email}
 	</update>
 
@@ -38,8 +38,24 @@
 		select * from bbs where email=#{email} 
 	</select>
 	
-	<select id="selectDetail" parameterType="String" resultType="com.greensell.member.beans.MemberVO">
+	<select id="selectDetail" parameterType="String" resultType="com.greensell.member.beans.MemberVO"> <!-- 상세정보보기 -->
 		select * from member where email=#{email}
+	</select>
+	
+	<resultMap type="com.greensell.member.beans.ZipVo" id="PostResultMap">
+        <result property="zipcode" column="zipcode" />
+        <result property="sido" column="sido" />
+        <result property="gugun " column="gugun" />
+        <result property="dong" column="dong" />
+        <result property="bunji" column="bunji" />
+    </resultMap>
+	
+	<select id="getPost" resultMap="PostResultMap" parameterType="String">
+	SELECT sido, gugun, dong,bunji,zipcode FROM zipcode
+WHERE    sido LIKE '%'||#{address}||'%'
+        OR gugun LIKE '%'||#{address}||'%'
+        OR dong LIKE '%'||#{address}||'%'
+        OR bunji LIKE '%'||#{address}||'%'
 	</select>
 
 </mapper>
