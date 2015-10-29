@@ -119,11 +119,11 @@ public class BbsController {
 			@RequestMapping("/cmok")
 			public String cmok(ReplyVo v,Model m){
 				int no=v.getNo();
-				try{
-					
-					System.out.println(v.getEmail());
+				try{  
+					   
+					/*System.out.println(v.getEmail());
 					System.out.println(v.getCmcontent());
-					System.out.println(v.getNo());
+					System.out.println(v.getNo());*/
 					if(dao.Insert(v)){
 						return "redirect:view?no="+no;
 					}
