@@ -45,11 +45,11 @@
 		</tr>
 		<tr>
 			<th align="center">작성자</th>
-			<td><input type="text" name="email" maxlength="20" /></td>
+			<td><input type="text" name="email" value="<%=email %>" maxlength="20" /></td>
 		</tr>
 		<tr>
 				<td colspan="2">
-					<textarea name="content" cols="80" rows="10" placeholder="내용을 입력해 주세요"></textarea>
+					<textarea name="bbscontent" cols="80" rows="10" placeholder="내용을 입력해 주세요" ></textarea>
 				</td>
 		</tr>
 		<tr>

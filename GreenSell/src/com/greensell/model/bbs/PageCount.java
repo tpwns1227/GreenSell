@@ -44,25 +44,25 @@ public class PageCount {
 		int noffset = 0;
 		int loffset = 0;
 		
-//		<!-- 1ÆäÀÌÁö -->
+//		<!-- 1í˜ì´ì§€ -->
 		if(pagelink != 1)
 		{
-			str = str+"[<a href="+pagename+"?pagelink=1&offset=0><font size=2 color=red>Ã³À½</font></a>]";
+			str = str+"[<a href="+pagename+"?pagelink=1&offset=0><font size=2 color=red>ì²˜ìŒ</font></a>]";
 		}
 		else
 		{
-			str = str+"[<font size=2 color=gray>Ã³À½</font>]";
+			str = str+"[<font size=2 color=gray>ì²˜ìŒ</font>]";
 		}
 		
 		bpage = pagelink-10;
 		boffset = countOffset(bpage);
 		if(pagelink > links)
 		{
-			str = str+"[<a href="+pagename+"?pagelink="+bpage+"&offset="+boffset+"><font size=2 color=blue>ÀÌÀü10</font></a>]";
+			str = str+"[<a href="+pagename+"?pagelink="+bpage+"&offset="+boffset+"><font size=2 color=blue>ì´ì „10</font></a>]";
 		}
 		else
 		{
-			str = str+"[<font size=2 color=gray>ÀÌÀü10</font>]";
+			str = str+"[<font size=2 color=gray>ì´ì „10</font>]";
 		}
 		
 		vpage = pagelink;
@@ -88,21 +88,21 @@ public class PageCount {
 		noffset=countOffset(cpage);
 		if((totalpage - pagelink) >= links)
 		{
-			str = str+"[<a href="+pagename+"?pagelink="+cpage+"&offset="+noffset+"><font size=2 color=blue>´ÙÀ½10</font></a>]";
+			str = str+"[<a href="+pagename+"?pagelink="+cpage+"&offset="+noffset+"><font size=2 color=blue>ë‹¤ìŒ10</font></a>]";
 		}
 		else
 		{
-			str = str+"[<font size=2 color=gray>´ÙÀ½10</font>]";
+			str = str+"[<font size=2 color=gray>ë‹¤ìŒ10</font>]";
 		}
 		
 		loffset=countOffset(totalpage);
 		if(vpage!=totalpage)
 		{
-			str = str+"[<a href="+pagename+"?pagelink="+totalpage+"&offset="+loffset+"><font size=2 color=red>¸¶Áö¸·</font></a>]";
+			str = str+"[<a href="+pagename+"?pagelink="+totalpage+"&offset="+loffset+"><font size=2 color=red>ë§ˆì§€ë§‰</font></a>]";
 		}
 		else
 		{
-			str = str+"[<font size=2 color=gray>¸¶Áö¸·</font>]";
+			str = str+"[<font size=2 color=gray>ë§ˆì§€ë§‰</font>]";
 		}
 		str = str +"</td></tr></table>";
 		return str;
@@ -127,29 +127,29 @@ public class PageCount {
 					int loffset = 0 ; 
 
 		  	
-//					<!-- 1 ÆäÀÌÁö -->
+//					<!-- 1 í˜ì´ì§€ -->
 					if(pagelink != 1 ){
-						str=str+"[<A HREF="+pagename+"?pagelink=1&offset=0&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=red>Ã³À½</FONT></A>]";
+						str=str+"[<A HREF="+pagename+"?pagelink=1&offset=0&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=red>ì²˜ìŒ</FONT></A>]";
 					}
 					else{
-						str=str+"[<FONT SIZE=2 COLOR=gray>Ã³À½</FONT>]";
+						str=str+"[<FONT SIZE=2 COLOR=gray>ì²˜ìŒ</FONT>]";
 					
 					}
 
-//					<!-- ÀÌÀü10 -->
+//					<!-- ì´ì „10 -->
 					bpage=pagelink - 10 ; 
 					boffset= countOffset (bpage);
 					if(pagelink > links){
-						str = str + "[<A HREF="+pagename+"?pagelink="+bpage+"&offset="+boffset+"&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=blue>ÀÌÀü10</FONT></A>]"  ; 	
+						str = str + "[<A HREF="+pagename+"?pagelink="+bpage+"&offset="+boffset+"&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=blue>ì´ì „10</FONT></A>]"  ; 	
 					
 					}
 					else{
-						str = str + "[<FONT SIZE=2 COLOR=gray>ÀÌÀü10</FONT>]"  ; 
+						str = str + "[<FONT SIZE=2 COLOR=gray>ì´ì „10</FONT>]"  ; 
 					
 					}
-//					<!-- ¸µÅ©ÆäÀÌÁö -->
-					vpage = pagelink ;        // ÇöÀçÆäÀÌÁö¸¦ Àá±ñ ´Ù¸¥º¯¼ö¿¡ ¾Æ·¡¼­ »ç¿ëÇÔ 
-					pagelink= ((pagelink-1)/links)*links+1  ;   // ½ÃÀÛ ÆäÀÌÁö ±¸ÇÏ±â 
+//					<!-- ë§í¬í˜ì´ì§€ -->
+					vpage = pagelink ;        // í˜„ì¬í˜ì´ì§€ë¥¼ ì ê¹ ë‹¤ë¥¸ë³€ìˆ˜ì— ì•„ë˜ì„œ ì‚¬ìš©í•¨ 
+					pagelink= ((pagelink-1)/links)*links+1  ;   // ì‹œì‘ í˜ì´ì§€ êµ¬í•˜ê¸° 
 					for(cpage=pagelink; cpage < pagelink+links; cpage++) {
 					 if(cpage>totalpage){  
 					   break ; 
@@ -165,27 +165,27 @@ public class PageCount {
 					  }
 					}
 
-//					<!-- ´ÙÀ½10 --> 
-//					 for¹®À» ºüÁ® ³ª¿ÔÀ»¶§ cpageÀÇ °ªÀº 1¸¸Å­ ´õ Áõ°¡µÇ¾îÀÖ±â ¶§¹®¿¡ ±×³É »ç¿ëÇÑ´Ù.  
+//					<!-- ë‹¤ìŒ10 --> 
+//					 forë¬¸ì„ ë¹ ì ¸ ë‚˜ì™”ì„ë•Œ cpageì˜ ê°’ì€ 1ë§Œí¼ ë” ì¦ê°€ë˜ì–´ìˆê¸° ë•Œë¬¸ì— ê·¸ëƒ¥ ì‚¬ìš©í•œë‹¤.  
 					noffset=countOffset (cpage);
 					if((totalpage-pagelink) >= links){
-						str = str + "[<A HREF="+pagename+"?pagelink="+cpage+"&offset="+noffset+"&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=blue>´ÙÀ½10</FONT></A>]"  ; 
+						str = str + "[<A HREF="+pagename+"?pagelink="+cpage+"&offset="+noffset+"&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=blue>ë‹¤ìŒ10</FONT></A>]"  ; 
 					
 					}
 					else{
-						str = str + "[<FONT SIZE=2 COLOR=gray>´ÙÀ½10</FONT>]"  ; 
+						str = str + "[<FONT SIZE=2 COLOR=gray>ë‹¤ìŒ10</FONT>]"  ; 
 					
 					}
 
-//					<!-- ¸¶Áö¸·ÆäÀÌÁö -->
+//					<!-- ë§ˆì§€ë§‰í˜ì´ì§€ -->
 					loffset=countOffset (totalpage);
 
 					if(vpage!=totalpage){
-						str = str + "[<A HREF="+pagename+"?pagelink="+totalpage+"&offset="+loffset+"&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=red>¸¶Áö¸·</FONT></A>]"  ; 
+						str = str + "[<A HREF="+pagename+"?pagelink="+totalpage+"&offset="+loffset+"&find="+find+"&search="+search+"><FONT SIZE=2 COLOR=red>ë§ˆì§€ë§‰</FONT></A>]"  ; 
 					
 					}
 					else{
-						str = str + "[<FONT SIZE=2 COLOR=gray>¸¶Áö¸·</FONT>]"  ; 
+						str = str + "[<FONT SIZE=2 COLOR=gray>ë§ˆì§€ë§‰</FONT>]"  ; 
 					
 					}
 					
@@ -193,5 +193,5 @@ public class PageCount {
 				
 		      return str ; 
 			}
-}
+} 
 
