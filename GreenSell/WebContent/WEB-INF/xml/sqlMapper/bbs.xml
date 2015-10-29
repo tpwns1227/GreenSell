@@ -45,7 +45,7 @@
 	
 	<!-- 게시판 글올리기 (현제 게시판별로 글올리기 불가능) -->
   <insert id="bbsinsert" parameterType="com.greensell.bbs.beans.BbsVo">
-   insert into bbs values(no_bbs_seq.nextval,#{title},#{content},#{email},sysdate,0,1)
+   insert into bbs values(no_bbs_seq.nextval,#{title},#{bbscontent},#{email},sysdate,0,1)
   </insert>
   
 	<!-- 게시판 글수정 -->
