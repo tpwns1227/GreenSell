@@ -92,3 +92,7 @@ function inputCheck() {
 
 	document.register_form.submit();
 }
+
+
+
+
