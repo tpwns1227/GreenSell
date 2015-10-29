@@ -14,30 +14,26 @@ function test() {
 	         "toolbar=no ,width=370 ,height=300 ,directories=no,"
 	               + "status=yes,scrollbars=yes,menubar=no");
 	}
-	/* function idchk(){
-		var param = "email=" + $("input[name='email']").val();
-		new sendRequest('idchk', param, idchkresult,'POST'); 
-	}
-	
-	function idchkresult(xhr){
-		if(xhr.readyState==4 && xhr.status==200){
-			alert("안녕?");
-			alert(xhr.responseText);
-			
-		}
-	} */
-	
-/* 	$(document).ready(function(){
-	    $("#email").click(function(){
-	        $("#email").load("idchk", function(responseTxt, statusTxt, xhr){
-	            if(statusTxt == "success")
-	                alert("External content loaded successfully!");
-	            if(statusTxt == "error")
-	                alert("Error: " + xhr.status + ": " + xhr.statusText);
-	        });
-	    });
-	}); */
-	
+
+	$(document).ready(function(){ 
+	   $("input[name='email']").keyup(function(){  
+	      $.ajax({ 
+	         type : "post", 
+	         url : "idchk", 
+	         data : "email="+$("input[name='email']").val(),
+	         success : function(data){ 
+	        	 var str = '';
+	        	 if(data == '사용불가')
+	        		 str = "<font color=red>"+data+"</font>";
+	        		 else 
+	        		str = "<font color=green>"+data+"</font>"; 
+	        	 $("#idchk").html(str);
+	         } 
+	      }); 
+	   }); 
+	});  
+
+
 	
 </script>
 </head>
@@ -50,8 +46,7 @@ function test() {
 			<div class='p'>이메일1</div>
 			<input name='email' id='textbox' type='text' placeholder="이메일"
 				style='width: 300px'> 
-		    <input class='button2' type='button'
-				value='중복' id='emailbtn'>
+		    <span id="idchk"></span>
 			<div class='p'>이름</div>
 			<input name='name' id='textbox' type='text' placeholder="이름">
 			<div class='p'>별명</div>
