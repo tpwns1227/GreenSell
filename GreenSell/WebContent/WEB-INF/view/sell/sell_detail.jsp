@@ -46,8 +46,9 @@
 			<div class='font'>${itemone.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
-			<input class='callbtn' type="button" value="연락처">
-			<input class='callbtn' type="button" value="안전거래">
+			<input class='callbtn' type="button" value="연락처" style='width: 150px'>
+			<input class='callbtn' type="button" value="안전거래" style='width: 150px'>
+			<input class='callbtn' type="button" value="찜" style='width: 100px'> 
 		</div>
 		</c:if>
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
@@ -72,7 +73,8 @@
 			<div class='font'>${auctionitem.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${auctionitem.getItemdetail()}</textarea>
-			<input class='callbtn' type="button" value="입찰하기">
+			<input class='callbtn' type="button" value="입찰하기" style='width: 300px'>
+			<input class='callbtn' type="button" value="찜 하기" style='width: 100px'> 
 		</div>
 		</c:if>
 	</div>
