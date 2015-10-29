@@ -15,7 +15,8 @@ create table Member( -- ȸ�� ���̺�
    report number not null,
    joindate date not null
 );
-
+update member set password=123, bank=1234, address='세준팬티'
+where password=1234 and email='tpwns1227'
 insert into member values('tpwns1227','1234','윤세준','세준','010','세준0','세준','217053-56-124278','윤세준?','세준',0,0,0,SYSDATE)
 select * from member;
 
@@ -130,7 +131,7 @@ create sequence no_auction_seq start with 1 increment by 1;
 create sequence no_selected_seq start with 1 increment by 1;
 create sequence no_buy_seq start with 1 increment by 1;
 
-
+select * from zipcode;
 
 
 
