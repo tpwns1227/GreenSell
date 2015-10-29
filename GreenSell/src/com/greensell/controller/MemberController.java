@@ -2,6 +2,7 @@ package com.greensell.controller;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -9,8 +10,11 @@ import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.greensell.member.beans.MemberVO;
@@ -76,6 +80,22 @@ public class MemberController {
 		   return "main/home";
 	   }
 	   
+	   @RequestMapping(value = "/idchk", method = RequestMethod.POST)
+	    public @ResponseBody String idchk(@RequestParam String email) throws SQLException {
+		   String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		   Pattern p = Pattern.compile(regex);
+		   if(!p.matcher(email).matches()){	return "사용불가"; 
+		   }else{
+			   boolean idchk = dao.idcheck(email);
+				  
+				  if(idchk){
+					  return "사용불가";
+				  }else{
+				   return "사용가능";
+				  }
+		   }
+		  
+	}
 	   
 	 /*  @RequestMapping("/id_check") // 아이디 중복확인
 	   public String idCheck(@RequestParam String email,@RequestParam String password,
