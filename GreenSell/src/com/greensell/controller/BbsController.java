@@ -95,7 +95,7 @@ public class BbsController {
 				System.out.println(b.getBbsdate());*/
 				
 				try{
-					System.out.println(dao.Insert(b));
+					
 					if(dao.Insert(b)){
 						m.addAttribute("msg","입력되었습니다.");
 						return "bbs/BbsWriteOk";
