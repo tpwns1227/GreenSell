@@ -165,6 +165,24 @@ public class BbsController {
 				
 				return "bbs/BbsUpdate";
 			}
+			
+			@RequestMapping("/updateok")
+			public String updateok(@RequestParam int no,BbsVo b){
+				
+				try {
+					if(dao.Update(b))
+					{
+						
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				return "redirect:view?no="+no;
+				
+			}
 }
 	
 

@@ -29,7 +29,7 @@
 			</td>
 		</tr>	
 		<tr>
-			<td align="right"><input type="button" value="수정" onclick="location.href='view?no=${view.no}'" >
+			<td align="right"><input type="button" value="수정" onclick="location.href='updateok?no=${view.no}'" >
 			<input type="button" value="목록" onclick="location.href='list'">
 			</td>
 		</tr>
