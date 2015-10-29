@@ -12,7 +12,7 @@
 
 $(document).ready(function(){
 	var result = '${result}';
-		if(result == '로그인에 실패되었습니다.'){
+		if(result == '로그인에 실패되었습니다.' || result == '이메일이 존재하지 않습니다.'){
 			alert(result);
 			return;
 		}

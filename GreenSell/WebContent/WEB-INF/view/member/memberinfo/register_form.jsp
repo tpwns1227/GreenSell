@@ -9,9 +9,11 @@
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 
 <script>
-function go(){
-	alert("회원가입을 축하드립니다");
-}
+function test() {
+	   win_post = window.open('zip_form', "post",
+	         "toolbar=no ,width=370 ,height=300 ,directories=no,"
+	               + "status=yes,scrollbars=yes,menubar=no");
+	}
 	/* function idchk(){
 		var param = "email=" + $("input[name='email']").val();
 		new sendRequest('idchk', param, idchkresult,'POST'); 
@@ -64,11 +66,11 @@ function go(){
 				style='width: 300px'> <input class='button2' type='button'
 				value='인증'>
 			<div class='p'>주소</div>
-			<input name="zipcode" id='textbox' type='text' placeholder="우편번호"
+			<input name="zipcode" id='zip' type='text' placeholder="우편번호"
 				style='width: 200px'> 
-			<input class='button' type='button' value='검색' style='width: 200px'>
+			<input class='button' type='button' value='검색' style='width: 200px' onclick="test()">
 			<br>
-			<input name="address" id='textbox' type='text' placeholder="상세주소" style="margin-top: 10px; width: 400px">
+			<input name="address" id='zip2' type='text' placeholder="상세주소" style="margin-top: 10px; width: 400px">
 
 			<div class='p'>계좌번호</div>
 			<select name='bank' class='rf'>

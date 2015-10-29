@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/member.css">
 </head>
+
 <body>
 <div class='container'>
 		<div class='border'>비밀번호 찾기</div>
