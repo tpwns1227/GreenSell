@@ -1,6 +1,7 @@
 package com.greensell.controller;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,7 @@ public class SellController {
 	@Autowired
 	SellDao dao;
 	
-	String uploadDir = "C:\\Users\\RAPA01\\git\\GreenSell\\GreenSell\\WebContent\\img\\item";
+	
 	 
 	@RequestMapping("/sell_detail") // 글 클릭시 상세보기로 이동
 	public String detailform(@RequestParam int no, Model m) throws SQLException {
@@ -129,6 +130,8 @@ public class SellController {
 	public String insertsellitem(ItemSellVO itsv,
 			 HttpServletRequest req) throws SQLException, IOException {	
 		int maxPostSize = 50 * 1024 * 1024; // 50MB	
+		String pcname =  InetAddress.getLocalHost().getHostName().substring(0, InetAddress.getLocalHost().getHostName().indexOf("-"));
+	    String uploadDir = "C:\\Users\\"+pcname+"\\git\\GreenSell\\GreenSell\\WebContent\\img\\item";
 		MultipartRequest multi = new MultipartRequest(req, uploadDir, maxPostSize, "UTF-8", new DefaultFileRenamePolicy());
 		
 		//폼에서  enctype="multipart/form-data"로 데이터 전송시에 
@@ -147,17 +150,16 @@ public class SellController {
 		String imgname4 = multi.getFilesystemName("imgname4");
 		
 		boolean result = false;
-		Map<String, Object> map = new HashMap<String, Object>();
-		int i = dao.selectlastno();
+		Map<String, Object> map = new HashMap<String, Object>();	
 		result = dao.itemInsert(itsv);
-		
+		int i = dao.selectlastno();
 		map.put("email", itsv.getEmail());
 		map.put("itemno", i);
 		if(itsv.getHowsell().equals("경매")){//경매라면 실행
 			map.put("startprice", itsv.getItemprice());
 			map.put("finishtime", finishtime);
 			result = dao.auctionInsert(map);} 
-	
+		
 		if (result) { //이미지를 db에 추가
 			map.put("imgname", imgname1);
 			dao.imginsert(map);
