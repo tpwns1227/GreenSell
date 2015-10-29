@@ -23,7 +23,7 @@
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='test'>
 	<div class="container3">
-		<div class='img'>
+		<div class='img' style='text-align: left;'>
 			<img src='/GreenSell/img/item/${imglist.get(0)}' class='mimg'>
 			
 			<c:forEach var="img" items="${imglist}">
@@ -51,7 +51,7 @@
 		</div>
 		</c:if>
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
-		<div class='info'>
+		<div class='info2'>
 			<div class='bold2'>제품명</div>
 			<div class='font'>${auctionitem.getItemname()}</div>
 			<div class='bold2'>상태</div>

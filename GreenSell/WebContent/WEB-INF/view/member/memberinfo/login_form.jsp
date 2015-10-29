@@ -54,8 +54,8 @@ if(password == "" || password == null){
 </script>
 </head>
 <body>
+<jsp:include page="../../main/header.jsp"></jsp:include>
 <form name="login_form" action="login_check" method="post">
-	<jsp:include page="../../main/header.jsp"></jsp:include>
 	<div class='container'>
 		<div class='border'>로그인</div>
 		<div class='p'>이메일</div>

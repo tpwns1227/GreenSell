@@ -32,8 +32,8 @@
 	 .body {
 
 	max-width: 1200px;
-	margin: 50px auto;
-	text-align: center;
+	margin: 50px 88px auto;
+	text-align: left;
 }
 </style>
 <script>
