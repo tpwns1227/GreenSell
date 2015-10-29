@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -52,7 +53,7 @@
 	<div class="imgbox">
 	
 	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
+		<a href="sell_detail?no=${list.no}"><img src="/GreenSell/img/item/${fristimg}" class='img'></a>
 	</div>
 	<div class='item'>
 	  ${list.itemname}
