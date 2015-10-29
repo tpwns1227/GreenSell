@@ -14,10 +14,15 @@ function test() {
 	         "toolbar=no ,width=370 ,height=300 ,directories=no,"
 	               + "status=yes,scrollbars=yes,menubar=no");
 	}
-
+	var idchk = false;
+	var nicknamechk = false;
+	
 	$(document).ready(function(){ 
 	   $("input[name='email']").keyup(function(){  
-	      $.ajax({ 
+	      if($("input[name='email']").val()=='')
+		   		{$("#idchk").html('');}
+	      else{
+		   $.ajax({ 
 	         type : "post", 
 	         url : "idchk", 
 	         data : "email="+$("input[name='email']").val(),
@@ -30,7 +35,31 @@ function test() {
 	        	 $("#idchk").html(str);
 	         } 
 	      }); 
+	      }
 	   }); 
+	   
+	   $("input[name='nickname']").keyup(function(){  
+		   if($("input[name='nickname']").val()=='')
+	   		{$("#nickchk").html('');}
+     		else{  
+		   $.ajax({ 
+		         type : "post", 
+		         url : "nickchk", 
+		         data : "nickname="+$("input[name='nickname']").val(),
+		         success : function(data){ 
+		        	 var str = '';
+		        	 if(data == '사용불가')
+		        		 str = "<font color=red>"+data+"</font>";
+		        		 else 
+		        		str = "<font color=green>"+data+"</font>"; 
+		        	 $("#nickchk").html(str);
+		         } 
+		      }); 
+     		}
+		   }); 
+	   
+	   
+	   
 	});  
 
 
@@ -51,8 +80,7 @@ function test() {
 			<input name='name' id='textbox' type='text' placeholder="이름">
 			<div class='p'>별명</div>
 			<input name='nickname' id='textbox' type='text' placeholder="별명"
-				style='width: 300px'> <input class='button2' type='button'
-				value='중복'>
+				style='width: 300px'><span id="nickchk"></span>
 			<div class='p'>비밀번호</div>
 			<input name="password" id='textbox' type='password' placeholder="비밀번호" style='width: 200px;'>
 			<input name="password2" id='textbox' type='password' placeholder="비밀번호 확인" style='width: 200px;'>
