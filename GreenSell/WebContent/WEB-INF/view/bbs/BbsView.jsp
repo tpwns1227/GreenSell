@@ -23,6 +23,8 @@ function CM() {
 function list(){
 	location.href='list';
 }
+
+
 </script>
 <title>Insert title here</title>
 </head>
@@ -58,12 +60,17 @@ function list(){
 				</tr>
 				</div>
 			</c:forEach>
-		
+	
 		<tr>
-			<td align="right"><input type="button" value="수정"><input type="button" value="삭제">
+		<!--session값 확인해서 수정,삭제 활성화  -->
+		<!-- 수정 클릭시 게시글 번호를 넘겨 BbsUpdate.jsp로 이동 -->
+			<td align="right">
+			<input type="button" value="수정" onclick="location.href='update?no=${view.no}'" >
+			<input type="button" value="삭제">
 			<input type="button" value="목록" onclick="list()">
 			</td>
 		</tr>
+	
 		<tr>
 		</tr>
 		
