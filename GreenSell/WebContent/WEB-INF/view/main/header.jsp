@@ -25,7 +25,7 @@
 			<%
 				} else {
 			%>
-			<a href="">내 정보</a>
+			<a href="updateForm">내 정보</a>
 			<a href="logout">로그아웃</a>
 			<%
 				}
