@@ -118,14 +118,14 @@ public class BbsController {
 
 			@RequestMapping("/cmok")
 			public String cmok(ReplyVo v,Model m){
+				int no=v.getNo();
 				try{
+					
 					System.out.println(v.getEmail());
 					System.out.println(v.getCmcontent());
 					System.out.println(v.getNo());
-					
-					
 					if(dao.Insert(v)){
-						return "bbs/BbsView";
+						return "redirect:view?no="+no;
 					}
 					
 					}
@@ -134,7 +134,7 @@ public class BbsController {
 						e.printStackTrace();
 					}
 					
-					return "bbs/BbsView";
+					return "redirect:view?no="+no;
 				}
 }
 	
