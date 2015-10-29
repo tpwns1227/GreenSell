@@ -2,6 +2,7 @@ package com.greensell.model.sell;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSessionException;
 
@@ -21,4 +22,7 @@ public interface SellDao {
 	public boolean itemDelete(int no) throws SQLException;//중고 물품 및 경매 게시물 글 삭제
 	public boolean auctionDelete(int no) throws SQLException;//경매 게시물 글 삭제
 	//public ItemSellVO itemDetailAuction()
+	public int selectlastno() throws SQLException;
+	public boolean imginsert(Map<String, Object> map) throws SQLException;
+	public boolean auctionInsert(Map<String, Object> map) throws SQLException;
 }
