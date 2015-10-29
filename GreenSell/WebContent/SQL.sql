@@ -15,6 +15,7 @@ create table Member( -- ȸ�� ���̺�
    report number not null,
    joindate date not null
 );
+
 update member set password=123, bank=1234, address='세준팬티'
 where password=1234 and email='tpwns1227'
 insert into member values('tpwns1227','1234','윤세준','세준','010','세준0','세준','217053-56-124278','윤세준?','세준',0,0,0,SYSDATE)
@@ -123,7 +124,7 @@ create table buy( --���Ÿ��
 
 create sequence no_bbs_seq start with 1 increment by 1;
 create sequence no_com_seq start with 1 increment by 1;
-create sequence no_postscript_seq start with 1 increment by;
+create sequence no_postscript_seq start with 1 increment by 1;
 create sequence no_point_seq start with 1 increment by 1;
 create sequence no_itemsell_seq start with 1 increment by 1;
 create sequence no_itemimg_seq start with 1 increment by 1;
