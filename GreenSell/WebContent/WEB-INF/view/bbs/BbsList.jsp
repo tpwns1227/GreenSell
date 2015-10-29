@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function goUrl(url) {
+		location.href=url;
+	}
+</script>
 </head>
 <jsp:include page="../main/header.jsp"></jsp:include>
 <body><br><br><br>
@@ -18,8 +23,8 @@
           <td width="22%" align="center" bgcolor="#47CFF2">&nbsp;일자</td>
           <td width="10%" align="center" bgcolor="#47CFF2">&nbsp;조회수</td>
        </tr>
-	<tr>
     <c:forEach var="list" items="${selectAll}">
+    <tr>
 			<div class='container'>
 				<td align="center"><div class='no'>${list.no}</div></td>
 				<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
@@ -27,9 +32,15 @@
 				<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
 				<td align="center"><div class='hits'>${list.hits}</div></td>
 			</div>
-		</c:forEach>
-		</tr>
+	</tr>
+	</c:forEach>
+	<tr>
+		<td colspan="5" align="right">
+		<input type="button"  value="글쓰기" onclick="goUrl('write');">
+		</td>
+	</tr>
 		</table>
+
 </form>
 </body>
 <jsp:include page="../main/bottom.jsp"></jsp:include>
