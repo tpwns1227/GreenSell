@@ -33,7 +33,7 @@
 
 	max-width: 1200px;
 	margin: 50px auto;
-	text-align: center;
+	text-align: left;
 }
 </style>
 <script>

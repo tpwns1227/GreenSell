@@ -23,7 +23,7 @@
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='test'>
 	<div class="container3">
-		<div class='img'>
+		<div class='img' style='text-align: left;'>
 			<img src='/GreenSell/img/item/${imglist.get(0)}' class='mimg'>
 			
 			<c:forEach var="img" items="${imglist}">
