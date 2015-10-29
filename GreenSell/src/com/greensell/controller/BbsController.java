@@ -45,7 +45,7 @@ public class BbsController {
 
 			List<BbsVo> list = dao.selectAll();
 			List<BbsVo> list2 = dao.selecttitle();
-			List<BbsVo> list3 = dao.selecttitle();
+			List<BbsVo> list3 = dao.selectcontent();
 			m.addAttribute("selectAll", list);
 			m.addAttribute("selecttitle", list2);
 			m.addAttribute("selectcontent", list3);
