@@ -18,8 +18,8 @@
 				<option value='a3'>질문3</option>
 			</select> 
 		<div class='p'>대답</div>
-		<input name="text" id='textbox' type='password' placeholder="대답"> <br>
-		<input id="login" class='button' type="button" value='로그인' onclick="call()" style="margin-top: 30px" >
+		<input name="text" id='textbox' type='text' placeholder="대답"> <br>
+		<input id="login" class='button' type="button" value='비밀번호 찾기' onclick="call()" style="margin-top: 15px" >
 	</div>
 </body>
 </html>

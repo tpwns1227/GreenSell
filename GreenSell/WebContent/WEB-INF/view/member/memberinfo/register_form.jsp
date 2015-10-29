@@ -65,13 +65,13 @@ function go(){
 				value='인증'>
 			<div class='p'>주소</div>
 			<input name="zipcode" id='textbox' type='text' placeholder="우편번호"
-				style='width: 300px'> 
-			<input class='button2' type='button' value='검색'>
+				style='width: 200px'> 
+			<input class='button' type='button' value='검색' style='width: 200px'>
 			<br>
 			<input name="address" id='textbox' type='text' placeholder="상세주소" style="margin-top: 10px; width: 400px">
 
 			<div class='p'>계좌번호</div>
-			<select name='bank'>
+			<select name='bank' class='rf'>
 				<option value='nh'>농협은행</option>
 				<option value='kb'>국민은행</option>
 				<option value='sh'>신한은행</option>
@@ -84,7 +84,7 @@ function go(){
 				<option value='a3'>질문3</option>
 			</select> 
 			<input name="answer" id='textbox' type='text' placeholder="답변" style='width: 200px;'> 
-			<input class='button' type="button" value='회원가입' style="margin-top: 30px" onclick="inputCheck()">
+			<input class='button' type="button" value='회원가입' style="margin-top: 15px" onclick="inputCheck()">
 		</div>
 	</form>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
