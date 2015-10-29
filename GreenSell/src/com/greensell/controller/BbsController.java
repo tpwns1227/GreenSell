@@ -81,8 +81,6 @@ public class BbsController {
 				{
 					e.printStackTrace();
 				}
-			
-			
 			return "bbs/BbsView";
 		}
 	
@@ -138,6 +136,35 @@ public class BbsController {
 					
 					return "redirect:view?no="+no;
 				}
+			//view에서 수정버튼 누를시 게시글번호로 데이터 전달
+			//내용,제목,작성자,날짜,조회수 출력
+			//작성자,날짜,조회수 비활성
+			@RequestMapping("/update")
+			public String update(@RequestParam int no,BbsVo b,Model m){
+				//int no=b.getNo();
+				System.out.println(b.getEmail());
+				System.out.println(b.getTitle());
+				System.out.println(b.getBbscontent());
+				System.out.println(b.getBbsno());
+				System.out.println(b.getBbsdate());
+				
+				try{
+					BbsVo bbsVo = dao.view(no);
+					
+					m.addAttribute("view", bbsVo);
+					
+					
+					if(dao.Hitup(b)){
+					}				
+					
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+					}
+				
+				return "bbs/BbsUpdate";
+			}
 }
 	
 
