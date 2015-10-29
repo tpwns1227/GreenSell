@@ -38,17 +38,19 @@ public class BbsController {
 	//게시글 보기
 	@RequestMapping("/list")
 	public String list(//@RequestParam int bbsno,
+			@RequestParam(required=false,defaultValue="") String title,
+			@RequestParam(required=false,defaultValue="") String content,
 			Model m){
 
 		//m.addAttribute("bbsno",bbsno);
 		try {
 
 			List<BbsVo> list = dao.selectAll();
-			List<BbsVo> list2 = dao.selecttitle();
-			List<BbsVo> list3 = dao.selectcontent();
+			List<BbsVo> list2 = dao.selecttitle(title);
+//			List<BbsVo> list3 = dao.selectcontent(content);
 			m.addAttribute("selectAll", list);
 			m.addAttribute("selecttitle", list2);
-			m.addAttribute("selectcontent", list3);
+//			m.addAttribute("selectcontent", list3);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
