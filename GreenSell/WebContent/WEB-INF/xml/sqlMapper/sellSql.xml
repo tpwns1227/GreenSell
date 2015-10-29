@@ -32,6 +32,15 @@
   	<insert id="insertitem" parameterType="com.greensell.sell.beans.ItemSellVO">
      	insert into itemsell values(no_itemsell_seq.nextval,#{itemname},#{itemprice},#{itemstate},#{category},#{howsell},#{itemdetail},#{email})
    </insert>
+   
+   <insert id="imginsert" parameterType="map">
+   		insert into itemimg values(no_itemimg_seq.nextval,#{itemno},#{imgname})
+   </insert>
+   
+   <insert id="auctioninsert" parameterType="map">
+   		insert into auction 
+   		values(no_auction_seq.nextval,#{itemno},#{startprice},0,#{finishtime},0,#{email})
+   </insert>
   
   	<select id="selectimgname" parameterType="int" resultType="String">
   		select imgname from itemimg where imgno=#{no}
@@ -46,5 +55,8 @@
 		from itemsell i, auction a where i.no = a.itemno and a.itemno=#{no}
   	</select>
   	
+  	<select id="selectlastno" resultType="int">
+  		select max(no) from itemsell
+  	</select>
     
 </mapper>

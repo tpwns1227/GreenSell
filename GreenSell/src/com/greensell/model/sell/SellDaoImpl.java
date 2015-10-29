@@ -2,6 +2,7 @@ package com.greensell.model.sell;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +50,17 @@ public class SellDaoImpl implements SellDao {
 
    @Override
    public boolean itemInsert(ItemSellVO itsv) throws SQLException {//판매 글 추가 
-      // TODO Auto-generated method stub
+      // TODO Auto-generated method stu
 	  int i = sqlSession.insert("insertitem", itsv);
       return (i>0)? true:false;
    }
+   
+   @Override
+ 	public boolean auctionInsert(Map<String, Object> map) {
+ 		// TODO Auto-generated method stub
+ 	  	 int i = sqlSession.insert("sell.auctioninsert", map);
+ 		 return (i>0)? true:false;
+ 	}
 
    @Override
    public ItemSellVO itemDetail(int no) throws SQLException { // 판매 글 상세보기
@@ -89,8 +97,23 @@ public class SellDaoImpl implements SellDao {
       return (i>0)? true:false;
    }
    
+   
+   @Override
+	public int selectlastno() throws SQLException {
+		// TODO Auto-generated method stub
+	  	int i = sqlSession.selectOne("sell.selectlastno");   
+	   return i;
+	}
  
-
+   @Override
+	public boolean imginsert(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+	   	 int i = sqlSession.insert("sell.imginsert", map);
+		return (i>0)? true:false;
+	}
+   
+ 
+   
    
    
 }
