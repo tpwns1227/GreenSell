@@ -53,7 +53,7 @@
        </tr>
        <c:choose>
        <c:if test="find.title">
-       <c:forEach var="list"  items="${selecttarget}">
+       <c:forEach var="list"  items="${selecttitle}">
     <tr>
 			<div class='container'>
 				<td align="center"><div class='no'>${list.no}</div></td>
@@ -66,7 +66,7 @@
 	</c:forEach>
     </c:if>
     <c:if test="find.bbscontent">
-    <c:forEach var="list"  items="${selecttarget}">
+    <c:forEach var="list"  items="${seleccontent}">
     	<tr>
 			<div class='container'>
 				<td align="center"><div class='no'>${list.no}</div></td>
