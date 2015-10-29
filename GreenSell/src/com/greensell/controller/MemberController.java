@@ -55,6 +55,9 @@ public class MemberController {
 		    boolean idchk =	dao.idcheck(email); //트루이면 아이디가 존재함
 		   	if(idchk){
 		   	  	pwchk = dao.logincheck(email, password);
+		   	}else{
+		   		m.addAttribute("result","이메일이 존재하지 않습니다.");
+				 return "member/memberinfo/login_form";
 		   	}
 		  if(pwchk) {
 			  m.addAttribute("result", "로그인 성공되었습니다.");
@@ -101,12 +104,37 @@ public class MemberController {
 		   return "member/memberinfo/register_form";
 	   }
 
-	   @RequestMapping("/memberDetail")//회원정보 상세보기
-	   public String list(Model m,@RequestParam String email) throws SQLException{
-		   MemberVO mVO = dao.memberdetail(email);
-			m.addAttribute("mvo",mVO);	   
-		   
+/*	   @RequestMapping("/memberDetail")//회원정보 상세보기
+	   public String list(Model m,@RequestParam String email,HttpSession session) throws SQLException{
+		   MemberVO mVO = dao.memberdetail(email);   
 		   return "member/memberinfo/member_Detail";
+	   }*/
+	   
+	   @RequestMapping("/updateForm")//회원정보 수정폼띄우기
+	   public String updateForm(HttpSession session, Model m){
+		   
+		   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
+		   m.addAttribute("member",vo);
+//		   session.setAttribute("addr",vo.getAddress());
+//		   session.setAttribute("bank",vo.getBank());
+//		   session.setAttribute("account", vo.getAccount());
+//		   session.setAttribute("question", vo.getQuestion());
+//		   session.setAttribute("answer", vo.getAnswer());
+		   return "member/memberinfo/update_form";
+		   
+	   }
+
+	   @RequestMapping("/update_form")//회원정보 수정하기
+	   public String memberupdate(MemberVO membervo,HttpSession session) throws SQLException{
+		   if(dao.update(membervo))
+			   return "member/memberinfo/login_form";
+		   else
+			   session.setAttribute("skey",membervo.getEmail());
+			   return "member/memberinfo/update_form";
+	   }
+	   @RequestMapping("/zip_form")//우편번호찾기
+	   public String zipSearch(){
+		   return "member/memberinfo/zip_form";
 	   }
 	   
 	   
