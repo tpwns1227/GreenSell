@@ -3,6 +3,7 @@ package com.greensell.controller;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,14 +63,22 @@ public class SellController {
 		return "/main/home";
 	}
 
-	@RequestMapping("/itemList")
+	@RequestMapping("/itemList")//중고 및 경매인 경우 글보기
 	public String viewitemlist(@RequestParam(required = false) String howsell, Model m) throws SQLException {
 		if (howsell == null || howsell.equals("중고")) {
 			List<ItemSellVO> list = dao.olditemList(howsell);
 			m.addAttribute("itemlist", list);
+			List img = new ArrayList<String>();
+			for(int j=0;j<list.size();j++)
+			{
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				img.add(imglist.get(j));
+			}
+			m.addAttribute("fristimg", img);
 		} else {
 			List<AuctionVO> list = dao.auctionitemList();
 			m.addAttribute("itemlist", list);
+			
 		}
 		return "/sell/itemList";
 
