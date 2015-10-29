@@ -61,7 +61,7 @@ public class BbsController {
 	@RequestMapping("/qna")
 	public String qna(){
 		return "bbs/BbsQNA";
-	}
+	} 
 	
 	//게시글 상세보기
 		@RequestMapping("/view")
