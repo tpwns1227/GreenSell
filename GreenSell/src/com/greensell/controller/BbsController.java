@@ -44,10 +44,11 @@ public class BbsController {
 		try {
 
 			List<BbsVo> list = dao.selectAll();
-
-			
+			List<BbsVo> list2 = dao.selecttitle();
+			List<BbsVo> list3 = dao.selecttitle();
 			m.addAttribute("selectAll", list);
-			
+			m.addAttribute("selecttitle", list2);
+			m.addAttribute("selectcontent", list3);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
