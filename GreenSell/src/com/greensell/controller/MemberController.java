@@ -94,8 +94,18 @@ public class MemberController {
 				   return "사용가능";
 				  }
 		   }
-		  
-	}
+	   }
+	   
+	   @RequestMapping(value = "/nickchk", method = RequestMethod.POST)
+	    public @ResponseBody String nickchk(@RequestParam String nickname) throws SQLException {
+			   boolean idchk = dao.nickcheck(nickname);  
+				  if(idchk){
+					  return "사용불가";
+				  }else{
+				   return "사용가능";
+				  }
+		   }
+	   
 	   
 	 /*  @RequestMapping("/id_check") // 아이디 중복확인
 	   public String idCheck(@RequestParam String email,@RequestParam String password,
