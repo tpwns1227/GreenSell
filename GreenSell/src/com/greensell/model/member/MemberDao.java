@@ -6,6 +6,7 @@ import java.util.List;
 import com.greensell.bbs.beans.BbsVo;
 import com.greensell.member.beans.MemberVO;
 import com.greensell.member.beans.PointVO;
+import com.greensell.member.beans.ZipVo;
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
 
@@ -26,6 +27,7 @@ public interface MemberDao {
 	   public boolean logincheck(String email,String password)throws SQLException;//로그인 확인
 	   public boolean idcheck(String email)throws SQLException;//아이디중복확인
 	   public boolean nickcheck(String nickname) throws SQLException;//닉네임중복확인
+	   public List<ZipVo> zipvo(String address) throws SQLException;//우편번호찾기
 	   
 	   
 	   
