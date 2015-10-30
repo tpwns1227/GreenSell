@@ -49,39 +49,50 @@ public class SellController {
 	}
 
 	@RequestMapping("/home") // home 페이지 출력
-	public String viewHome(Model m) {
+	public String viewHome(Model m) throws SQLException {
 
-		try {
 			List<ItemSellVO> list = dao.allitemList();
-
-			m.addAttribute("itemlist", list);
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "/main/home";
-	}
-
-	@RequestMapping("/itemList")//중고 및 경매인 경우 글보기
-	public String viewitemlist(@RequestParam(required = false) String howsell, Model m) throws SQLException {
-		if (howsell == null || howsell.equals("중고")) {
-			List<ItemSellVO> list = dao.olditemList(howsell);
-			m.addAttribute("itemlist", list);
 			List<String> fristimg = new ArrayList<String>();
+			m.addAttribute("itemlist", list);
 			for(int j=0;j<list.size();j++)
 			{
 				List<String> imglist = dao.getImagenames(list.get(j).getNo());
 				fristimg.add(imglist.get(0));
 			}
 			m.addAttribute("fristimg",fristimg);
+		return "/main/home";
+	}
+
+	@RequestMapping("/itemList")//중고 및 경매인 경우 글보기
+	public String viewitemlist(@RequestParam(required = false) String howsell, Model m) throws SQLException {
+		List<String> fristimg = new ArrayList<String>();
+		
+		if (howsell == null || howsell.equals("중고")) {
+			
+			List<ItemSellVO> list = dao.olditemList(howsell);
+			m.addAttribute("itemlist", list);
+			
+			for(int j=0;j<list.size();j++)
+			{
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				fristimg.add(imglist.get(0));
+			}
+			
+			m.addAttribute("fristimg",fristimg);
+			
 		} else {
+			
 			List<AuctionVO> list = dao.auctionitemList();
 			m.addAttribute("itemlist", list);
+			for(int j=0;j<list.size();j++)
+			{
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				fristimg.add(imglist.get(0));
+			}
+			m.addAttribute("fristimg",fristimg);
 			
 		}
 		return "/sell/itemList";
-
 	}
 
 	// UTF
@@ -115,9 +126,8 @@ public class SellController {
 
 	@RequestMapping("/inputform")//판매하기 눌렀을때 판매로 이동
 	public String viewitemlist() throws SQLException {
-		return "/sell/sell_write";
+			return "/sell/sell_write";
 		}
-
 
 	@RequestMapping("/sellinput") // 파일 올리기 후 경매인지 중고판매인지에 따라 다르게 insert 후 상품 이미지 db에 넣기
 	public String insertsellitem(ItemSellVO itsv, HttpServletRequest req) throws SQLException, IOException {	
@@ -142,6 +152,7 @@ public class SellController {
 		String imgname4 = multi.getFilesystemName("imgname4");
 		
 		boolean result = false;
+		
 		Map<String, Object> map = new HashMap<String, Object>();	
 		result = dao.itemInsert(itsv);
 		int i = dao.selectlastno();
@@ -164,18 +175,16 @@ public class SellController {
 			if(imgname3 != null){
 				map.put("imgname", imgname3);
 				dao.imginsert(map);
-				multi.getFilesystemName(imgname3);}
+				multi.getFilesystemName(imgname3);
+				}
+			
 			if(imgname4 != null){
 				map.put("imgname", imgname4);	
 				dao.imginsert(map);
-				multi.getFilesystemName(imgname4);}
+				multi.getFilesystemName(imgname4);
+				}
 		}
 		
 		return "redirect:home";
 	}
-	
-
-	
 }
-
-
