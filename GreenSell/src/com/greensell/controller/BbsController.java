@@ -193,20 +193,20 @@ public class BbsController {
 			}
 			
 			@RequestMapping("/delete")
-			public String delete(@RequestParam int no,BbsVo b){
-				int n=b.getNo();
-				//m.addAttribute(no);
+			public String delete(@RequestParam int no){
+				//int n=b.getNo();
+				System.out.println(no);
+				//m.addAttribute(no); 
 				try {
-					if(dao.delete(no))
-					return "bbs/BbsList";
-						
 					
+					if(dao.delete(no))
+					return "redirect:list";
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				return "bbs/BbsList";
+				return "redirect:list";
 			}
 }
 	
