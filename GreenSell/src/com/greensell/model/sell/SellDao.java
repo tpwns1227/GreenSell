@@ -19,9 +19,10 @@ public interface SellDao {
 	public ItemSellVO itemDetail(int no) throws SQLException;//판매글 상세보기	
 	public AuctionVO auctionitemDetail(int no) throws SQLException;
 	public boolean itemUpdate(ItemSellVO itsv) throws SQLException; //중고 게시물 수정
-	public boolean itemDelete(int no) throws SQLException;//중고 물품 및 경매 게시물 글 삭제
-	public boolean auctionDelete(int no) throws SQLException;//경매 게시물 글 삭제
-	//public ItemSellVO itemDetailAuction()
+	public boolean itemDelete(int no) throws SQLException;//중고 물품 게시물 글 삭제
+	public boolean itemDeleteimg(int no) throws SQLException;//중고 물품 이미지 삭제
+	/*public boolean auctionDelete(int no) throws SQLException;//경매 게시물 글 삭제
+*/	//public ItemSellVO itemDetailAuction()
 	public int selectlastno() throws SQLException;
 	public boolean imginsert(Map<String, Object> map) throws SQLException;
 	public boolean auctionInsert(Map<String, Object> map) throws SQLException;

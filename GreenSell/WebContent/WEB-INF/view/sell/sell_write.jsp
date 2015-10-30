@@ -15,7 +15,6 @@
 </head>
 <body>
 
-
 	<jsp:include page="../main/header.jsp"></jsp:include>
 
 	<form name="sellForm" action="sellinput" method="post"
@@ -37,11 +36,11 @@
 					<div class="next">
 						<div class='p'>카테고리</div>
 						<select name='category'>
-							<option value='a1'>의류/잡화</option>
-							<option value='a2'>가구/전자</option>
-							<option value='a3'>여행/스포츠</option>
-							<option value='a4'>도서/티켓</option>
-							<option value='a5'>기타</option>
+							<option value='의류/잡화'>의류/잡화</option>
+							<option value='가구/전자'>가구/전자</option>
+							<option value='여행/스포츠'>여행/스포츠</option>
+							<option value='도서/티켓'>도서/티켓</option>
+							<option value='기타'>기타</option>
 						</select>
 						<div class='bt'>
 							<div class='pb'>
@@ -57,10 +56,10 @@
 					<div class="next">
 						<div class='p'>제품상태</div>
 						<select name='itemstate'>
-							<option value='a1'>미개봉 상품</option>
-							<option value='a2'>A급 상품</option>
-							<option value='a3'>B급 상품</option>
-							<option value='a4'>C급 상품</option>
+							<option value='미개봉상품'>미개봉 상품</option>
+							<option value='A급'>A급</option>
+							<option value='B급'>B급</option>
+							<option value='C급'>C급</option>
 						</select>
 						<div class='bt'>
 							<div class='pb'>

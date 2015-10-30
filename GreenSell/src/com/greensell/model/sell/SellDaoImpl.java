@@ -89,13 +89,21 @@ public class SellDaoImpl implements SellDao {
       int i = sqlSession.delete("deleteitem", no);
        return (i>0)? true:false;
    }
-
+   
    @Override
+	public boolean itemDeleteimg(int no) throws SQLException {
+	   int i = sqlSession.delete("deleteitemimg", no);
+       return (i>0)? true:false;
+	}
+
+   /*@Override
    public boolean auctionDelete(int no) throws SQLException {
       // TODO Auto-generated method stub
       int i = sqlSession.delete("deleteauction", no);
       return (i>0)? true:false;
-   }
+   }*/
+   
+   
    
    
    @Override

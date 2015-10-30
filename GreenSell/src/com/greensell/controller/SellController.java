@@ -85,24 +85,32 @@ public class SellController {
 	}
 
 	// UTF
-	@RequestMapping("deleteitem") // delete 기능구현
-	public String deleteitem(@RequestParam int no, @RequestParam String howsell) throws SQLException {
-		boolean r = false;
-		if (howsell.equals("경매")) {
+	@RequestMapping("/deleteitem") // delete 기능구현
+	public String deleteitem(@RequestParam int no) throws SQLException {
+		//boolean r = false;
+		/*if (howsell.equals("경매")) {
 			 r = dao.auctionDelete(no);
+		}*/
+		
+		if (dao.itemDeleteimg(no)) {
+			System.out.println("이미지 삭제에 성공하셨습니다.");
 		}
-		if (r && dao.itemDelete(no)) {
-			System.out.println("삭제에 성공하셨습니다.");
+		
+		if (dao.itemDelete(no)) {
+			System.out.println("게시글 삭제에 성공하셨습니다.");
 		} else {
 			System.out.println("삭제에 실패하였습니다.");
 		}
 		return "/sell/main";
 	}
 
-	@RequestMapping("/updateitem")//자신이 올린글 수정
-	public String updateitem(@RequestParam ItemSellVO iso) throws SQLException { 
-	
-		return "1023/update_form";
+	@RequestMapping("/updateitem_form")//자신이 올린글 수정
+	public String updateitem(@RequestParam int no, Model m) throws SQLException { 
+		
+		ItemSellVO ivo = dao.itemDetail(no); // 게시글 한가지의 정보를 가져온다.
+		m.addAttribute("itemone", ivo);
+		
+		return "/sell/update_form";
 	}
 
 	@RequestMapping("/inputform")//판매하기 눌렀을때 판매로 이동
@@ -114,7 +122,7 @@ public class SellController {
 	@RequestMapping("/sellinput") // 파일 올리기 후 경매인지 중고판매인지에 따라 다르게 insert 후 상품 이미지 db에 넣기
 	public String insertsellitem(ItemSellVO itsv, HttpServletRequest req) throws SQLException, IOException {	
 		int maxPostSize = 50 * 1024 * 1024; // 50MB	
-		String pcname =  InetAddress.getLocalHost().getHostName().substring(0, InetAddress.getLocalHost().getHostName().indexOf("-"));
+		String pcname =  InetAddress.getLocalHost().getHostName().substring(0, InetAddress.getLocalHost().getHostName().lastIndexOf("-"));
 	    String uploadDir = "C:\\Users\\"+pcname+"\\git\\GreenSell\\GreenSell\\WebContent\\img\\item";
 		MultipartRequest multi = new MultipartRequest(req, uploadDir, maxPostSize, "UTF-8", new DefaultFileRenamePolicy());
 		

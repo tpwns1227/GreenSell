@@ -18,11 +18,15 @@
   
   	<delete id="deleteitem" parameterType="int">
   		delete from itemsell where no=#{no}
+   	</delete>
+  	
+  	<delete id="deleteitemimg" parameterType="int">
+  		delete from itemimg where imgno=#{no}
   	</delete>
   	
-  	<delete id="deleteauction" parameterType="int">
+  	<!-- <delete id="deleteauction" parameterType="int">
   		delete from auction where no=(select no from auction where itemno=#{no})
-  	</delete>
+  	</delete> -->
   	
   	<update id="updateitem" parameterType="com.greensell.sell.beans.ItemSellVO">
   		update itemsell set itemname=#{itemname}, itemprice=#{itemprice}, itemstate=#{itemstate}, category=#{category}, itemdetail=#{itemdetail}
