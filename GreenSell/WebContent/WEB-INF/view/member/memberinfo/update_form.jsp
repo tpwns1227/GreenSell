@@ -33,14 +33,14 @@ $(document).ready(function(){
 	<form name="yes">
 		<div class='border'>정보 수정</div>
 		<div class='p'>비밀번호</div>
-		<input name="password" id='pass' type='password' placeholder="비밀번호"
+		<input class='textbox' name="password" id='pass' type='password' placeholder="비밀번호"
 			style='width: 200px;'> <input name="password2" id='textbox'
-			type='password' placeholder="비밀번호 확인" style='width: 200px;'>
+			type='password' class='textbox' placeholder="비밀번호 확인" style='width: 200px;'>
 		<div class='p'>주소</div>
-		<input name="zipcode" id='zip' type='text' placeholder="우편번호"
+		<input class='textbox' name="zipcode" id='zip' type='text' placeholder="우편번호"
 			style='width: 200px' value="" readonly=""> <input
 			class='button' type='button' value='검색' style='width: 200px'>
-		<input name="address" id='add' type='text' placeholder="상세주소"
+		<input class='textbox' name="address" id='add' type='text' placeholder="상세주소"
 			style="margin-top: 10px; width: 400px"
 			value='${member.address}' readonly="">
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
 		<option value="농협" id='nh'>농협</option>
 		<option value="신한" id='sh'>신한</option>
 		
-		</select> <input name="account" id='count' type='text' placeholder="계좌번호"
+		</select> <input class='textbox' name="account" id='count' type='text' placeholder="계좌번호"
 			value='${member.account}' style='width: 200px;'>
 		<div class='p'>비밀번호 Q&A</div>
 		<%
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	   %>	
 			
 			
-		</select> <input name="answer" id='textbox' type='text' placeholder="답변"
+		</select> <input class='textbox' name="answer" type='text' placeholder="답변"
 			value='${member.answer }' style='width: 200px;'> <input class='button'
 			type="button" value='수정완료' style="margin-top: 15px"
 			onclick="inputCheck()">

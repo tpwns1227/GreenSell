@@ -7,6 +7,15 @@
 	text-align: center;
 }
 
+.textbox {
+	background-color: white;
+	border: 1px solid #eee;
+	padding: 0px 1.1em;
+	width: 400px;
+	height: 40px;
+	font-size: 13px;
+}
+
 #textbox {
 	background-color: white;
 	border: 1px solid #eee;
