@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	String email = (String)session.getAttribute("skey");
-String[] id=email.split("@");
-String id2=id[0];
+	String skey = (String)session.getAttribute("skey");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,21 +12,8 @@ String id2=id[0];
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
-var em="${view.email}";
-var em2=em.split("@");
-var em3=em2[0];
-var session="<%=id2%>";
-$(document).ready(function(){
-	/* alert("em="+em+" em2="+em2+" em3="+em3) */
-	if(em3==session){
-		$("#up").show();
-		$("#de").sohw();
-	}
-	else {
-		$("#up").hide();
-		$("#de").hide();
-	}
-});
+
+
 
 
 function CM() {
@@ -42,9 +27,7 @@ function CM() {
 	}
 }
 
-function list(){
-	location.href='list';
-}
+
 </script>
 <title>Insert title here</title>
 </head>
@@ -63,8 +46,8 @@ function list(){
 				조회수 : ${view.hits}
 				<hr>
 				<p>
-				내용<br>
-				${view.bbscontent}<br>
+				내용<br>${view.bbscontent}
+				<br>
 				<hr>
 			</td>
 		</tr>
@@ -83,9 +66,12 @@ function list(){
 		<!--session값 확인해서 수정,삭제 활성화  -->
 		<!-- 수정 클릭시 게시글 번호를 넘겨 BbsUpdate.jsp로 이동 -->
 			<td align="right">
+			
+			<c:if test="${view.email==skey}">
 			<input type="button"  id="up" value="수정" onclick="location.href='update?no=${view.no}'">
 			<input type="button" id="de" value="삭제" >
-			<input type="button" value="목록" onclick="list()">
+			</c:if>
+			<input type="button" value="목록" onclick="location.href='list'">
 			</td>
 		</tr>
 	
@@ -98,7 +84,7 @@ function list(){
 			댓글 입력
                  <p>
                  <form name="cmreply" action="cmok" method="post">
-                     <input type="hidden" value="<%= email %>" name="email">
+                     <input type="hidden" value="${skey}" name="email">
                      <input type="hidden" value="${view.no}" name="no">
                      <textarea name="cmcontent" rows="2" cols="80"></textarea>  
                       <input type="submit" value="확인" onclick="return CM()">
