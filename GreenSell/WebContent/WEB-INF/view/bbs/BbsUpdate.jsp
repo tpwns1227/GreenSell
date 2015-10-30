@@ -33,7 +33,7 @@
 			<input type="hidden" value="${view.no }" name="no">
 			<input type="button" value="목록" onclick="location.href='list'">
 			</td>
-		</tr>
+		</tr> 
 		<tr>
 		</tr>
 	</table>
