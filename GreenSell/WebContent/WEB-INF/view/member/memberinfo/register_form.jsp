@@ -11,7 +11,7 @@
 <script>
 function test() {
 	   win_post = window.open('zip_form', "post",
-	         "toolbar=no ,width=370 ,height=300 ,directories=no,"
+	         "toolbar=no ,width=450 ,height=400 ,directories=no,"
 	               + "status=yes,scrollbars=yes,menubar=no");
 	}
 	var idchk = false;
