@@ -12,8 +12,10 @@ $(document).ready(function() {
 	
 	if (document.sellForm.howsell.value == '경매') {
 		$("#auction").text('경매 시작가격');
+		$("#finishdate").css('display','');
 	} else {
 		$("#auction").text('판매가격');
+		$("#finishdate").css('display','none');
 	}
 
 	});
