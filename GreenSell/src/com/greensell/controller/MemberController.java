@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.greensell.member.beans.MemberVO;
+import com.greensell.member.beans.ZipVo;
 import com.greensell.model.member.MemberDao;
 
 @Controller
@@ -169,8 +170,20 @@ public class MemberController {
 	   }
 	   @RequestMapping("/zip_form")//우편번호찾기
 	   public String zipSearch(){
+		 
 		   return "member/memberinfo/zip_form";
 	   }
+	   
+	   @RequestMapping(value = "/zip_result", method = RequestMethod.POST)
+	   public String zip_result(@RequestParam String address, Model m) throws SQLException{
+		 
+		   List<ZipVo> list = dao.zipvo(address);
+		  m.addAttribute("result", list);
+		 
+		 return "member/memberinfo/zip_form";
+		  
+	   }
+	   
 	   
 	   
 	   
