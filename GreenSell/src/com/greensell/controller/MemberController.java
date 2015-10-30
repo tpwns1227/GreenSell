@@ -81,7 +81,6 @@ public class MemberController {
 		  }  
 	   }
 	   
-	   
 	   @RequestMapping("/logout") //로그아웃
 	   public String logout(HttpSession session){
 			   session.invalidate();
@@ -189,10 +188,10 @@ public class MemberController {
 
 	   @RequestMapping("/update_form")//회원정보 수정하기
 	   public String memberupdate(MemberVO membervo,HttpSession session) throws SQLException{
-		   if(dao.update(membervo))
-			   return "member/memberinfo/login_form";
-		   else
+		   if(dao.update(membervo)){
 			   session.setAttribute("skey",membervo.getEmail());
+			   return "member/memberinfo/login_form";}
+		   else
 			   return "member/memberinfo/update_form";
 	   }
 	   @RequestMapping("/zip_form")//우편번호찾기폼띄우기
