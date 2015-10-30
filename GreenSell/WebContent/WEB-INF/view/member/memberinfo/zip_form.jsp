@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>결과창</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/zip.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 </head>
