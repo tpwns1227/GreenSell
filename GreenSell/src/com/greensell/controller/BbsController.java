@@ -35,6 +35,11 @@ public class BbsController {
 		return "bbs/BbsWrite2";
 	}
 	
+	@RequestMapping("/help")
+	public String help(){
+		return "main/help";
+	}
+	
 	//게시글 보기
 	@RequestMapping("/list")
 	public String list(//@RequestParam int bbsno,

@@ -22,7 +22,7 @@
 			<ul>
 				<li class='bold'>내 정보</li>
 				<li><a href='#'>포인트 내역</a></li>
-				<li><a href='#'>찜 목록</a></li>
+				<li><a href='cart'>찜 목록</a></li>
 				<li><a href='#'>내가 올린 글</a></li>
 			</ul>
 		</div>
