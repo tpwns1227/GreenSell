@@ -41,27 +41,29 @@ public class BbsController {
 	}
 	
 	//게시글 보기
-	@RequestMapping("/list")
-	public String list(//@RequestParam int bbsno,
-			@RequestParam(required=false,defaultValue="") String title,
-			@RequestParam(required=false,defaultValue="") String content,
-			Model m){
+		@RequestMapping("/list")
+		public String list(//@RequestParam int bbsno,
+				@RequestParam(required=false,defaultValue="") String title,
+				@RequestParam(required=false,defaultValue="") String bbscontent,
+				Model m){
 
-		//m.addAttribute("bbsno",bbsno);
-		try {
-
-			List<BbsVo> list = dao.selectAll();
-			List<BbsVo> list2 = dao.selecttitle(title);
-//			List<BbsVo> list3 = dao.selectcontent(content);
-			m.addAttribute("selectAll", list);
-			m.addAttribute("selecttitle", list2);
-//			m.addAttribute("selectcontent", list3);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//m.addAttribute("bbsno",bbsno);
+			try {
+				List<BbsVo> list = dao.selectAll();
+				List<BbsVo> list2 = dao.selecttitle(title);
+				System.out.println("bbscontent::"+bbscontent);
+				List<BbsVo> list3 = dao.selectcontent(bbscontent);
+				int num = dao.Count();
+				m.addAttribute("selectAll", list);
+				m.addAttribute("selecttitle", list2);
+				m.addAttribute("selectcontent", list3);
+				m.addAttribute("count", num);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return "bbs/BbsList";
 		}
-		return "bbs/BbsList";
-	}
 	
 	@RequestMapping("/qna")
 	public String qna(){
