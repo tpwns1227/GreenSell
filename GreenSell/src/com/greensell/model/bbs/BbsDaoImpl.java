@@ -30,7 +30,7 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	public boolean update(BbsVo dao) {
-		int t = sqlsession.update("bbs.update", dao);
+		int t = sqlsession.update("bbs.bbsupdate", dao);
 		if(t==1){return true;}
 		return false;
 	}
