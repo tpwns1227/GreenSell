@@ -31,8 +31,8 @@
 	<div class='img'>
 		<c:out value=""></c:out>
 		<a href="sell_detail?no=${list.no}"><img src="/GreenSell/img/item/${fristimg[status.index]}" class='img'></a>
-		
 	</div>
+	
 	<div class='item'>
 	  ${list.itemname}
 	</div>
