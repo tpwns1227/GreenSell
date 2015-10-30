@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,18 +29,17 @@ public class SellController {
 	@Autowired
 	SellDao dao;
 	
-	
-	 
 	@RequestMapping("/sell_detail") // 글 클릭시 상세보기로 이동
 	public String detailform(@RequestParam int no, Model m) throws SQLException {
 
 		ItemSellVO ivo = dao.itemDetail(no); // 게시글 한가지의 정보를 가져온다.
-
+		//System.out.println(ivo.getEmail());
 		if (ivo.getHowsell().equals("경매")) {
 			AuctionVO avo = dao.auctionitemDetail(no);
 			m.addAttribute("auctionitem", avo);
 		} else {
 			m.addAttribute("itemone", ivo);
+			
 		}
 
 		List<String> list = dao.getImagenames(no); // 이미지 뿌리기
@@ -68,13 +68,13 @@ public class SellController {
 		if (howsell == null || howsell.equals("중고")) {
 			List<ItemSellVO> list = dao.olditemList(howsell);
 			m.addAttribute("itemlist", list);
-			List img = new ArrayList<String>();
+			List<String> fristimg = new ArrayList<String>();
 			for(int j=0;j<list.size();j++)
 			{
 				List<String> imglist = dao.getImagenames(list.get(j).getNo());
-				img.add(imglist.get(j));
+				fristimg.add(imglist.get(0));
 			}
-			m.addAttribute("fristimg", img);
+			m.addAttribute("fristimg",fristimg);
 		} else {
 			List<AuctionVO> list = dao.auctionitemList();
 			m.addAttribute("itemlist", list);
@@ -87,57 +87,32 @@ public class SellController {
 	// UTF
 	@RequestMapping("deleteitem") // delete 기능구현
 	public String deleteitem(@RequestParam int no, @RequestParam String howsell) throws SQLException {
-
+		boolean r = false;
 		if (howsell.equals("경매")) {
-			boolean r = dao.auctionDelete(no);
-			System.out.println(r);
+			 r = dao.auctionDelete(no);
 		}
-
-		boolean b = dao.itemDelete(no);
-
-		if (b) {
+		if (r && dao.itemDelete(no)) {
 			System.out.println("삭제에 성공하셨습니다.");
 		} else {
 			System.out.println("삭제에 실패하였습니다.");
 		}
-
 		return "/sell/main";
 	}
 
-	@RequestMapping("updateitem")
-	public String updateitem(@RequestParam ItemSellVO iso) {
-		try {
-			System.out.println("여기오냐?");
-			if (dao.itemUpdate(iso)) {
-				System.out.println("업데이트 성공!");
-				return "redirect:list";
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// model.addAttribute("person", dao.select(name));
-		System.out.println("업데이트 실패!");
+	@RequestMapping("/updateitem")//자신이 올린글 수정
+	public String updateitem(@RequestParam ItemSellVO iso) throws SQLException { 
+	
 		return "1023/update_form";
 	}
 
-	@RequestMapping("/inputform")
+	@RequestMapping("/inputform")//판매하기 눌렀을때 판매로 이동
 	public String viewitemlist() throws SQLException {
-			
 		return "/sell/sell_write";
-	}
-
-	@RequestMapping("/List")
-	public String viewitemlist(ItemSellVO itsv) throws SQLException {
-		if (dao.itemInsert(itsv)) {
-			System.out.println("나는된다.");
 		}
-		return "/main/home";
-	}
 
-	@RequestMapping("/sellinput")
-	public String insertsellitem(ItemSellVO itsv,
-			 HttpServletRequest req) throws SQLException, IOException {	
+
+	@RequestMapping("/sellinput") // 파일 올리기 후 경매인지 중고판매인지에 따라 다르게 insert 후 상품 이미지 db에 넣기
+	public String insertsellitem(ItemSellVO itsv, HttpServletRequest req) throws SQLException, IOException {	
 		int maxPostSize = 50 * 1024 * 1024; // 50MB	
 		String pcname =  InetAddress.getLocalHost().getHostName().substring(0, InetAddress.getLocalHost().getHostName().indexOf("-"));
 	    String uploadDir = "C:\\Users\\"+pcname+"\\git\\GreenSell\\GreenSell\\WebContent\\img\\item";
@@ -173,7 +148,6 @@ public class SellController {
 			map.put("imgname", imgname1);
 			dao.imginsert(map);
 			
-			
 			if (imgname2 != null){
 				map.put("imgname", imgname2);
 				dao.imginsert(map);
@@ -191,18 +165,6 @@ public class SellController {
 		
 		return "redirect:home";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	
