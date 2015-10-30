@@ -6,16 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>결과창</title>
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 </head>
 <script>
     //main페이지로 값 전달: 부모로 값전달하기 위해서는 opener사용
-    function sendAdd(sido, gugun, dong, bigo,zipcode){
-        
-        opener.document.getElementById("zip").value=sido;
-        opener.document.getElementById("zip").value=gugun;
-        opener.document.getElementById("zip").value=dong;
-        opener.document.getElementById("zip").value=bigo;
-        opener.document.getElementById("zip2").value=zipcode;
+    function sendAdd(zipcode,sido, gugun, dong, bunji){
+    	opener.document.getElementById("zip").value=zipcode;
+    	var adr = sido + " " + gugun + " " + dong + " " + bunji;
+     	opener.document.getElementById("zip2").value=adr;
+        window.close();
     }
     //널값체크
     function check() {
@@ -24,15 +23,32 @@
             alert("동이름을 입력하세요.");
             document.zipform.address.focus();
             return false;
+        }else{
+        	 /* $.ajax({ 
+		         type : "post", 
+		         url : "zip_result", 
+		         data : "address="+$("input[name='address']").val(),
+		         success : function(data){ 
+		        	if(data == '결과있음'){
+		        		
+		        	}else{
+		        		alert(data);
+		        		return;
+		        	}
+		         } 
+		      });  */
+		      document.zipform.submit();
         }
+        
+       
     }
 </script>
 <body>
-    <form name="zipform" method="post" onsubmit="check()">
+    <form name="zipform" method="post" action="zip_result">
         <table border="1" width="100%">
             <tr align="center">
                 <td>동이름 검색 : <input type="text" name="address" size="15">
-                    <input type="submit" value="검색">
+                    <input type="button" value="검색" onclick="check()">
                 </td>
             </tr>
             <tr>
@@ -44,17 +60,18 @@
             <c:forEach items="${result}" var="post">
                 <tr>
                     <td><a href="javascript:sendAdd(
-                            '${post.sido_name}',
-                             '${post.gugun_name}', 
-                             '${post.dong_name}', 
-                             '${post.bigo}',
-                             '${post.zipcode }')"> 
+                            '${post.zipcode }',
+                            '${post.sido}',
+                            '${post.gugun}', 
+                            '${post.dong}', 
+                             '${post.bunji}')"> 
+                      
+                            ${post.zipcode }
+                            ${post.sido} 
+                             ${post.gugun} 
+                             ${post.dong} 
+                             ${post.bunji} 
                              
-                            ${post.sido_name} 
-                             ${post.gugun_name} 
-                             ${post.dong_name} 
-                             ${post.bigo} 
-                             ${post.zipcode }
                         </a></td>
                 </tr>
             </c:forEach>
