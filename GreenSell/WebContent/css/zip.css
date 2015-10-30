@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+
+.border {
+	font-size: 15px;
+	text-align: left;
+	font-weight: bold;
+	margin: 10px 0px 10px 5px;
+}
+
+.textbox {
+	background-color: white;
+	border: 1px solid #eee;
+	padding: 0px 1.1em;
+	width: 200px;
+	height: 40px;
+	font-size: 13px;
+}
+
+.button {
+	width: 200px;
+	height: 40px;
+	border: 0px none;
+	font-size: 16px;
+}
