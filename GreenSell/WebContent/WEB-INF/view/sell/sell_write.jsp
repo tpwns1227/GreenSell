@@ -122,7 +122,7 @@
 						</div>
 					</div>
 					
-					<div class="next"><!-- 경매일 경우  -->
+					<div class="next" id="finishdate"><!-- 경매일 경우  -->
 						<div class='p' id="auction">마감날짜</div>
 						<input class="calen" name="finishtime" type='text' placeholder="날짜">
 						
