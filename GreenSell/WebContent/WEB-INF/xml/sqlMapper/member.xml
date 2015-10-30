@@ -25,7 +25,7 @@
 	</select>
 
 	<update id="update" parameterType="String"> <!-- 회원정보 업데이트 -->
-		update member set password=#{password}, bank=#{bank}, address=#{address}
+		update member set password=#{password}, bank=#{bank}, address=#{address},password=#{password}
 		where password=#{password} and email=#{email}
 	</update>
 
