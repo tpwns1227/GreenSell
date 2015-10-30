@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 function test() {
 	   win_post = window.open('zip_form', "post",
-	         "toolbar=no ,width=370 ,height=300 ,directories=no,"
+	         "toolbar=no ,width=450 ,height=400 ,directories=no,"
 	               + "status=yes,scrollbars=yes,menubar=no");
 	}
 	
@@ -95,7 +95,7 @@ $(document).ready(function(){
 		</select> <input class='textbox' name="answer" type='text' placeholder="답변"
 			value='${member.answer }' style='width: 200px;'> <input class='button'
 			type="button" value='수정완료' style="margin-top: 15px"
-			onclick="inputCheck()">
+			onclick="">
 			</form>
 	</div>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
