@@ -172,12 +172,6 @@ public class MemberController {
 		   
 		   return "member/memberinfo/register_form";
 	   }
-
-/*	   @RequestMapping("/memberDetail")//회원정보 상세보기
-	   public String list(Model m,@RequestParam String email,HttpSession session) throws SQLException{
-		   MemberVO mVO = dao.memberdetail(email);   
-		   return "member/memberinfo/member_Detail";
-	   }*/
 	   
 	   @RequestMapping("/updateForm")//회원정보 수정폼띄우기
 	   public String updateForm(HttpSession session, Model m){
@@ -208,11 +202,11 @@ public class MemberController {
 	   }
 	   
 	   @RequestMapping(value = "/zip_result", method = RequestMethod.POST)
-	   public String zip_result(@RequestParam String address, Model m) throws SQLException{
+	   public String zip_result(@RequestParam String address, Model m,HttpSession session, ZipVo vo) throws SQLException{
 		 
 		   List<ZipVo> list = dao.zipvo(address);
 		  m.addAttribute("result", list);
-		 
+		 session.setAttribute("zipp", vo.getZipcode());
 		 return "member/memberinfo/zip_form";
 	   }
 	   
@@ -225,8 +219,13 @@ public class MemberController {
 		    MemberVO mv = dao.selectpwd(password);
 		   m.addAttribute("pass",mv);
 		   return "member/memberinfo/find_form";
+	   } 
+	   @RequestMapping("/member_Detail")//Detail폼띄우기
+	   public String member_Detail(HttpSession session, Model m){
+		   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
+		   m.addAttribute("member",vo);
+		   return "member/memberinfo/member_Detail";
 	   }
-	   
 	   
 	   
 	   

@@ -139,20 +139,20 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public String getQuestion(String email) throws SQLException {
+	public String getQuestion(String email) throws SQLException {//질문얻어오기
 	// TODO Auto-generated method stub
 		String question = sqlSession.selectOne("member.getquestion", email);
 		return question;
 	}
 	
 	@Override
-	public String getanswer(String email) throws SQLException {
+	public String getanswer(String email) throws SQLException {//답얻어오기
 	// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.getanswer",email);
 	}
 	
 	@Override
-	public boolean updatepw(Map<String, String> map) throws SQLException {
+	public boolean updatepw(Map<String, String> map) throws SQLException {//패스워드수정하기
 	// TODO Auto-generated method stub
 		int i = sqlSession.update("member.updatepw",map);
 		return (i>0)? true:false;
