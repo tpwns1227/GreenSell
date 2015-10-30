@@ -50,10 +50,10 @@ public class BbsController {
 			//m.addAttribute("bbsno",bbsno);
 			try {
 				List<BbsVo> list = dao.selectAll();
-				List<BbsVo> list2 = dao.selecttitle(title);
+				List<BbsVo> list2 = dao.selectTitle(title);
 				System.out.println("bbscontent::"+bbscontent);
-				List<BbsVo> list3 = dao.selectcontent(bbscontent);
-				int num = dao.Count();
+				List<BbsVo> list3 = dao.selectContent(bbscontent);
+				int num = dao.count();
 				m.addAttribute("selectAll", list);
 				m.addAttribute("selecttitle", list2);
 				m.addAttribute("selectcontent", list3);
@@ -76,11 +76,11 @@ public class BbsController {
 			
 			try{
 				BbsVo bbsVo = dao.view(no);
-				List<ReplyVo> replyvo=dao.selectcomment(r);
+				List<ReplyVo> replyvo=dao.selectComment(r);
 				m.addAttribute("view", bbsVo);
 				m.addAttribute("comment",replyvo);
 				
-				if(dao.Hitup(b)){
+				if(dao.hitUp(b)){
 				}				
 				
 				}
@@ -104,7 +104,7 @@ public class BbsController {
 				
 				try{
 					
-					if(dao.Insert(b)){
+					if(dao.insert(b)){
 						m.addAttribute("msg","입력되었습니다.");
 						return "bbs/BbsWriteOk";
 					}
@@ -131,7 +131,7 @@ public class BbsController {
 					/*System.out.println(v.getEmail());
 					System.out.println(v.getCmcontent());
 					System.out.println(v.getNo());*/
-					if(dao.Insert(v)){
+					if(dao.insert(v)){
 						return "redirect:view?no="+no;
 					}
 					
@@ -161,7 +161,7 @@ public class BbsController {
 					m.addAttribute("view", bbsVo);
 					
 					
-					if(dao.Hitup(b)){
+					if(dao.hitUp(b)){
 					}				
 					
 					}
@@ -177,7 +177,7 @@ public class BbsController {
 			public String updateok(@RequestParam int no,BbsVo b){
 				
 				try {
-					if(dao.Update(b))
+					if(dao.update(b))
 					{
 						
 					}
