@@ -35,14 +35,21 @@
 	function goUrl(url) {
 		location.href=url;
 	}
+	
+function write(){
+		if(session==true){
+			return location.href='write';
+		}
+		else {
+			alert("로그인 해주세요");
+		}
+	}
 </script>
 </head>
 <jsp:include page="../main/header.jsp"></jsp:include>
 <body><br><br><br>
 	<form name="bbslistform">
-	<%
-    	int rcnt = 11;
-    %>
+	
 	<table width="550" align="center">
        <tr>
           <td width="8%" align="center" bgcolor="#47CFF2">&nbsp;번호</td>
@@ -104,13 +111,15 @@
      		</select>
      		<input type="text" name="search" size="20">
      		<input type="submit" value="글찾기">
-			<input type="button" value="글쓰기" onclick="goUrl('write');">
+			<input type="button" name="write" value="글쓰기" onclick="write()">
      		</td>
     	</tr>
      </table>
 </form>
-
 <%
+	//String n= (String)request.getAttribute("count"); 
+	int rcnt = (Integer)request.getAttribute("count");//Integer.parseInt(n);
+	
     	//페이지 처리하기
     	PageCount pc = new PageCount(rcnt);
     	
