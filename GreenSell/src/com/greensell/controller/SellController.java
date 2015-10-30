@@ -1,7 +1,9 @@
 package com.greensell.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -97,22 +99,20 @@ public class SellController {
 
 	// UTF
 	@RequestMapping("/deleteitem") // delete 기능구현
-	public String deleteitem(@RequestParam int no) throws SQLException {
-		//boolean r = false;
-		/*if (howsell.equals("경매")) {
-			 r = dao.auctionDelete(no);
-		}*/
+	public String deleteitem(@RequestParam int no) throws SQLException, UnknownHostException {
 		
-		if (dao.itemDeleteimg(no)) {
-			System.out.println("이미지 삭제에 성공하셨습니다.");
-		}
+		String pcname =  InetAddress.getLocalHost().getHostName().substring(0, InetAddress.getLocalHost().getHostName().lastIndexOf("-"));
+	    String uploadDir = "C:\\Users\\"+pcname+"\\git\\GreenSell\\GreenSell\\WebContent\\img\\item\\";
+		List<String> name = dao.getImagenames(no);
 		
-		if (dao.itemDelete(no)) {
-			System.out.println("게시글 삭제에 성공하셨습니다.");
-		} else {
-			System.out.println("삭제에 실패하였습니다.");
+		for(int i=0;i<name.size();i++){
+		File oldfile = new File(uploadDir+name.get(i));
+			oldfile.delete();
 		}
-		return "/sell/main";
+		dao.itemDeleteimg(no);
+		dao.itemDelete(no);
+
+		return "redirect:itemList";
 	}
 
 	@RequestMapping("/updateitem_form")//자신이 올린글 수정
@@ -120,7 +120,9 @@ public class SellController {
 		
 		ItemSellVO ivo = dao.itemDetail(no); // 게시글 한가지의 정보를 가져온다.
 		m.addAttribute("itemone", ivo);
-		
+		List<String> imgnames = dao.getImagenames(no);
+		m.addAttribute("names",imgnames);
+		m.addAttribute("count", imgnames.size());
 		return "/sell/update_form";
 	}
 
