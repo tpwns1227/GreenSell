@@ -109,9 +109,9 @@ function test() {
 			<input name="account" id='textbox' type='text' placeholder="계좌번호" style='width: 200px;'>
 			<div class='p'>비밀번호 Q&A</div>
 			<select name='question' class='rf'>
-				<option value='a1'>질문1</option>
-				<option value='a2'>질문2</option>
-				<option value='a3'>질문3</option>
+				<option value='a1'>가장기억에 남는 선생님은?</option>
+				<option value='a2'>나의 고향은?</option>
+				<option value='a3'>나의 삶의 좌우명은?</option>
 			</select> 
 			<input name="answer" id='textbox' type='text' placeholder="답변" style='width: 200px;'> 
 			<input class='button' type="button" value='회원가입' style="margin-top: 15px" onclick="inputCheck()">

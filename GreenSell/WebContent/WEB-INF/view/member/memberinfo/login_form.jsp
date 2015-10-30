@@ -63,7 +63,7 @@ if(password == "" || password == null){
 		<div class='p'>비밀번호</div>
 		<input name="password" id='textbox' type='password' placeholder="비밀번호"> <br>
 		<div class='forgot' align="left">
-			<a href='#'>비밀번호를 잊어버리셨나요?</a>
+			<a href='searchPw_form'>비밀번호를 잊어버리셨나요?</a>
 		</div>
 		<input id="login" class='button' type="button" value='로그인' onclick="call()">
 		<div style="margin: 20px 0px 20px 0px">
