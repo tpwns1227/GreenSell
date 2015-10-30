@@ -14,11 +14,20 @@
 			var s = $(this).attr('src');
 			$(".mimg").attr('src', s);
 		});
+		
+		$("#updateitem").click(function(){
+			location.href="updateitem";
+		});
+		
+		
 	});
+	
+	
 	
 </script>
 </head>
 <body>
+
 
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='test'>
@@ -29,9 +38,14 @@
 			<c:forEach var="img" items="${imglist}">
 				<img src="/GreenSell/img/item/${img}" class='simg'>
 			</c:forEach>
-			<input class='callbtn' type="button" value="수정" style='width: 200px'>
-			<input class='callbtn' type="button" value="삭제" style='width: 200px'>
-		</div>		
+			
+			<c:if test="${itemone.getEmail()==skey || auctionitem.getEmail()==skey}">
+			<br>
+			<input id="updateitem" class='callbtn' type="button" value="수정" style='width: 195px'>
+			<input id="deleteitem" class='callbtn' type="button" value="삭제" style='width: 195px'>
+			</c:if>
+		</div>
+			
 		<c:if test="${itemone.getHowsell() == '중고'}">
 		<div class='info'>
 			<div class='bold2'>제품명</div>
@@ -53,6 +67,7 @@
 			<input class='callbtn' type="button" value="찜" style='width: 100px'> 
 		</div>
 		</c:if>
+		
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
 		<div class='info2'>
 			<div class='bold2'>제품명</div>
@@ -76,7 +91,7 @@
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${auctionitem.getItemdetail()}</textarea>
 			<input class='callbtn' type="button" value="입찰하기" style='width: 300px'>
-			<input class='callbtn' type="button" value="찜 하기" style='width: 100px'> 
+			<input class='callbtn' type="button" value="찜 하기" style='width: 100px'>
 		</div>
 		</c:if>
 	</div>

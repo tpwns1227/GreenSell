@@ -1,3 +1,5 @@
+<%@page import="com.greensell.sell.beans.ItemSellVO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -48,12 +50,14 @@
 <div class='body'>
 
 <form action="detail" method="post" name="listform">
-<c:forEach var="list" items="${itemlist}">
+<c:forEach var="list" items="${itemlist}" varStatus="status">
 <div class='container'>
 	<div class="imgbox">
 	
 	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src="/GreenSell/img/item/${fristimg}" class='img'></a>
+		<c:out value=""></c:out>
+		<a href="sell_detail?no=${list.no}"><img src="/GreenSell/img/item/${fristimg[status.index]}" class='img'></a>
+		
 	</div>
 	<div class='item'>
 	  ${list.itemname}
@@ -64,6 +68,7 @@
 	</div>
 </div>
 </c:forEach>
+
 </form>
 </div>
 
