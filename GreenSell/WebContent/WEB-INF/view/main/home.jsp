@@ -14,7 +14,7 @@
 </head>
 <body>
 
-	<jsp:include page="../main/header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<div class='body'>
 
 		<c:forEach var="list" items="${itemlist}">
