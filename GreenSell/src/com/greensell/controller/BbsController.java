@@ -40,7 +40,7 @@ public class BbsController {
 		return "main/help";
 	}
 	
-	//게시글 보기
+	//게시글 보기 
 		@RequestMapping("/list")
 		public String list(//@RequestParam int bbsno,
 				@RequestParam(required=false,defaultValue="") String title,
