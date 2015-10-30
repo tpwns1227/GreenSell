@@ -28,7 +28,9 @@
 			
 			<c:forEach var="img" items="${imglist}">
 				<img src="/GreenSell/img/item/${img}" class='simg'>
-			</c:forEach>	
+			</c:forEach>
+			<input class='callbtn' type="button" value="수정" style='width: 200px'>
+			<input class='callbtn' type="button" value="삭제" style='width: 200px'>
 		</div>		
 		<c:if test="${itemone.getHowsell() == '중고'}">
 		<div class='info'>
