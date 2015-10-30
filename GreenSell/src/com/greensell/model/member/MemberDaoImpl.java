@@ -134,7 +134,9 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public List<ZipVo> zipvo(String address) throws SQLException {//우편번호찾기
 		// TODO Auto-generated method stub
+		
 		List<ZipVo> list = sqlSession.selectList("member.getPost",address);
+		
 		return list;
 	}
 	
