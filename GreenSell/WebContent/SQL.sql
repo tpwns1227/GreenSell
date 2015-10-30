@@ -15,7 +15,7 @@ create table Member( -- ȸ�� ���̺�
    report number not null,
    joindate date not null
 );
-
+select count(no) from bbs where bbsno=1
 update member set password=123, bank=1234, address='세준팬티'
 where password=1234 and email='tpwns1227'
 insert into member values('tpwns1227','1234','윤세준','세준','010','세준0','세준','217053-56-124278','윤세준?','세준',0,0,0,SYSDATE)
@@ -29,11 +29,12 @@ create table bbsSort( --�Խ��� ����
 
 insert into BBSSORT values (1,'��������','f')
 select * from BBSSORT
+select * from replycomment
 
 create table BBS( --�Խ��� 
 no number primary key not null,
 title varchar2(100) not null,
-bbscontent long not null, 
+bbscontent varchar2(3000) not null, 
 email varchar2(50) not null,
 bbsdate date not null,
 hits number not null,
@@ -47,7 +48,7 @@ create table replycomment( -- ���
    no number not null,
    email varchar2(50) not null,
    cmdate date not null,
-   cmcontent long not null,
+   cmcontent varchar2(200) not null,
    foreign key (no) references bbs(no),
    foreign key (email) references member(email)
 );
@@ -134,9 +135,11 @@ create sequence no_buy_seq start with 1 increment by 1;
 
 select * from zipcode;
 
+alter table bbs drop column bbscontent ;
+alter table bbs add (bbscontent varchar2(3000));
 
-
-
+alter table replycomment drop column cmcontent ;
+alter table replycomment add (cmcontent varchar2(200));
 
 
 
