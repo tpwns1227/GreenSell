@@ -45,6 +45,11 @@
 				<input id="updateitem" class='callbtn' type="button" value="수정" style='width: 195px'>
 				<input id="deleteitem" class='callbtn' type="button" value="삭제" style='width: 195px'>
 			</c:if>
+			${itemone.getHowsell() }
+			<c:if test="${auctionitem.getHowsell()=='경매'}">
+			<input class='callbtn' type="button" value="입찰하기" style='width: 295px'>
+			<input class='callbtn' type="button" value="찜 하기" style='width: 95px'>
+			</c:if>
 		</div>
 			
 		<c:if test="${itemone.getHowsell() == '중고'}">
@@ -91,8 +96,7 @@
 			<div class='font'>${auctionitem.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${auctionitem.getItemdetail()}</textarea>
-			<input class='callbtn' type="button" value="입찰하기" style='width: 300px'>
-			<input class='callbtn' type="button" value="찜 하기" style='width: 100px'>
+			
 			<input type="hidden" name="" value="">
 		</div>
 		</c:if>
