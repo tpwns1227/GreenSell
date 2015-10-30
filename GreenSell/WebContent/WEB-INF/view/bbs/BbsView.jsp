@@ -68,11 +68,12 @@ function CM() {
 			<td align="right">
 			
 			<c:if test="${view.email==skey}">
-			<form action="delete" method="post" name="delete">
+			
 			<input type="button"  id="up" value="수정" onclick="location.href='update?no=${view.no}'">
-			<input type="submit" id="de" value="삭제" onclick="location.href='delete?no=${view.no}'" >
-			<input type="hidden" value="${view.no}">
-			</form>
+			
+			<input type="button" id="de" value="삭제" onclick="location.href='delete?no=${view.no}'" >
+			<input type="hidden" value="${view.no}" name="dell">
+			
 			</c:if>
 			
 			<input type="button" value="목록" onclick="location.href='list'">
