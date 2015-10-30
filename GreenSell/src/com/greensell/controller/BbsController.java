@@ -118,10 +118,7 @@ public class BbsController {
 					return "bbs/BbsWrite";
 				}
 			
-			private void alert(String email) {
-				// TODO Auto-generated method stub
-				
-			}
+	
 
 			@RequestMapping("/cmok")
 			public String cmok(ReplyVo v,Model m){
@@ -149,11 +146,11 @@ public class BbsController {
 			@RequestMapping("/update")
 			public String update(@RequestParam int no,BbsVo b,Model m){
 				//int no=b.getNo();
-				System.out.println(b.getEmail());
+			/*	System.out.println(b.getEmail());
 				System.out.println(b.getTitle());
 				System.out.println(b.getBbscontent());
 				System.out.println(b.getBbsno());
-				System.out.println(b.getBbsdate());
+				System.out.println(b.getBbsdate());*/
 				
 				try{
 					BbsVo bbsVo = dao.view(no);
@@ -174,12 +171,17 @@ public class BbsController {
 			}
 			
 			@RequestMapping("/updateok")
-			public String updateok(@RequestParam int no,BbsVo b){
-				
+			public String updateok(BbsVo b){
+				int no=b.getNo();
+				System.out.println(b.getEmail());
+				System.out.println(b.getTitle());
+				System.out.println(b.getBbscontent());
+				System.out.println(no);
 				try {
 					if(dao.update(b))
 					{
-						
+						System.out.println("나 업데이트야");
+						return "redirect:view?no="+no;
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
