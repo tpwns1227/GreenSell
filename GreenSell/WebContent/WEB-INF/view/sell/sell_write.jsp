@@ -124,7 +124,7 @@
 					
 					<div class="next" id="finishdate"><!-- 경매일 경우  -->
 						<div class='p' id="auction">마감날짜</div>
-						<input class="calen textbox" name="finishtime" type='text' placeholder="날짜">
+						<input readonly="readonly" class="calen textbox" name="finishtime" type='text' placeholder="날짜">
 						<br>
 						<div class='bt'>
 							<div class='pb'>
