@@ -2,6 +2,7 @@ package com.greensell.model.member;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,9 @@ public class MemberDaoImpl implements MemberDao {
 	   }
 
 	   @Override
-	   public MemberVO selectpwd(String email) {//비밀번호찾기
+	   public MemberVO selectpwd(String password) {//비밀번호찾기
 	      // TODO Auto-generated method stub
-	      sqlSession.selectOne("member.selectpwd", email);
+	      sqlSession.selectOne("member.selectpwd", password);
 	      return null;
 	   }
 
@@ -130,14 +131,31 @@ public class MemberDaoImpl implements MemberDao {
 			return true;
 	}
 
-
 	@Override
 	public List<ZipVo> zipvo(String address) throws SQLException {//우편번호찾기
-		// TODO Auto-generated method stub
-		
-		List<ZipVo> list = sqlSession.selectList("member.getPost",address);
-		
+		// TODO Auto-generated method stub	
+		List<ZipVo> list = sqlSession.selectList("member.getPost",address);	
 		return list;
+	}
+	
+	@Override
+	public String getQuestion(String email) throws SQLException {
+	// TODO Auto-generated method stub
+		String question = sqlSession.selectOne("member.getquestion", email);
+		return question;
+	}
+	
+	@Override
+	public String getanswer(String email) throws SQLException {
+	// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.getanswer",email);
+	}
+	
+	@Override
+	public boolean updatepw(Map<String, String> map) throws SQLException {
+	// TODO Auto-generated method stub
+		int i = sqlSession.update("member.updatepw",map);
+		return (i>0)? true:false;
 	}
 	
 }
