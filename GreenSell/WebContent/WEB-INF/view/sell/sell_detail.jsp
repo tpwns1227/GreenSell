@@ -16,12 +16,13 @@
 		});
 		
 		$("#updateitem").click(function(){
-			location.href="updateitem";
+			location.href="updateitem_form?no=${itemone.no}";
 		});
 		
-		
+		$("#deleteitem").click(function(){
+			location.href="deleteitem?no=${itemone.no}";
+		});
 	});
-	
 	
 	
 </script>
@@ -39,10 +40,10 @@
 				<img src="/GreenSell/img/item/${img}" class='simg'>
 			</c:forEach>
 			
-			<c:if test="${itemone.getEmail()==skey || auctionitem.getEmail()==skey}">
+			<c:if test="${itemone.getEmail()==skey}">
 			<br>
-			<input id="updateitem" class='callbtn' type="button" value="수정" style='width: 195px'>
-			<input id="deleteitem" class='callbtn' type="button" value="삭제" style='width: 195px'>
+				<input id="updateitem" class='callbtn' type="button" value="수정" style='width: 195px'>
+				<input id="deleteitem" class='callbtn' type="button" value="삭제" style='width: 195px'>
 			</c:if>
 		</div>
 			
@@ -75,7 +76,7 @@
 			<div class='bold2'>상태</div>
 			<div class='font'>${auctionitem.getItemstate()}</div>
 			<div class='bold2'>경매시작가</div>
-			<div class='font'>${auctionitem.getStartprice()}</div>		
+			<div class='font'>${auctionitem.getStartprice()}</div>
 			<div class='bold2'>현재가격</div>
 			<div class='font'>${auctionitem.getNowprice()}</div>
 			<div class='bold2'>마감시간</div>
@@ -92,6 +93,7 @@
 			<textarea class='tb' readonly>${auctionitem.getItemdetail()}</textarea>
 			<input class='callbtn' type="button" value="입찰하기" style='width: 300px'>
 			<input class='callbtn' type="button" value="찜 하기" style='width: 100px'>
+			<input type="hidden" name="" value="">
 		</div>
 		</c:if>
 	</div>

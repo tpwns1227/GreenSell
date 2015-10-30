@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,27 +7,64 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/input.css">
 <script type="text/javascript" src="/GreenSell/js/input.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var category = '${itemone.category}';
+		var itemstate = '${itemone.itemstate}';
+		
+		if (category == '의류/잡화') {
+			$("option[value='의류/잡화']").attr("selected", "selected");
+		}
+		else if (category == '가구/전자') {
+			$("option[value='가구/전자']").attr("selected", "selected");
+		}
+		else if (category == '여행/스포츠') {
+			$("option[value='여행/스포츠']").attr("selected", "selected");
+		}
+		else if (category == '도서/티켓') {
+			$("option[value='도서/티켓']").attr("selected", "selected");
+		}
+		else if (category == '기타') {
+			$("option[value='기타']").attr("selected", "selected");
+		}
+		
+		if (itemstate == '미개봉상품') {
+			$("option[value='미개봉상품']").attr("selected", "selected");
+		}
+		else if (itemstate == 'A급') {
+			$("option[value='A급']").attr("selected", "selected");
+		}
+		else if (itemstate == 'B급') {
+			$("option[value='B급']").attr("selected", "selected");
+		}
+		else if (itemstate == 'C급') {
+			$("option[value='C급']").attr("selected", "selected");
+		}
+	});
+</script>
 </head>
 <body>
+
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='container'>
 		<div class='border'>게시물 수정</div>
 		<div class='p'>제품명</div>
-		<input class='textbox' name="itemname" type='text' placeholder="제품명">
+		<input class='textbox' name="itemname" type='text' placeholder="제품명"
+			value="${itemone.itemname}">
 		<div class='p'>카테고리</div>
 		<select name='category' class='pf'>
-			<option value='a1'>의류/잡화</option>
-			<option value='a2'>가구/전자</option>
-			<option value='a3'>여행/스포츠</option>
-			<option value='a4'>도서/티켓</option>
-			<option value='a5'>기타</option>
+			<option value='의류/잡화'>의류/잡화</option>
+			<option value='가구/전자'>가구/전자</option>
+			<option value='여행/스포츠'>여행/스포츠</option>
+			<option value='도서/티켓'>도서/티켓</option>
+			<option value='기타'>기타</option>
 		</select>
 		<div class='p'>제품상태</div>
 		<select name='itemstate' class='pf'>
-			<option value='a1'>미개봉 상품</option>
-			<option value='a2'>A급 상품</option>
-			<option value='a3'>B급 상품</option>
-			<option value='a4'>C급 상품</option>
+			<option value='미개봉상품'>미개봉 상품</option>
+			<option value='A급'>A급</option>
+			<option value='B급'>B급</option>
+			<option value='C급'>C급</option>
 		</select>
 		<div class='p'>사진</div>
 		<div id='image1'>
@@ -36,12 +72,14 @@
 				class='img1' for="img1">클릭</label>
 		</div>
 		<div class='p'>가격</div>
-		<input class='textbox' name="itemprice" type='text' placeholder="가격">
+		<input class='textbox' name="itemprice" type='text'
+			value="${itemone.itemprice}" placeholder="가격">
 		<div class='p'>상세설명</div>
-		<textarea name="itemdetail" placeholder="상세설명"></textarea>
+		<textarea name="itemdetail" placeholder="상세설명">${itemone.itemdetail}</textarea>
 		<input type="submit" class="button" value="수정"
 			style='width: 400px; margin-top: 25px;'>
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>
+
 </body>
 </html>
