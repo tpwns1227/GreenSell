@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="../main/header.jsp"></jsp:include>
-
+<form action="updateok" method="post">
 	<table align="center" width="500">
 		<tr>
 			<td colspan="1">
@@ -29,14 +29,15 @@
 			</td>
 		</tr>	
 		<tr>
-			<td align="right"><input type="button" value="수정" onclick="location.href='updateok?no=${view.no}'" >
+			<td align="right"><input type="submit" value="수정" onclick="location.href='updateok'" >
+			<input type="hidden" value="${view.no }" name="no">
 			<input type="button" value="목록" onclick="location.href='list'">
 			</td>
 		</tr>
 		<tr>
 		</tr>
 	</table>
-            
+ </form>
 </body>
 <jsp:include page="../main/bottom.jsp"></jsp:include>
 </html>
