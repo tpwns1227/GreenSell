@@ -55,7 +55,7 @@
   
 	<!-- 게시판 글수정 -->
   <update id="bbsupdate" parameterType="com.greensell.bbs.beans.BbsVo">
-   update bbs set title=#{title},bbscontent=#{content} where no=#{no}
+   update bbs set title=#{title},bbscontent=#{bbscontent} where no=#{no}
   </update>
   
 	<!-- 게시판 글삭제 -->
