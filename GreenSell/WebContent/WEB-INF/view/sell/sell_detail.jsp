@@ -47,6 +47,7 @@
 			</c:if>
 			${itemone.getHowsell() }
 			<c:if test="${auctionitem.getHowsell()=='경매'}">
+			<br>
 			<input class='callbtn' type="button" value="입찰하기" style='width: 295px'>
 			<input class='callbtn' type="button" value="찜 하기" style='width: 95px'>
 			</c:if>
