@@ -72,15 +72,20 @@ function test() {
 	<form name='register_form' action="result">
 		<div class='container'>
 			<div class='border'>회원가입</div>
-			<div class='p'>이메일1</div>
+			<div class='p'>이메일</div>
+			<div style='text-align: left; margin-left: 50px'>
 			<input name='email' id='textbox' type='text' placeholder="이메일"
 				style='width: 300px'> 
-		    <span id="idchk"></span>
+				 <span id="idchk" style='margin-left: 15px'></span>
+				</div>
+		   
 			<div class='p'>이름</div>
 			<input name='name' id='textbox' type='text' placeholder="이름">
 			<div class='p'>별명</div>
+			<div style='text-align: left; margin-left: 50px'>
 			<input name='nickname' id='textbox' type='text' placeholder="별명"
-				style='width: 300px'><span id="nickchk"></span>
+				style='width: 300px'><span id="nickchk" style='margin-left: 15px'></span>
+				</div>
 			<div class='p'>비밀번호</div>
 			<input name="password" id='textbox' type='password' placeholder="비밀번호" style='width: 200px;'>
 			<input name="password2" id='textbox' type='password' placeholder="비밀번호 확인" style='width: 200px;'>
@@ -89,11 +94,11 @@ function test() {
 				style='width: 300px'> <input class='button2' type='button'
 				value='인증'>
 			<div class='p'>주소</div>
-			<input name="zipcode" id='zip' type='text' placeholder="우편번호"
+			<input class='textbox' name="zipcode" id='zip' type='text' placeholder="우편번호"
 				style='width: 200px'> 
 			<input class='button' type='button' value='검색' style='width: 200px' onclick="test()">
 			<br>
-			<input name="address" id='zip2' type='text' placeholder="상세주소" style="margin-top: 10px; width: 400px">
+			<input class='textbox' name="address" id='zip2' type='text' placeholder="상세주소" style="margin-top: 10px; width: 400px">
 
 			<div class='p'>계좌번호</div>
 			<select name='bank' class='rf'>
