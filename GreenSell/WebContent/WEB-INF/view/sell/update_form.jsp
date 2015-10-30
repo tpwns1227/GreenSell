@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/input.css">
-<script type="text/javascript" src="/GreenSell/js/input.js"></script>
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
+<script type="text/javascript" src="/GreenSell/js/input"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var category = '${itemone.category}';
-		var itemstate = '${itemone.itemstate}';
+		var itemstate = '${itemone.itemstate}';		
 		
 		if (category == '의류/잡화') {
 			$("option[value='의류/잡화']").attr("selected", "selected");
@@ -27,7 +29,6 @@
 		else if (category == '기타') {
 			$("option[value='기타']").attr("selected", "selected");
 		}
-		
 		if (itemstate == '미개봉상품') {
 			$("option[value='미개봉상품']").attr("selected", "selected");
 		}
@@ -40,7 +41,22 @@
 		else if (itemstate == 'C급') {
 			$("option[value='C급']").attr("selected", "selected");
 		}
+			
 	});
+	
+	function ch1(){
+		document.querySelector('.img1').innerHTML = document.querySelector('#img1').value;
+	}
+	function ch2(){
+		document.querySelector('.img2').innerHTML = document.querySelector('#img2').value;
+	}
+	function ch3(){
+		document.querySelector('.img3').innerHTML = document.querySelector('#img3').value;
+	}
+	function ch4(){
+		document.querySelector('.img4').innerHTML = document.querySelector('#img4').value;
+	}
+	
 </script>
 </head>
 <body>
@@ -66,10 +82,13 @@
 			<option value='B급'>B급</option>
 			<option value='C급'>C급</option>
 		</select>
+		
 		<div class='p'>사진</div>
 		<div id='image1'>
-			<input type="file" id="img1" onchange="ch()" name="imgname1" /> <label
-				class='img1' for="img1">클릭</label>
+		<c:forEach items="${names}" var="img" varStatus="v">
+			<input type="file" id="img${v.count}" onchange="ch${v.count}()" name="imgname${v.count}"/><label
+				class='img${v.count}' for="img${v.count}">${img}</label>
+		</c:forEach>
 		</div>
 		<div class='p'>가격</div>
 		<input class='textbox' name="itemprice" type='text'
