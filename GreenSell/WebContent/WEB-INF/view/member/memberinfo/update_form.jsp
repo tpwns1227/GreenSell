@@ -19,11 +19,22 @@ $(document).ready(function(){
 	var bank = '${member.bank}';
 	if(bank == 'nh'){
 		$("#nh").attr("selected","selected");	
+	}	
+});
+
+function test() {
+	   win_post = window.open('zip_form', "post",
+	         "toolbar=no ,width=370 ,height=300 ,directories=no,"
+	               + "status=yes,scrollbars=yes,menubar=no");
 	}
 	
-	
-	
-});
+$(document).ready(function(){
+	$('.btnok').click(function(){
+		if($('#pass')==($('#pass2')))
+			alert("비밀번호를 확인하세요");
+		$('#pass1').focus();
+	})
+})
 </script>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
@@ -34,13 +45,13 @@ $(document).ready(function(){
 		<div class='border'>정보 수정</div>
 		<div class='p'>비밀번호</div>
 		<input class='textbox' name="password" id='pass' type='password' placeholder="비밀번호"
-			style='width: 200px;'> <input name="password2" id='textbox'
+			style='width: 200px;'> <input name="password2" id='pass2'
 			type='password' class='textbox' placeholder="비밀번호 확인" style='width: 200px;'>
 		<div class='p'>주소</div>
 		<input class='textbox' name="zipcode" id='zip' type='text' placeholder="우편번호"
-			style='width: 200px' value="" readonly=""> <input
-			class='button' type='button' value='검색' style='width: 200px'>
-		<input class='textbox' name="address" id='add' type='text' placeholder="상세주소"
+			style='width: 200px' value="${zipp} " readonly=""> <input
+			class='button' type='button' value='검색' style='width: 200px' onclick="test()">
+		<input class='textbox' name="address" id='zip2' type='text' placeholder="상세주소"
 			style="margin-top: 10px; width: 400px"
 			value='${member.address}' readonly="">
 

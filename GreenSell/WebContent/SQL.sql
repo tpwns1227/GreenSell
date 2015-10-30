@@ -26,7 +26,6 @@ create table bbsSort( --�Խ��� ����
    bbsname varchar2(50) not null,
    bbscm char not null
 );
-
 insert into BBSSORT values (1,'��������','f')
 select * from BBSSORT
 select * from replycomment
