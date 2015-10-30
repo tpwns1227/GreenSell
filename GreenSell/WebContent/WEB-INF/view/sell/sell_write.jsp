@@ -25,7 +25,7 @@
 
 					<div class="next">
 						<div class='p'>제품명</div>
-						<input name="itemname" id='textbox' type='text' placeholder="제품명">
+						<input name="itemname" class='textbox' type='text' placeholder="제품명">
 						<div class='nb'>
 							<input class="button" type="button" value="다음">
 						</div>
@@ -111,7 +111,7 @@
 
 					<div class="next">
 						<div class='p' id="auction">가격</div>
-						<input id='textbox' name="itemprice" type='text' placeholder="가격"><br>
+						<input class='textbox' name="itemprice" type='text' placeholder="가격"><br>
 						<div class='bt'>
 							<div class='pb'>
 								<input class="button" type="button" value="이전">
@@ -124,10 +124,7 @@
 					
 					<div class="next" id="finishdate"><!-- 경매일 경우  -->
 						<div class='p' id="auction">마감날짜</div>
-						<input class="calen" name="finishtime" type='text' placeholder="날짜">
-						
-						<!-- <input type="button" value="날짜선택" id="date"> -->
-						<!-- <div id="calendar" class="calen"></div> -->
+						<input class="calen textbox" name="finishtime" type='text' placeholder="날짜">
 						<br>
 						<div class='bt'>
 							<div class='pb'>
