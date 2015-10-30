@@ -17,13 +17,15 @@ public interface BbsDao {
 	
 	public List<BbsVo> selecttitle(String title)throws SQLException;
 	
-	public List<BbsVo> selectcontent(String content)throws SQLException;
+	public List<BbsVo> selectcontent(String bbscontent)throws SQLException;
 	
 	public boolean Hitup(BbsVo dao)throws SQLException;
 	
 	public BbsVo view(int no)throws SQLException;
 	
 	public boolean Insert(ReplyVo Vo) throws SQLException;
+	
+	public int Count() throws SQLException;
 }
 
 

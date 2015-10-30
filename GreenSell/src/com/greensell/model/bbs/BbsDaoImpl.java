@@ -54,8 +54,8 @@ public class BbsDaoImpl implements BbsDao {
 	}
 	
 	@Override	
-	public List<BbsVo> selectcontent(String content) throws SQLException{
-		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent", content);
+	public List<BbsVo> selectcontent(String bbscontent) throws SQLException{
+		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent", bbscontent);
 		return list;
 	}
 
@@ -77,6 +77,12 @@ public class BbsDaoImpl implements BbsDao {
 		int t = sqlsession.insert("bbs.cminsert", Vo);
 		if(t==1){return true;}
 		return false;
+	}
+
+	@Override
+	public int Count() throws SQLException {
+		int num = sqlsession.selectOne("bbs.count");
+		return num;
 	}
 
 }
