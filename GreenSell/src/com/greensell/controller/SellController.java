@@ -122,7 +122,7 @@ public class SellController {
 	@RequestMapping("/sellinput") // 파일 올리기 후 경매인지 중고판매인지에 따라 다르게 insert 후 상품 이미지 db에 넣기
 	public String insertsellitem(ItemSellVO itsv, HttpServletRequest req) throws SQLException, IOException {	
 		int maxPostSize = 50 * 1024 * 1024; // 50MB	
-		String pcname =  InetAddress.getLocalHost().getHostName().substring(0, InetAddress.getLocalHost().getHostName().indexOf("-"));
+		String pcname =  InetAddress.getLocalHost().getHostName().substring(0, InetAddress.getLocalHost().getHostName().lastIndexOf("-"));
 	    String uploadDir = "C:\\Users\\"+pcname+"\\git\\GreenSell\\GreenSell\\WebContent\\img\\item";
 		MultipartRequest multi = new MultipartRequest(req, uploadDir, maxPostSize, "UTF-8", new DefaultFileRenamePolicy());
 		
