@@ -14,7 +14,7 @@ public class BbsDaoImpl implements BbsDao {
 	private SqlSession sqlsession;
 
 	@Override
-	public boolean Insert(BbsVo b) throws SQLException{
+	public boolean insert(BbsVo b) throws SQLException{
 		int t = sqlsession.insert("bbs.bbsinsert", b);
 		if(t==1){return true;}
 		return false;
@@ -22,21 +22,21 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	//게시글 번호를 받아 삭제
-	public boolean Delete(int no) {
+	public boolean delete(int no) {
 		int t = sqlsession.delete("bbs.delete", no);
 		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
-	public boolean Update(BbsVo dao) {
+	public boolean update(BbsVo dao) {
 		int t = sqlsession.update("bbs.update", dao);
 		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
-	public List<ReplyVo> selectcomment(ReplyVo reply) throws SQLException {
+	public List<ReplyVo> selectComment(ReplyVo reply) throws SQLException {
 		List<ReplyVo> list=sqlsession.selectList("bbs.cmselect",reply);
 		return list;
 	}
@@ -48,19 +48,19 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override	
-	public List<BbsVo> selecttitle(String title) throws SQLException{
+	public List<BbsVo> selectTitle(String title) throws SQLException{
 		List<BbsVo> list = sqlsession.selectList("bbs.bbsselecttitle", title);
 		return list;
 	}
 	
 	@Override	
-	public List<BbsVo> selectcontent(String bbscontent) throws SQLException{
+	public List<BbsVo> selectContent(String bbscontent) throws SQLException{
 		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent", bbscontent);
 		return list;
 	}
 
 	@Override
-	public boolean Hitup(BbsVo dao) throws SQLException {
+	public boolean hitUp(BbsVo dao) throws SQLException {
 		int t = sqlsession.update("bbs.hitup", dao);
 		if(t==1){return true;}
 		return false;
@@ -73,14 +73,14 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public boolean Insert(ReplyVo Vo) throws SQLException {
+	public boolean insert(ReplyVo Vo) throws SQLException {
 		int t = sqlsession.insert("bbs.cminsert", Vo);
 		if(t==1){return true;}
 		return false;
 	}
 
 	@Override
-	public int Count() throws SQLException {
+	public int count() throws SQLException {
 		int num = sqlsession.selectOne("bbs.count");
 		return num;
 	}
