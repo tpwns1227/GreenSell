@@ -1,5 +1,11 @@
 @CHARSET "UTF-8";
 
+body {
+	
+	margin: 0px;
+	
+}
+
 .border {
 	font-size: 15px;
 	text-align: left;
@@ -20,6 +26,16 @@ input[type='button']:hover {
 	/*input type='button' hover 시 #0e9d4f*/
 }
 
+a {
+	color: black;
+	/*하이퍼링크 밑줄 제거한뒤 검정색*/
+}
+
+a:hover {
+	transition: 0.3s ease;
+	color: #12CC66;
+	/*하이퍼링크에 마우스올리면 색상변경*/
+}
 
 .textbox {
 	background-color: white;
