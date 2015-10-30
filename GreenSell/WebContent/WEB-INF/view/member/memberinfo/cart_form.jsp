@@ -20,7 +20,7 @@
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
-		취소
+		<a href='#'>취소</a>
 	</div>
 	</div>
 </div>
@@ -32,7 +32,7 @@
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
-		취소
+		<a href='#'>취소</a>
 	</div>
 	</div>
 </div>
@@ -43,7 +43,7 @@
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
-		취소
+		<a href='#'>취소</a>
 	</div>
 	</div>
 </div>
@@ -54,7 +54,7 @@
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
-		취소
+		<a href='#'>취소</a>
 	</div>
 	</div>
 </div>
@@ -65,7 +65,7 @@
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
-		취소
+		<a href='#'>취소</a>
 	</div>
 	</div>
 </div>
@@ -76,7 +76,7 @@
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
-		취소
+		<a href='#'>취소</a>
 	</div>
 	</div>
 </div>
@@ -87,7 +87,7 @@
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
 	<div class='item'>
-		취소
+		<a href='#'>취소</a>
 	</div>
 	</div>
 </div>
