@@ -17,11 +17,14 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class='body2'>
 
-		<c:forEach var="list" items="${itemlist}">
+		<c:forEach var="list" items="${itemlist}" varStatus="var">
 			<div class='container'>
+			
 				<div class='img'>
-					<img src='img.png' class='img'>
+					<a href="sell_detail?no=${list.no}">
+					<img src='/GreenSell/img/item/${fristimg[var.index]}' class='img'></a>
 				</div>
+				
 				<div class='item'>${list.itemname}</div>
 				<div class='price'>${list.itemprice}</div>
 			</div>

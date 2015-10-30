@@ -26,8 +26,8 @@
 
 					<div class="next">
 						<div class='p'>제품명</div>
-						<input name="itemname" class='textbox' type='text'
-							placeholder="제품명">
+						<input name="itemname" id="itemname" class='textbox' type='text'
+							placeholder="제품명" maxlength="30">
 						<div class='nb'>
 							<input class="button" type="button" value="다음">
 						</div>
@@ -87,7 +87,7 @@
 								<input class="button" type="button" value="이전">
 							</div>
 							<div class='nb'>
-								<input type="button" class="button" value="다음">
+								<input type="button" id="imgnextbtn" class="button" value="다음">
 							</div>
 
 						</div>
@@ -113,14 +113,14 @@
 
 					<div class="next">
 						<div class='p' id="auction">가격</div>
-						<input class='textbox' name="itemprice" type='text'
-							placeholder="가격"><br>
+						<input class='textbox' id="itemprice" name="itemprice" type='text'
+							placeholder="가격" maxlength="9"><br>
 						<div class='bt'>
 							<div class='pb'>
 								<input class="button" type="button" value="이전">
 							</div>
 							<div class='nb'>
-								<input type="button" class="button" value="다음">
+								<input type="button" id='pricebtn' class="button" value="다음">
 							</div>
 						</div>
 					</div>
@@ -129,27 +129,27 @@
 						<!-- 경매일 경우  -->
 						<div class='p' id="auction">마감날짜</div>
 						<input readonly="readonly" class="calen textbox" name="finishtime"
-							type='text' placeholder="날짜"> <br>
+							type='text' placeholder="날짜" id="calender"> <br>
 						<div class='bt'>
 							<div class='pb'>
 								<input class="button" type="button" value="이전">
 							</div>
 							<div class='nb'>
-								<input type="button" class="button" value="다음">
+								<input type="button" id="calenderbtn" class="button" value="다음">
 							</div>
 						</div>
 					</div>
 
 					<div style="margin-top: 150px; height: 450px;">
 						<div class='p'>상세설명</div>
-						<textarea name="itemdetail" placeholder="상세설명"></textarea>
+						<textarea id="detail" name="itemdetail" placeholder="상세설명"></textarea>
 
 						<div class='bt'>
 							<div class='pb'>
 								<input class="button" type="button" value="이전">
 							</div>
 							<div class='nb'>
-								<input type="submit" class="button" value="등록">
+								<input type="button" id="fin" class="button" value="등록">
 							</div>
 							<input type="hidden" name='email' value="${skey}">
 						</div>
