@@ -21,7 +21,7 @@
 	</select>
 
 	<select id="selectpwd" resultType="com.greensell.member.beans.MemberVO"> <!-- 비밀번호 찾기  -->
-		select password from member where name=#{name} and email=#{email}    
+		select password from member where email=#{email} and question=#{question} and answer=#{answer}  
 	</select>
 
 	<update id="update" parameterType="String"> <!-- 회원정보 업데이트 -->
@@ -50,4 +50,18 @@
         OR dong LIKE '%'||#{address}||'%'
         OR bunji LIKE '%'||#{address}||'%'
 	</select>
+	
+	<select id="getquestion" resultType="String" parameterType="String">
+		select question from member where email=#{email}
+	</select>
+	
+	<select id="getanswer" resultType="String" parameterType="String">
+		select answer from member where email=#{email}
+	</select>
+	
+	<update id="updatepw" parameterType="map">
+		update member set password=#{password} where email=#{email}
+	</update>
+	
+	
 </mapper>
