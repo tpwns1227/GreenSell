@@ -51,7 +51,7 @@ public class BbsController {
 			try {
 				List<BbsVo> list = dao.selectAll();
 				List<BbsVo> list2 = dao.selectTitle(title);
-				System.out.println("bbscontent::"+bbscontent);
+				
 				List<BbsVo> list3 = dao.selectContent(bbscontent);
 				int num = dao.count();
 				m.addAttribute("selectAll", list);
@@ -190,7 +190,23 @@ public class BbsController {
 				
 				
 				return "redirect:view?no="+no;
+			}
+			
+			@RequestMapping("/delete")
+			public String delete(@RequestParam int no,BbsVo b){
+				int n=b.getNo();
+				//m.addAttribute(no);
+				try {
+					if(dao.delete(no))
+					return "bbs/BbsList";
+						
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
+				return "bbs/BbsList";
 			}
 }
 	
