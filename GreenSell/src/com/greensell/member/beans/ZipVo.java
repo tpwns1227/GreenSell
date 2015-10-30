@@ -4,7 +4,7 @@ public class ZipVo {
 	
 	String zipcode;
 	String sido;
-	String gugan;
+	String gugun;
 	String dong;
 	String bunji;
 	public String getZipcode() {
@@ -19,11 +19,11 @@ public class ZipVo {
 	public void setSido(String sido) {
 		this.sido = sido;
 	}
-	public String getGugan() {
-		return gugan;
+	public String getGugun() {
+		return gugun;
 	}
-	public void setGugan(String gugan) {
-		this.gugan = gugan;
+	public void setGugun(String gugun) {
+		this.gugun = gugun;
 	}
 	public String getDong() {
 		return dong;
