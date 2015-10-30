@@ -1,7 +1,9 @@
 package com.greensell.controller;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
@@ -102,6 +104,37 @@ public class MemberController {
 		   }
 	   }
 	   
+	   @RequestMapping("/updatepw")
+	   public String updatepw(@RequestParam String password,
+			   				  @RequestParam String email) throws SQLException{
+		   Map<String, String> map = new HashMap<String, String>();
+		   map.put("email", email);
+		   map.put("password", password);
+		   dao.updatepw(map);
+		   return "member/memberinfo/login_form";
+	   }
+	   
+	   @RequestMapping(value = "/emailchk", method = RequestMethod.POST)
+	   public @ResponseBody String emailchk(@RequestParam String email) throws SQLException{
+		   String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		   Pattern p = Pattern.compile(regex);
+		   if(!p.matcher(email).matches()){	return "사용불가"; 
+		   }else{
+		   return dao.getQuestion(email);
+		   }
+	   }
+	   
+	   @RequestMapping(value = "/qustion_answer", method = RequestMethod.POST)
+	   public @ResponseBody String qustion_answerchk(@RequestParam String email,
+			   @RequestParam String qanswer) throws SQLException{
+		   if(!qanswer.equals(dao.getanswer(email))){
+			  return "질문과 답이 일치하지 않습니다.";
+		  }else{ 
+		  return "ok";
+		  }
+	   }
+	   
+	   
 	   @RequestMapping(value = "/nickchk", method = RequestMethod.POST)
 	    public @ResponseBody String nickchk(@RequestParam String nickname) throws SQLException {
 			   boolean idchk = dao.nickcheck(nickname);  
@@ -168,7 +201,7 @@ public class MemberController {
 			   session.setAttribute("skey",membervo.getEmail());
 			   return "member/memberinfo/update_form";
 	   }
-	   @RequestMapping("/zip_form")//우편번호찾기
+	   @RequestMapping("/zip_form")//우편번호찾기폼띄우기
 	   public String zipSearch(){
 		 
 		   return "member/memberinfo/zip_form";
@@ -181,7 +214,17 @@ public class MemberController {
 		  m.addAttribute("result", list);
 		 
 		 return "member/memberinfo/zip_form";
-		  
+	   }
+	   
+	   @RequestMapping("/searchPw_form")//비밀번호 찾기 폼
+	   public String pwSearch(){
+		   return "member/memberinfo/find_form";
+	   }
+	   @RequestMapping("/serarchPw")
+	   public String search_pw(@RequestParam String password,Model m) throws SQLException{
+		    MemberVO mv = dao.selectpwd(password);
+		   m.addAttribute("pass",mv);
+		   return "member/memberinfo/find_form";
 	   }
 	   
 	   
