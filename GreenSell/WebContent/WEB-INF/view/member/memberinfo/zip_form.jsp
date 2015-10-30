@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>결과창</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/zip.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 </head>
 <script>
@@ -45,10 +47,11 @@
 </script>
 <body>
     <form name="zipform" method="post" action="zip_result">
-        <table border="1" width="100%">
+        <table width="450px" style='border: 0px none'>
             <tr align="center">
-                <td>동이름 검색 : <input type="text" name="address" size="15">
-                    <input type="button" value="검색" onclick="check()">
+                <td><div class='border'>동 이름 검색</div>
+                <input class='textbox' type="text" name="address" size="15">
+                    <input class='button' type="button" value="검색" onclick="check()">
                 </td>
             </tr>
             <tr>
