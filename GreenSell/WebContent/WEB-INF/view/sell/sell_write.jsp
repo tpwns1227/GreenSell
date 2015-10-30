@@ -8,7 +8,8 @@
 <link rel="stylesheet" type="text/css" href="css/input.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script type="text/javascript" src="/GreenSell/js/input.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
@@ -17,7 +18,8 @@
 
 	<jsp:include page="../main/header.jsp"></jsp:include>
 
-	<form name="sellForm" action="sellinput" method="post" enctype="multipart/form-data">
+	<form name="sellForm" action="sellinput" method="post"
+		enctype="multipart/form-data">
 		<div class='container'>
 
 			<div id="slide">
@@ -25,7 +27,8 @@
 
 					<div class="next">
 						<div class='p'>제품명</div>
-						<input name="itemname" class='textbox' type='text' placeholder="제품명">
+						<input name="itemname" class='textbox' type='text'
+							placeholder="제품명">
 						<div class='nb'>
 							<input class="button" type="button" value="다음">
 						</div>
@@ -38,7 +41,7 @@
 							<option value='a2'>가구/전자</option>
 							<option value='a3'>여행/스포츠</option>
 							<option value='a4'>도서/티켓</option>
-							<option value='a5'>기타</option> 
+							<option value='a5'>기타</option>
 						</select>
 						<div class='bt'>
 							<div class='pb'>
@@ -74,8 +77,8 @@
 						<div class='p'>사진추가</div>
 
 						<div id='image1'>
-							<input type="file" id="img1" onchange="ch()" name="imgname1" /> <label
-								class='img1' for="img1">클릭</label>
+							<input type="file" id="img1" onchange="ch()" name="imgname1" />
+							<label class='img1' for="img1">클릭</label>
 						</div>
 						<div id='image2'></div>
 						<div id='image3'></div>
@@ -111,7 +114,8 @@
 
 					<div class="next">
 						<div class='p' id="auction">가격</div>
-						<input class='textbox' name="itemprice" type='text' placeholder="가격"><br>
+						<input class='textbox' name="itemprice" type='text'
+							placeholder="가격"><br>
 						<div class='bt'>
 							<div class='pb'>
 								<input class="button" type="button" value="이전">
@@ -121,11 +125,12 @@
 							</div>
 						</div>
 					</div>
-					
-					<div class="next" id="finishdate"><!-- 경매일 경우  -->
+
+					<div class="next" id="finishdate">
+						<!-- 경매일 경우  -->
 						<div class='p' id="auction">마감날짜</div>
-						<input readonly="readonly" class="calen textbox" name="finishtime" type='text' placeholder="날짜">
-						<br>
+						<input readonly="readonly" class="calen textbox" name="finishtime"
+							type='text' placeholder="날짜"> <br>
 						<div class='bt'>
 							<div class='pb'>
 								<input class="button" type="button" value="이전">
