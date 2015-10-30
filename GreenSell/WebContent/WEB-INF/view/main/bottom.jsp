@@ -21,9 +21,9 @@
 		<div class='containerb'>
 			<ul>
 				<li class='bold'>내 정보</li>
-				<li><a href='#'>판매내역</a></li>
-				<li><a href='#'>구매내역</a></li>
-				<li><a href='#'>관심상품</a></li>
+				<li><a href='#'>포인트 내역</a></li>
+				<li><a href='#'>찜 목록</a></li>
+				<li><a href='#'>내가 올린 글</a></li>
 			</ul>
 		</div>
 		<div class='containerb'>
@@ -37,9 +37,9 @@
 		<div class='containerb'>
 			<ul>
 				<li class="bold">소셜</li>
-				<li><a href='#'>페이스북</a></li>
+				<li><a href='https://www.facebook.com/profile.php?id=100009544424914'>페이스북</a></li>
 				<li><a href='#'>트위터</a></li>
-				<li><a href='#'>인스타그램</a></li>
+				<li><a href='https://instagram.com/yoonpooh'>인스타그램</a></li>
 			</ul>
 		</div>
 		<div class='containerb' id='logob'>
