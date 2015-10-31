@@ -79,7 +79,7 @@ public class SellDaoImpl implements SellDao {
    @Override
    public boolean itemUpdate(ItemSellVO itsv) throws SQLException {//올린 게시글 수정
       // TODO Auto-generated method stub
-	   int i =	sqlSession.update("sell.update",itsv);
+	   int i =	sqlSession.update("sell.itemupdate",itsv);
 	   return (i>0)? true:false;
    }
 
@@ -96,15 +96,12 @@ public class SellDaoImpl implements SellDao {
        return (i>0)? true:false;
 	}
 
-   /*@Override
-   public boolean auctionDelete(int no) throws SQLException {
-      // TODO Auto-generated method stub
-      int i = sqlSession.delete("deleteauction", no);
-      return (i>0)? true:false;
-   }*/
-   
-   
-   
+   @Override
+	public boolean imgupdate(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+			int i = sqlSession.update("sell.imgupdate", map);
+	   return (i>0)? true:false;
+	}
    
    @Override
 	public int selectlastno() throws SQLException {
