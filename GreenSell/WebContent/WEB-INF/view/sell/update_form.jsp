@@ -41,6 +41,15 @@
 		else if (itemstate == 'C급') {
 			$("option[value='C급']").attr("selected", "selected");
 		}
+		
+		$("#updatebtn").click(function(){
+			if(confirm("수정하시겠 습니까?")){
+				document.updateForm.submit();
+			}else{
+				return;
+			}
+			
+		});
 			
 	});
 	
@@ -63,7 +72,9 @@
 
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='container'>
+	<form action="update_result" method="post" name="updateForm" enctype="multipart/form-data">
 		<div class='border'>게시물 수정</div>
+		<input type="hidden" name="no" value="${itemone.no}">
 		<div class='p'>제품명</div>
 		<input class='textbox' name="itemname" type='text' placeholder="제품명"
 			value="${itemone.itemname}">
@@ -95,8 +106,9 @@
 			value="${itemone.itemprice}" placeholder="가격">
 		<div class='p'>상세설명</div>
 		<textarea name="itemdetail" placeholder="상세설명">${itemone.itemdetail}</textarea>
-		<input type="submit" class="button" value="수정"
+		<input type="button" id="updatebtn" class="button" value="수정"
 			style='width: 400px; margin-top: 25px;'>
+			</form>
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>
 
