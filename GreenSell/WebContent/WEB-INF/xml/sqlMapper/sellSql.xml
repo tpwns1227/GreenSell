@@ -28,9 +28,13 @@
   		delete from auction where no=(select no from auction where itemno=#{no})
   	</delete> -->
   	
-  	<update id="updateitem" parameterType="com.greensell.sell.beans.ItemSellVO">
+  	<update id="itemupdate" parameterType="com.greensell.sell.beans.ItemSellVO">
   		update itemsell set itemname=#{itemname}, itemprice=#{itemprice}, itemstate=#{itemstate}, category=#{category}, itemdetail=#{itemdetail}
   			where no=#{no}  			
+  	</update>
+  	
+  	<update id="imgupdate" parameterType="map">
+  		update itemimg set imgname=#{imgname} where imgname=#{oldimg}
   	</update>
   	
   	<insert id="insertitem" parameterType="com.greensell.sell.beans.ItemSellVO">
