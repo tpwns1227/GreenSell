@@ -130,7 +130,6 @@ public class SellController {
 		String uploadDir = "C:\\Users\\" + pcname + "\\git\\GreenSell\\GreenSell\\WebContent\\img\\item";
 		MultipartRequest multi = new MultipartRequest(req, uploadDir, maxPostSize, "UTF-8",
 				new DefaultFileRenamePolicy());
-
 		List<String> names = dao.getImagenames(Integer.parseInt(multi.getParameter("no")));
 		for (int i = 0; i < names.size(); i++) {
 			File oldfile = new File(uploadDir + names.get(i));
