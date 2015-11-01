@@ -17,10 +17,46 @@
 			}
 		});
 		
+		
+		var findate = new Date('${auctionitem.finishtime}');
+		var finmonth = findate.getMonth();
+		var findate = findate.getDate();
+		setInterval(function () {        // 타이머
+			 $.ajax({ 
+		         url : "time",
+		         success : function(data){ 
+		        	 var nowdate = new Date(data);
+		        	 var fM = (finmonth+1) - (nowdate.getMonth()+1);
+		        	 var fd = findate - nowdate.getDate(); 
+		        	 var i=0;
+		        	 if(fM!=0){ // 마감일과 현재날짜의 달이 다르면
+		        		 for(i; i<10; i++){
+		        			 var ndate = new Date(nowdate.setDate(i));
+		        			 if(ndate.getDate()==findate){
+		        				 i=i-1;
+		        				 break;
+		        			 }
+		        		 } 
+		        	 }else{
+		        		 i = fd;
+		        	 }
+		        	 var fh = 23 - nowdate.getHours();
+		        	 var fm = 59 - nowdate.getMinutes();
+		        	 var fs = 60 - nowdate.getSeconds();
+		        	 $("#fintime").html((i-1)+"일   "+fh+"시간"+fm+"분"+fs+"초 전");
+		         } 		 
+		      });
+			 
+        }, 1000);
+		
+		
+		
+		
 		$(".simg").click(function(){
 			var s = $(this).attr('src');
 			$(".mimg").attr('src', s);
 		});
+		
 		
 		$("#updateitem").click(function(){
 			location.href="updateitem_form?no=${itemone.no}";
@@ -34,6 +70,10 @@
 				return;
 				}
 		});
+		
+		
+		
+		
 	});
 	
 	
@@ -96,7 +136,7 @@
 			<div class='bold2'>현재가격</div>
 			<div class='font'>${auctionitem.getNowprice()}</div>
 			<div class='bold2'>마감시간</div>
-			<div class='font'>${auctionitem.getFinishtime()}</div>
+			<div class='font' id="fintime"></div>
 			<div class='bold2'>입찰횟수</div>
 			<div class='font'>${auctionitem.getTendernumber()}</div>
 			<div class='bold2'>판매방법</div>
