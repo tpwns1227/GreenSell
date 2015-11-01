@@ -105,10 +105,8 @@ public class SellDaoImpl implements SellDao {
    
    @Override
 	public int selectlastno() throws SQLException {
-		// TODO Auto-generated method stub
-	   System.out.println(sqlSession);
+		// TODO Auto-generated method stub 
 	  	int i = sqlSession.selectOne("sell.selectlastno");
-	  	System.out.println(i);
 	   return i;
 	}
  
