@@ -74,7 +74,7 @@ public class MemberController {
 		  if(pwchk) {
 			  m.addAttribute("result", "로그인 성공되었습니다.");
 			  session.setAttribute("skey", email);
-			  return "/main/home";
+			  return "redirect:home";
 		  }else{
 			  m.addAttribute("result","로그인에 실패되었습니다.");
 			  return "member/memberinfo/login_form";
@@ -84,7 +84,7 @@ public class MemberController {
 	   @RequestMapping("/logout") //로그아웃
 	   public String logout(HttpSession session){
 			   session.invalidate();
-		   return "main/home";
+			   return "redirect:home";
 	   }
 	   
 	   @RequestMapping(value = "/idchk", method = RequestMethod.POST)
