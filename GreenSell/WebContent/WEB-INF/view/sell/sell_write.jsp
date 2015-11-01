@@ -127,7 +127,8 @@
 
 					<div class="next" id="finishdate">
 						<!-- 경매일 경우  -->
-						<div class='p' id="auction">마감날짜</div>
+						<div class='p' id="auction">마감날짜<font size="1px" >
+						<strong>(선택일 00시에 마감됩니다. 경매는 전날까지만 진행됩니다.)</strong></font></div>
 						<input readonly="readonly" class="calen textbox" name="finishtime"
 							type='text' placeholder="날짜" id="calender"> <br>
 						<div class='bt'>
