@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.greensell.model.sell.SellDao;
 import com.greensell.sell.beans.AuctionVO;
@@ -172,6 +175,14 @@ public class SellController {
 
 		return "redirect:sell_detail?no="+itsv.getNo();
 	}
+	
+	@RequestMapping("/time")
+	public @ResponseBody String gettime(){	
+		long curTime = System.currentTimeMillis();
+		SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String str = time.format(new Date(curTime));
+		return str;
+	}
 
 	@RequestMapping("/inputform") // 판매하기 눌렀을때 판매로 이동
 	public String viewitemlist() throws SQLException {
@@ -197,7 +208,7 @@ public class SellController {
 		itsv.setItemprice(Integer.parseInt(multi.getParameter("itemprice")));
 		itsv.setItemdetail(multi.getParameter("itemdetail"));
 		itsv.setEmail(multi.getParameter("email"));
-		String finishtime = multi.getParameter("finishtime");
+		String finishtime = multi.getParameter("finishtime");		
 		String imgname1 = multi.getFilesystemName("imgname1");
 		String imgname2 = multi.getFilesystemName("imgname2");
 		String imgname3 = multi.getFilesystemName("imgname3");
