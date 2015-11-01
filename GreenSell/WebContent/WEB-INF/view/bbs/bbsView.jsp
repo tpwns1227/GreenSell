@@ -66,7 +66,7 @@ function CM() {
 		<!--session값 확인해서 수정,삭제 활성화  -->
 		<!-- 수정 클릭시 게시글 번호를 넘겨 BbsUpdate.jsp로 이동 -->
 			<td align="right">
-			
+			<!--작성자아이디와 로그인 정보가 일치 했을때  -->
 			<c:if test="${view.email==skey}">
 			
 			<input type="button"  id="up" value="수정" onclick="location.href='update?no=${view.no}'">

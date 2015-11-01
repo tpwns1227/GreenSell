@@ -27,12 +27,12 @@ public class BbsController {
 	//게시글 쓰기
 	@RequestMapping("/write")
 	public String write(){
-		return "bbs/BbsWrite";
+		return "bbs/bbsWrite";
 	}
 	
 	@RequestMapping("/write2")
 	public String write2(){
-		return "bbs/BbsWrite2";
+		return "bbs/bbsWrite2";
 	}
 	
 	@RequestMapping("/help")
@@ -62,12 +62,12 @@ public class BbsController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return "bbs/BbsList";
+			return "bbs/bbsList";
 		}
 	
 	@RequestMapping("/qna")
 	public String qna(){
-		return "bbs/BbsQNA";
+		return "bbs/bbsQNA";
 	} 
 	
 	//게시글 상세보기
@@ -88,7 +88,7 @@ public class BbsController {
 				{
 					e.printStackTrace();
 				}
-			return "bbs/BbsView";
+			return "bbs/bbsView";
 		}
 	
 	//게시글 쓰기 완료
@@ -106,7 +106,7 @@ public class BbsController {
 					
 					if(dao.insert(b)){
 						m.addAttribute("msg","입력되었습니다.");
-						return "bbs/BbsWriteOk";
+						return "bbs/bbsWriteOk";
 					}
 					
 					}
@@ -115,7 +115,7 @@ public class BbsController {
 						e.printStackTrace();
 					}
 					
-					return "bbs/BbsWrite";
+					return "bbs/bbsWrite";
 				}
 			
 	
@@ -167,7 +167,7 @@ public class BbsController {
 						e.printStackTrace();
 					}
 				
-				return "bbs/BbsUpdate";
+				return "bbs/bbsUpdate";
 			}
 			
 			@RequestMapping("/updateok")
