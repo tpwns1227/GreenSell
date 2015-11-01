@@ -10,6 +10,13 @@
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script>
 	$(document).ready(function(){
+		$(":button").click(function(){
+			if('${skey}' == '' || '${skey}' == null){
+				alert('로그인을 한 후에 이용해 주세요.');
+				location.href="login_form";
+			}
+		});
+		
 		$(".simg").click(function(){
 			var s = $(this).attr('src');
 			$(".mimg").attr('src', s);
