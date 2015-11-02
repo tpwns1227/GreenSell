@@ -16,19 +16,21 @@
 		location.href=url;
 	}
 	// 등록 폼 체크
-	function BbsWriteCheck() {
-		var form = document.boardWriteForm;
-		if (form.subject.value == '') {
+	function WC() {
+		var form = document.BbsWriteForm;
+		if (form.title.value == '') {
 			alert('제목을 입력하세요.');
-			form.subject.focus();
+			form.title.focus();
+			return false;
+		} else 
+		if (form.bbscontent.value == '') {
+			alert('내용을 입력해주세요.');
+			form.bbscontent.focus();
 			return false;
 		}
-		if (form.writer.value == '') {
-			alert('작성자을 입력하세요');
-			form.writer.focus();
-			return false;
-		}
+		else{
 		return true;
+		}
 	}
 </script>
 </head>
@@ -45,7 +47,7 @@
 		</tr>
 		<tr>
 			<th align="center">작성자</th>
-			<td><input type="text" name="email" value="<%=email %>" maxlength="20" /></td>
+			<td><%=email %></td>
 		</tr>
 		<tr>
 				<td colspan="2">
@@ -56,7 +58,7 @@
 			<td colspan="2" align="right">
 				<input type="button" value="목록" onclick="goUrl('list');"/>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="submit" value="글쓰기" />
+				<input type="submit" value="글쓰기" onclick="return WC()" />
 			</td>
 		</tr>
 	</table>
