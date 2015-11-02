@@ -14,8 +14,9 @@
 </div>
 <div class='body2'>
 <div class='containerC'>
-	<div class="imgbox">
 	
+	
+	<div class="imgbox">
 	<div class='img'>
 		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
 	</div>
@@ -23,73 +24,10 @@
 		<a href='#'>취소</a>
 	</div>
 	</div>
-</div>
-
-<div class='containerC'>
-	<div class="imgbox">
 	
-	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
-	</div>
-	<div class='item'>
-		<a href='#'>취소</a>
-	</div>
-	</div>
-</div>
-<div class='containerC'>
-	<div class="imgbox">
 	
-	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
-	</div>
-	<div class='item'>
-		<a href='#'>취소</a>
-	</div>
-	</div>
-</div>
-<div class='containerC'>
-	<div class="imgbox">
 	
-	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
-	</div>
-	<div class='item'>
-		<a href='#'>취소</a>
-	</div>
-	</div>
-</div>
-<div class='containerC'>
-	<div class="imgbox">
 	
-	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
-	</div>
-	<div class='item'>
-		<a href='#'>취소</a>
-	</div>
-	</div>
-</div>
-<div class='containerC'>
-	<div class="imgbox">
-	
-	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
-	</div>
-	<div class='item'>
-		<a href='#'>취소</a>
-	</div>
-	</div>
-</div>
-<div class='containerC'>
-	<div class="imgbox">
-	
-	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
-	</div>
-	<div class='item'>
-		<a href='#'>취소</a>
-	</div>
-	</div>
 </div>
 </div>
 <jsp:include page="../../main/bottom.jsp"></jsp:include>
