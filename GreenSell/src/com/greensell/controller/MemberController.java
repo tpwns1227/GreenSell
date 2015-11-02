@@ -225,6 +225,10 @@ public class MemberController {
 		   m.addAttribute("member",vo);
 		   return "member/memberinfo/member_Detail";
 	   }
+	   @RequestMapping("/cart_form")//찜목록이동하기
+	   public String cart_form(){
+		   return "member/memberfunction/cart_form";
+	   }
 	   
 	   
 	   
