@@ -30,19 +30,16 @@ public class MemberController {
 	   MemberDao dao;
 	   
 	   @RequestMapping("/result") //회원가입하면 이동되는 페이지
-	    public String insert(MemberVO v, Model m){
+	    public String insert(MemberVO v){
 	      //DB연동      
 	      try {
 	    	  
 	         if(dao.insert(v)){
-	            m.addAttribute("msg","가입을 축하해 !!^^*");
 	         }
-	         
 	      } catch (SQLException e) {
 	         e.printStackTrace();
 	      }
-	      
-	      return "/member/memberinfo/result";
+	      return "redirect:login_form";
 	   }
 	
 	   @RequestMapping("/login_form") //로그인폼으로 이동
@@ -223,6 +220,26 @@ public class MemberController {
 	   @RequestMapping("/cart_form")//찜목록이동하기
 	   public String cart_form(){
 		   return "member/memberfunction/cart_form";
+	   }
+	   @RequestMapping("/delete_form")//회원탈퇴하기
+	   public String delete_form(){
+		   return "member/memberinfo/delete_form";
+	   }
+	   
+	   @RequestMapping("/delete_result")
+	   public String delete2(HttpSession session, @RequestParam String password) throws SQLException{
+		   String email = (String) session.getAttribute("skey");
+		   boolean pwchk = dao.logincheck(email, password);
+		   System.out.println(email);
+		   System.out.println(pwchk);
+		   if (pwchk == true){
+			   
+			   dao.delete(email);
+			   session.invalidate();
+			   return "/member/memberinfo/login_form";
+		   }
+		   return "/home"; // 회원탈퇴할때 비밀번호가 다를경우 수정좀
+		  
 	   }
 	   
 	   
