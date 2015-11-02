@@ -9,7 +9,7 @@
 	text-align: center;
 }
 
-#textbox {
+.textbox {
 	background-color: white;
 	border: 1px solid #eee;
 	padding: 0px 1.1em;
