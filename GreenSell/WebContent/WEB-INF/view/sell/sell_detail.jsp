@@ -50,8 +50,30 @@
         }, 1000);
 		
 		
-		
-		
+		$("#selectedbtn").click(function(){
+			var howsell='';
+			var itemno=0;
+			if('${auctionitem.howsell}'=='경매'){
+				howsell='경매';
+				itemno='${auctionitem.no}'}else{
+				howsell='중고';
+				itemno='${itemone.no}'}
+			 $.ajax({ 
+				 type : "post",
+					url : "insert_cart",
+					data : 'email='+'${skey}'+'&itemno='+itemno,
+					success : function(data){ 
+						if(data=='ok'){
+							alert('찜목록에 추가되었습니다.');
+						}else{
+							alert('이미 찜목록에 존재하는 상품 입니다.');
+						}
+						
+					}
+		          
+		      });
+		 });
+
 		$(".simg").click(function(){
 			var s = $(this).attr('src');
 			$(".mimg").attr('src', s);
@@ -66,9 +88,7 @@
 			if(confirm('정말로 삭제하시겠습니까? \r\n 두번 안 묻습니다.'))
 			{
 			location.href="deleteitem?no=${itemone.no}";
-			}else{
-				return;
-				}
+			}else{return;}
 		});
 		
 		
@@ -99,7 +119,7 @@
 			<c:if test="${auctionitem.getHowsell()=='경매'}">
 			<br>
 				<input class='callbtn' type="button" value="입찰하기" style='width: 295px'>
-				<input class='callbtn' type="button" value="찜 하기" style='width: 95px'>
+				<input class='callbtn' id="selectedbtn" type="button" value="찜 하기" style='width: 95px'>
 			</c:if>
 		</div>
 			
@@ -121,7 +141,7 @@
 			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
 			<input class='callbtn' type="button" value="연락처" style='width: 150px'>
 			<input class='callbtn' type="button" value="안전거래" style='width: 150px'>
-			<input class='callbtn' type="button" value="찜" style='width: 100px'> 
+			<input class='callbtn' type="button" id="selectedbtn" value="찜 하기" style='width: 100px'> 
 		</div>
 		</c:if>
 		
