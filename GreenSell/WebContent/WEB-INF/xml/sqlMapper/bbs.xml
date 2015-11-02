@@ -39,8 +39,13 @@
   </insert>
   
 	<!-- 댓글 지우기 -->
-  <delete id="cmdelete">
+  <delete id="cmAlldelete">
   	delete from replycomment where no=#{no} 
+  </delete>
+  
+  	<!-- 댓글  하나 지우기 -->
+  <delete id="cmdelete">
+  	delete from replycomment where cmno=#{cmno}
   </delete>
   
 	<!-- 조회수 올리기 로직 -->

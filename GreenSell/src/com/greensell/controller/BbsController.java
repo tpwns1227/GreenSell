@@ -199,7 +199,7 @@ public class BbsController {
 				//m.addAttribute(no); 
 				try {
 					
-					if(dao.cmdelete(no)){
+					if(dao.cmAlldelete(no)){
 						if(dao.delete(no))
 							return "redirect:list";
 					}

@@ -55,9 +55,9 @@ function CM() {
 			<c:forEach var="cm" items="${comment}">
 				<div class='container'>
 				<tr>
-				<td align="center"><div class='email'>${cm.email}</div></td>
-				<td align="center"><div class='cmdate'>${cm.cmdate}</div></td>
-				<td align="center"><div class='cmcontent'>${cm.cmcontent}</div></td>
+				<td align="center"><div class='email'>${cm.email}
+				${cm.cmdate}</div>
+				<div class='cmcontent'>${cm.cmcontent}</div></td>
 				</tr>
 				</div>
 			</c:forEach>
