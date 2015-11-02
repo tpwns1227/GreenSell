@@ -19,6 +19,14 @@
   	<delete id="deleteitem" parameterType="int">
   		delete from itemsell where no=#{no}
    	</delete>
+   	
+   	<select id="selectedchk" parameterType="String" resultType="String">
+   		select * from selected where itemno=#{itemno}
+   	</select>
+  	
+  	<insert id="insertselected" parameterType="map">
+  		insert into selected values(no_selected_seq.nextval,#{itemno},#{email})
+  	</insert>
   	
   	<delete id="deleteitemimg" parameterType="int">
   		delete from itemimg where imgno=#{no}
@@ -48,10 +56,6 @@
    <insert id="auctioninsert" parameterType="map">
    		insert into auction 
    		values(no_auction_seq.nextval,#{itemno},#{startprice},0,#{finishtime},0,#{email})
-   </insert>
-   
-   <insert id="insertselected" parameterType="map">	<!-- 찜목록 추가하기 -->
-   		insert into selected values (no_selected_seq start,#{itemno},#{email}
    </insert>
   
   	<select id="selectimgname" parameterType="int" resultType="String">
