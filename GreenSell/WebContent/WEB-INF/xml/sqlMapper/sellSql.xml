@@ -49,6 +49,10 @@
    		insert into auction 
    		values(no_auction_seq.nextval,#{itemno},#{startprice},0,#{finishtime},0,#{email})
    </insert>
+   
+   <insert id="insertselected" parameterType="map">	<!-- 찜목록 추가하기 -->
+   		insert into selected values (no_selected_seq start,#{itemno},#{email}
+   </insert>
   
   	<select id="selectimgname" parameterType="int" resultType="String">
   		select imgname from itemimg where imgno=#{no}
