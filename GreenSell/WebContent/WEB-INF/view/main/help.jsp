@@ -12,10 +12,10 @@ function inputCheck(){
 		location.href="list?no=4"
 	});
 	$("#btn2").click(function(){
-		location.href="list?no=2"
+		location.href="list?no=3"
 	});
 	$("#btn3").click(function(){
-		location.href="list?no=3"
+		location.href="list?no=2"
 	});
 };
 </script>
