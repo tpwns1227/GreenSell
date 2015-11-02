@@ -11,6 +11,7 @@
 	<select id="logincheck" parameterType="String" resultType="String"> <!-- 로그인 클리어 --> 
 		SELECT password FROM member WHERE email=#{email}
 	</select>
+	
 
 	<select id="idcheck" parameterType="String" resultType="String"> <!-- 아이디 존재 여부 찾기  -->
 		select email from member where email=#{email}
