@@ -26,6 +26,9 @@ public interface BbsDao {
 	public boolean insert(ReplyVo Vo) throws SQLException;
 	
 	public int count() throws SQLException;
+	
+	public boolean cmdelete(int no)throws SQLException;
+	
 }
 
 

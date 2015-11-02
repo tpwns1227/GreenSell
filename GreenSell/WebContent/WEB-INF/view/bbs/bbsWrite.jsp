@@ -22,14 +22,16 @@
 			alert('제목을 입력하세요.');
 			form.title.focus();
 			return false;
-		} else if (form.bbscontent.value == '') {
+		}  else if (form.bbscontent.value == '') {
 			alert('내용을 입력해주세요.');
 			form.bbscontent.focus();
-			return false;
-		}
-		else{  
-		return true;
-		}
+			return false; 
+		}	
+		
+		else{return true;}
+		
+		
+		
 	}
 </script>
 </head>
@@ -46,7 +48,7 @@
 		</tr>
 		<tr>
 			<th align="center">작성자</th>
-			<td><%=email %></td>
+			<td><input type="text" name="email" value="<%=email %>" readonly="readonly"></td>
 		</tr>
 		<tr>
 				<td colspan="2">
@@ -57,6 +59,7 @@
 			<td colspan="2" align="right">
 				<input type="button" value="목록" onclick="goUrl('list');"/>
 				&nbsp;&nbsp;&nbsp;&nbsp;
+				
 				<input type="submit" value="글쓰기" onclick="return WC()" />
 			</td>
 		</tr>
