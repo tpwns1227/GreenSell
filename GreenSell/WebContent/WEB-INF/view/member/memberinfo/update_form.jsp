@@ -70,7 +70,7 @@ function validationCheck(){
 			type='password' class='textbox' placeholder="비밀번호 확인" style='width: 200px;'>
 		<div class='p'>주소</div>
 		<input class='textbox' name="zipcode" id='zip' type='text' placeholder="우편번호"
-			style='width: 200px' value="${zipcode} " readonly=""> <input
+			style='width: 200px' value="${member.zipcode} " readonly=""> <input
 			class='button' type='button' value='검색' style='width: 200px' onclick="test()">
 		<input class='textbox' name="address" id='zip2' type='text' placeholder="상세주소"
 			style="margin-top: 10px; width: 400px"
