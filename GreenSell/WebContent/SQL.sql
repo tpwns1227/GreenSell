@@ -141,6 +141,9 @@ alter table replycomment drop column cmcontent ;
 alter table replycomment add (cmcontent varchar2(200));
 
 
+insert into BBSSORT values (4,'공지사항','0');
+insert into BBSSORT values (2,'자주 묻는 질문','0');
+insert into BBSSORT values (3,'질문하기','1');
 
 
 
