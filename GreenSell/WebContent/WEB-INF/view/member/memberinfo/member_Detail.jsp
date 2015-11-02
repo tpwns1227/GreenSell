@@ -8,11 +8,14 @@
 <title>Insert title here</title>
 </head>
 <script>
-function uf() {
+function uf() {//업데이트로 간다
 	location.href='updateForm';
 }
-function like(){
+function like(){//찜목록 간다
 	location.href='cart_form'
+}
+function goodbye(){//탈퇴로 간다
+	location.href='delete_form'
 }
 </script>
 <body>
@@ -50,7 +53,7 @@ function like(){
 			id="login" class='button2' type="button" value='정보수정'
 			onclick="uf()" style="margin-top: 15px;">
 		<input id="login" class='button2' type="button" value='회원탈퇴'
-			onclick="call()"> <input id="login" class='button2'
+			onclick="goodbye()"> <input id="login" class='button2'
 			type="button" value='내가 올린 글' onclick="call()"> <input
 			id="login" class='button2' type="button" value='찜 목록'
 			onclick="like()">
