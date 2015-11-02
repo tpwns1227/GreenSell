@@ -49,7 +49,7 @@ function write(){
 <jsp:include page="../main/header.jsp"></jsp:include>
 <body><br><br><br>
 	<form name="bbslistform">
-	
+	<input type="hidden" value="pagelink" name="page">
 	<table width="550" align="center">
        <tr>
           <td width="8%" align="center" bgcolor="#47CFF2">&nbsp;번호</td>
@@ -60,7 +60,7 @@ function write(){
        </tr>
        <c:choose>
           <c:when test="find.title != null">
-           <c:forEach var="list"  items="${selecttitle}">
+           <c:forEach var="list"  items="${selecttitle}" begin="0" end="9">
            <tr>
 			<div class='container'>
 				<td align="center"><div class='no'>${list.no}</div></td>
@@ -73,7 +73,7 @@ function write(){
 	      </c:forEach>
          </c:when>
          <c:when test="find.bbscontent != null">
-            <c:forEach var="list"  items="${seleccontent}">
+            <c:forEach var="list"  items="${seleccontent}" begin="0" end="9">
 	    	<tr>
 				<div class='container'>
 					<td align="center"><div class='no'>${list.no}</div></td>
@@ -86,7 +86,7 @@ function write(){
 	        </c:forEach>
         </c:when>    
 	    <c:otherwise>
-	    <c:forEach var="list"  items="${selectAll}">
+	    <c:forEach var="list" items="${selectAll}" begin="0" end="9">
 	    <tr>
 				<div class='container'>
 					<td align="center"><div class='no'>${list.no}</div></td>
@@ -111,7 +111,9 @@ function write(){
      		</select>
      		<input type="text" name="search" size="20">
      		<input type="submit" value="글찾기">
-			<input type="button" name="write" value="글쓰기" onclick="write()">
+     		<c:if test="${skey!=null}">
+			<input type="button" name="write" value="글쓰기" onclick="location.href='write'">
+			</c:if>
      		</td>
     	</tr>
      </table>
