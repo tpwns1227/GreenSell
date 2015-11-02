@@ -130,7 +130,7 @@ create table zipcode  (
    bunji                VARCHAR2(30)
 )
 
-
+drop table zipcode
 drop table buy;
 drop table member;
 drop table itemsell;
@@ -142,7 +142,6 @@ drop table bbssort;
 drop table replycomment;
 drop table postscript;
 drop table point;
-
 
 
 create sequence no_bbs_seq start with 1 increment by 1;
