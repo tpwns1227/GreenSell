@@ -69,9 +69,8 @@ public class SellController {
 	@RequestMapping("/itemList") // 중고 및 경매인 경우 글보기
 	public String viewitemlist(@RequestParam(required = false) String howsell, Model m) throws SQLException {
 		List<String> fristimg = new ArrayList<String>();
-
-		if (howsell == null || howsell.equals("중고")) {
-
+		if (howsell == null || howsell.equals("중고") || howsell.equals("7")) {
+			howsell="중고";
 			List<ItemSellVO> list = dao.olditemList(howsell);
 			m.addAttribute("itemlist", list);
 
@@ -79,11 +78,10 @@ public class SellController {
 				List<String> imglist = dao.getImagenames(list.get(j).getNo());
 				fristimg.add(imglist.get(0));
 			}
-
 			m.addAttribute("fristimg", fristimg);
-
+			m.addAttribute("howsell", "중고");
 		} else {
-
+			howsell="경매";
 			List<AuctionVO> list = dao.auctionitemList();
 			m.addAttribute("itemlist", list);
 			for (int j = 0; j < list.size(); j++) {
@@ -91,8 +89,9 @@ public class SellController {
 				fristimg.add(imglist.get(0));
 			}
 			m.addAttribute("fristimg", fristimg);
-
+			m.addAttribute("howsell", howsell);
 		}
+		
 		return "/sell/itemList";
 	}
 
@@ -110,7 +109,7 @@ public class SellController {
 		}
 		dao.itemDeleteimg(no);
 		dao.itemDelete(no);
-
+		
 		return "redirect:itemList";
 	}
 
@@ -226,7 +225,6 @@ public class SellController {
 			map.put("finishtime", finishtime);
 			result = dao.auctionInsert(map);
 		}
-
 		if (result) { // 이미지를 db에 추가
 			map.put("imgname", imgname1);
 			dao.imginsert(map);
@@ -265,6 +263,36 @@ public class SellController {
 			dao.selectedinsert(map);
 			return "ok";
 		}	
+	}
+	
+	@RequestMapping("/testest")
+	public String test(){
+		return "sell/NewFile";
+	}
+	
+	@RequestMapping("/reitemlist")
+	public String reitemlist(Model m, @RequestParam String howsell, @RequestParam String category) throws SQLException{
+		if(category.equals("전체")){
+			if(howsell.equals("경매"))
+			return "redirect:itemList?howsell="+8;
+			else
+			return "redirect:itemList?howsell="+7;	
+		}else{
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("category", category);
+		map.put("howsell", howsell);
+		List<ItemSellVO> list = dao.selectlistcategory(map);
+		List<String> fristimg = new ArrayList<String>();
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
+		m.addAttribute("fristimg", fristimg);
+		m.addAttribute("howsell",howsell);
+		m.addAttribute("category", category);
+		m.addAttribute("itemlist",list);
+		return "sell/itemList";
+		}
 	}
 	
 	
