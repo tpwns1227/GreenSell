@@ -8,6 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript">
+	function inputform(){
+		
+		if('${skey}' != '')
+		location.href='inputform';
+		else
+		alert('로그인 후에 이용해 주세요.');
+		return;
+	}
+</script>
 </head>
 <body>
 	<div class='container1'>
@@ -36,7 +46,7 @@
 
 	<div class='container2'>
 		<div class='menu'>
-			<a href="home">홈</a> <a href="inputform">판매하기</a> <a href="itemList?howsell=경매">경매 게시판</a> <a
+			<a href="home">홈</a> <a href="javascript:inputform()">판매하기</a> <a href="itemList?howsell=경매">경매 게시판</a> <a
 				href="itemList">중고 게시판</a> <a href="help">고객지원</a>
 		</div>
 		<div class='search'>
