@@ -195,7 +195,6 @@ public class BbsController {
 			@RequestMapping("/delete")
 			public String delete(@RequestParam int no){
 				//int n=b.getNo();
-				System.out.println(no);
 				//m.addAttribute(no); 
 				try {
 					
@@ -215,16 +214,9 @@ public class BbsController {
 			
 			@RequestMapping("/cmdelete")
 			public String cmdelete(@RequestParam int cmno, @RequestParam String skey,@RequestParam String email,
-									@RequestParam int no){
-				
-				System.out.println(cmno);
-				System.out.println(no);
-				System.out.println(skey);
-				System.out.println(email);
-				
+									@RequestParam int no){				
 				try {
 					if(email.equals(skey)){
-						System.out.println("이메일==세션");
 						if(dao.cmdelete(cmno))
 						{
 							return "redirect:view?no="+no;
