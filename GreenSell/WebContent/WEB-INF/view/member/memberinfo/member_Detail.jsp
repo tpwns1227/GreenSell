@@ -12,7 +12,7 @@ function uf() {//업데이트로 간다
 	location.href='updateForm';
 }
 function like(){//찜목록 간다
-	location.href='cart_form'
+	location.href='cart_form?email='+${skey};
 }
 function goodbye(){//탈퇴로 간다
 	location.href='delete_form'
