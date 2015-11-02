@@ -117,7 +117,23 @@ public class SellDaoImpl implements SellDao {
 		return (i>0)? true:false;
 	}
    
- 
+   @Override
+	public boolean selectedinsert(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+	   int i = sqlSession.insert("sell.insertselected", map);
+	   return (i>0)? true:false;
+	}
+   
+   @Override
+	public boolean selectedchk(String itemno) throws SQLException {
+		// TODO Auto-generated method stub
+	    String result = sqlSession.selectOne("sell.selectedchk", itemno);
+		System.out.println(result);
+	    if(result==null)
+			return false;
+		else
+			return true;
+	}
    
    
    
