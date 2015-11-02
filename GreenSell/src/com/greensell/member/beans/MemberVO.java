@@ -16,7 +16,14 @@ public class MemberVO {
 	   private int grade;
 	   private int report;
 	   private String joindate;
+	   private String zipcode;
 	   
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
 	public String getEmail() {
 		return email;
 	}
