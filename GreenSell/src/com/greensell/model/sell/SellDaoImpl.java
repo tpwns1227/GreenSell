@@ -135,6 +135,13 @@ public class SellDaoImpl implements SellDao {
 			return true;
 	}
    
+   @Override
+	public List<ItemSellVO> selectlistcategory(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+	   List<ItemSellVO> list = sqlSession.selectList("selectcategory", map);
+	   return list;
+	}
+   
    
    
 }
