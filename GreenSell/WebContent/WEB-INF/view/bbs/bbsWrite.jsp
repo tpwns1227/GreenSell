@@ -22,8 +22,7 @@
 			alert('제목을 입력하세요.');
 			form.title.focus();
 			return false;
-		} else 
-		if (form.bbscontent.value == '') {
+		} else if (form.bbscontent.value == '') {
 			alert('내용을 입력해주세요.');
 			form.bbscontent.focus();
 			return false;
