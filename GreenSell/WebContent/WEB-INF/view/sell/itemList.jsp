@@ -65,7 +65,7 @@ else if (category == '기타') {
        <label for="radio6">기타</label>
        </div>
        <p/>
-          
+<c:if test="${itemlist.size()>0}">  
 <c:forEach var="list" items="${itemlist}" varStatus="status">
 <div class='container'>
 	<div class="imgbox">
@@ -84,6 +84,7 @@ else if (category == '기타') {
 	</div>
 </div>
 </c:forEach>
+</c:if>
 
 </form>
 </div>
