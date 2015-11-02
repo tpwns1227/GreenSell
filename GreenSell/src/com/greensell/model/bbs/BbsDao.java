@@ -13,7 +13,7 @@ public interface BbsDao {
 	
 	public List<ReplyVo> selectComment(ReplyVo reply)throws SQLException;
 	
-	public List<BbsVo> selectAll()throws SQLException;
+	public List<BbsVo> selectAll(int start, int end)throws SQLException;
 	
 	public List<BbsVo> selectTitle(String title)throws SQLException;
 	

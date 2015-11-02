@@ -1,7 +1,10 @@
 package com.greensell.model.bbs;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.greensell.bbs.beans.BbsVo;
 import com.greensell.bbs.beans.ReplyVo;
 
@@ -42,8 +45,12 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public List<BbsVo> selectAll() throws SQLException{
-		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectall");
+	public List<BbsVo> selectAll(int start, int end) throws SQLException{
+		System.out.println(start+end);
+		Map<String,Integer> count = new HashMap<String,Integer>();
+		count.put("start",start);
+		count.put("end",end);
+		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectall", count);
 		return list;
 	}
 
