@@ -55,9 +55,24 @@ function CM() {
 			<c:forEach var="cm" items="${comment}">
 				<div class='container'>
 				<tr>
-				<td align="center"><div class='email'>${cm.email}
-				${cm.cmdate}</div>
-				<div class='cmcontent'>${cm.cmcontent}</div></td>
+					<td align="center"><div>${cm.email}
+						${cm.cmdate}${cm.cmcontent}
+					</td>
+					<td>
+					<form action="cmdelete">
+					<input type="hidden" value="${cm.cmno}" name="cmno">
+							<input type="hidden" value="${skey}" name="skey">
+							<input type="hidden" value="${cm.no}" name="no">
+							<input type="hidden" value="${cm.email}" name="email">
+					<c:if test="${cm.email==skey}">
+							<input type="submit" value="삭제" ><br>
+						</c:if>
+						</form>
+						 <br>
+							
+						</div>
+					
+					</td>
 				</tr>
 				</div>
 			</c:forEach>
