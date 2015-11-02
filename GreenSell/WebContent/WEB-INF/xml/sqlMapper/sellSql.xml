@@ -15,6 +15,10 @@
   		select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
 	from itemsell i, auction a where i.no = a.itemno order by i.no desc
   	</select>
+  	
+  	<select id="selectcategory" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell where howsell=#{howsell} and category=#{category} order by no desc
+	</select>
   
   	<delete id="deleteitem" parameterType="int">
   		delete from itemsell where no=#{no}
