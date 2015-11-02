@@ -42,7 +42,7 @@
 	<input type="hidden" name="mode" value="W" />
 	<table border="1"  align="center" summary="게시판 글쓰기">
 		<caption><font size="20">게시판 글쓰기</font></caption>
-		<tr>
+		<tr>    
 			<th align="center">제목</th>
 			<td><input type="text" name="title" size="60" maxlength="30" placeholder="제목을 입력해 주세요"/></td>
 		</tr>
