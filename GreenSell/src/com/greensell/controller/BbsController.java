@@ -42,14 +42,15 @@ public class BbsController {
 	
 	//게시글 보기 
 		@RequestMapping("/list")
-		public String list(//@RequestParam int bbsno,
+		public String list(@RequestParam(defaultValue="1") int bbsno,
 				@RequestParam(required=false,defaultValue="") String title,
 				@RequestParam(required=false,defaultValue="") String bbscontent,
+				@RequestParam(defaultValue="1") int pagelink,
 				Model m){
 
 			//m.addAttribute("bbsno",bbsno);
 			try {
-				List<BbsVo> list = dao.selectAll();
+				List<BbsVo> list = dao.selectAll(pagelink,pagelink);
 				List<BbsVo> list2 = dao.selectTitle(title);
 				
 				List<BbsVo> list3 = dao.selectContent(bbscontent);
