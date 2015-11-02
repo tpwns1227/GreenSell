@@ -11,6 +11,9 @@
 function uf() {
 	location.href='updateForm';
 }
+function like(){
+	location.href='cart_form'
+}
 </script>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
@@ -50,7 +53,7 @@ function uf() {
 			onclick="call()"> <input id="login" class='button2'
 			type="button" value='내가 올린 글' onclick="call()"> <input
 			id="login" class='button2' type="button" value='찜 목록'
-			onclick="call()">
+			onclick="like()">
 	</div>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
 </body>
