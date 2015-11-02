@@ -26,14 +26,13 @@ public class MemberDaoImpl implements MemberDao {
 	      return false;
 	   }
 	   
-
 	   @Override
-	   public boolean delete(String email) throws SQLException {//회원삭제하기
-	      // TODO Auto-generated method stub
-	      int t = sqlSession.delete("member.delete", email);
-	      if(t>0) return true;
-	      return false;
-	   }
+	   public boolean delete(String email) throws SQLException {
+		   
+		   int i = sqlSession.delete("member.delete", email);
+	       return (i>0)? true:false;
+		   
+	   };
 
 	   @Override
 	   public boolean update(MemberVO membervo) throws SQLException {//회원정보업데이트
@@ -108,6 +107,8 @@ public class MemberDaoImpl implements MemberDao {
 		return false;
 	
 	}
+	
+	
 
 	@Override
 	public boolean idcheck(String email) throws SQLException {//아이디 중복여부
@@ -157,5 +158,7 @@ public class MemberDaoImpl implements MemberDao {
 		int i = sqlSession.update("member.updatepw",map);
 		return (i>0)? true:false;
 	}
+
+
 	
 }

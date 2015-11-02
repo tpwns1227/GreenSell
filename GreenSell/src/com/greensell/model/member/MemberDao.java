@@ -14,6 +14,7 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public interface MemberDao {
 
+	
 	   public boolean insert(MemberVO membervo)throws SQLException; //회원 추가
 	   public boolean delete(String email)throws SQLException; //회원 삭제
 	   public boolean update(MemberVO membervo)throws SQLException; //회원 정보 수정
