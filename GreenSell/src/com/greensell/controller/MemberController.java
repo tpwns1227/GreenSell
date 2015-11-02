@@ -52,7 +52,7 @@ public class MemberController {
 	   
 	   @RequestMapping("/cart_form") //카트폼으로 이동
 	   public String cartView(){
-		   return "/member/memberinfo/cart_form";
+		   return "/member/memberfunction/cart_form";
 	   }
 	   
 	   @RequestMapping("/register_form") // 회원가입 폼으로 이동
