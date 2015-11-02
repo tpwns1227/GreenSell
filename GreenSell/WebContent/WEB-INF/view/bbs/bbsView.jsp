@@ -56,7 +56,7 @@ function CM() {
 				<div class='container'>
 				<tr>
 					<td align="center"><div>${cm.email}
-						${cm.cmdate}${cm.cmcontent}
+						${cm.cmdate}<p>${cm.cmcontent}
 					</td>
 					<td>
 					<form action="cmdelete">
