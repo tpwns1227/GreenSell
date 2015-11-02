@@ -29,7 +29,7 @@ public interface BbsDao {
 	
 	public boolean cmAlldelete(int no)throws SQLException;
 	
-	public boolean cmdelete(int no)throws SQLException;
+	public boolean cmdelete(int cmno)throws SQLException;
 	
 }
 

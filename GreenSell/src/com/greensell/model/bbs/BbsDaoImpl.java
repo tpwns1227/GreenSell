@@ -86,8 +86,8 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public boolean cmdelete(int no) throws SQLException {
-		int t = sqlsession.delete("bbs.cmdelete", no);
+	public boolean cmdelete(int cmno) throws SQLException {
+		int t = sqlsession.delete("bbs.cmdelete", cmno);
 		if(t==1){return true;}
 		return false;
 	}
