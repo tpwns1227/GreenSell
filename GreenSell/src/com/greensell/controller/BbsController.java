@@ -212,6 +212,32 @@ public class BbsController {
 				
 				return "redirect:list";
 			}
+			
+			@RequestMapping("/cmdelete")
+			public String cmdelete(@RequestParam int cmno, @RequestParam String skey,@RequestParam String email,
+									@RequestParam int no){
+				
+				System.out.println(cmno);
+				System.out.println(no);
+				System.out.println(skey);
+				System.out.println(email);
+				
+				try {
+					if(email.equals(skey)){
+						System.out.println("이메일==세션");
+						if(dao.cmdelete(cmno))
+						{
+							return "redirect:view?no="+no;
+						}
+					
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return "redirect:view?no="+no;
+				
+			}
 }
 	
 
