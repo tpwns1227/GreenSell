@@ -8,56 +8,63 @@
 <title>Insert title here</title>
 </head>
 <script>
-function uf() {//업데이트로 간다
-	location.href='updateForm';
+function deleteMember() {
+	
+	document.detail.action = 'delete_form';
+	document.detail.submit();
+	
 }
-function like(){//찜목록 간다
-	location.href='cart_form?email='+${skey};
+
+function updateMember() {
+	
+	document.detail.action = 'updateForm';
+	document.detail.submit();
+	
 }
-function goodbye(){//탈퇴로 간다
-	location.href='delete_form'
-}
+
 </script>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
+	<form name="detail" action="update_form">
 	<div class='container'>
 		<div class='border'>내 정보</div>
 		<div class='p'>이메일</div>
 		<input name="email" id='textbox' type='text' value='${member.email}'
 			readonly="">
 		<div class='p'>이름</div>
-		<input name="email" id='textbox' type='text' value='${member.name }'
+		<input name="name" id='textbox' type='text' value='${member.name }'
 			readonly="">
 		<div class='p'>별명</div>
-		<input name="email" id='textbox' type='text'
+		<input name="nickname" id='textbox' type='text'
 			value='${member.nickname }' readonly="">
 		<div class='p'>휴대전화</div>
-		<input name="email" id='textbox' type='text' value='${member.phone }'
+		<input name="phone" id='textbox' type='text' value='${member.phone }'
 			readonly="">
 		<div class='p'>주소</div>
-		<input id='textbox' value='${member.address }' type='text' readonly="">
+		<input id='textbox' value='${member.address }' type='text' readonly="" name="address">
 		<div class='p'>계좌번호</div>
 		<input id='textbox' type='text' value='${member.bank }'
-			style='width: 200px;' readonly=""> <input id='textbox'
+			style='width: 200px;' readonly="" name="account"> <input id='textbox'
 			type='text' value='${member.account }' style='width: 200px;'
 			readonly="">
 		<div class='p'>비밀번호 Q&A</div>
 		<input id='textbox' type='text' value='${member.question }'
-			style='width: 200px;' readonly=""> <input id='textbox'
+			style='width: 200px;' readonly="" name="question"> <input id='textbox'
 			type='text' value='${member.answer }' style='width: 200px;'
-			readonly="">
+			readonly="" name="answer">
 		<div class='p'>포인트</div>
-		<input name="text" id='textbox' type='text' value='${member.point }'
+		<input name="point" id='textbox' type='text' value='${member.point }'
 			readonly="" style="width: 300px"> <input id="login"
 			class='button2' type="button" value='내역' onclick="call()"> <input
-			id="login" class='button2' type="button" value='정보수정'
-			onclick="uf()" style="margin-top: 15px;">
-		<input id="login" class='button2' type="button" value='회원탈퇴'
-			onclick="goodbye()"> <input id="login" class='button2'
+			id="update" class='button2' type="button" value='정보수정' onclick='updateMember()' style="margin-top: 15px;">
+			
+		<input id="login" class='button2' type="button" onclick='deleteMember()' value='회원탈퇴'> 
+		<input id="login" class='button2'
 			type="button" value='내가 올린 글' onclick="call()"> <input
 			id="login" class='button2' type="button" value='찜 목록'
 			onclick="like()">
 	</div>
+	</form>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
 </body>
 </html>

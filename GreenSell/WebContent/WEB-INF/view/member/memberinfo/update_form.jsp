@@ -21,6 +21,17 @@ $(document).ready(function(){
 		$("#nh").attr("selected","selected");	
 	}	
 });
+$(document).ready(function(){
+	var question = '${member.question}';
+	if(question=='나의 삶의 좌우명은?'){
+		$('#life').attr("selected","selected");
+	}
+	else if(question=='가장기억에 남는 선생님은?'){
+		$('#teacher').attr("selected","selected");
+	}
+	else
+		$('#country').attr('selected','selected');
+});
 
 function test() {
 	   win_post = window.open('zip_form', "post",
@@ -28,28 +39,38 @@ function test() {
 	               + "status=yes,scrollbars=yes,menubar=no");
 	}
 	
-$(document).ready(function(){
-	$('.btnok').click(function(){
-		if($('#pass')==($('#pass2')))
-			alert("비밀번호를 확인하세요");
-		$('#pass1').focus();
-	})
-})
+function validationCheck(){
+    var pass1 = document.yes.pass.value;
+    var pass2 = document.yes.pass2.value;
+    
+    if (pass1 == pass2){
+    	
+    	document.yes.submit();
+    	
+    } else {
+    	
+    	alert('비밀번호를 확인해주세요.')
+    	
+    }
+}
+
 </script>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
 	<div class='container'>
-	<form name="yes">
+	<form name="yes" action="update_form">
 		<div class='border'>정보 수정</div>
 		<div class='p'>비밀번호</div>
-		<input class='textbox' name="password" id='pass' type='password' placeholder="비밀번호"
+		<input class='textbox' name="password" id='pass' type='password' placeholder="현재 비밀번호"
+			style='width: 400px; margin-bottom: 5px' value="${member.password }">
+		<input class='textbox' name="password1" id='pass1' type='password' placeholder="바꿀 비밀번호"
 			style='width: 200px;'> <input name="password2" id='pass2'
 			type='password' class='textbox' placeholder="비밀번호 확인" style='width: 200px;'>
 		<div class='p'>주소</div>
 		<input class='textbox' name="zipcode" id='zip' type='text' placeholder="우편번호"
-			style='width: 200px' value="${zipp} " readonly=""> <input
+			style='width: 200px' value="${zipcode} " readonly=""> <input
 			class='button' type='button' value='검색' style='width: 200px' onclick="test()">
 		<input class='textbox' name="address" id='zip2' type='text' placeholder="상세주소"
 			style="margin-top: 10px; width: 400px"
@@ -78,10 +99,10 @@ $(document).ready(function(){
 			value='${member.account}' style='width: 200px;'>
 		<div class='p'>비밀번호 Q&A</div>
 		<%
-		    String questionArr[]={"a1","a2","a3"};
+		    String questionArr[]={"가장기억에 남는 선생님은?","나의 고향은?","나의 삶의 좌우명은?"};
 		%>
 		<select name='question' class='rf'>
-		<% 
+<%-- 		<% 
 		    String question =  ((MemberVO)request.getAttribute("member")).getQuestion();
 		for(int i=0; i<questionArr.length; i++){
 		 if(question.equals(questionArr[i]))
@@ -89,13 +110,14 @@ $(document).ready(function(){
 		 else	
 			 out.print("<option value='"+questionArr[i]+"'>질문"+(i+1)+"</option>");
 		}		 
-	   %>	
-			
+	   %>	 --%>
+				<option value='가장기억에 남는 선생님은?' id='teacher'>가장기억에 남는 선생님은?</option>
+				<option value='나의 고향은?' id='country'>나의 고향은?</option>
+				<option value='나의 삶의 좌우명은?' id="life">나의 삶의 좌우명은?</option>
 			
 		</select> <input class='textbox' name="answer" type='text' placeholder="답변"
 			value='${member.answer }' style='width: 200px;'> <input class='button'
-			type="button" value='수정완료' style="margin-top: 15px"
-			onclick="">
+			type="button" value='수정완료' style="margin-top: 15px" onclick="validationCheck()">
 			</form>
 	</div>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
