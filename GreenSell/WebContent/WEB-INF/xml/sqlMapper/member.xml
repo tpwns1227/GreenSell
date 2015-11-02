@@ -4,7 +4,7 @@
 
 	<insert id="insert" parameterType="com.greensell.member.beans.MemberVO"> <!-- 회원가입 클리어 -->
 		insert into member
-		values(#{email},#{password},#{name},#{nickname},#{phone},#{address},
+		values(#{email},#{password},#{name},#{nickname},#{phone},#{zipcode},#{address},
 		#{bank},#{account},#{question},#{answer},0,0,0,SYSDATE)
 	</insert>
 
