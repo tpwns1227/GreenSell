@@ -27,7 +27,7 @@
 			form.bbscontent.focus();
 			return false;
 		}
-		else{
+		else{  
 		return true;
 		}
 	}
