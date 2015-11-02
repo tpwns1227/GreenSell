@@ -122,6 +122,13 @@ create table buy( --���Ÿ��
    foreign key(email) REFERENCES member(email) on delete cascade
 );
 
+create table zipcode  (
+   zipcode              VARCHAR2(10),
+   sido                 VARCHAR2(30),
+   gugun                VARCHAR2(30),
+   dong                 VARCHAR2(43),
+   bunji                VARCHAR2(30)
+)
 
 
 drop table buy;
