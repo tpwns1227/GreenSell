@@ -251,4 +251,22 @@ public class SellController {
 
 		return "redirect:home";
 	}
+	
+	@RequestMapping("/insert_cart")
+	public @ResponseBody String insertcart(@RequestParam String email, @RequestParam String itemno) throws SQLException{
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("email", email);
+		map.put("itemno", itemno);
+		if(dao.selectedchk(itemno))
+		{
+			return "nok";
+		}else{
+			dao.selectedinsert(map);
+			return "ok";
+		}	
+	}
+	
+	
+	
 }
