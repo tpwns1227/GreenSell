@@ -28,16 +28,16 @@
 		<div class='border'>고객 지원</div>  
 	<form action="list">
 		<input type="hidden" value="2" name="no">
-		<input id='btn1' type="submit" value='공지사항' style="margin-top: 15px; width: 400px"> 
+		<input id='btn1' class='button' type="submit" value='공지사항' style="margin-top: 15px; width: 400px"> 
 	</form>
-	<form action="list"> 
+	<form action="qna"> 
 		<input type="hidden" value="3" name="no">
-		<input	id='btn2' type="submit" 
+		<input	id='btn2' class='button' type="submit" 
 				value='질문하기' style="margin-top: 15px; width: 400px"> 
 	</form>
 	<form action="list">
 		<input type="hidden" value="4" name="no">
-		<input id='btn3' type="submit"	
+		<input id='btn3' class='button' type="submit"	
 				value='자주 묻는 질문' style="margin-top: 15px; width: 400px">
 	</form>
 		 
