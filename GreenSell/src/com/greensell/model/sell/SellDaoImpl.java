@@ -156,7 +156,11 @@ public class SellDaoImpl implements SellDao {
 		return sqlSession.selectOne("bidselect", itemno);
 	}
    
-   
+   @Override
+	public List<ItemSellVO> searchitemList(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("searchlist", map);
+	}
    
    
    

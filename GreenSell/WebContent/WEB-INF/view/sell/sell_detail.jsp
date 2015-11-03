@@ -18,9 +18,10 @@
 		});
 		
 		$("#bid").click(function(){
-		window.open('bid_form', "post",
+		var bid = window.open('bid_form', "post",
 			     "toolbar=no ,width=450 ,height=200 ,directories=no,"
 			           + "status=yes,scrollbars=yes,menubar=no");
+		
 		});
 		
 		
@@ -126,6 +127,7 @@
 			<br>
 				<input class='callbtn' id="bid" type="button" value="입찰하기" style='width: 295px'>
 				<input class='callbtn' id="selectedbtn" type="button" value="찜 하기" style='width: 95px'>
+				<br><font size="4px"><strong>입찰자</strong></font><br><label id="nowemail">${auctionitem.getNowemail()}</label>
 			</c:if>
 		</div>
 			
@@ -158,7 +160,7 @@
 			<div class='bold2'>상태</div>
 			<div class='font'>${auctionitem.getItemstate()}</div>
 			<div class='bold2'>경매시작가</div>
-			<div class='font'>${auctionitem.getStartprice()}</div>
+			<div class='font' id="startprice">${auctionitem.getStartprice()}</div>
 			<div class='bold2'>현재가격</div>
 			<div class='font' id='nowprice'>${auctionitem.getNowprice()}</div>
 			<div class='bold2'>마감시간</div>

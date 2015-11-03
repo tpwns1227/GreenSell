@@ -55,12 +55,6 @@ function inputCheck() {
 		document.register_form.password2.focus();
 		return;
 	}
-	if (document.register_form.phone.value == ""
-			|| document.register_form.phone.value == null) {
-		alert("휴대전화번호를 입력해주세요");
-		document.register_form.phone.focus();
-		return;
-	}
 	if (document.register_form.address.value == ""
 			|| document.register_form.address.value == null) {
 		alert("상세주소를 입력해주세요");

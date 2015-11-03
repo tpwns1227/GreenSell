@@ -320,6 +320,30 @@ public class SellController {
 		return "실패";	
 	}
 	
+	@RequestMapping("/review_form")
+	public String review(){
+		return "sell/review_view";
+		
+	}
+	
+	@RequestMapping("/sell_contact")
+	public String contact(){
+		return "sell/sell_contact";
+	}
+	
+	@RequestMapping("/searchitem")
+	public String searchitem(Model m,@RequestParam String str, 
+			@RequestParam String category ,@RequestParam String howsell) throws SQLException{
+		map.put("howsell", howsell);
+		map.put("str", str);
+		map.put("category", category);
+		List<ItemSellVO> list = dao.searchitemList(map);
+		m.addAttribute("itemlist", list);
+		System.out.println(list.size());
+		return "sell/searchitem";
+	}
+	
+	
 	
 	
 }

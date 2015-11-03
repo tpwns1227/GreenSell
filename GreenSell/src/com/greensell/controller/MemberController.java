@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
@@ -94,6 +95,25 @@ public class MemberController {
 				  }
 		   }
 	   }
+	   @RequestMapping(value = "/phonechk", method = RequestMethod.POST)
+	   	public @ResponseBody String phonechk(@RequestParam String phone) throws SQLException{
+		   String ph = "(01[016789])-(\\d{3,4})-(\\d{4})";
+		   Pattern p = Pattern.compile(ph);
+		   System.out.println(ph);
+		   
+		   if(!p.matcher(phone).matches()){
+			   System.out.println("여기도 되요");
+			   return "사용불가";
+		   }else{
+			   boolean phonechk = dao.phonechk(phone);
+			   System.out.println("되요");
+			   if(phonechk){
+				   return "사용불가";
+			   }else{
+				   return "사용가능";
+			   }
+		   }
+	   }
 	   
 	   @RequestMapping("/updatepw")
 	   public String updatepw(@RequestParam String password,
@@ -164,22 +184,32 @@ public class MemberController {
 		   return "member/memberinfo/register_form";
 	   }
 	   
-	   @RequestMapping(value = "/updateForm" , method = RequestMethod.POST)//회원정보 수정폼띄우기
+	   @RequestMapping(value = "/updateForm")//회원정보 수정폼띄우기
 	   public String updateForm(HttpSession session, Model m){
 		   
 		   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
 		   m.addAttribute("member",vo);
-		   return "member/memberinfo/update_form";
-		   
+		   return "member/memberinfo/update_form";		   
 	   }
 
 	   @RequestMapping(value = "/update_form")//회원정보 수정하기
-	   public String memberupdate(MemberVO membervo, Model m) throws SQLException{
+	   public String memberupdate(MemberVO vo, HttpSession session,Model m) throws SQLException{
 		   
-		   dao.update(membervo);
-		   return "redirect:updateForm";
+		   //MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
+		   System.out.println("수정 시작합니다. pw:"+vo.getPassword());
+		   m.addAttribute("member",vo);
+		   
+		   vo.setEmail((String)session.getAttribute("skey"));
+		   System.out.println(vo.getEmail());
+		   System.out.println(vo.getName());
+		   System.out.println(vo);
+		   
+		   if(dao.update(vo)){
+			   System.out.println("수정 됬습니다.");
+			   return "redirect:member_Detail";
+		   }
+		   return "redirect:update_form";
 	   }
-	   
 	   
 	   @RequestMapping("/zip_form")//우편번호찾기폼띄우기
 	   public String zipSearch(){
@@ -208,9 +238,13 @@ public class MemberController {
 	   } 
 	   @RequestMapping("/member_Detail")//Detail폼띄우기
 	   public String member_Detail(HttpSession session, Model m){
-		   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
-		   m.addAttribute("member",vo);
-		   return "member/memberinfo/member_Detail";
+		   String skey = (String)session.getAttribute("skey");
+		   if(skey==null) return "redirect:home"; 
+		   else{
+			   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
+			   m.addAttribute("member",vo);
+			   return "member/memberinfo/member_Detail";
+		   }
 	   }
 	   @RequestMapping("/cart_form")//찜목록이동하기
 	   public String cart_form(){
@@ -228,15 +262,16 @@ public class MemberController {
 		   System.out.println(email);
 		   System.out.println(pwchk);
 		   if (pwchk == true){
-			   
 			   dao.delete(email);
 			   session.invalidate();
 			   return "/member/memberinfo/login_form";
 		   }
-		   return "/home"; // 회원탈퇴할때 비밀번호가 다를경우 수정좀
-		  
+		   return "/home"; // 회원탈퇴할때 비밀번호가 다를경우 수정좀		  
 	   }
 	   
-	   
+	   @RequestMapping("/point_form")//포인트내역가기
+	   public String point () throws SQLException{
+		   return "/member/memberinfo/point_form";
+	   }
 	   
 }

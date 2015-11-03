@@ -107,7 +107,16 @@ public class MemberDaoImpl implements MemberDao {
 	
 	}
 	
-	
+	@Override
+	public boolean phonechk(String phone) throws SQLException {//휴대폰중복번호
+		// TODO Auto-generated method stub
+		String ph = sqlSession.selectOne("member.phonechk", phone);
+		if(ph == null)
+			return false;
+		else
+			return true;
+			
+	}
 
 	@Override
 	public boolean idcheck(String email) throws SQLException {//아이디 중복여부
@@ -157,6 +166,8 @@ public class MemberDaoImpl implements MemberDao {
 		int i = sqlSession.update("member.updatepw",map);
 		return (i>0)? true:false;
 	}
+
+	
 
 
 	

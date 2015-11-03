@@ -14,7 +14,6 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public interface MemberDao {
 
-	
 	   public boolean insert(MemberVO membervo)throws SQLException; //회원 추가
 	   public boolean delete(String email)throws SQLException; //회원 삭제
 	   public boolean update(MemberVO membervo)throws SQLException; //회원 정보 수정
@@ -28,11 +27,11 @@ public interface MemberDao {
 	   public MemberVO memberdetail(String email);//회원 정보 상세보기
 	   public boolean logincheck(String email,String password)throws SQLException;//로그인 확인
 	   public boolean idcheck(String email)throws SQLException;//아이디중복확인
+	   public boolean phonechk(String phone) throws SQLException; // 중복번호있는지 확인
 	   public boolean nickcheck(String nickname) throws SQLException;//닉네임중복확인
 	   public List<ZipVo> zipvo(String address) throws SQLException;//우편번호찾기
 	   public String getQuestion(String email) throws SQLException; //이메일을 입력하면 비밀번호 찾기 질문을 가져옴
 	   public String getanswer(String email) throws SQLException; //이메일을 통해 비밀번호 찾기 답을 가져옴
 	   public boolean updatepw(Map<String, String> map) throws SQLException;//패스워드 수정하기
 	   
-
 }

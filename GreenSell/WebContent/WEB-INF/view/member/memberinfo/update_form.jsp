@@ -17,9 +17,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	var bank = '${member.bank}';
-	if(bank == 'nh'){
-		$("#nh").attr("selected","selected");	
+	if(bank == '농협'){
+		$("#농협").attr("selected","selected");	
 	}	
+	else if(bank=='신한'){
+		$('#신한').attr("selected",'selected');
+	}
+	else{
+		$('#국민').attr("selected","selected");
+	}
 });
 $(document).ready(function(){
 	var question = '${member.question}';
@@ -30,8 +36,42 @@ $(document).ready(function(){
 		$('#teacher').attr("selected","selected");
 	}
 	else
-		$('#country').attr('selected','selected');
+		$('#country').attr('selected','selected');	
+	
 });
+ $(document).ready(function(){
+	$("#updatebtn").click(function(){
+		if ($(this).attr('id') == 'pricebtn') {
+			if($("#itemprice").val()=='' || $("#itemprice").val()==null){
+				alert('가격을 입력해 주세요.');
+				$("#itemprice").focus();
+				return;
+			}else{
+				var chk =  /^\d+$/;
+				if(!chk.test($("#itemprice").val())){
+					alert('숫자만 입력해 주세요.');
+					$("#itemprice").focus();
+					return;
+				}else{
+					if(document.sellForm.itemprice.value.length < 4){
+						alert("천원 이상 입력해 주세요.");
+						$("#itemprice").focus();
+						return;
+					}
+				}
+			}
+			
+		}
+		if(confirm("수정하시겠습니까?")){
+			document.yes.submit();
+		}else{
+			return;
+		}		
+	});
+	
+}); 
+
+
 
 function test() {
 	   win_post = window.open('zip_form', "post",
@@ -39,7 +79,7 @@ function test() {
 	               + "status=yes,scrollbars=yes,menubar=no");
 	}
 	
-function validationCheck(){
+/* function validationCheck(){
     var pass1 = document.yes.pass.value;
     var pass2 = document.yes.pass2.value;
     
@@ -52,7 +92,7 @@ function validationCheck(){
     	alert('비밀번호를 확인해주세요.')
     	
     }
-}
+} */
 
 </script>
 <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -60,7 +100,7 @@ function validationCheck(){
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
 	<div class='container'>
-	<form name="yes" action="update_form">
+	<form name="yes" action="update_form" method="POST">
 		<div class='border'>정보 수정</div>
 		<div class='p'>비밀번호</div>
 		<input class='textbox' name="password" id='pass' type='password' placeholder="비밀번호"
@@ -114,7 +154,7 @@ function validationCheck(){
 			
 		</select> <input class='textbox' name="answer" type='text' placeholder="답변"
 			value='${member.answer }' style='width: 200px;'> <input class='button'
-			type="button" value='수정완료' style="margin-top: 15px" onclick="validationCheck()">
+			type="button" value='수정완료' style="margin-top: 15px" id="updatebtn">
 			</form>
 	</div>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
