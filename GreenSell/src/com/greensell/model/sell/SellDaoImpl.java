@@ -1,6 +1,7 @@
 package com.greensell.model.sell;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -141,6 +142,21 @@ public class SellDaoImpl implements SellDao {
 	   List<ItemSellVO> list = sqlSession.selectList("selectcategory", map);
 	   return list;
 	}
+   
+   @Override
+	public boolean bidupdate(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+	   	int i = sqlSession.update("bidupdate",map);
+		return (i>0)? true:false;
+	}
+   
+   @Override
+	public AuctionVO selectbid(int itemno) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("bidselect", itemno);
+	}
+   
+   
    
    
    
