@@ -33,7 +33,11 @@
    	</select>
    	
    	<select id="searchlist" parameterType="map" resultType="com.greensell.sell.beans.ItemSellVO">
-   		select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%'
+   		<!-- select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%' -->
+   		select b.* from 
+   		(select a.*, rownum rnum from 
+   		(select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%') a) b
+   		where <![CDATA[rnum <= #{count}]]>
    	</select>
    	
   	
