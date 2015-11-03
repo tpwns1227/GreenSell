@@ -83,14 +83,14 @@ public class MemberController {
 	    public @ResponseBody String idchk(@RequestParam String email) throws SQLException {
 		   String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
 		   Pattern p = Pattern.compile(regex);
-		   if(!p.matcher(email).matches()){	return "사용가능"; 
+		   if(!p.matcher(email).matches()){	return "사용불가"; 
 		   }else{
 			   boolean idchk = dao.idcheck(email);
 				  
 				  if(idchk){
-					  return "사용가능";
+					  return "사용불가";
 				  }else{
-				   return "사용불가";
+				   return "사용가능";
 				  }
 		   }
 	   }
