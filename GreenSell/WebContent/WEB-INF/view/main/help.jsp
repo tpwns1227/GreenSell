@@ -25,7 +25,7 @@
 <body>
 <jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='container'>
-		<div class='border'>고객 지원</div>
+		<div class='border'>고객 지원</div>  
 	<form action="list">
 		<input type="hidden" value="2" id="no">
 		<input id='btn1' type="submit" value='공지사항' style="margin-top: 15px; width: 400px"> 
