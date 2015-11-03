@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,22 +11,33 @@
 </head>
 <body>
 <jsp:include page="../../main/header.jsp"></jsp:include>
-<div class='container'>
-<div class='border'>찜 목록</div>
-</div>
+
 <div class='body2'>
+	<div class='border'>찜 목록</div>
 <div class='containerC'>
+
+ <c:forEach var="list" items="${itemlist}" varStatus="sar">
+			<div class='container'>
+			
+				<div class='img'>
+					<a href="sell_detail?no=${list.no}">
+					<img src='/GreenSell/img/item/${fristimg[sar.index]}' class='img'></a>
+				<div class='item'>${list.itemname}</div>
+				<div class='price'>${list.itemprice}</div>
+					</div>
+				</div>
+		</c:forEach>
 	
-	
-	<div class="imgbox">
+<%-- <c:forEach var="list" items="${itemlist }" varStatus="var">
+ <div class="imgbox">
 	<div class='img'>
-		<a href="sell_detail?no=${list.no}"><img src='img.png' class='img'></a>
+		<a href="sell_detail?no=${list.no}">
+		<img src='/GreenSell/img/item/${fristimg[var.index]}' class='img'></a>
 	</div>
-	<div class='item'>
-		<a href='#'>취소</a>
-	</div>
-	</div>
-	
+	<div class='item'>${list.itemname}</div>
+	<div class='price'>${list.itemprice}</div>
+	</div> 
+</c:forEach> --%>
 	
 	
 	
