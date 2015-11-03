@@ -46,7 +46,6 @@ public class BbsDaoImpl implements BbsDao {
 
 	@Override
 	public List<BbsVo> selectAll(int start, int end) throws SQLException{
-		System.out.println(start+end);
 		Map<String,Integer> count = new HashMap<String,Integer>();
 		count.put("start",start);
 		count.put("end",end);
