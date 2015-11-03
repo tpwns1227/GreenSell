@@ -7,7 +7,12 @@
 	border: none;
 	text-align: center;
 }
+.font2 {
 
+	font-size: 15px;
+	text-align: left;
+	margin: 20px 0px 5px 50px;
+}
 .textbox {
 	background-color: white;
 	border: 1px solid #eee;
