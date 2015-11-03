@@ -46,12 +46,14 @@ public class BbsController {
 				@RequestParam(required=false,defaultValue="") String title,
 				@RequestParam(required=false,defaultValue="") String bbscontent,
 				@RequestParam(defaultValue="1") int pagelink,
+				@RequestParam(required=false,defaultValue="") String search,
+				@RequestParam(required=false,defaultValue="") String fcontent,
 				Model m){
 
 			//m.addAttribute("bbsno",bbsno);
 			try {
 				List<BbsVo> list = dao.selectAll(pagelink,pagelink);
-				List<BbsVo> list2 = dao.selectTitle(title);
+				List<BbsVo> list2 = dao.selectTitle(pagelink,pagelink,search);
 				List<BbsVo> list3 = dao.selectContent(bbscontent);
 				int num = dao.count();
 				m.addAttribute("selectAll", list);
