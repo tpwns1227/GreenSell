@@ -25,6 +25,10 @@
    		{
    			pagelink = Integer.parseInt(pagelink_get);
    		}
+   		String ftitle = request.getParameter("search");
+   		String fcontent = request.getParameter("search");
+/*    		System.out.println(ftitle);
+   		System.out.println(fcontent); */
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -118,13 +122,24 @@ function write(){
     	</tr>
      </table>
 </form>
-<%
-	//String n= (String)request.getAttribute("count"); 
-	int rcnt = (Integer)request.getAttribute("count");//Integer.parseInt(n);
-	
-    	//페이지 처리하기
-    	PageCount pc = new PageCount(rcnt);
-    	
+<% 
+	//페이지 처리하기
+	PageCount pc;
+	if(ftitle!=null)
+	{
+		int rcnt = (Integer)request.getAttribute("counttitle");
+		pc = new PageCount(rcnt);
+	}
+	else if(fcontent!=null)
+	{
+		int rcnt = (Integer)request.getAttribute("countcontent");
+		pc = new PageCount(rcnt);
+	}
+	else
+	{
+		int rcnt = (Integer)request.getAttribute("count");
+		pc = new PageCount(rcnt);
+	}
 %>
 <%= pc.showPaging(pagelink,"list") %>
 
