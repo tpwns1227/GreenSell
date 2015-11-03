@@ -15,14 +15,16 @@
 				alert('로그인을 한 후에 이용해 주세요.');
 				location.href="login_form";
 			}
+			$("#bid").click(function(){
+				var bid = window.open('bid_form', "post",
+					     "toolbar=no ,width=450 ,height=200 ,directories=no,"
+					           + "status=yes,scrollbars=yes,menubar=no");
+				
+				});
+			
 		});
 		
-		$("#bid").click(function(){
-		var bid = window.open('bid_form', "post",
-			     "toolbar=no ,width=450 ,height=200 ,directories=no,"
-			           + "status=yes,scrollbars=yes,menubar=no");
 		
-		});
 		
 		
 		var findate = new Date('${auctionitem.finishtime}');
