@@ -268,4 +268,10 @@ public class MemberController {
 		   }
 		   return "/home"; // 회원탈퇴할때 비밀번호가 다를경우 수정좀		  
 	   }
+	   
+	   @RequestMapping("/point_form")//포인트내역가기
+	   public String point () throws SQLException{
+		   return "/member/memberinfo/point_form";
+	   }
+	   
 }
