@@ -90,7 +90,7 @@ function CM() {
 			<input type="hidden" value="${view.no}" name="no">
 			<input type="hidden" value="${view.bbsno}" name="bbsno">
 			
-			</form>
+			</form>  
 			</c:if>
 			
 			<input type="button" value="목록" onclick="location.href='list?no=${view.bbsno}'">

@@ -27,7 +27,7 @@
 				<br>
 				<hr>
 			</td>
-		</tr>	
+		</tr>	  
 		<tr>
 			<td align="right"><input type="submit" value="수정" onclick="location.href='updateok'" >
 			<input type="hidden" value="${view.no }" name="no">
