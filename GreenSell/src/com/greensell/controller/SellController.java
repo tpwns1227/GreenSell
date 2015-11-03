@@ -61,7 +61,6 @@ public class SellController {
 
 	@RequestMapping("/home") // home 페이지 출력
 	public String viewHome(Model m) throws SQLException {
-
 		List<ItemSellVO> list = dao.allitemList();
 		List<String> fristimg = new ArrayList<String>();
 		m.addAttribute("itemlist", list);
@@ -70,37 +69,11 @@ public class SellController {
 			fristimg.add(imglist.get(0));
 		}
 		m.addAttribute("fristimg", fristimg);
+		
 		return "/main/home";
 	}
 
-	@RequestMapping("/itemList") // 중고 및 경매인 경우 글보기
-	public String viewitemlist(@RequestParam(required = false) String howsell, Model m) throws SQLException {
-		List<String> fristimg = new ArrayList<String>();
-		if (howsell == null || howsell.equals("중고") || howsell.equals("7")) {
-			howsell="중고";
-			List<ItemSellVO> list = dao.olditemList(howsell);
-			m.addAttribute("itemlist", list);
-
-			for (int j = 0; j < list.size(); j++) {
-				List<String> imglist = dao.getImagenames(list.get(j).getNo());
-				fristimg.add(imglist.get(0));
-			}
-			m.addAttribute("fristimg", fristimg);
-			m.addAttribute("howsell", "중고");
-		} else {
-			howsell="경매";
-			List<AuctionVO> list = dao.auctionitemList();
-			m.addAttribute("itemlist", list);
-			for (int j = 0; j < list.size(); j++) {
-				List<String> imglist = dao.getImagenames(list.get(j).getNo());
-				fristimg.add(imglist.get(0));
-			}
-			m.addAttribute("fristimg", fristimg);
-			m.addAttribute("howsell", howsell);
-		}
-		
-		return "/sell/itemList";
-	}
+	
 
 	// UTF
 	@RequestMapping("/deleteitem") // delete 기능구현
@@ -343,6 +316,43 @@ public class SellController {
 		return "sell/searchitem";
 	}
 	
+	@RequestMapping("/itemList") // 중고 및 경매인 경우 글보기
+	public String viewitemlist(@RequestParam(required = false) String howsell, @RequestParam(defaultValue="8") String count
+			, Model m) throws SQLException {
+		List<String> fristimg = new ArrayList<String>();
+		if (howsell == null || howsell.equals("중고") || howsell.equals("7")) {
+			howsell="중고";
+			map.put("howsell", howsell);
+			map.put("count", count);
+			List<ItemSellVO> list = dao.olditemList(map);
+			m.addAttribute("itemlist", list);
+			System.out.println(list.size());
+			for (int j = 0; j < list.size(); j++) {
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				fristimg.add(imglist.get(0));
+			}
+			m.addAttribute("fristimg", fristimg);
+			m.addAttribute("howsell", "중고");
+		} else {
+			howsell="경매";
+			List<AuctionVO> list = dao.auctionitemList();
+			m.addAttribute("itemlist", list);
+			for (int j = 0; j < list.size(); j++) {
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				fristimg.add(imglist.get(0));
+			}
+			m.addAttribute("fristimg", fristimg);
+			m.addAttribute("howsell", howsell);
+		}
+		
+		return "/sell/itemList";
+	}
+	
+	@RequestMapping("/plusitem")
+	public String plusimg(@RequestParam int count){
+		System.out.println(count);
+		return null;
+	}
 	
 	
 	
