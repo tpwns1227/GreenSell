@@ -42,32 +42,24 @@ public class BbsController {
 	
 	//게시글 보기 
 		@RequestMapping("/list")
-		public String list(@RequestParam(defaultValue="1") int bbsno,
+		public String list(@RequestParam int no,
 				@RequestParam(required=false,defaultValue="") String title,
 				@RequestParam(required=false,defaultValue="") String bbscontent,
 				@RequestParam(defaultValue="1") int pagelink,
 				@RequestParam(required=false,defaultValue="") String ftitle,
 				@RequestParam(required=false,defaultValue="") String fcontent,
-				@RequestParam int no,
 				Model m){
-
-			if(no==2){
-				//공지사항
-			}
-			else if(no==3){
-				//질문하기
-			}
-			else if(no==4){
-				//자주 묻는 질문
-			}
+			
+				System.out.println(no);
+			
 			//m.addAttribute("bbsno",bbsno);
 			try {
-				List<BbsVo> list = dao.selectAll(pagelink,pagelink);
-				List<BbsVo> list2 = dao.selectTitle(pagelink,pagelink,ftitle);
-				List<BbsVo> list3 = dao.selectContent(bbscontent);
-				int num = dao.count(bbsno);
-				int num2 = dao.counttitle(bbsno, ftitle);
-				int num3 = dao.countcontent(bbsno, bbscontent);
+				List<BbsVo> list = dao.selectAll(no,pagelink,pagelink);
+				List<BbsVo> list2 = dao.selectTitle(no,pagelink,pagelink,ftitle);
+				List<BbsVo> list3 = dao.selectContent(no,pagelink,pagelink,bbscontent);
+				int num = dao.count(no);
+				int num2 = dao.counttitle(no, ftitle);
+				int num3 = dao.countcontent(no, bbscontent);
 				m.addAttribute("selectAll", list);
 				m.addAttribute("selecttitle", list2);
 				m.addAttribute("selectcontent", list3);

@@ -27,20 +27,20 @@
 	<div class='container'>
 		<div class='border'>고객 지원</div>  
 	<form action="list">
-		<input type="hidden" value="2" id="no">
+		<input type="hidden" value="2" name="no">
 		<input id='btn1' type="submit" value='공지사항' style="margin-top: 15px; width: 400px"> 
 	</form>
 	<form action="list"> 
-		<input type="hidden" value="3" id="no">
+		<input type="hidden" value="3" name="no">
 		<input	id='btn2' type="submit" 
 				value='질문하기' style="margin-top: 15px; width: 400px"> 
 	</form>
 	<form action="list">
-		<input type="hidden" value="4" id="no">
+		<input type="hidden" value="4" name="no">
 		<input id='btn3' type="submit"	
 				value='자주 묻는 질문' style="margin-top: 15px; width: 400px">
 	</form>
-		
+		 
 		
 	
 	</div>

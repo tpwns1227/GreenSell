@@ -45,8 +45,9 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public List<BbsVo> selectAll(int start, int end) throws SQLException{
+	public List<BbsVo> selectAll(int bbsno,int start, int end) throws SQLException{
 		Map<String,Integer> count = new HashMap<String,Integer>();
+		count.put("bbsno", bbsno);
 		count.put("start",start);
 		count.put("end",end);
 		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectall", count);
@@ -54,8 +55,9 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override	
-	public List<BbsVo> selectTitle(int start, int end, String title) throws SQLException{
+	public List<BbsVo> selectTitle(int bbsno,int start, int end, String title) throws SQLException{
 		Map<String,Object> count = new HashMap<String,Object>();
+		count.put("bbsno", bbsno);
 		count.put("start",start);
 		count.put("end",end);
 		count.put("title", title);
@@ -64,8 +66,13 @@ public class BbsDaoImpl implements BbsDao {
 	}
 	
 	@Override	
-	public List<BbsVo> selectContent(String bbscontent) throws SQLException{
-		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent", bbscontent);
+	public List<BbsVo> selectContent(int bbsno,int start, int end, String bbscontent) throws SQLException{
+		Map<String,Object> count = new HashMap<String,Object>();
+		count.put("bbsno", bbsno);
+		count.put("start",start);
+		count.put("end",end);
+		count.put("title", bbscontent);
+		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent", count);
 		return list;
 	}
 
