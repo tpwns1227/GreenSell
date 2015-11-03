@@ -31,12 +31,12 @@ public class SellDaoImpl implements SellDao {
       return list;
    }
 
-   @Override
+   /*@Override
    public List<AuctionVO> auctionitemList() throws SQLException { //경매 itemList출력
       // TODO Auto-generated method stub
       List<AuctionVO>   list = sqlSession.selectList("selectauctionitem");
          return list;
-   }
+   }*/
 
    @Override
    public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기 
