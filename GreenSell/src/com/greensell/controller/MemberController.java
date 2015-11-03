@@ -1,6 +1,7 @@
 package com.greensell.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.greensell.member.beans.MemberVO;
 import com.greensell.member.beans.ZipVo;
 import com.greensell.model.member.MemberDao;
+import com.greensell.sell.beans.AuctionVO;
+import com.greensell.sell.beans.ItemSellVO;
 
 @Controller
 public class MemberController {
@@ -247,9 +250,22 @@ public class MemberController {
 		   }
 	   }
 	   @RequestMapping("/cart_form")//찜목록이동하기
-	   public String cart_form(){
-		   return "member/memberfunction/cart_form";
-	   }
+	   public String cart_form(HttpSession session,@RequestParam String email) throws SQLException {
+
+		  /* ItemSellVO vo = null;
+		   vo.getNo();*/
+		   System.out.println(email);
+			List<ItemSellVO> list = dao.allitemList(email);
+			List<String> fristimg = new ArrayList<String>();
+			session.setAttribute("itemlist", list);
+			for (int j = 0; j < list.size(); j++) {
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				fristimg.add(imglist.get(0));
+			}
+			session.setAttribute("fristimg", fristimg);
+			return "member/memberfunction/cart_form";
+		}
+	   
 	   @RequestMapping("/delete_form")//회원탈퇴하기
 	   public String delete_form(){
 		   return "member/memberinfo/delete_form";
@@ -273,5 +289,6 @@ public class MemberController {
 	   public String point () throws SQLException{
 		   return "/member/memberinfo/point_form";
 	   }
+	   
 	   
 }
