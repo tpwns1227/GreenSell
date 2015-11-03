@@ -122,9 +122,9 @@ public class SellDaoImpl implements SellDao {
 	}
    
    @Override//이메일도 필요함.
-	public boolean selectedchk(String itemno) throws SQLException {
+	public boolean selectedchk(Map<String, Object> map) throws SQLException {
 		// TODO Auto-generated method stub
-	    String result = sqlSession.selectOne("sell.selectedchk", itemno);
+	    String result = sqlSession.selectOne("sell.selectedchk", map);
 		System.out.println(result);
 	    if(result==null)
 			return false;

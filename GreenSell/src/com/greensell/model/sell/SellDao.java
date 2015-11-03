@@ -26,7 +26,7 @@ public interface SellDao {
 	public boolean auctionInsert(Map<String, Object> map) throws SQLException;
 	public boolean imgupdate(Map<String, Object> map) throws SQLException;
 	public boolean selectedinsert(Map<String, Object> map) throws SQLException;
-	public boolean selectedchk(String itemno) throws SQLException;
+	public boolean selectedchk(Map<String, Object> map) throws SQLException;
 	public List<ItemSellVO> selectlistcategory(Map<String, Object> map) throws SQLException;
 	public boolean bidupdate(Map<String, Object> map) throws SQLException;
 	public AuctionVO selectbid(int itemno) throws SQLException;
