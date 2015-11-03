@@ -44,8 +44,20 @@
 	<select id="selectDetail" parameterType="String" resultType="com.greensell.member.beans.MemberVO"> <!-- 상세정보보기 -->
 		select * from member where email=#{email}
 	</select>
-
 	
+	<select id="allselectitemList" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell where email=#{email} order by no desc
+	</select>
+	
+	<!-- <select id="selectoldlist" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell where email=#{email} order by itemname desc
+	</select>
+	 
+	<select id="selectauctionitemlist"   resultType="com.greensell.sell.beans.AuctionVO">
+  		select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
+	from itemsell i, auction a where i.no = a.itemno and finishtime>sysdate order by finishtime asc
+  	</select> -->
+	 
 	<select id="getPost" resultType="com.greensell.member.beans.ZipVo" parameterType="String">
 	SELECT sido, gugun, dong,bunji,zipcode FROM zipcode
 	WHERE    sido LIKE '%'||#{address}||'%'
@@ -53,6 +65,10 @@
         OR dong LIKE '%'||#{address}||'%'
         OR bunji LIKE '%'||#{address}||'%'
 	</select>
+	
+	<select id="selectimgname" parameterType="int" resultType="String">
+  		select imgname from itemimg where imgno=#{no}
+  	</select>
 	
 	<select id="getquestion" resultType="String" parameterType="String">
 		select question from member where email=#{email}
