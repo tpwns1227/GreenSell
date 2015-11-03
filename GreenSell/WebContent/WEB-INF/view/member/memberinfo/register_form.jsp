@@ -58,7 +58,25 @@ function test() {
      		}
 		   }); 
 	   
-	   
+	   $("input[name='phone']").keyup(function(){  
+		   if($("input[name='phone']").val()=='')
+	   		{$("#phonechk").html('');}
+     		else{  
+		   $.ajax({ 
+		         type : "post", 
+		         url : "phonechk", 
+		         data : "phone="+$("input[name='phone']").val(),
+		         success : function(data){ 
+		        	 var str = '';
+		        	 if(data == '중복된번호입니다')
+		        		 str = "<font color=red>"+data+"</font>";
+		        		 else 
+		        		str = "<font color=green>"+data+"</font>"; 
+		        	 $("#phonechk").html(str);
+		         } 
+		      }); 
+     		}
+		   }); 
 	   
 	});  
 
@@ -90,9 +108,10 @@ function test() {
 			<input name="password" id='textbox' type='password' placeholder="비밀번호" style='width: 200px;'>
 			<input name="password2" id='textbox' type='password' placeholder="비밀번호 확인" style='width: 200px;'>
 			<div class='p'>연락처</div>
-			<input name="phone" id='textbox' type='text' placeholder="연락처 ( - 제외 )"
-				style='width: 300px'> <input class='button2' type='button'
-				value='인증'>
+			<div style='text-align: left; margin-left: 50px'>
+			<input id='textbox' name='phone' type='text' placeholder="연락처 ( - 포함 )"
+				style='width: 300px'><span id="phonechk" style="margin-left: 15px"></span>
+				</div>
 			<div class='p'>주소</div>
 			<input class='textbox' name="zipcode" id='zip' type='text' placeholder="우편번호"
 				style='width: 200px'> 
@@ -102,9 +121,9 @@ function test() {
 
 			<div class='p'>계좌번호</div>
 			<select name='bank' class='rf'>
-				<option value='nh'>농협은행</option>
-				<option value='kb'>국민은행</option>
-				<option value='sh'>신한은행</option>
+				<option value='농협'>농협은행</option>
+				<option value='국민'>국민은행</option>
+				<option value='신한'>신한은행</option>
 			</select> 
 			<input name="account" id='textbox' type='text' placeholder="계좌번호" style='width: 200px;'>
 			<div class='p'>비밀번호 Q&A</div>
@@ -114,7 +133,7 @@ function test() {
 				<option value='나의 삶의 좌우명은?'>나의 삶의 좌우명은?</option>
 			</select> 
 			<input name="answer" id='textbox' type='text' placeholder="답변" style='width: 200px;'> 
-			<input class='button' type="button" value='회원가입' style="margin-top: 15px" onclick="inputCheck()">
+			<input class='button' type="button" value='회원가입' style="margin-top: 15px" onclick="inputCheck()" id="btn_pass">
 		</div>
 	</form>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
