@@ -60,14 +60,20 @@ public class BbsController {
 				
 				List<BbsVo> list2 = dao.selectTitle(no,pagelink,pagelink,ftitle);
 				
-				//List<BbsVo> list3 = dao.selectContent(no,pagelink,pagelink,bbscontent);
+				System.out.println(no);
+				System.out.println(pagelink);
+				System.out.println(pagelink);
+				System.out.println(bbscontent);
+				System.out.println("여기여");
+				List<BbsVo> list3 = dao.selectContent(no,pagelink,pagelink,bbscontent);
 				 
 				int num = dao.count(no);
 				int num2 = dao.counttitle(no, ftitle);
 				int num3 = dao.countcontent(no, bbscontent);
+				System.out.println();
 				m.addAttribute("selectAll", list);
 				m.addAttribute("selecttitle", list2);
-				//m.addAttribute("selectcontent", list3);
+				m.addAttribute("selectcontent", list3);
 				m.addAttribute("count", no);
 				m.addAttribute("counttitle", num2);
 				m.addAttribute("countcontent", num3);
