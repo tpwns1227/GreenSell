@@ -38,7 +38,7 @@
 				$.ajax({
 					type : "post",
 					url : "searchitem",
-					data : "str=" + $("#searchbar").val()+"&howsell=${howsell}&category="+category,
+					data : "str=" + $("#searchbar").val()+"&howsell=${howsell}&category="+category+ "&count="+count,
 					success : function(data) {
 						$("#searchdiv").html(data);
 					}	
@@ -46,13 +46,13 @@
 		});
 		
 		$("#plusimg").click(function(){
-			count = count + 8;
+			count = count + 2;
 			 $.ajax({
 				type : "post",
-				url : "plusitem",
-				data : "count="+count,
+				url : "searchitem",
+				data : "str=" + $("#searchbar").val()+"&howsell=${howsell}&category="+category+ "&count="+count,
 				success : function(data) {
-					
+					$("#searchdiv").html(data);
 				}	
 			}); 
 		});
