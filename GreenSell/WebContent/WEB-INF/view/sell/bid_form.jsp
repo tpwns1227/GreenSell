@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,57 +8,89 @@
 <link rel="stylesheet" type="text/css" href="css/zip.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script type="text/javascript">
-//main페이지로 값 전달: 부모로 값전달하기 위해서는 opener사용
-/* function sendAdd(zipcode,sido, gugun, dong, bunji){
-	opener.document.getElementById("zip").value=zipcode;
-	var adr = sido + " " + gugun + " " + dong + " " + bunji;
- 	opener.document.getElementById("zip2").value=adr;
-    window.close();
-} */
-//널값체크
-$(document).ready(
-		function() {
-			$("#okbtn").click(
-					function() {
-
-						var checkValue = $("#bidprice").val();
-						if (checkValue == "") {
-							alert("입찰금을 입력하세요.");
-							$("#bidprice").focus();
-							return false;
-						} else {
-							var price = $("#bidprice").val();
+	$(document).ready(
+			function() {
+				$("#okbtn").click(
+						function() {
+							
+							if($("#nowemail").val()=='${skey}'){
+								alert('이미 입찰하셨습니다.');
+								window.close();
+							}
+							
+							
+							var price = parseInt($("#bidprice").val());
+							var stpr = parseInt($("#startpr").val());
+							var nowpr = parseInt($("#nowpr").val());
 							var nowemail = '${skey}';
 							var ino = '${itemno}';
-							$.ajax({
-								type : "get",
-								url : "bid",
-								data : "bidprice=" + price + "&email="
-										+ nowemail + "&itemno=" + ino,
-								success : function(data) {
-									var json = eval("("+data+")");
-									opener.$("#nowprice").html(json.nowprice);
-									opener.$("#num").html(json.tendernumber);
-									
-									window.close();
-								}
-							});
-						}
+							var checkValue = $("#bidprice").val();
+							if (checkValue == '' || checkValue == null) {//공백 체크
+								alert('가격을 입력해 주세요.');
+								$("#bidprice").focus();
+								return;
+							} else {
+								var chk = /^\d+$/;
+								if (!chk.test($("#bidprice").val())) {//숫자체크
+									alert('숫자만 입력해 주세요.');
+									$("#bidprice").focus();
+									return;
+								} else {//가격 체크
+									if (price > nowpr && price > stpr) {
+										$.ajax({
+											type : "get",
+											url : "bid",
+											data : "bidprice=" + price
+													+ "&email=" + nowemail
+													+ "&itemno=" + ino,
+											success : function(data) {
+												var json = eval("(" + data
+														+ ")");
+												opener.$("#nowprice").html(
+														json.nowprice);
+												opener.$("#num").html(
+														json.tendernumber);
+												opener.$("#nowemail").html(
+														json.nowemail);
 
-					});
-		});
+												window.close();
+											}
+										});
+									} else {
+										if (nowpr == 0) {
+											alert('시작가보다 더 높은 금액을 입력해 주세요.');
+											$("#bidprice").focus();
+											return;
+										}else{
+											alert('현재가보다 더 높은 금액을 입력해 주세요.');
+											$("#bidprice").focus();
+											return;
+										}
+									}
+								}
+							}
+
+						});
+			});
 </script>
 </head>
 <body>
 	<div align="center">
-	<div class='border' style="margin-left: 100px">입찰금</div>
-	<input class='textbox' id="bidprice" type="text" name="bidprice"
-		size="15">
-	<br>
-	<input class='button' id="okbtn" style='width: 95px' type="button"
-		value="확인">
-	<input class='button' style='width: 95px' type="button" value="취소"
-		onclick="window.close()">
-</div>
+		<div class='border' style="margin-left: 100px">입찰금</div>
+		<input class='textbox' id="bidprice" type="text" name="bidprice"
+			size="15"> <br> <input class='button' id="okbtn"
+			style='width: 95px' type="button" value="확인"> <input
+			class='button' style='width: 95px' type="button" value="취소"
+			onclick="window.close()">
+			<input type="hidden" id="nowpr">
+			<input type="hidden" id="startpr">
+			<input type="hidden" id="nowemail">
+			<script>
+				$("#nowpr").val(opener.$("#nowprice").html());
+				$("#startpr").val(opener.$("#startprice").html());
+				$("#nowemail").val(opener.$("#nowemail").html());
+			</script>
+			
+	</div>
 </body>
 </html>
