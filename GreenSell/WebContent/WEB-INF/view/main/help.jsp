@@ -6,32 +6,43 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script type="text/javascript">
-function inputCheck(){
+/* $(document).ready(function (){
 	$("#btn1").click(function(){
-		location.href="list?no=4"
+		location.href="list?no=2"
 	});
 	$("#btn2").click(function(){
 		location.href="list?no=3"
 	});
 	$("#btn3").click(function(){
-		location.href="list?no=2"
+		location.href="list?no=4"
 	});
-};
+}); */
 </script>
 </head>
 <body>
 <jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='container'>
 		<div class='border'>고객 지원</div>
-
-		<input id='btn1' type="button" value='공지사항'
-			style="margin-top: 15px; width: 400px" onclick="inputCheck()"> 
-			<input
-			id='btn2' type="button" value='질문하기' style="margin-top: 15px; width: 400px"
-			onclick="inputCheck()"> 
-			<input id='btn3' type="button"
-			value='자주 묻는 질문' style="margin-top: 15px; width: 400px" onclick="inputCheck()">
+	<form action="list">
+		<input type="hidden" value="2" id="no">
+		<input id='btn1' type="submit" value='공지사항' style="margin-top: 15px; width: 400px"> 
+	</form>
+	<form action="list"> 
+		<input type="hidden" value="3" id="no">
+		<input	id='btn2' type="submit" 
+				value='질문하기' style="margin-top: 15px; width: 400px"> 
+	</form>
+	<form action="list">
+		<input type="hidden" value="4" id="no">
+		<input id='btn3' type="submit"	
+				value='자주 묻는 질문' style="margin-top: 15px; width: 400px">
+	</form>
+		
+		
+	
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>
 </body>
