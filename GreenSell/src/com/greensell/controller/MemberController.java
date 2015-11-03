@@ -164,28 +164,23 @@ public class MemberController {
 		   return "member/memberinfo/register_form";
 	   }
 	   
-	   @RequestMapping("/updateForm")//회원정보 수정폼띄우기
+	   @RequestMapping(value = "/updateForm" , method = RequestMethod.POST)//회원정보 수정폼띄우기
 	   public String updateForm(HttpSession session, Model m){
 		   
 		   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
 		   m.addAttribute("member",vo);
-//		   session.setAttribute("addr",vo.getAddress());
-//		   session.setAttribute("bank",vo.getBank());
-//		   session.setAttribute("account", vo.getAccount());
-//		   session.setAttribute("question", vo.getQuestion());
-//		   session.setAttribute("answer", vo.getAnswer());
 		   return "member/memberinfo/update_form";
 		   
 	   }
 
-	   @RequestMapping("/update_form")//회원정보 수정하기
-	   public String memberupdate(MemberVO membervo,HttpSession session) throws SQLException{
-		   if(dao.update(membervo)){
-			   session.setAttribute("skey",membervo.getEmail());
-			   return "member/memberinfo/login_form";}
-		   else
-			   return "member/memberinfo/update_form";
+	   @RequestMapping(value = "/update_form")//회원정보 수정하기
+	   public String memberupdate(MemberVO membervo, Model m) throws SQLException{
+		   
+		   dao.update(membervo);
+		   return "redirect:updateForm";
 	   }
+	   
+	   
 	   @RequestMapping("/zip_form")//우편번호찾기폼띄우기
 	   public String zipSearch(){
 		 
