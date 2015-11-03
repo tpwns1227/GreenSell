@@ -2,7 +2,7 @@
 
 .container {
 	margin: 50px auto;
-	width: 500px;
+	width: 600px;
 	border: none;
 	text-align: left;
 }
@@ -17,7 +17,7 @@
 	font-size: 15px;
 	text-align: left;
 	font-weight: bold;
-	margin: 10px 0px 10px 50px;
+	margin: 10px 0px 10px 0px;
 }
 
 .button {
@@ -28,17 +28,17 @@
 }
 
 .containerC {
-		width: 75px;
+		width: 250px;
 		display: inline-block;
 	}
-	.img {
-		width: 75px;
-		height: 50px;
+.img {
+		width: 250px;
+		height: 200px;
 		border: 1px solid #EEE;
 	}
 	.item {
 		text-align: right;
-		margin-bottom: 5px;
+		margin-top: 5px;
 		height: 15px;
 		font-size: 13px;
 	}
@@ -47,9 +47,8 @@
 		height: 30px;
 	}
 	 .body2 {
-	 margin: 50px auto;
-	width: 400px;
-	border: none;
-	text-align: left;
 
+	max-width: 1200px;
+	margin: 50px 88px auto;
+	text-align: left;
 }
