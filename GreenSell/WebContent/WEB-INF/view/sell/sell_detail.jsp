@@ -17,6 +17,12 @@
 			}
 		});
 		
+		$("#bid").click(function(){
+		window.open('bid_form', "post",
+			     "toolbar=no ,width=450 ,height=200 ,directories=no,"
+			           + "status=yes,scrollbars=yes,menubar=no");
+		});
+		
 		
 		var findate = new Date('${auctionitem.finishtime}');
 		var finmonth = findate.getMonth();
@@ -118,7 +124,7 @@
 			</c:if>
 			<c:if test="${auctionitem.getHowsell()=='경매'}">
 			<br>
-				<input class='callbtn' type="button" value="입찰하기" style='width: 295px'>
+				<input class='callbtn' id="bid" type="button" value="입찰하기" style='width: 295px'>
 				<input class='callbtn' id="selectedbtn" type="button" value="찜 하기" style='width: 95px'>
 			</c:if>
 		</div>
@@ -154,11 +160,11 @@
 			<div class='bold2'>경매시작가</div>
 			<div class='font'>${auctionitem.getStartprice()}</div>
 			<div class='bold2'>현재가격</div>
-			<div class='font'>${auctionitem.getNowprice()}</div>
+			<div class='font' id='nowprice'>${auctionitem.getNowprice()}</div>
 			<div class='bold2'>마감시간</div>
 			<div class='font' id="fintime"></div>
 			<div class='bold2'>입찰횟수</div>
-			<div class='font'>${auctionitem.getTendernumber()}</div>
+			<div class='font' id='num'>${auctionitem.getTendernumber()}</div>
 			<div class='bold2'>판매방법</div>
 			<div class='font'>${auctionitem.getHowsell()}</div>
 			<div class='bold2'>카테고리</div>
