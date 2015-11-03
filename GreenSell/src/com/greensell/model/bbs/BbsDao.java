@@ -13,11 +13,11 @@ public interface BbsDao {
 	
 	public List<ReplyVo> selectComment(ReplyVo reply)throws SQLException;
 	
-	public List<BbsVo> selectAll(int start, int end)throws SQLException;
+	public List<BbsVo> selectAll(int bbsno,int start, int end)throws SQLException;
 	
-	public List<BbsVo> selectTitle(int start, int end, String title)throws SQLException;
+	public List<BbsVo> selectTitle(int bbsno,int start, int end, String title)throws SQLException;
 	
-	public List<BbsVo> selectContent(String bbscontent)throws SQLException;
+	public List<BbsVo> selectContent(int bbsno,int start, int end,String bbscontent)throws SQLException;
 	
 	public boolean hitUp(BbsVo dao)throws SQLException;
 	
