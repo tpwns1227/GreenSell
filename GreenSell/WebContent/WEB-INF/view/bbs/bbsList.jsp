@@ -102,7 +102,7 @@ function write(){
 	</table>
 </form>
 <form>
-     <table width="550" align="center" border="1">
+    <table width="550" align="center" border="1">
      	<tr>
      		<td align="center">
     		<select name="find">
