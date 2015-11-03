@@ -235,7 +235,7 @@ public class SellController {
 
 		map.put("email", email);
 		map.put("itemno", itemno);
-		if(dao.selectedchk(itemno))
+		if(dao.selectedchk(map))
 		{
 			return "nok";
 		}else{
@@ -320,30 +320,29 @@ public class SellController {
 	public String viewitemlist(@RequestParam(required = false) String howsell, @RequestParam(defaultValue="8") String count
 			, Model m) throws SQLException {
 		List<String> fristimg = new ArrayList<String>();
+		List<ItemSellVO> list;
 		if (howsell == null || howsell.equals("중고") || howsell.equals("7")) {
 			howsell="중고";
 			map.put("howsell", howsell);
 			map.put("count", count);
-			List<ItemSellVO> list = dao.olditemList(map);
+			list = dao.olditemList(map);
 			m.addAttribute("itemlist", list);
 			System.out.println(list.size());
-			for (int j = 0; j < list.size(); j++) {
-				List<String> imglist = dao.getImagenames(list.get(j).getNo());
-				fristimg.add(imglist.get(0));
-			}
-			m.addAttribute("fristimg", fristimg);
 			m.addAttribute("howsell", "중고");
 		} else {
 			howsell="경매";
-			List<AuctionVO> list = dao.auctionitemList();
+			map.put("howsell", howsell);
+			map.put("count", count);
+			list = dao.olditemList(map);
 			m.addAttribute("itemlist", list);
-			for (int j = 0; j < list.size(); j++) {
-				List<String> imglist = dao.getImagenames(list.get(j).getNo());
-				fristimg.add(imglist.get(0));
-			}
-			m.addAttribute("fristimg", fristimg);
 			m.addAttribute("howsell", howsell);
 		}
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
+		System.out.println(list.size());
+		m.addAttribute("fristimg", fristimg);
 		
 		return "/sell/itemList";
 	}
