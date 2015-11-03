@@ -76,7 +76,7 @@ function write(){
 	      </tr>
 	      </c:forEach>
          </c:when>
-         <c:when test="find.bbscontent != null">
+        <%--  <c:when test="find.bbscontent != null">
             <c:forEach var="list"  items="${seleccontent}" begin="0" end="9">
 	    	<tr>
 				<div class='container'>
@@ -88,7 +88,7 @@ function write(){
 				</div>
 			</tr>
 	        </c:forEach>
-        </c:when>    
+        </c:when>     --%>
 	    <c:otherwise>
 	    <c:forEach var="list" items="${selectAll}" begin="0" end="9">
 	    <tr>
