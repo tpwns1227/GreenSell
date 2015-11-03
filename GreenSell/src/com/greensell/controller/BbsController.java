@@ -59,7 +59,7 @@ public class BbsController {
 				List<BbsVo> list2 = dao.selectTitle(no,pagelink,pagelink,ftitle);
 				
 				//List<BbsVo> list3 = dao.selectContent(no,pagelink,pagelink,bbscontent);
-				
+				 
 				int num = dao.count(no);
 				int num2 = dao.counttitle(no, ftitle);
 				int num3 = dao.countcontent(no, bbscontent);
