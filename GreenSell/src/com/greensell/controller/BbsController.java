@@ -49,20 +49,23 @@ public class BbsController {
 				@RequestParam(required=false,defaultValue="") String ftitle,
 				@RequestParam(required=false,defaultValue="") String fcontent,
 				Model m){
-			
-				System.out.println(no);
+			//int plus=no+1;
+				//System.out.println("숫자 ="+no+" 더하기="+plus+"title="+title+"bbscontent="+bbscontent+"ftitle="+ftitle+"fcontent="+fcontent+"=page="+pagelink);
 			
 			//m.addAttribute("bbsno",bbsno);
 			try {
 				List<BbsVo> list = dao.selectAll(no,pagelink,pagelink);
+				
 				List<BbsVo> list2 = dao.selectTitle(no,pagelink,pagelink,ftitle);
-				List<BbsVo> list3 = dao.selectContent(no,pagelink,pagelink,bbscontent);
+				
+				//List<BbsVo> list3 = dao.selectContent(no,pagelink,pagelink,bbscontent);
+				
 				int num = dao.count(no);
 				int num2 = dao.counttitle(no, ftitle);
 				int num3 = dao.countcontent(no, bbscontent);
 				m.addAttribute("selectAll", list);
 				m.addAttribute("selecttitle", list2);
-				m.addAttribute("selectcontent", list3);
+				//m.addAttribute("selectcontent", list3);
 				m.addAttribute("count", num);
 				m.addAttribute("counttitle", num2);
 				m.addAttribute("countcontent", num3);
