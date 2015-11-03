@@ -38,8 +38,7 @@ public class MemberDaoImpl implements MemberDao {
 	   public boolean update(MemberVO membervo) throws SQLException {//회원정보업데이트
 	      // TODO Auto-generated method stub
 	      int t = sqlSession.update("member.update", membervo);
-	      if(t>0) return true;
-	      return false;
+	      return (t>0)? true:false;
 	   }
 
 	   @Override
