@@ -12,6 +12,9 @@
 		SELECT password FROM member WHERE email=#{email}
 	</select>
 	
+	<select id="phonechk" parameterType="String" resultType="String">
+		select phone from member where phone=#{phone}
+	</select>
 
 	<select id="idcheck" parameterType="String" resultType="String"> <!-- 아이디 존재 여부 찾기  -->
 		select email from member where email=#{email}
@@ -25,8 +28,8 @@
 		select password from member where email=#{email} and question=#{question} and answer=#{answer}  
 	</select>
 
-	<update id="update" parameterType="String"> <!-- 회원정보 업데이트 -->
-		update member set zipcode=#{zipcode}, address=#{address}, question=#{question}, answer=#{answer}, bank=#{bank}, account=#{account} where password=#{password}
+	<update id="update" parameterType="com.greensell.member.beans.MemberVO"> <!-- 회원정보 업데이트 -->
+		update member set password=#{password},zipcode=#{zipcode}, address=#{address}, question=#{question}, answer=#{answer}, bank=#{bank}, account=#{account} where email=#{email}
 	</update>
 
 	<delete id="delete" parameterType="String"> <!-- 회원정보 탈퇴하기 -->
