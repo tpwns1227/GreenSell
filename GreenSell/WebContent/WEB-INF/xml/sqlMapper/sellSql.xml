@@ -4,11 +4,15 @@
 <mapper namespace="sell">
 
 	<select id="selectAll" resultType="com.greensell.sell.beans.ItemSellVO">
-		select * from itemsell order by no desc
+	select b.* from (select a.*, rownum rnum from (select * from itemsell order by no desc) a) b where <![CDATA[rnum <= 12]]>
+	<!-- select * from itemsell order by no desc -->
+	
 	</select>
 	
 	<select id="selectolditem" resultType="com.greensell.sell.beans.ItemSellVO">
-		select * from itemsell where howsell=#{howsell} order by no desc
+		<!-- select * from itemsell where howsell=#{howsell} where order by no desc -->
+		select b.* from (select a.*, rownum rnum from (select * from itemsell where howsell=#{howsell} order by no desc) a) b 
+		where <![CDATA[rnum <= #{count}]]>
 	</select>
   
   	<select id="selectauctionitem"  resultType="com.greensell.sell.beans.AuctionVO">
