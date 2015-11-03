@@ -55,11 +55,15 @@ public class BbsController {
 				List<BbsVo> list = dao.selectAll(pagelink,pagelink);
 				List<BbsVo> list2 = dao.selectTitle(pagelink,pagelink,search);
 				List<BbsVo> list3 = dao.selectContent(bbscontent);
-				int num = dao.count();
+				int num = dao.count(bbsno);
+				int num2 = dao.counttitle(bbsno, search);
+				int num3 = dao.countcontent(bbsno, bbscontent);
 				m.addAttribute("selectAll", list);
 				m.addAttribute("selecttitle", list2);
 				m.addAttribute("selectcontent", list3);
 				m.addAttribute("count", num);
+				m.addAttribute("counttitle", num2);
+				m.addAttribute("countcontent", num3);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
