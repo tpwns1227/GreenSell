@@ -80,7 +80,7 @@ function write(){
         <%--  <c:when test="find.bbscontent != null">
             <c:forEach var="list"  items="${seleccontent}" begin="0" end="9">
 	    	<tr>
-				<div class='container'>
+				<div class='container'> 
 					<td align="center"><div class='no'>${list.no}</div></td>
 					<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
 					<td align="center"><div class='email'>${list.email}</div></td>
@@ -95,7 +95,7 @@ function write(){
 	    <tr>
 				<div class='container'>
 					<td align="center"><div class='no'>${list.no}</div></td>
-					<td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
+					<td align="center"><div class='title'><a href="view?no=${list.no}" >${list.title}</a></div></td>
 					<td align="center"><div class='email'>${list.email}</div></td>
 					<td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
 					<td align="center"><div class='hits'>${list.hits}</div></td>

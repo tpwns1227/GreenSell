@@ -27,11 +27,11 @@
 				<br>
 				<hr>
 			</td>
-		</tr>	
+		</tr>	  
 		<tr>
 			<td align="right"><input type="submit" value="수정" onclick="location.href='updateok'" >
 			<input type="hidden" value="${view.no }" name="no">
-			<input type="button" value="목록" onclick="location.href='list'">
+			<input type="button" value="목록" onclick="location.href='list?no=${view.bbsno}'">
 			</td>
 		</tr> 
 		<tr>

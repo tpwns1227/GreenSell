@@ -88,10 +88,12 @@ function CM() {
 			<form action="delete">
 			<input type="submit" id="de" value="삭제" onclick="location.href='delete'" >
 			<input type="hidden" value="${view.no}" name="no">
-			</form>
+			<input type="hidden" value="${view.bbsno}" name="bbsno">
+			
+			</form>  
 			</c:if>
 			
-			<input type="button" value="목록" onclick="location.href='list'">
+			<input type="button" value="목록" onclick="location.href='list?no=${view.bbsno}'">
 			</td>
 		</tr>
 	
