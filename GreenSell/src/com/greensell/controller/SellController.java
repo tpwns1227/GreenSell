@@ -304,15 +304,21 @@ public class SellController {
 		return "sell/sell_contact";
 	}
 	
-	@RequestMapping("/searchitem")
-	public String searchitem(Model m,@RequestParam String str, 
+	@RequestMapping(value="/searchitem", method = RequestMethod.POST)
+	public String searchitem(Model m,@RequestParam String str, @RequestParam String count,
 			@RequestParam String category ,@RequestParam String howsell) throws SQLException{
 		map.put("howsell", howsell);
 		map.put("str", str);
 		map.put("category", category);
+		map.put("count", count);
+		List<String> fristimg = new ArrayList<String>();
 		List<ItemSellVO> list = dao.searchitemList(map);
 		m.addAttribute("itemlist", list);
-		System.out.println(list.size());
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
+		m.addAttribute("fristimg", fristimg);
 		return "sell/searchitem";
 	}
 	
@@ -327,7 +333,6 @@ public class SellController {
 			map.put("count", count);
 			list = dao.olditemList(map);
 			m.addAttribute("itemlist", list);
-			System.out.println(list.size());
 			m.addAttribute("howsell", "중고");
 		} else {
 			howsell="경매";
@@ -341,9 +346,7 @@ public class SellController {
 			List<String> imglist = dao.getImagenames(list.get(j).getNo());
 			fristimg.add(imglist.get(0));
 		}
-		System.out.println(list.size());
-		m.addAttribute("fristimg", fristimg);
-		
+		m.addAttribute("fristimg", fristimg);	
 		return "/sell/itemList";
 	}
 	
