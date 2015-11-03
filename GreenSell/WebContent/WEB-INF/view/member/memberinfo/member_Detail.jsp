@@ -21,6 +21,15 @@
 		document.detail.submit();
 
 	}
+	function like() {
+
+		document.detail.action = 'cart_form';
+		document.detail.submit();
+	}
+	function pointlist() {
+		document.detail.action = 'point_form';
+		document.detail.submit();
+	}
 </script>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
@@ -58,8 +67,9 @@
 			<div class='p'>포인트</div>
 			<input name="point" id='textbox' type='text' value='${member.point}'
 				readonly style="width: 300px"> <input id="login"
-				class='button2' type="button" value='내역' onclick="call()"> <input
-				id="update" class='button2' type="button" value='정보수정'
+				class='button2' type="button" value='내역' onclick="pointlist()">
+				
+			<input id="update" class='button2' type="button" value='정보수정'
 				onclick='updateMember()' style="margin-top: 15px;"> <input
 				id="login" class='button2' type="button" onclick='deleteMember()'
 				value='회원탈퇴'> <input id="login" class='button2'

@@ -41,7 +41,28 @@ $(document).ready(function(){
 });
  $(document).ready(function(){
 	$("#updatebtn").click(function(){
-		if(confirm("수정하시겠 습니까?")){
+		if ($(this).attr('id') == 'pricebtn') {
+			if($("#itemprice").val()=='' || $("#itemprice").val()==null){
+				alert('가격을 입력해 주세요.');
+				$("#itemprice").focus();
+				return;
+			}else{
+				var chk =  /^\d+$/;
+				if(!chk.test($("#itemprice").val())){
+					alert('숫자만 입력해 주세요.');
+					$("#itemprice").focus();
+					return;
+				}else{
+					if(document.sellForm.itemprice.value.length < 4){
+						alert("천원 이상 입력해 주세요.");
+						$("#itemprice").focus();
+						return;
+					}
+				}
+			}
+			
+		}
+		if(confirm("수정하시겠습니까?")){
 			document.yes.submit();
 		}else{
 			return;
