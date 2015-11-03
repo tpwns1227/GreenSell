@@ -15,10 +15,10 @@
 		where <![CDATA[rnum <= #{count}]]>
 	</select>
   
-  	<select id="selectauctionitem"  resultType="com.greensell.sell.beans.AuctionVO">
+  	<!-- <select id="selectauctionitem"  resultType="com.greensell.sell.beans.AuctionVO">
   		select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
 	from itemsell i, auction a where i.no = a.itemno and finishtime>sysdate order by finishtime asc
-  	</select>
+  	</select> -->
   	
   	<select id="selectcategory" resultType="com.greensell.sell.beans.ItemSellVO">
 		select * from itemsell where howsell=#{howsell} and category=#{category} order by no desc
@@ -28,8 +28,8 @@
   		delete from itemsell where no=#{no}
    	</delete>
    	
-   	<select id="selectedchk" parameterType="String" resultType="String">
-   		select * from selected where itemno=#{itemno}
+   	<select id="selectedchk" parameterType="map" resultType="String">
+   		select * from selected where itemno=#{itemno} and email=#{email}
    	</select>
    	
    	<select id="searchlist" parameterType="map" resultType="com.greensell.sell.beans.ItemSellVO">
