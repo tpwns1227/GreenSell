@@ -27,6 +27,11 @@
    	<select id="selectedchk" parameterType="String" resultType="String">
    		select * from selected where itemno=#{itemno}
    	</select>
+   	
+   	<select id="searchlist" parameterType="map" resultType="com.greensell.sell.beans.ItemSellVO">
+   		select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%'
+   	</select>
+   	
   	
   	<insert id="insertselected" parameterType="map">
   		insert into selected values(no_selected_seq.nextval,#{itemno},#{email})
