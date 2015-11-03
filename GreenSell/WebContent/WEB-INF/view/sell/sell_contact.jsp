@@ -22,11 +22,15 @@ input[type='button']:hover {
 </style>
 </head>
 <body>
-	<div class='container3' style="width: 500px; height: 125px">
-		<div class='border'>연락처</div>
-		<input type='text' class='textbox' value='01051315341' readonly>
-		<input class='callbtn' type="button" value="확인"
-			style="width: 400px; margin-top: 10px">
-	</div>
+<div class='container3' style="width: 500px; height: auto">
+<div class='border'>윤푸</div>
+<div class='font2'>연락처</div>
+<input type='text' class='textbox' value='01051315341' readonly>
+<div class='font2'>평점 : 4.3</div>
+
+<input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >
+<input class='callbtn' type="button" value="후기 게시판" style="width: 133px; margin-top: 10px" >
+<input class='callbtn' type="button" value="확인" style="width: 133px; margin-top: 10px" >
+</div>
 </body>
 </html>
