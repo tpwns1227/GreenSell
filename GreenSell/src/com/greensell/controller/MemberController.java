@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
@@ -98,15 +99,18 @@ public class MemberController {
 	   	public @ResponseBody String phonechk(@RequestParam String phone) throws SQLException{
 		   String ph = "(01[016789])-(\\d{3,4})-(\\d{4})";
 		   Pattern p = Pattern.compile(ph);
-		   if(p.matcher(phone).matches()){
-			   return "사용가능";
+		   System.out.println(ph);
+		   
+		   if(!p.matcher(phone).matches()){
+			   System.out.println("여기도 되요");
+			   return "사용불가";
 		   }else{
 			   boolean phonechk = dao.phonechk(phone);
-			   
+			   System.out.println("되요");
 			   if(phonechk){
-				   return "사용가능";
-			   }else{
 				   return "사용불가";
+			   }else{
+				   return "사용가능";
 			   }
 		   }
 	   }
