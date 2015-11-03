@@ -87,8 +87,10 @@ public class BbsController {
 		@RequestMapping("/view")
 		public String view(@RequestParam int no,BbsVo b,Model m,ReplyVo r){
 			
+			//System.out.println(no);
 			try{
 				BbsVo bbsVo = dao.view(no);
+				//System.out.println(bbsVo.getBbsno());
 				List<ReplyVo> replyvo=dao.selectComment(r);
 				m.addAttribute("view", bbsVo);
 				m.addAttribute("comment",replyvo);
@@ -208,15 +210,18 @@ public class BbsController {
 			}
 			
 			@RequestMapping("/delete")
-			public String delete(@RequestParam int no){
+			public String delete(@RequestParam int no,@RequestParam int bbsno){
+				System.out.println("삭제 ="+no);
+				
 				//int n=b.getNo();
 				//m.addAttribute(no); 
 				try {
 					
-					if(dao.cmAlldelete(no)){
+					//if(dao.cmAlldelete(no)){
+						System.out.println("댓글삭제");
 						if(dao.delete(no))
-							return "redirect:list";
-					}
+							return "redirect:list?no="+bbsno;
+					//}
 					
 					
 				} catch (SQLException e) {
