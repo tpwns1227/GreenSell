@@ -33,6 +33,7 @@
 			$("input[value='전체']").attr("checked", "checked");
 		}
 
+		var count = 8;
 		$("#searchbar").keyup(function() {
 				$.ajax({
 					type : "post",
@@ -42,9 +43,21 @@
 						$("#searchdiv").html(data);
 					}	
 				});
-			
-
 		});
+		
+		$("#plusimg").click(function(){
+			count = count + 8;
+			 $.ajax({
+				type : "post",
+				url : "plusitem",
+				data : "count="+count,
+				success : function(data) {
+					
+				}	
+			}); 
+		});
+		
+		
 
 	});
 </script>
@@ -102,6 +115,8 @@
 </div>
 </form>
 </div>
+
+<div style="margin-left: 1000px"><input type="button" style="width: 95px; height: 30px" id="plusimg" value="더보기"></div>
 
 </body>
 </html>
