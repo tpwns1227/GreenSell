@@ -113,6 +113,7 @@ public class SellController {
 		MultipartRequest multi = new MultipartRequest(req, uploadDir, maxPostSize, "UTF-8",
 				new DefaultFileRenamePolicy());
 		List<String> names = dao.getImagenames(Integer.parseInt(multi.getParameter("no")));
+		uploadDir = uploadDir + "\\";
 		for (int i = 0; i < names.size(); i++) {
 			File oldfile = new File(uploadDir + names.get(i));
 			oldfile.delete();
