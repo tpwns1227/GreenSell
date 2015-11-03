@@ -63,18 +63,15 @@ function validationCheck(){
 	<form name="yes" action="update_form">
 		<div class='border'>정보 수정</div>
 		<div class='p'>비밀번호</div>
-		<input class='textbox' name="password" id='pass' type='password' placeholder="현재 비밀번호"
-			style='width: 400px; margin-bottom: 5px' value="${member.password }">
-		<input class='textbox' name="password1" id='pass1' type='password' placeholder="바꿀 비밀번호"
-			style='width: 200px;'> <input name="password2" id='pass2'
-			type='password' class='textbox' placeholder="비밀번호 확인" style='width: 200px;'>
+		<input class='textbox' name="password" id='pass' type='password' placeholder="비밀번호"
+			style='width: 400px; margin-bottom: 5px'>
 		<div class='p'>주소</div>
 		<input class='textbox' name="zipcode" id='zip' type='text' placeholder="우편번호"
-			style='width: 200px' value="${member.zipcode} " readonly=""> <input
+			style='width: 200px' value="${member.zipcode} " readonly> <input
 			class='button' type='button' value='검색' style='width: 200px' onclick="test()">
 		<input class='textbox' name="address" id='zip2' type='text' placeholder="상세주소"
 			style="margin-top: 10px; width: 400px"
-			value='${member.address}' readonly="">
+			value='${member.address}'>
 
 		<div class='p'>계좌번호</div>
 		<%

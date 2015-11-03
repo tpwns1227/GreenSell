@@ -69,7 +69,7 @@ function test() {
 
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
-	<form name='register_form' action="result">
+	<form name='register_form' action="result" method="post">
 		<div class='container'>
 			<div class='border'>회원가입</div>
 			<div class='p'>이메일</div>
