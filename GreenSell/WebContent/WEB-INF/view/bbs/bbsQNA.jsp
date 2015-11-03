@@ -12,9 +12,9 @@
 	<div class='container'>
 		<div class='border'>질문하기</div>
 		<div class='p'>이메일</div>
-		<input id='textbox' type='text' placeholder="이메일">
+		<input class='textbox' type='text' placeholder="이메일">
 		<div class='p'>제목</div>
-		<input id='textbox' type='text' placeholder="제목"> <br>
+		<input class='textbox' type='text' placeholder="제목"> <br>
 		<div class='p'>내용</div>
 		<textarea></textarea>
 		<div class='forgot' align="right">답변은 이메일로 전송됩니다.</div>
