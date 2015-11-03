@@ -52,7 +52,6 @@ public class BbsController {
 			try {
 				List<BbsVo> list = dao.selectAll(pagelink,pagelink);
 				List<BbsVo> list2 = dao.selectTitle(title);
-				
 				List<BbsVo> list3 = dao.selectContent(bbscontent);
 				int num = dao.count();
 				m.addAttribute("selectAll", list);
