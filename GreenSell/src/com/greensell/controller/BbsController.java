@@ -48,8 +48,18 @@ public class BbsController {
 				@RequestParam(defaultValue="1") int pagelink,
 				@RequestParam(required=false,defaultValue="") String search,
 				@RequestParam(required=false,defaultValue="") String fcontent,
+				@RequestParam int no,
 				Model m){
 
+			if(no==2){
+				//공지사항
+			}
+			else if(no==3){
+				//질문하기
+			}
+			else if(no==4){
+				//자주 묻는 질문
+			}
 			//m.addAttribute("bbsno",bbsno);
 			try {
 				List<BbsVo> list = dao.selectAll(pagelink,pagelink);
