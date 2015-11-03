@@ -106,8 +106,8 @@ function write(){
      	<tr>
      		<td align="center">
     		<select name="find">
-     			<option value="title" selected>제 목</option>
-     			<option value="bbscontent">내 용</option>
+     			<option id="title" value="title" selected>제 목</option>
+     			<option id="bbscontent" value="bbscontent">내 용</option>
      		</select>
      		<input type="text" name="search" size="20">
      		<input type="submit" value="글찾기">
