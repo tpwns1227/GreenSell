@@ -320,6 +320,19 @@ public class SellController {
 		return "실패";	
 	}
 	
+	@RequestMapping("/review_form")
+	public String review(){
+		return "sell/review_view";
+		
+	}
+	
+	@RequestMapping("/sell_contact")
+	public String contact(){
+		return "sell/sell_contact";
+		
+	}
+	
+	
 	
 	
 }
