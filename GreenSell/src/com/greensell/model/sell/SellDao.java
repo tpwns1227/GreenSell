@@ -30,5 +30,6 @@ public interface SellDao {
 	public List<ItemSellVO> selectlistcategory(Map<String, Object> map) throws SQLException;
 	public boolean bidupdate(Map<String, Object> map) throws SQLException;
 	public AuctionVO selectbid(int itemno) throws SQLException;
+	public List<ItemSellVO> searchitemList(Map<String, Object> map) throws SQLException;
 	
 }

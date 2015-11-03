@@ -66,7 +66,7 @@ function test() {
 		         type : "post", 
 		         url : "phonechk", 
 		         data : "phone="+$("input[name='phone']").val(),
-		         success : function(data){ 
+		         success : function(data){
 		        	 var str = '';
 		        	 if(data == '중복된번호입니다')
 		        		 str = "<font color=red>"+data+"</font>";
