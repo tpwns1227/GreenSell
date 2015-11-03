@@ -13,7 +13,7 @@
   
   	<select id="selectauctionitem"  resultType="com.greensell.sell.beans.AuctionVO">
   		select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
-	from itemsell i, auction a where i.no = a.itemno order by i.no desc
+	from itemsell i, auction a where i.no = a.itemno and finishtime>sysdate order by finishtime asc
   	</select>
   	
   	<select id="selectcategory" resultType="com.greensell.sell.beans.ItemSellVO">
@@ -36,9 +36,13 @@
   		delete from itemimg where imgno=#{no}
   	</delete>
   	
-  	<!-- <delete id="deleteauction" parameterType="int">
-  		delete from auction where no=(select no from auction where itemno=#{no})
-  	</delete> -->
+  	<update id="bidupdate" parameterType="map">
+  		update auction set nowprice=#{nowprice}, TENDERNUMBER=TENDERNUMBER+1, nowemail=#{email} where itemno=#{itemno}
+  	</update>
+  	
+  	<select id="bidselect" parameterType="int" resultType="com.greensell.sell.beans.AuctionVO">
+  		select * from auction where itemno=#{itemno}
+  	</select>
   	
   	<update id="itemupdate" parameterType="com.greensell.sell.beans.ItemSellVO">
   		update itemsell set itemname=#{itemname}, itemprice=#{itemprice}, itemstate=#{itemstate}, category=#{category}, itemdetail=#{itemdetail}
