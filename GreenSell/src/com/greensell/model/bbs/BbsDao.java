@@ -25,7 +25,11 @@ public interface BbsDao {
 	
 	public boolean insert(ReplyVo Vo) throws SQLException;
 	
-	public int count() throws SQLException;
+	public int count(int bbsno) throws SQLException;
+	
+	public int counttitle(int bbsno, String title) throws SQLException;
+	
+	public int countcontent(int bbsno, String bbscontent) throws SQLException;
 	
 	public boolean cmAlldelete(int no)throws SQLException;
 	

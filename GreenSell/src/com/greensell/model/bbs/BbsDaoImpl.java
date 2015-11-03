@@ -90,8 +90,8 @@ public class BbsDaoImpl implements BbsDao {
 	}
 
 	@Override
-	public int count() throws SQLException {
-		int num = sqlsession.selectOne("bbs.count");
+	public int count(int bbsno) throws SQLException {
+		int num = sqlsession.selectOne("bbs.count",bbsno);
 		return num;
 	}
 
@@ -107,6 +107,24 @@ public class BbsDaoImpl implements BbsDao {
 		int t = sqlsession.delete("bbs.cmAlldelete", no);
 		if(t==1){return true;}
 		return false;
+	}
+
+	@Override
+	public int counttitle(int bbsno, String title) throws SQLException {
+		Map<String,Object> count = new HashMap<String,Object>();
+		count.put("bbsno",bbsno);
+		count.put("title", title);
+		int num = sqlsession.selectOne("bbs.counttitle", count);
+		return num;
+	}
+
+	@Override
+	public int countcontent(int bbsno, String bbscontent) throws SQLException {
+		Map<String,Object> count = new HashMap<String,Object>();
+		count.put("bbsno",bbsno);
+		count.put("bbscontent", bbscontent);
+		int num = sqlsession.selectOne("bbs.countcontent", count);
+		return num;
 	}
 
 }
