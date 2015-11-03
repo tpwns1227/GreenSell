@@ -14,11 +14,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.xml.ws.RequestWrapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,9 +37,11 @@ public class SellController {
 	// 자동 매핑
 	@Autowired
 	SellDao dao;
+	
+	Map<String, Object> map = new HashMap<String, Object>();
 
 	@RequestMapping("/sell_detail") // 글 클릭시 상세보기로 이동
-	public String detailform(@RequestParam int no, Model m) throws SQLException {
+	public String detailform(@RequestParam int no, Model m, HttpSession session) throws SQLException {
 
 		ItemSellVO ivo = dao.itemDetail(no); // 게시글 한가지의 정보를 가져온다.
 		// System.out.println(ivo.getEmail());
@@ -49,6 +55,7 @@ public class SellController {
 
 		List<String> list = dao.getImagenames(no); // 이미지 뿌리기
 		m.addAttribute("imglist", list);
+		session.setAttribute("itemno", no);
 		return "/sell/sell_detail";
 	}
 
@@ -148,7 +155,7 @@ public class SellController {
 		String imgname2 = multi.getFilesystemName("imgname2");
 		String imgname3 = multi.getFilesystemName("imgname3");
 		String imgname4 = multi.getFilesystemName("imgname4");
-		Map<String, Object> map = new HashMap<String, Object>();	
+		
 		if (dao.itemUpdate(itsv)) {
 			if (imgname1 != null) {
 				map.put("oldimg", names.get(0));
@@ -215,7 +222,7 @@ public class SellController {
 
 		boolean result = false;
 
-		Map<String, Object> map = new HashMap<String, Object>();
+		
 		result = dao.itemInsert(itsv);
 		int i = dao.selectlastno();
 		map.put("email", itsv.getEmail());
@@ -253,7 +260,6 @@ public class SellController {
 	@RequestMapping("/insert_cart")
 	public @ResponseBody String insertcart(@RequestParam String email, @RequestParam String itemno) throws SQLException{
 
-		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("email", email);
 		map.put("itemno", itemno);
 		if(dao.selectedchk(itemno))
@@ -278,7 +284,7 @@ public class SellController {
 			else
 			return "redirect:itemList?howsell="+7;	
 		}else{
-		Map<String, Object> map = new HashMap<String, Object>();
+		
 		map.put("category", category);
 		map.put("howsell", howsell);
 		List<ItemSellVO> list = dao.selectlistcategory(map);
@@ -293,6 +299,25 @@ public class SellController {
 		m.addAttribute("itemlist",list);
 		return "sell/itemList";
 		}
+	}
+	
+	@RequestMapping("/bid_form")
+	public String bid_form(){
+		return "sell/bid_form";
+	}
+	
+	@RequestMapping("/bid")
+	public @ResponseBody String bid(Model m, @RequestParam String bidprice, @RequestParam String email, @RequestParam String itemno) throws SQLException{
+		
+		
+		map.put("nowprice", Integer.parseInt(bidprice));
+		map.put("email", email);
+		map.put("itemno", Integer.parseInt(itemno));
+		if(dao.bidupdate(map)){
+		 AuctionVO avo = dao.selectbid(Integer.parseInt(itemno));
+		 return "{nowprice:'"+avo.getNowprice()+"', nowemail:'"+avo.getNowemail()+"',tendernumber:'"+avo.getTendernumber()+"'}";
+		}
+		return "실패";	
 	}
 	
 	
