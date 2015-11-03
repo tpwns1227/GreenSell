@@ -167,8 +167,35 @@ public class MemberDaoImpl implements MemberDao {
 		return (i>0)? true:false;
 	}
 
+	/*@Override
+	public List<ItemSellVO> olditemselectList(String email) throws SQLException {
+	// TODO Auto-generated method stub
+		List<ItemSellVO> list;
+	      
+	      list = sqlSession.selectList("member.selectoldlist", email);
+	      return list;
+	}
 	
+	@Override
+	public List<AuctionVO> auctionitemselectList() throws SQLException {
+		// TODO Auto-generated method stub
+		List<AuctionVO>   list = sqlSession.selectList("member.selectauctionitemlist");
+		return list;
+	}*/
 
 
+	 @Override
+	   public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기 
+	      // TODO Auto-generated method stub
+		  List<String> list = sqlSession.selectList("member.selectimgname",no);
+	      return list;
+	   }
+	 
+	@Override
+	public List<ItemSellVO> allitemList(String email) throws SQLException {
+	// TODO Auto-generated method stub
+		List<ItemSellVO> list = sqlSession.selectList("member.allselectitemList",email);
+	      return list;
+	}
 	
 }

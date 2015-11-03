@@ -33,5 +33,8 @@ public interface MemberDao {
 	   public String getQuestion(String email) throws SQLException; //이메일을 입력하면 비밀번호 찾기 질문을 가져옴
 	   public String getanswer(String email) throws SQLException; //이메일을 통해 비밀번호 찾기 답을 가져옴
 	   public boolean updatepw(Map<String, String> map) throws SQLException;//패스워드 수정하기
-	   
+	   //public List<ItemSellVO> olditemselectList(String email) throws SQLException; //중고 판매 리스트
+	   public List<String> getImagenames(int no) throws SQLException; //게시글에 포함된 이미지 이름들 가져오기
+	   //public List<AuctionVO> auctionitemselectList() throws SQLException; //경매 리스트 출력
+	   public List<ItemSellVO> allitemList(String email) throws SQLException; //홈에서 중고 및 경매 리스트 통합 출력
 }
