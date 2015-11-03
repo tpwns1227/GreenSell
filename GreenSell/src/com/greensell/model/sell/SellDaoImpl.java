@@ -25,13 +25,9 @@ public class SellDaoImpl implements SellDao {
    }
 
    @Override
-   public List<ItemSellVO> olditemList(String howsell) throws SQLException { //중고 itemlist출력
+   public List<ItemSellVO> olditemList(Map<String, Object> map) throws SQLException { //중고 itemlist출력
       // TODO Auto-generated method stub
-      List<ItemSellVO> list;
-      if(howsell==null){
-         howsell = "중고";
-      }
-      list = sqlSession.selectList("selectolditem", howsell);
+      List<ItemSellVO> list = sqlSession.selectList("selectolditem", map);
       return list;
    }
 
@@ -125,7 +121,7 @@ public class SellDaoImpl implements SellDao {
 	   return (i>0)? true:false;
 	}
    
-   @Override
+   @Override//이메일도 필요함.
 	public boolean selectedchk(String itemno) throws SQLException {
 		// TODO Auto-generated method stub
 	    String result = sqlSession.selectOne("sell.selectedchk", itemno);
