@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.greensell.model.bbs.PageCount" %>
 <%
+
     	int limit = 10;
    		int offset = 0;
    		int pagelink = 0;
@@ -116,7 +117,7 @@ function write(){
      		<input type="text" name="search" size="20">
      		<input type="submit" value="글찾기">
      		<c:if test="${skey!=null}">
-			<input type="button" name="write" value="글쓰기" onclick="location.href='write'">
+			<input type="button" name="write" value="글쓰기" onclick="location.href='write?no=${count}'">
 			</c:if>
      		</td>
     	</tr>
