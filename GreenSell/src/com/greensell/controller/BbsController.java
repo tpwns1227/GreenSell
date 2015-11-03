@@ -26,7 +26,9 @@ public class BbsController {
 	BbsDao dao;
 	//게시글 쓰기
 	@RequestMapping("/write")
-	public String write(){
+	public String write(@RequestParam int no,Model m){
+		
+		m.addAttribute("no",no);
 		return "bbs/bbsWrite";
 	}
 	
@@ -66,7 +68,7 @@ public class BbsController {
 				m.addAttribute("selectAll", list);
 				m.addAttribute("selecttitle", list2);
 				//m.addAttribute("selectcontent", list3);
-				m.addAttribute("count", num);
+				m.addAttribute("count", no);
 				m.addAttribute("counttitle", num2);
 				m.addAttribute("countcontent", num3);
 			} catch (SQLException e) {
@@ -105,8 +107,10 @@ public class BbsController {
 	//게시글 쓰기 완료
 			@RequestMapping("/writeok")
 				
-			public String ok(BbsVo b,Model m){
-				
+			public String ok(BbsVo b,Model m,@RequestParam int bbsno){
+				System.out.println(b.getBbsno());
+				System.out.println(bbsno);
+				m.addAttribute("no",bbsno);
 			/*	System.out.println(b.getEmail());
 				System.out.println(b.getTitle());
 				System.out.println(b.getBbscontent());
