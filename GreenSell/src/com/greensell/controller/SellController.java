@@ -308,6 +308,9 @@ public class SellController {
 	@RequestMapping(value="/searchitem", method = RequestMethod.POST)
 	public String searchitem(Model m,@RequestParam String str, @RequestParam String count,
 			@RequestParam String category ,@RequestParam String howsell) throws SQLException{
+		if(category.equals("전체")){
+			category = "";
+		}
 		map.put("howsell", howsell);
 		map.put("str", str);
 		map.put("category", category);
