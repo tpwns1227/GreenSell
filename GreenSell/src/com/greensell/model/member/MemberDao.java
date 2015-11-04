@@ -37,4 +37,5 @@ public interface MemberDao {
 	   public List<String> getImagenames(int no) throws SQLException; //게시글에 포함된 이미지 이름들 가져오기
 	   //public List<AuctionVO> auctionitemselectList() throws SQLException; //경매 리스트 출력
 	   public List<ItemSellVO> allitemList(String email) throws SQLException; //홈에서 중고 및 경매 리스트 통합 출력
+	   public String selectpoint(String email) throws SQLException;
 }
