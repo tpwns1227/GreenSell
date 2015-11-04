@@ -38,6 +38,7 @@ var count = 8;
 		
 		$("input[name='radios']").change(function(){
 			category=$(this).val();
+			count=8;
 			$.ajax({
 				type : "post",
 				url : "searchitem",
@@ -133,5 +134,7 @@ var count = 8;
 
 <div style="margin-left: 1000px"><input type="button" style="width: 95px; height: 30px" id="plusimg" value="더보기"></div>
 
+
+<jsp:include page="../main/bottom.jsp"></jsp:include>
 </body>
 </html>
