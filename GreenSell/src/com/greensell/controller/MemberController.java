@@ -71,6 +71,7 @@ public class MemberController {
 		  if(pwchk) {
 			  m.addAttribute("result", "로그인 성공되었습니다.");
 			  session.setAttribute("skey", email);
+			  session.setAttribute("amdin", dao.getadmin(email));
 			  session.setAttribute("point", dao.selectpoint(email));
 			  return "redirect:home";
 		  }else{

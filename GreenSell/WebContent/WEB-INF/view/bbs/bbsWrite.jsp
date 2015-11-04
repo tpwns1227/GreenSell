@@ -42,15 +42,15 @@
 <div class='container'>
 		<div class='border'>글쓰기</div>
 		<div class='p'>제목</div>
-		<input class='textbox' name="title" type='text' placeholder="제목">
+		<input class='textbox' maxlength="50" name="title" type='text' placeholder="제목">
 		<div class='p'>작성자</div>
 		<input name="email" class='textbox' type='text' value="<%=email%>"
 			readonly="readonly">
 		<div class='p'>내용</div>
-		<textarea placeholder="내용" name="bbscontent"></textarea>
+		<textarea placeholder="내용" maxlength="1000" name="bbscontent"></textarea>
 
 		<input class='button' type='button' value='목록' style='width: 200px'
-			onclick="goUrl('list');"> <input type="hidden" value="${no}"
+			onclick="goUrl('list?no=${no}');"> <input type="hidden" value="${no}"
 			name="bbsno"> <input class='button' type='submit' value='작성'
 			style='width: 200px' onclick="return WC()">
 </div>

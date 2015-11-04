@@ -36,6 +36,12 @@ public class MemberDaoImpl implements MemberDao {
 		return (i > 0) ? true : false;
 
 	};
+	
+	@Override
+	public int getadmin(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.getadmin",email);
+	}
 
 	@Override
 	public String selectpoint(String email) throws SQLException {

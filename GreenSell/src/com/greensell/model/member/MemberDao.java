@@ -45,5 +45,6 @@ public interface MemberDao {
 	   public boolean cart_delete(Map<String, Object> map) throws SQLException;
 	   public String passwordget(String email) throws SQLException;
 	   public List<ItemSellVO> mywritesell(String email) throws SQLException;
+	   public int getadmin(String email) throws SQLException;
 	   
 }
