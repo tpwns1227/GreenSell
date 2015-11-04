@@ -43,9 +43,13 @@
 	<select id="selectpwd" resultType="com.greensell.member.beans.MemberVO"> <!-- 비밀번호 찾기  -->
 		select password from member where email=#{email} and question=#{question} and answer=#{answer}  
 	</select>
+	
+	<select id="getpassword" resultType="String" parameterType="String">
+		select password from member where email=#{email}
+	</select>
 
 	<update id="update" parameterType="com.greensell.member.beans.MemberVO"> <!-- 회원정보 업데이트 -->
-		update member set password=#{password},zipcode=#{zipcode}, address=#{address}, question=#{question}, answer=#{answer}, bank=#{bank}, account=#{account} where email=#{email}
+		update member set zipcode=#{zipcode}, address=#{address}, question=#{question}, answer=#{answer}, bank=#{bank}, account=#{account}, nickname=#{nickname}, phone=#{phone} where email=#{email}
 	</update>
 
 	<delete id="delete" parameterType="String"> <!-- 회원정보 탈퇴하기 -->
