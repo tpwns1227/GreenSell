@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.greensell.bbs.beans.ReplyVo;
+import com.greensell.member.beans.MemberPSVO;
 import com.greensell.model.sell.SellDao;
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
@@ -299,11 +301,39 @@ public class SellController {
 		return "sell/review_view";
 		
 	}
-	
+	//연락처보기 클릭시
 	@RequestMapping("/sell_contact")
 	public String contact(){
+		
 		return "sell/sell_contact";
 	}
+	//후기게시판 클릭시
+	@RequestMapping("/postscript")
+	public String postscript(MemberPSVO mp,Model m){
+		try {
+			List<MemberPSVO> post=dao.postscript(mp);
+			m.addAttribute("comment",post);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "sell/postscript";
+	}
+	//후기게시판 등록
+	@RequestMapping("/postok")
+	public String postok(MemberPSVO mp){
+		
+		try {
+			if(dao.insertpost(mp))
+			
+			return "sell/postscript";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "sell/postscript";
+	}
+	
 	
 	@RequestMapping(value="/searchitem", method = RequestMethod.POST)
 	public String searchitem(Model m,@RequestParam String str, @RequestParam String count,
