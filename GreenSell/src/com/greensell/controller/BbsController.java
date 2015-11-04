@@ -47,20 +47,20 @@ public class BbsController {
       public String list(@RequestParam int no,
             @RequestParam(required=false,defaultValue="") String title,
             @RequestParam(required=false,defaultValue="") String bbscontent,
-            @RequestParam(defaultValue="1") int pagelink,
+            @RequestParam(defaultValue="1") int count,
             @RequestParam(required=false,defaultValue="") String ftitle,
             @RequestParam(required=false,defaultValue="") String fcontent,
             Model m){
          //int plus=no+1;
             //System.out.println("숫자 ="+no+" 더하기="+plus+"title="+title+"bbscontent="+bbscontent+"ftitle="+ftitle+"fcontent="+fcontent+"=page="+pagelink);
-         
-         //m.addAttribute("bbsno",bbsno);
+    	  System.out.println(no);
+    	  m.addAttribute("no",no);
          try {
-            List<BbsVo> list = dao.selectAll(no,pagelink,pagelink);
+            List<BbsVo> list = dao.selectAll(no,count,count);
             
-            List<BbsVo> list2 = dao.selectTitle(no,pagelink,pagelink,ftitle);
+            List<BbsVo> list2 = dao.selectTitle(no,count,count,ftitle);
             
-            List<BbsVo> list3 = dao.selectContent(no,pagelink,pagelink,bbscontent);
+            List<BbsVo> list3 = dao.selectContent(no,count,count,bbscontent);
              
             int num = dao.count(no);
             int num2 = dao.counttitle(no, ftitle);
@@ -69,7 +69,7 @@ public class BbsController {
             m.addAttribute("selectAll", list);
             m.addAttribute("selecttitle", list2);
             m.addAttribute("selectcontent", list3);
-            m.addAttribute("count", no);
+            m.addAttribute("count", num);
             m.addAttribute("counttitle", num2);
             m.addAttribute("countcontent", num3);
          } catch (SQLException e) {
