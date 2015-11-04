@@ -282,8 +282,26 @@ public class MemberController {
 	   }
 	   
 	   @RequestMapping("/point_form")//포인트내역가기
-	   public String point () throws SQLException{
-		   return "/member/memberinfo/point_form";
+	   public String point() throws SQLException{
+		   
+		   
+		   return "member/memberinfo/point_form";
+	   }
+	   
+	   @RequestMapping("/mywriteForm")
+	   public String mywriteview(HttpSession session, Model m) throws SQLException{
+		   String email = (String)session.getAttribute("skey");
+		   List<ItemSellVO> list = dao.mywritesell(email);
+		   List<String> fristimg = new ArrayList<String>();
+			  for (int j = 0; j < list.size(); j++) {
+					List<String> imglist = dao.getImagenames(list.get(j).getNo());
+					fristimg.add(imglist.get(0));
+				}
+			  
+			  m.addAttribute("fristimg", fristimg);
+			  m.addAttribute("itemlist", list);
+		   
+		   return "member/memberfunction/mywrite_form";
 	   }
 	   
 	   

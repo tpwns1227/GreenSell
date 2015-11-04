@@ -225,6 +225,12 @@ public class MemberDaoImpl implements MemberDao {
 		return (i>0)? true:false;
 	}
 	
+	@Override
+	public List<ItemSellVO> mywritesell(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("member.mywritesell", email);
+	}
+	
 	
 
 }
