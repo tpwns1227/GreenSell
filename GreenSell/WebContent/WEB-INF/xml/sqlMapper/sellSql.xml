@@ -97,5 +97,16 @@
   	<select id="selectlastno" resultType="int">
   		select max(no) from itemsell
   	</select>
+  	
+  	
+  	<!--후기게시판 넣기  -->
+  	<insert id="postinsert" parameterType="com.greensell.member.beans.MemberPSVO" >
+  		insert into postscript values(no_postscript_seq.nextval,email=#{email},sysdate,content=#{content},point=#{point},wemail=#{wemail})
+  	</insert>
+  	
+  	 <!-- 후기게시판 가져오기 -->
+  <select id="postselect" parameterType="int" resultType="com.greensell.member.beans.MemberPSVO">
+     select * from postscript where no=#{no}
+  </select>
     
 </mapper>
