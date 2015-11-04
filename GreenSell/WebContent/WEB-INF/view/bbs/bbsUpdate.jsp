@@ -27,8 +27,9 @@
                 <input class='button'
             type='submit' value='수정' style='width: 200px' onclick="location.href='updateok'">      
 			<input type="hidden" value="${view.no }" name="no">
+			<input type="hidden" value="${view.email }" name="email">
       </div>
- </form>
+      </form>
 </body>
 <jsp:include page="../main/bottom.jsp"></jsp:include>
 </html>

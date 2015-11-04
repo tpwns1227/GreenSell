@@ -55,15 +55,15 @@
 			<form action="delete">
 				<input type="submit" class='button' id="de" value="삭제"
 					onclick="location.href='delete'"
-					style='margin-top: 5px; width: 400px'> <input type="hidden"
-					value="${view.no}" name="no"> <input type="hidden"
-					value="${view.bbsno}" name="bbsno">
+					style='margin-top: 5px; width: 400px'>
+					 <input type="hidden"value="${view.no}" name="no"> 
+					 <input type="hidden"value="${view.bbsno}" name="bbsno">
+					 <input type="hidden" value="${view.email}" name="email">
 			</form>
-
+<!--  댓글 내용 보기-->
 		</c:if>
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
 			onclick="location.href='list?no=${view.bbsno}'">
-		<c:if test=""></c:if>
 			<c:forEach var="cm" items="${comment}">
 			<div class='p'>댓글</div>
 			<table width='400px' style='margin-left: 50px'>
@@ -87,21 +87,20 @@
 									<br>
 								</c:if>
 							</form> <br>
-				
-
-
 			</c:forEach>
 		</table>
+		<!--  댓글 내용쓰기 grade이 1일때만 가능-->
+		<c:if test="${grade==1}">
 		<div class='p'>댓글 내용</div>
 		<form name="cmreply" action="cmok" method="post">
-			<input type="hidden" value="${skey}" name="email"> <input
-				type="hidden" value="${view.no}" name="no">
+			<input type="hidden" value="${skey}" name="email">
+			 <input	type="hidden" value="${view.no}" name="no">
 			<textarea name="cmcontent" rows="2" cols="80"></textarea>
+			
 			<input class='button' type="submit" value="확인" onclick="return CM()">
-
 		</form>
 	</div>
-
+	</c:if>
 
 	<!--  섹스 -->
 	<%-- <table align="center" width="500">
