@@ -20,8 +20,10 @@
 	from itemsell i, auction a where i.no = a.itemno and finishtime>sysdate order by finishtime asc
   	</select> -->
   	
-  	<select id="selectcategory" resultType="com.greensell.sell.beans.ItemSellVO">
-		select * from itemsell where howsell=#{howsell} and category=#{category} order by no desc
+  	<select id="selectcategory" parameterType="map" resultType="com.greensell.sell.beans.ItemSellVO">
+		<!-- select * from itemsell where howsell=#{howsell} and category=#{category} order by no desc -->
+		select b.* from (select a.*, rownum rnum from (select * from itemsell where howsell=#{howsell} and category=#{category} order by no desc) a) b 
+		where <![CDATA[rnum <= #{count}]]>
 	</select>
   
   	<delete id="deleteitem" parameterType="int">

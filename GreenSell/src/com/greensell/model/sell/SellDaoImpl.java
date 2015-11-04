@@ -20,7 +20,7 @@ public class SellDaoImpl implements SellDao {
    @Override
    public List<ItemSellVO> allitemList() throws SQLException { //전체 item리스트 출력
       // TODO Auto-generated method stub
-      List<ItemSellVO> list = sqlSession.selectList("selectAll");
+	   List<ItemSellVO> list = sqlSession.selectList("selectAll");
       return list;
    }
 

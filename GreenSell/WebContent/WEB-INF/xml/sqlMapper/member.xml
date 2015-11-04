@@ -12,6 +12,22 @@
 		SELECT password FROM member WHERE email=#{email}
 	</select>
 	
+	<select id="selectpoint" resultType="String" parameterType="String">
+		select point from member where email=#{email}
+	</select>
+	
+	<select id="selectedlist" resultType="String" parameterType="String">
+		select itemno from selected where email=#{email}
+	</select>
+	
+	<select id="getitem" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell where no=#{itemno}
+	</select>
+	
+	<delete id="cartdelete" parameterType="map">
+		delete from selected where itemno=#{itemno} and email=#{email}
+	</delete>
+	
 	<select id="phonechk" parameterType="String" resultType="String">
 		select phone from member where phone=#{phone}
 	</select>

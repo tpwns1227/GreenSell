@@ -70,6 +70,7 @@ public class MemberController {
 		  if(pwchk) {
 			  m.addAttribute("result", "로그인 성공되었습니다.");
 			  session.setAttribute("skey", email);
+			  session.setAttribute("point", dao.selectpoint(email));
 			  return "redirect:home";
 		  }else{
 			  m.addAttribute("result","로그인에 실패되었습니다.");
@@ -250,21 +251,26 @@ public class MemberController {
 		   }
 	   }
 	   @RequestMapping("/cart_form")//찜목록이동하기
-	   public String cart_form(HttpSession session,@RequestParam String email) throws SQLException {
-
-		  /* ItemSellVO vo = null;
-		   vo.getNo();*/
-		   System.out.println(email);
-			List<ItemSellVO> list = dao.allitemList(email);
-			List<String> fristimg = new ArrayList<String>();
-			session.setAttribute("itemlist", list);
-			for (int j = 0; j < list.size(); j++) {
+	   public String cart_form(@RequestParam String email, Model m) throws SQLException {
+		  List<ItemSellVO> list = dao.selected(email);
+		  List<String> fristimg = new ArrayList<String>();
+		  for (int j = 0; j < list.size(); j++) {
 				List<String> imglist = dao.getImagenames(list.get(j).getNo());
 				fristimg.add(imglist.get(0));
 			}
-			session.setAttribute("fristimg", fristimg);
-			return "member/memberfunction/cart_form";
+		  m.addAttribute("fristimg", fristimg);
+		  m.addAttribute("itemlist", list);
+		   return "member/memberfunction/cart_form";
 		}
+	   
+	   @RequestMapping("/selected_delete")
+	   public String cart_delete(@RequestParam String no, @RequestParam String email) throws SQLException{
+		   Map<String, Object> map = new HashMap<String, Object>();
+		   map.put("itemno", no);
+		   map.put("email", email);
+		   dao.cart_delete(map);
+		   return "redirect:cart_form?email="+email;
+	   }
 	   
 	   @RequestMapping("/delete_form")//회원탈퇴하기
 	   public String delete_form(){

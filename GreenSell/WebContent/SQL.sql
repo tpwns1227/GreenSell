@@ -21,6 +21,10 @@ create table Member(
 --insert into member values('tpwns1227','1234','윤세준','세준','010','세준0','세준','217053-56-124278','윤세준?','세준',0,0,0,SYSDATE)
 --select * from member;
 
+update member set password=1234 ,  answer='안녕'  where email='jskim7067@naver.com'
+
+select email,password from member;
+
 create table bbsSort( --�Խ��� ����
    bbsno number primary key not null,
    bbsname varchar2(50) not null,
@@ -41,6 +45,10 @@ bbsno number not null,
 foreign key (email) references member(email) on delete cascade,
 foreign key (bbsno) references bbsSort(bbsno) on delete cascade
 );
+
+insert into BBSSORT values(2,'공지사항',0);
+insert into BBSSORT values(3,'질문하기',1);
+insert into BBSSORT values(4,'자주 묻는 질문',0);
 
 create table replycomment(
    cmno number primary key not null,
@@ -112,6 +120,8 @@ create table selected( -- ����
    foreign key(email) REFERENCES member(email) on delete cascade
 );
 
+select * from itemsell where email='jskim7076@naver.com'
+select email from itemsell;
 select * from selected
 
 create table buy( --���Ÿ��
