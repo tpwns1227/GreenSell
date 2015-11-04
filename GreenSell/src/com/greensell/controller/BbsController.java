@@ -91,16 +91,19 @@ public class BbsController {
          //System.out.println(no);
          try{
             
-            
+        	 
+            //System.out.println("이메일 : "+email);
             //이메일로 등급찾기
             int grade=dao.grade(email);
-            System.out.println(grade);
+            m.addAttribute("grade",grade);
+            //System.out.println(grade);
+            
             BbsVo bbsVo = dao.view(no);
             //System.out.println(bbsVo.getBbsno());
             List<ReplyVo> replyvo=dao.selectComment(r);
             m.addAttribute("view", bbsVo);
             m.addAttribute("comment",replyvo);
-            m.addAttribute("grade",grade);
+           
             
             if(dao.hitUp(b)){
             }            
@@ -120,11 +123,7 @@ public class BbsController {
             System.out.println(b.getBbsno());
             System.out.println(bbsno);
             m.addAttribute("no",bbsno);
-         /*   System.out.println(b.getEmail());
-            System.out.println(b.getTitle());
-            System.out.println(b.getBbscontent());
-            System.out.println(b.getBbsno());
-            System.out.println(b.getBbsdate());*/
+      
             
             try{
                
@@ -141,11 +140,9 @@ public class BbsController {
                
                return "bbs/bbsWrite";
             }
-         
-   
-
+         //댓글쓰기완료
          @RequestMapping("/cmok")
-         public String cmok(ReplyVo v,Model m){
+         public String cmok(ReplyVo v,Model m,@RequestParam String email){
             int no=v.getNo();
             try{  
                   
@@ -153,7 +150,7 @@ public class BbsController {
                System.out.println(v.getCmcontent());
                System.out.println(v.getNo());*/
                if(dao.insert(v)){
-                  return "redirect:view?no="+no;
+                  return "redirect:view?no="+no+"&email="+email;
                }
                
                }
@@ -162,7 +159,7 @@ public class BbsController {
                   e.printStackTrace();
                }
                
-               return "redirect:view?no="+no;
+               return "redirect:view?no="+no+"&email="+email;
             }
          //view에서 수정버튼 누를시 게시글번호로 데이터 전달
          //내용,제목,작성자,날짜,조회수 출력
@@ -193,19 +190,14 @@ public class BbsController {
             
             return "bbs/bbsUpdate";
          }
-         
+         //수정완료
          @RequestMapping("/updateok")
-         public String updateok(BbsVo b){
+         public String updateok(BbsVo b,@RequestParam String email){
             int no=b.getNo();
-            System.out.println(b.getEmail());
-            System.out.println(b.getTitle());
-            System.out.println(b.getBbscontent());
-            System.out.println(no);
             try {
                if(dao.update(b))
-               {
-                  System.out.println("나 업데이트야");
-                  return "redirect:view?no="+no;
+               {                            
+                  
                }
             } catch (SQLException e) {
                // TODO Auto-generated catch block
@@ -213,9 +205,9 @@ public class BbsController {
             }
             
             
-            return "redirect:view?no="+no;
+            return "redirect:view?no="+no+"&email="+email;
          }
-         
+         //게시글 삭제
          @RequestMapping("/delete")
          public String delete(@RequestParam int no,@RequestParam int bbsno){
             System.out.println("삭제 ="+no);
@@ -238,7 +230,7 @@ public class BbsController {
             
             return "redirect:list";
          }
-         
+         //댓글삭제
          @RequestMapping("/cmdelete")
          public String cmdelete(@RequestParam int cmno, @RequestParam String skey,@RequestParam String email,
                            @RequestParam int no){            
@@ -246,7 +238,7 @@ public class BbsController {
                if(email.equals(skey)){
                   if(dao.cmdelete(cmno))
                   {
-                     return "redirect:view?no="+no;
+                     return "redirect:view?no="+no+"&email="+email;
                   }
                
                }
@@ -254,7 +246,7 @@ public class BbsController {
                // TODO Auto-generated catch block
                e.printStackTrace();
             }
-            return "redirect:view?no="+no;
+            return "redirect:view?no="+no+"&email="+email;
             
          }
 }
