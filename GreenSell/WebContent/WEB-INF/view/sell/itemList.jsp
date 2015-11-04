@@ -20,8 +20,8 @@ var count = 8;
 	
 	$(document).ready(function() {
 
-		var category = '${category}';
-		
+		 var category = '${category}';
+		 
 		/* if (category == '의류/잡화') {
 			$("input[value='의류/잡화']").attr("checked", "checked");
 		} else if (category == '가구/전자') {
@@ -37,10 +37,11 @@ var count = 8;
 		} */
 		
 		$("input[name='radios']").change(function(){
+			category=$(this).val();
 			$.ajax({
 				type : "post",
 				url : "searchitem",
-				data : "str=" + $("#searchbar").val()+"&howsell=${howsell}&category="+$(this).val()+ "&count="+count,
+				data : "str=" + $("#searchbar").val()+"&howsell=${howsell}&category="+category+ "&count="+count,
 				success : function(data) {
 					$("#searchdiv").html(data);
 				}	
