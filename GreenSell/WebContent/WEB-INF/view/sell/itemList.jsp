@@ -84,7 +84,9 @@ var count = 8;
 					name="radios" value="도서/티켓" onclick="go()"> <label
 					for="radio5">도서/티켓</label> <input type="radio" id="radio6"
 					name="radios" value="기타" onclick="go()"> <label
-					for="radio6">기타</label> <input type="text" id="searchbar"
+					for="radio6">기타</label> <br>
+
+					<input class='textbox' type="text" id="searchbar"
 					placeholder="제품명을 검색해 주세요.">
 			</div>
 			<p />
