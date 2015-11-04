@@ -251,14 +251,14 @@ public class SellController {
 	}
 	
 	@RequestMapping("/reitemlist")
-	public String reitemlist(Model m, @RequestParam String howsell, @RequestParam String category) throws SQLException{
+	public String reitemlist(Model m, @RequestParam String count, @RequestParam String howsell, @RequestParam String category) throws SQLException{
 		if(category.equals("전체")){
 			if(howsell.equals("경매"))
 			return "redirect:itemList?howsell="+8;
 			else
 			return "redirect:itemList?howsell="+7;	
 		}else{
-		
+		map.put("count", count);
 		map.put("category", category);
 		map.put("howsell", howsell);
 		List<ItemSellVO> list = dao.selectlistcategory(map);
