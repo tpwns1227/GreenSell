@@ -103,14 +103,11 @@ public class MemberController {
 	   	public @ResponseBody String phonechk(@RequestParam String phone) throws SQLException{
 		   String ph = "(01[016789])-(\\d{3,4})-(\\d{4})";
 		   Pattern p = Pattern.compile(ph);
-		   System.out.println(ph);
-		   
+		   System.out.println(ph); 
 		   if(!p.matcher(phone).matches()){
-			   System.out.println("여기도 되요");
 			   return "사용불가";
 		   }else{
 			   boolean phonechk = dao.phonechk(phone);
-			   System.out.println("되요");
 			   if(phonechk){
 				   return "사용불가";
 			   }else{
@@ -178,7 +175,6 @@ public class MemberController {
 	   public String registeridchk(@RequestParam String email, Model m) throws SQLException{
 		  
 		   boolean b = dao.idcheck(email);
-		   System.out.println(b);
 		   if(!b){ //아이디가 없어서 중복확인 ok.
 			   m.addAttribute("chkresult", "사용하셔도 좋은 아이디입니다.");
 		   }else{//아이디가 있어서 중복확인 fail
@@ -189,35 +185,27 @@ public class MemberController {
 	   }
 	   
 	   @RequestMapping(value = "/updateForm")//회원정보 수정폼띄우기
-	   public String updateForm(HttpSession session, Model m){
-		   
+	   public String updateForm(HttpSession session, Model m){ 
 		   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
 		   m.addAttribute("member",vo);
 		   return "member/memberinfo/update_form";		   
 	   }
 
 	   @RequestMapping(value = "/update_form")//회원정보 수정하기
-	   public String memberupdate(MemberVO vo, HttpSession session,Model m) throws SQLException{
-		   
-		   //MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
-		   System.out.println("수정 시작합니다. pw:"+vo.getPassword());
-		   m.addAttribute("member",vo);
-		   
-		   vo.setEmail((String)session.getAttribute("skey"));
-		   System.out.println(vo.getEmail());
-		   System.out.println(vo.getName());
-		   System.out.println(vo);
-		   
-		   if(dao.update(vo)){
-			   System.out.println("수정 됬습니다.");
-			   return "redirect:member_Detail";
+	   public String memberupdate(MemberVO vo, Model m) throws SQLException{
+		   if(vo.getPassword().equals(dao.passwordget(vo.getEmail()))){
+			   if(dao.update(vo)){
+				   return "redirect:member_Detail";
+			   }
 		   }
-		   return "redirect:update_form";
+		   MemberVO memvo=dao.memberdetail(vo.getEmail());
+		   m.addAttribute("member",memvo);
+		   m.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+		   return "member/memberinfo/update_form";
 	   }
 	   
 	   @RequestMapping("/zip_form")//우편번호찾기폼띄우기
 	   public String zipSearch(){
-		 
 		   return "member/memberinfo/zip_form";
 	   }
 	   
@@ -234,12 +222,14 @@ public class MemberController {
 	   public String pwSearch(){
 		   return "member/memberinfo/find_form";
 	   }
+	   
 	   @RequestMapping("/serarchPw")
 	   public String search_pw(@RequestParam String password,Model m) throws SQLException{
 		    MemberVO mv = dao.selectpwd(password);
 		   m.addAttribute("pass",mv);
 		   return "member/memberinfo/find_form";
 	   } 
+	   
 	   @RequestMapping("/member_Detail")//Detail폼띄우기
 	   public String member_Detail(HttpSession session, Model m){
 		   String skey = (String)session.getAttribute("skey");
