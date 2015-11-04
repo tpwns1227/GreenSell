@@ -12,17 +12,17 @@
 
 <script type="text/javascript">
 var count = 8;
-	function go() {
+	/* function go() {
 		count = 8;
 		location.href = 'reitemlist?category=' + document.listform.radios.value
 				+ '&howsell=${howsell}&count='+count;
-	}
+	} */
 	
 	$(document).ready(function() {
 
 		var category = '${category}';
 		
-		if (category == '의류/잡화') {
+		/* if (category == '의류/잡화') {
 			$("input[value='의류/잡화']").attr("checked", "checked");
 		} else if (category == '가구/전자') {
 			$("input[value='가구/전자']").attr("checked", "checked");
@@ -34,9 +34,19 @@ var count = 8;
 			$("input[value='기타']").attr("checked", "checked");
 		} else {
 			$("input[value='전체']").attr("checked", "checked");
-		}
-
+		} */
 		
+		$("input[name='radios']").change(function(){
+			$.ajax({
+				type : "post",
+				url : "searchitem",
+				data : "str=" + $("#searchbar").val()+"&howsell=${howsell}&category="+$(this).val()+ "&count="+count,
+				success : function(data) {
+					$("#searchdiv").html(data);
+				}	
+			});
+		});
+	
 		$("#searchbar").keyup(function() {
 				$.ajax({
 					type : "post",
@@ -73,17 +83,17 @@ var count = 8;
 	<div class='body2'>
 		<form action="detail" method="post" name="listform">
 			<div align="center">
-				<input type="radio" id="radio1" name="radios" value="전체" onclick="go()" checked> 
+				<input type="radio" id="radio1" name="radios" value="전체" checked> 
 					<label for="radio1">전체</label>
-					<input type="radio" id="radio2" name="radios" value="의류/잡화" onclick="go()">
+					<input type="radio" id="radio2" name="radios" value="의류/잡화">
 				<label for="radio2">의류/잡화</label> <input type="radio" id="radio3"
-					name="radios" value="가구/전자" onclick="go()"> <label
+					name="radios" value="가구/전자"> <label
 					for="radio3">가구/전자</label> <input type="radio" id="radio4"
-					name="radios" value="여행/스포츠" onclick="go()"> <label
+					name="radios" value="여행/스포츠"> <label
 					for="radio4">여행/스포츠</label> <input type="radio" id="radio5"
-					name="radios" value="도서/티켓" onclick="go()"> <label
+					name="radios" value="도서/티켓"> <label
 					for="radio5">도서/티켓</label> <input type="radio" id="radio6"
-					name="radios" value="기타" onclick="go()"> <label
+					name="radios" value="기타"> <label
 					for="radio6">기타</label> <br>
 
 					<input class='textbox' type="text" id="searchbar"
