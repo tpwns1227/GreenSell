@@ -9,6 +9,8 @@
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script type="text/javascript">
+	
+ 
 	function inputform(){
 		
 		if('${skey}' != '')
@@ -20,6 +22,7 @@
 </script>
 </head>
 <body>
+
 	<div class='container1'>
 		<div class='top' id='logo'>
 			<a href='home'> <img src='img/useimg/logo.png'
@@ -27,14 +30,18 @@
 			</a>
 		</div>
 		<div class='top' id='site'>
-
+			
+			
+			
 			<%
 				if (email == null) {
 			%>
+			
 			<a href="login_form">로그인</a>
 			<%
 				} else {
 			%>
+			<font color="red">${point}</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트
 			<a href="member_Detail">내 정보</a>
 			<a href="logout">로그아웃</a>
 			<%
