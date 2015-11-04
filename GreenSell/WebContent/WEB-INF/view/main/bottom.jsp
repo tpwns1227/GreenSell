@@ -43,7 +43,7 @@
 			</ul>
 		</div>
 		<div class='containerb' id='logob'>
-			<a href='../main/home'> <img src='img/useimg/logo.png'
+			<a href='home'> <img src='img/useimg/logo.png'
 				height='80'>
 			</a>
 		</div>
