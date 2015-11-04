@@ -12,6 +12,10 @@
 		SELECT password FROM member WHERE email=#{email}
 	</select>
 	
+	<select id="mywritesell" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell where email=#{email}
+	</select>
+	
 	<select id="selectpoint" resultType="String" parameterType="String">
 		select point from member where email=#{email}
 	</select>
