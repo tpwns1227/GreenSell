@@ -13,6 +13,7 @@
 <script type="text/javascript">
 var count = 8;
 	function go() {
+		count = 8;
 		location.href = 'reitemlist?category=' + document.listform.radios.value
 				+ '&howsell=${howsell}&count='+count;
 	}
