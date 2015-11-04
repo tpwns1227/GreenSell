@@ -61,7 +61,6 @@ public class MemberDaoImpl implements MemberDao {
 	public List<ItemSellVO> selected(String email) {// 찜목록보기
 		// TODO Auto-generated method stub
 		List<String> list = sqlSession.selectList("member.selectedlist",email);
-		System.out.println(list.size());
 		List<ItemSellVO> itemsellvo=new ArrayList<ItemSellVO>();
 		for(int i=0;i<list.size();i++){	
 		String no = list.get(i);
@@ -211,5 +210,15 @@ public class MemberDaoImpl implements MemberDao {
 		List<ItemSellVO> list = sqlSession.selectList("member.allselectitemList", email);
 		return list;
 	}
+	
+	
+	@Override
+	public boolean cart_delete(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		int i = sqlSession.delete("cartdelete", map);
+		return (i>0)? true:false;
+	}
+	
+	
 
 }

@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.tomcat.jni.Mmap;
+
 import com.greensell.bbs.beans.BbsVo;
 import com.greensell.member.beans.MemberVO;
 import com.greensell.member.beans.PointVO;
@@ -38,4 +40,8 @@ public interface MemberDao {
 	   //public List<AuctionVO> auctionitemselectList() throws SQLException; //경매 리스트 출력
 	   public List<ItemSellVO> allitemList(String email) throws SQLException; //홈에서 중고 및 경매 리스트 통합 출력
 	   public String selectpoint(String email) throws SQLException;
+	   public boolean cart_delete(Map<String, Object> map) throws SQLException;
+	   
+	   
+	   
 }
