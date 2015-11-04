@@ -7,29 +7,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script>
 	function deleteMember() {
 
 		document.detail.action = 'delete_form';
 		document.detail.submit();
-
 	}
-
 	function updateMember() {
-
 		document.detail.action = 'updateForm';
 		document.detail.submit();
-
 	}
 	function like() {
-
 		document.detail.action = 'cart_form';
 		document.detail.submit();
 	}
-	function pointlist() {
-		document.detail.action = 'point_form';
-		document.detail.submit();
-	}
+	$(document).ready(function(){
+		$("#mywrite").click(function(){
+			var win = window.open('mywriteForm', "post",
+			         "toolbar=no ,width=1000 ,height=500 ,directories=no,"
+			               + "status=yes,scrollbars=yes,menubar=no");
+		});
+		
+		$("#pointlist").click(function(){
+			window.open('point_form', "post",
+			         "toolbar=no ,width=1000 ,height=500 ,directories=no,"
+		               + "status=yes,scrollbars=yes,menubar=no");
+		});
+		
+		
+		
+	});
+	
+	
+	
+	
 </script>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
@@ -66,15 +78,15 @@
 				style='width: 200px;' readonly name="answer">
 			<div class='p'>포인트</div>
 			<input name="point" id='textbox' type='text' value='${member.point}'
-				readonly style="width: 300px"> <input id="login"
-				class='button2' type="button" value='내역' onclick="pointlist()">
+				readonly style="width: 300px"> <input id="pointlist"
+				class='button2' type="button" value='내역'>
 				
 			<input id="update" class='button2' type="button" value='정보수정'
 				onclick='updateMember()' style="margin-top: 15px;"> <input
 				id="login" class='button2' type="button" onclick='deleteMember()'
-				value='회원탈퇴'> <input id="login" class='button2'
-				type="button" value='내가 올린 글' onclick="call()"> <input
-				id="login" class='button2' type="button" value='찜 목록'
+				value='회원탈퇴'>
+				<input class='button2' type="button" id="mywrite" value='내가 올린 글'> 
+				<input class='button2' type="button" value='찜 목록'
 				onclick="like()">
 		</div>
 	</form>
