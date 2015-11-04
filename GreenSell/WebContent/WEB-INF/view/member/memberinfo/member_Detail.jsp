@@ -30,7 +30,7 @@
 		});
 		
 		$("#pointlist").click(function(){
-			window.open('point_form', "post",
+			window.open('pointlist_form', "post",
 			         "toolbar=no ,width=1000 ,height=500 ,directories=no,"
 		               + "status=yes,scrollbars=yes,menubar=no");
 		});

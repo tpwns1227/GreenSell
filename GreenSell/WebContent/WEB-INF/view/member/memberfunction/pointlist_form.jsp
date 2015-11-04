@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,31 +28,51 @@ td {
 
 </head>
 <body>
+
 	<div class='container' style="width: 500px; height: auto">
 		<div class='border'>포인트 내역</div>
 		<hr width='400px'>
 		<table width='400px'>
 			<tr>
-				<td width="100px">
+				<td width="50px">
 					<div class='tdbold'>입출금</div>
 				</td>
-				<td width="150px">
+				<td width="100px">
 					<div class='tdbold'>가격</div>
 				</td>
+				<td>
+				<div class='tdbold'>수수료</div>
+				</td>
 				<td width="150px">
-					<div class='tdbold'>잔액</div>
+					<div class='tdbold'>날짜</div>
 				</td>
 			</tr>
-			<tr>
-				<td>입금</td>
-				<td>2000</td>
-				<td>2000</td>
-			</tr>
-			<tr>
-				<td>출금</td>
-				<td>1000</td>
-				<td>1000</td>
-			</tr>
+			<c:if test="${point.size()>0}">  
+<c:forEach var="point" items="${point}" varStatus="status">
+		<c:out value=""></c:out>
+	<tr>
+	<td>
+	<c:if test="${point.sort == 0 }">
+	입금
+	</c:if>
+	<c:if test="${point.sort == 1 }">
+	출금
+	</c:if>
+	</td>
+	<td>
+		${point.price}
+	</td>
+	<td>
+		${point.commission }
+	</td>
+	<td>
+		${point.pdate}
+	</td>
+	</tr>
+	  
+</c:forEach>
+</c:if>
+			
 		</table>
 </body>
 </html>

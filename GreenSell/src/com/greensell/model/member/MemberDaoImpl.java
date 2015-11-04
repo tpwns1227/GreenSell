@@ -230,6 +230,12 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("member.mywritesell", email);
 	}
+
+	@Override
+	public List<PointVO> pointList(String email) {
+		return sqlSession.selectList("member.point", email);
+	      
+	}
 	
 	
 

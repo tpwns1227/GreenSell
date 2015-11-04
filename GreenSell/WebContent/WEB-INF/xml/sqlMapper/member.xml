@@ -106,5 +106,8 @@
 		update member set password=#{password} where email=#{email}
 	</update>
 	
+	<select id="point" parameterType="String" resultType="com.greensell.member.beans.PointVO">
+		select * from point where email=#{email}
+	</select>
 	
 </mapper>

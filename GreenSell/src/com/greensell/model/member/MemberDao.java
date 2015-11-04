@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.tomcat.jni.Mmap;
 
 import com.greensell.bbs.beans.BbsVo;
+import com.greensell.member.beans.MemberPSVO;
 import com.greensell.member.beans.MemberVO;
 import com.greensell.member.beans.PointVO;
 import com.greensell.member.beans.ZipVo;
@@ -16,6 +17,7 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public interface MemberDao {
 
+	public List<PointVO> pointList(String email);
 	   public boolean insert(MemberVO membervo)throws SQLException; //회원 추가
 	   public boolean delete(String email)throws SQLException; //회원 삭제
 	   public boolean update(MemberVO membervo)throws SQLException; //회원 정보 수정

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.greensell.member.beans.MemberVO;
+import com.greensell.member.beans.PointVO;
 import com.greensell.member.beans.ZipVo;
 import com.greensell.model.member.MemberDao;
 import com.greensell.sell.beans.AuctionVO;
@@ -281,11 +282,20 @@ public class MemberController {
 		   return "/home"; // 회원탈퇴할때 비밀번호가 다를경우 수정좀		  
 	   }
 	   
-	   @RequestMapping("/point_form")//포인트내역가기
+	   @RequestMapping("/pointlist_form") // 포인트내역
+	   public String pointList( HttpSession session, Model m) throws SQLException{
+		   String email = (String)session.getAttribute("skey");
+		   List<PointVO> list = dao.pointList(email);
+		   m.addAttribute("point", list);
+		   return "member/memberfunction/pointlist_form";
+	   }
+	   
+	   
+	   @RequestMapping("/point_form")//포인트충전
 	   public String point() throws SQLException{
 		   
 		   
-		   return "member/memberinfo/point_form";
+		   return "member/memberfunction/point_form";
 	   }
 	   
 	   @RequestMapping("/mywriteForm")
