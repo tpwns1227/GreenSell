@@ -43,7 +43,6 @@ $(document).ready(function(){
 	         data : "email="+$("input[name='email']").val()+"&qanswer="+$("input[name='qanswer']").val(),
 	         success : function(data){ 	
 	        	 if(data=='ok'){
-	        		 alert('질문과 답이 일치합니다.');
 	        		 $("#emailchk").css('display', 'none');
 	        		 $("#pwq").css('display', 'none');
 	        		 $("#pwd").css('display','');	 

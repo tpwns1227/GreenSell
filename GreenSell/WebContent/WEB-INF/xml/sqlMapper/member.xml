@@ -12,6 +12,10 @@
 		SELECT password FROM member WHERE email=#{email}
 	</select>
 	
+	<select id="selectpoint" resultType="String" parameterType="String">
+		select point from member where email=#{email}
+	</select>
+	
 	<select id="phonechk" parameterType="String" resultType="String">
 		select phone from member where phone=#{phone}
 	</select>

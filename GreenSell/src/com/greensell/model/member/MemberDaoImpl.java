@@ -14,69 +14,74 @@ import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
 
 public class MemberDaoImpl implements MemberDao {
-	
-		private MemberVO mv;
-	  @Autowired
-	   private SqlSession sqlSession;
-	
-	   @Override
-	   public boolean insert(MemberVO membervo) throws SQLException { // 회원정보 입력
-	      int t = sqlSession.insert("member.insert", membervo);
-	      if(t==1)return true;
-	      return false;
-	   }
-	   
-	   @Override
-	   public boolean delete(String email) throws SQLException {
-		   
-		   int i = sqlSession.delete("member.delete", email);
-	       return (i>0)? true:false;
-		   
-	   };
 
-	   @Override
-	   public boolean update(MemberVO membervo) throws SQLException {//회원정보업데이트
-	      // TODO Auto-generated method stub
-	      int t = sqlSession.update("member.update", membervo);
-	      return (t>0)? true:false;
-	   }
-
-	   @Override
-	   public MemberVO selectpwd(String password) {//비밀번호찾기
-	      // TODO Auto-generated method stub
-	      sqlSession.selectOne("member.selectpwd", password);
-	      return null;
-	   }
+	private MemberVO mv;
+	@Autowired
+	private SqlSession sqlSession;
 
 	@Override
-	public List<ItemSellVO> selected(String email) {//찜목록보기
+	public boolean insert(MemberVO membervo) throws SQLException { // 회원정보 입력
+		int t = sqlSession.insert("member.insert", membervo);
+		if (t == 1)
+			return true;
+		return false;
+	}
+
+	@Override
+	public boolean delete(String email) throws SQLException {
+
+		int i = sqlSession.delete("member.delete", email);
+		return (i > 0) ? true : false;
+
+	};
+
+	@Override
+	public String selectpoint(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.selectpoint", email);
+	}
+
+	@Override
+	public boolean update(MemberVO membervo) throws SQLException {// 회원정보업데이트
+		// TODO Auto-generated method stub
+		int t = sqlSession.update("member.update", membervo);
+		return (t > 0) ? true : false;
+	}
+
+	@Override
+	public MemberVO selectpwd(String password) {// 비밀번호찾기
+		// TODO Auto-generated method stub
+		sqlSession.selectOne("member.selectpwd", password);
+		return null;
+	}
+
+	@Override
+	public List<ItemSellVO> selected(String email) {// 찜목록보기
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ItemSellVO> sellItem(String email) {//판매할 상품보기
+	public List<ItemSellVO> sellItem(String email) {// 판매할 상품보기
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public MemberVO memberdetail(String email) {//회원정보 상세보기
+	public MemberVO memberdetail(String email) {// 회원정보 상세보기
 		// TODO Auto-generated method stub
 		MemberVO mem = sqlSession.selectOne("member.selectDetail", email);
 		return mem;
 	}
-	
-	
 
 	@Override
-	public List<ItemSellVO> buyItem(String email) {//구매목록보기
+	public List<ItemSellVO> buyItem(String email) {// 구매목록보기
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<AuctionVO> AuctionItem(String email) {//경매한 상품보기
+	public List<AuctionVO> AuctionItem(String email) {// 경매한 상품보기
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -88,114 +93,114 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public List<BbsVo> bbsidcheck(String email) throws SQLException {//게시판에 있는 글을 이메일로 찾기
+	public List<BbsVo> bbsidcheck(String email) throws SQLException {// 게시판에 있는
+																		// 글을
+																		// 이메일로
+																		// 찾기
 		// TODO Auto-generated method stub
-		List<BbsVo> list = sqlSession.selectList("member.bbsidcheck",email);
-		return list;	
+		List<BbsVo> list = sqlSession.selectList("member.bbsidcheck", email);
+		return list;
 
 	}
+
 	@Override
-	public boolean logincheck(String email, String password) throws SQLException {//로그인 성공
+	public boolean logincheck(String email, String password) throws SQLException {// 로그인
+																					// 성공
 		// TODO Auto-generated method stub
 		String pw = sqlSession.selectOne("member.logincheck", email);
-		if(pw == null){
+		if (pw == null) {
 			return false;
-		}else if(pw.equals(password)){
+		} else if (pw.equals(password)) {
 			return true;
 		}
 		return false;
-	
+
 	}
-	
+
 	@Override
-	public boolean phonechk(String phone) throws SQLException {//휴대폰중복번호
+	public boolean phonechk(String phone) throws SQLException {// 휴대폰중복번호
 		// TODO Auto-generated method stub
 		String ph = sqlSession.selectOne("member.phonechk", phone);
-		if(ph == null)
+		if (ph == null)
 			return false;
 		else
 			return true;
-			
+
 	}
 
 	@Override
-	public boolean idcheck(String email) throws SQLException {//아이디 중복여부
+	public boolean idcheck(String email) throws SQLException {// 아이디 중복여부
 		// TODO Auto-generated method stub
-		
+
 		String eml = sqlSession.selectOne("member.idcheck", email);
-		
-		if(eml == null)
-		return false; //아이디가 디비에 없어 시발
+
+		if (eml == null)
+			return false; // 아이디가 디비에 없어 시발
 		else
-		return true; // 아이디가 디비에 존재해
+			return true; // 아이디가 디비에 존재해
 	}
 
 	@Override
-	public boolean nickcheck(String nickname) throws SQLException {//닉네임 존재여부
+	public boolean nickcheck(String nickname) throws SQLException {// 닉네임 존재여부
 		// TODO Auto-generated method stub
 		String nick = sqlSession.selectOne("member.nickcheck", nickname);
-		if(nick==null)
+		if (nick == null)
 			return false;
 		else
 			return true;
 	}
 
 	@Override
-	public List<ZipVo> zipvo(String address) throws SQLException {//우편번호찾기
-		// TODO Auto-generated method stub	
-		List<ZipVo> list = sqlSession.selectList("member.getPost",address);	
+	public List<ZipVo> zipvo(String address) throws SQLException {// 우편번호찾기
+		// TODO Auto-generated method stub
+		List<ZipVo> list = sqlSession.selectList("member.getPost", address);
 		return list;
 	}
-	
+
 	@Override
-	public String getQuestion(String email) throws SQLException {//질문얻어오기
-	// TODO Auto-generated method stub
+	public String getQuestion(String email) throws SQLException {// 질문얻어오기
+		// TODO Auto-generated method stub
 		String question = sqlSession.selectOne("member.getquestion", email);
 		return question;
 	}
-	
-	@Override
-	public String getanswer(String email) throws SQLException {//답얻어오기
-	// TODO Auto-generated method stub
-		return sqlSession.selectOne("member.getanswer",email);
-	}
-	
-	@Override
-	public boolean updatepw(Map<String, String> map) throws SQLException {//패스워드수정하기
-	// TODO Auto-generated method stub
-		int i = sqlSession.update("member.updatepw",map);
-		return (i>0)? true:false;
-	}
 
-	/*@Override
-	public List<ItemSellVO> olditemselectList(String email) throws SQLException {
-	// TODO Auto-generated method stub
-		List<ItemSellVO> list;
-	      
-	      list = sqlSession.selectList("member.selectoldlist", email);
-	      return list;
-	}
-	
 	@Override
-	public List<AuctionVO> auctionitemselectList() throws SQLException {
+	public String getanswer(String email) throws SQLException {// 답얻어오기
 		// TODO Auto-generated method stub
-		List<AuctionVO>   list = sqlSession.selectList("member.selectauctionitemlist");
+		return sqlSession.selectOne("member.getanswer", email);
+	}
+
+	@Override
+	public boolean updatepw(Map<String, String> map) throws SQLException {// 패스워드수정하기
+		// TODO Auto-generated method stub
+		int i = sqlSession.update("member.updatepw", map);
+		return (i > 0) ? true : false;
+	}
+
+	/*
+	 * @Override public List<ItemSellVO> olditemselectList(String email) throws
+	 * SQLException { // TODO Auto-generated method stub List<ItemSellVO> list;
+	 * 
+	 * list = sqlSession.selectList("member.selectoldlist", email); return list;
+	 * }
+	 * 
+	 * @Override public List<AuctionVO> auctionitemselectList() throws
+	 * SQLException { // TODO Auto-generated method stub List<AuctionVO> list =
+	 * sqlSession.selectList("member.selectauctionitemlist"); return list; }
+	 */
+
+	@Override
+	public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기
+		// TODO Auto-generated method stub
+		List<String> list = sqlSession.selectList("member.selectimgname", no);
 		return list;
-	}*/
+	}
 
-
-	 @Override
-	   public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기 
-	      // TODO Auto-generated method stub
-		  List<String> list = sqlSession.selectList("member.selectimgname",no);
-	      return list;
-	   }
-	 
 	@Override
 	public List<ItemSellVO> allitemList(String email) throws SQLException {
-	// TODO Auto-generated method stub
-		List<ItemSellVO> list = sqlSession.selectList("member.allselectitemList",email);
-	      return list;
+		// TODO Auto-generated method stub
+		List<ItemSellVO> list = sqlSession.selectList("member.allselectitemList", email);
+		return list;
 	}
-	
+
 }
