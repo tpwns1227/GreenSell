@@ -8,6 +8,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.greensell.bbs.beans.ReplyVo;
+import com.greensell.member.beans.MemberPSVO;
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
 
@@ -157,6 +159,20 @@ public class SellDaoImpl implements SellDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("searchlist", map);
 	}
+
+@Override
+public boolean insertpost(MemberPSVO m) throws SQLException {//후기게시판
+	int t = sqlSession.insert("postinsert", m);
+    if(t==1){return true;}
+	return false;
+}
+
+@Override
+public List<MemberPSVO> postscript(MemberPSVO mp) throws SQLException {//후기게시판 가져오기
+	List<MemberPSVO> list=sqlSession.selectList("postselect",mp);
+    
+	return list;
+}
    
    
    

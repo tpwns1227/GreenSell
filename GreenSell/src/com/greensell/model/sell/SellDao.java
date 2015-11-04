@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionException;
 
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
+import com.greensell.bbs.beans.ReplyVo;
+import com.greensell.member.beans.*;
 
 public interface SellDao {
 	
@@ -31,5 +33,9 @@ public interface SellDao {
 	public boolean bidupdate(Map<String, Object> map) throws SQLException;
 	public AuctionVO selectbid(int itemno) throws SQLException;
 	public List<ItemSellVO> searchitemList(Map<String, Object> map) throws SQLException;
+	
+	public boolean insertpost(MemberPSVO m) throws SQLException;//후기게시판 넣기
+	public List<MemberPSVO> postscript(MemberPSVO mp)throws SQLException;//후기게시판 목록불어오기
+	
 	
 }
