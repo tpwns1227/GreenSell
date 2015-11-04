@@ -56,7 +56,13 @@ public class MemberDaoImpl implements MemberDao {
 		sqlSession.selectOne("member.selectpwd", password);
 		return null;
 	}
-
+	
+	@Override
+	public String passwordget(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("getpassword", email);
+	}
+	
 	@Override
 	public List<ItemSellVO> selected(String email) {// 찜목록보기
 		// TODO Auto-generated method stub

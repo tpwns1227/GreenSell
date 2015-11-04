@@ -41,7 +41,7 @@ public interface MemberDao {
 	   public List<ItemSellVO> allitemList(String email) throws SQLException; //홈에서 중고 및 경매 리스트 통합 출력
 	   public String selectpoint(String email) throws SQLException;
 	   public boolean cart_delete(Map<String, Object> map) throws SQLException;
-	   
+	   public String passwordget(String email) throws SQLException;
 	   
 	   
 }
