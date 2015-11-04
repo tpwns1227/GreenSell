@@ -46,7 +46,7 @@
 		});
 		
 		$("#plusimg").click(function(){
-			count = count + 2;
+			count = count + 8;
 			 $.ajax({
 				type : "post",
 				url : "searchitem",

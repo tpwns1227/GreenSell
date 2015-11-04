@@ -28,6 +28,14 @@
 	text-align: left;
 }
 
+.border {
+	font-size: 15px;
+	text-align: left;
+	font-weight: bold;
+	margin: 10px 0px 10px 0px;
+}
+
+
 .viewtype{
 input[type=radio] {
     display:none;
