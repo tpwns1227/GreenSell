@@ -63,7 +63,7 @@
 		</c:if>
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
 			onclick="location.href='list?no=${view.bbsno}'">
-		
+		<c:if test=""></c:if>
 			<c:forEach var="cm" items="${comment}">
 			<div class='p'>댓글</div>
 			<table width='400px' style='margin-left: 50px'>
