@@ -16,6 +16,14 @@
 		select point from member where email=#{email}
 	</select>
 	
+	<select id="selectedlist" resultType="String" parameterType="String">
+		select itemno from selected where email=#{email}
+	</select>
+	
+	<select id="getitem" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
+		select * from itemsell where no=#{itemno}
+	</select>
+	
 	<select id="phonechk" parameterType="String" resultType="String">
 		select phone from member where phone=#{phone}
 	</select>
