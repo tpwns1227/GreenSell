@@ -99,9 +99,9 @@
   	</select>
   	
   	
-  	<!--후기게시판 넣기  -->
+  	 <!--후기게시판 넣기  -->
   	<insert id="postinsert" parameterType="com.greensell.member.beans.MemberPSVO" >
-  		insert into postscript values(no_postscript_seq.nextval,email=#{email},sysdate,content=#{content},point=#{point},wemail=#{wemail})
+  		insert into postscript values(no_postscript_seq.nextval,#{email},sysdate,#{content},#{point},#{wemail})
   	</insert>
   	
   	 <!-- 후기게시판 가져오기 -->
