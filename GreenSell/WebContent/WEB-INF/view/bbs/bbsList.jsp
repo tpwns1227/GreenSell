@@ -118,7 +118,7 @@ function write(){
            <input type="text" name="search" size="20">
            <input type="submit" value="글찾기">
            <c:if test="${skey!=null}">
-         <input type="button" name="write" value="글쓰기" onclick="location.href='write?no=${count}'">
+         <input type="button" name="write" value="글쓰기" onclick="location.href='write?no=${no}'">
          </c:if>
            </td>
        </tr>

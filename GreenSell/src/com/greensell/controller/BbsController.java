@@ -53,7 +53,6 @@ public class BbsController {
             Model m){
          //int plus=no+1;
             //System.out.println("숫자 ="+no+" 더하기="+plus+"title="+title+"bbscontent="+bbscontent+"ftitle="+ftitle+"fcontent="+fcontent+"=page="+pagelink);
-    	  System.out.println(no);
     	  m.addAttribute("no",no);
          try {
             List<BbsVo> list = dao.selectAll(no,count,count);
@@ -70,6 +69,7 @@ public class BbsController {
             m.addAttribute("selecttitle", list2);
             m.addAttribute("selectcontent", list3);
             m.addAttribute("count", num);
+            m.addAttribute("bbsno", count);
             m.addAttribute("counttitle", num2);
             m.addAttribute("countcontent", num3);
          } catch (SQLException e) {
@@ -87,13 +87,12 @@ public class BbsController {
    //게시글 상세보기
       @RequestMapping("/view")
       public String view(@RequestParam int no,BbsVo b,Model m,ReplyVo r,@RequestParam String email){
-         
-         //System.out.println(no);
+           //System.out.println(no);
          try{
-            
-        	 
             //System.out.println("이메일 : "+email);
             //이메일로 등급찾기
+        	 System.out.println("view 시작");
+        	 System.out.println(email);
             int grade=dao.grade(email);
             m.addAttribute("grade",grade);
             //System.out.println(grade);
@@ -105,10 +104,8 @@ public class BbsController {
             m.addAttribute("comment",replyvo);
            
             
-            if(dao.hitUp(b)){
-            }            
-            
-            }
+            dao.hitUp(b);
+         }
             catch(Exception e)
             {
                e.printStackTrace();
@@ -167,12 +164,12 @@ public class BbsController {
          @RequestMapping("/update")
          public String update(@RequestParam int no,BbsVo b,Model m){
             //int no=b.getNo();
-         /*   System.out.println(b.getEmail());
+        	 /*System.out.println(b.getEmail());
             System.out.println(b.getTitle());
             System.out.println(b.getBbscontent());
             System.out.println(b.getBbsno());
-            System.out.println(b.getBbsdate());*/
-            
+            System.out.println(b.getBbsdate());
+            System.out.println(no);*/
             try{
                BbsVo bbsVo = dao.view(no);
                
@@ -193,17 +190,15 @@ public class BbsController {
          //수정완료
          @RequestMapping("/updateok")
          public String updateok(BbsVo b,@RequestParam String email){
-            int no=b.getNo();
+        	 int no=b.getNo();
             try {
-               if(dao.update(b))
-               {                            
-                  
-               }
+               dao.update(b);
+               
             } catch (SQLException e) {
                // TODO Auto-generated catch block
                e.printStackTrace();
             }
-            
+            System.out.println(email);
             
             return "redirect:view?no="+no+"&email="+email;
          }

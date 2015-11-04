@@ -136,7 +136,9 @@ public class BbsDaoImpl implements BbsDao {
 
    @Override
    public int grade(String email) throws SQLException {
-      int grade=sqlsession.selectOne("bbs.grade", email);
+	   System.out.println(sqlsession);
+	   int grade=sqlsession.selectOne("bbs.grade", email);
+	   System.out.println(grade);
       return grade;
    }
 

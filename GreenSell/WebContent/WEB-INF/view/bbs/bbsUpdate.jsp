@@ -25,9 +25,8 @@
          <input class='button' type='button' value='목록' style='width: 200px'
             onclick="location.href='list?no=${view.bbsno}'">   
                 <input class='button'
-            type='submit' value='수정' style='width: 200px' onclick="location.href='updateok'">      
+            type='submit' value='수정' style='width: 200px'>      
 			<input type="hidden" value="${view.no }" name="no">
-			<input type="hidden" value="${view.email }" name="email">
       </div>
       </form>
 </body>
