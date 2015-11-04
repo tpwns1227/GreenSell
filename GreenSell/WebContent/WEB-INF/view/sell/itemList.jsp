@@ -11,10 +11,12 @@
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 
 <script type="text/javascript">
+var count = 8;
 	function go() {
 		location.href = 'reitemlist?category=' + document.listform.radios.value
-				+ '&howsell=' + '${howsell}'
+				+ '&howsell=${howsell}&count='+count;
 	}
+	
 	$(document).ready(function() {
 
 		var category = '${category}';
@@ -33,7 +35,7 @@
 			$("input[value='전체']").attr("checked", "checked");
 		}
 
-		var count = 8;
+		
 		$("#searchbar").keyup(function() {
 				$.ajax({
 					type : "post",
@@ -68,7 +70,6 @@
 
 
 	<div class='body2'>
-		
 		<form action="detail" method="post" name="listform">
 			<div align="center">
 				<input type="radio" id="radio1" name="radios" value="전체" onclick="go()" checked> 
