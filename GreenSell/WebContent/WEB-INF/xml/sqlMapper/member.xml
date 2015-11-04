@@ -24,6 +24,10 @@
 		select * from itemsell where no=#{itemno}
 	</select>
 	
+	<delete id="cartdelete" parameterType="map">
+		delete from selected where itemno=#{itemno} and email=#{email}
+	</delete>
+	
 	<select id="phonechk" parameterType="String" resultType="String">
 		select phone from member where phone=#{phone}
 	</select>
