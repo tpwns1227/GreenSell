@@ -15,7 +15,7 @@
 							
 							if($("#nowemail").val()=='${skey}'){
 								alert('이미 입찰하셨습니다.');
-								window.close();
+								return;
 							}
 							
 							
@@ -77,7 +77,7 @@
 <body>
 	<div align="center">
 		<div class='border' style="margin-left: 100px">입찰금</div>
-		<input class='textbox' id="bidprice" type="text" name="bidprice"
+		<input class='textbox' maxlength="9" id="bidprice" type="text" name="bidprice"
 			size="15"> <br> <input class='button' id="okbtn"
 			style='width: 95px' type="button" value="확인"> <input
 			class='button' style='width: 95px' type="button" value="취소"

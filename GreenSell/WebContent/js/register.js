@@ -84,7 +84,7 @@ function inputCheck() {
 		return;
 	}
 
-	document.register_form.submit();
+	
 }
 
 

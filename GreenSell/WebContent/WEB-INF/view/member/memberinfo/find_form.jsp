@@ -56,13 +56,28 @@ $(document).ready(function(){
 	$("#pwdupdate").click(function(){
 		var pw1 = $("#password").val();
 		var pw2 = $("#password2").val();
+		
+		if(pw1=='' || pw2==''){
+			alert('비밀번호를 입력해 주세요.');
+			return;
+		}
+		if(pw1.length<6 && pw2.length<6){
+			alert("비밀번호는 최소 6자 이상 입력하셔야 합니다.");
+			return;
+		}
+			
+			
 		if(pw1!=pw2){
 			alert("비밀번호가 일치하지 않아요")
 			return;
 		}else{
 			document.searchpw.submit();
 		}
+		
+		
 	});
+	
+	
 	
 	
 });
@@ -90,8 +105,8 @@ $(document).ready(function(){
 		
 		<div id="pwd" style="display: none">
 			<div class='p'>비밀번호 변경</div>
-			<input type="password" id="password" name="password" class="textbox" placeholder="변경 비밀번호" style="width: 200px">
-			<input type="password" id="password2" name="password2" class="textbox" placeholder="비밀번호 확인" style="width: 200px">
+			<input type="password" maxlength="20" id="password" name="password" class="textbox" placeholder="변경 비밀번호" style="width: 200px">
+			<input type="password" maxlength="20" id="password2" name="password2" class="textbox" placeholder="비밀번호 확인" style="width: 200px">
 			<input id="pwdupdate" class='button' type="button" value='변경하기' style="margin-top: 15px" >
 		</div>
 		

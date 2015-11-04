@@ -44,6 +44,40 @@
 		
 		
 		$("#updatebtn").click(function(){
+			
+			if($("#price").val()==''){
+				alert("가격을 입력해 주세요.");
+				return;
+			}
+			
+			if($("#detail").text()==''){
+				alert("상세설명을 입력해 주세요.");
+				return;
+			}
+			
+			if ($(this).attr('id') == 'pricebtn') {
+				if($("#itemprice").val()=='' || $("#itemprice").val()==null){
+					alert('가격을 입력해 주세요.');
+					$("#itemprice").focus();
+					return;
+				}else{
+					var chk =  /^\d+$/;
+					if(!chk.test($("#itemprice").val())){
+						alert('숫자만 입력해 주세요.');
+						$("#itemprice").focus();
+						return;
+					}else{
+						if(document.sellForm.itemprice.value.length < 4){
+							alert("천원 이상 입력해 주세요.");
+							$("#itemprice").focus();
+							return;
+						}
+					}
+				}
+				
+			}
+			
+			
 		var exp = $("#img1").val().substr($("#img1").val().lastIndexOf('.')+1);
 		exp = exp.toUpperCase();
 		if(exp=='JPG' || exp=='PNG' || exp=='BMP' || exp=='JPEG' || exp=='GIF'){
@@ -143,10 +177,10 @@
 				</c:forEach>
 			</div>
 			<div class='p'>가격</div>
-			<input class='textbox' name="itemprice" type='text'
+			<input class='textbox' id="itemprice" maxlength="" name="itemprice" type='text'
 				value="${itemone.itemprice}" placeholder="가격">
 			<div class='p'>상세설명</div>
-			<textarea name="itemdetail" placeholder="상세설명">${itemone.itemdetail}</textarea>
+			<textarea name="itemdetail" maxlength="1000" id="detail" placeholder="상세설명">${itemone.itemdetail}</textarea>
 			<input type="button" id="updatebtn" class="button" value="수정"
 				style='width: 400px; margin-top: 25px;'>
 		</form>

@@ -143,7 +143,7 @@
 
 					<div style="margin-top: 150px; height: 450px;">
 						<div class='p'>상세설명</div>
-						<textarea id="detail" name="itemdetail" placeholder="상세설명"></textarea>
+						<textarea id="detail" maxlength="1000" name="itemdetail" placeholder="상세설명"></textarea>
 
 						<div class='bt'>
 							<div class='pb'>

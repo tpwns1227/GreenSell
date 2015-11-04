@@ -8,6 +8,13 @@
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 </head>
 <script type="text/javascript">
+
+function test() {
+	   win_post = window.open('zip_form', "post",
+	         "toolbar=no ,width=450 ,height=400 ,directories=no,"
+	               + "status=yes,scrollbars=yes,menubar=no");
+	}
+
 	if ('${result}' == '비밀번호가 일치하지 않습니다.') {
 		alert('${result}');
 	}

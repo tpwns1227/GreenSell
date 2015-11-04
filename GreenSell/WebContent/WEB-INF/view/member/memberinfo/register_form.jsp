@@ -17,7 +17,24 @@ function test() {
 	var idchk = false;
 	var nicknamechk = false;
 	
+	
 	$(document).ready(function(){ 
+		
+		$("#register").click(function(){
+			var pw1 = $("#password").val();
+			var pw2 = $("#password2").val();
+			if(pw1.length<6 && pw2.length<6){
+				alert("비밀번호는 최소 6자 이상 입력하셔야 합니다.");
+				return;
+			}
+			
+			if($("#idchk").text()=='사용불가' || $("#nickchk").text()=='사용불가' || $("#phonechk").text()=='사용불가'){
+				return;
+			}
+			document.register_form.submit();
+		});
+		
+		
 	   $("input[name='email']").keyup(function(){  
 	      if($("input[name='email']").val()=='')
 		   		{$("#idchk").html('');}
@@ -98,15 +115,15 @@ function test() {
 				</div>
 		   
 			<div class='p'>이름</div>
-			<input name='name' id='textbox' type='text' placeholder="이름">
+			<input name='name' id='textbox' type='text' placeholder="이름" maxlength="6">
 			<div class='p'>별명</div>
 			<div style='text-align: left; margin-left: 50px'>
-			<input name='nickname' id='textbox' type='text' placeholder="별명"
+			<input name='nickname' id='textbox' type='text' placeholder="별명" maxlength="10"
 				style='width: 300px'><span id="nickchk" style='margin-left: 15px'></span>
 				</div>
 			<div class='p'>비밀번호</div>
-			<input name="password" id='textbox' type='password' placeholder="비밀번호" style='width: 200px;'>
-			<input name="password2" id='textbox' type='password' placeholder="비밀번호 확인" style='width: 200px;'>
+			<input name="password" id='textbox' maxlength="20" type='password' placeholder="비밀번호" style='width: 200px;'>
+			<input name="password2" id='textbox' maxlength="20" type='password' placeholder="비밀번호 확인" style='width: 200px;'>
 			<div class='p'>연락처</div>
 			<div style='text-align: left; margin-left: 50px'>
 			<input id='textbox' name='phone' type='text' placeholder="연락처 ( - 포함 )"
@@ -125,15 +142,15 @@ function test() {
 				<option value='국민'>국민은행</option>
 				<option value='신한'>신한은행</option>
 			</select> 
-			<input name="account" id='textbox' type='text' placeholder="계좌번호" style='width: 200px;'>
+			<input name="account" id='textbox' maxlength="20" type='text' placeholder="계좌번호" style='width: 200px;'>
 			<div class='p'>비밀번호 Q&A</div>
 			<select name='question' class='rf'>
 				<option value='가장기억에 남는 선생님은?'>가장기억에 남는 선생님은?</option>
 				<option value='나의 고향은?'>나의 고향은?</option>
 				<option value='나의 삶의 좌우명은?'>나의 삶의 좌우명은?</option>
 			</select> 
-			<input name="answer" id='textbox' type='text' placeholder="답변" style='width: 200px;'> 
-			<input class='button' type="button" value='회원가입' style="margin-top: 15px" onclick="inputCheck()" id="btn_pass">
+			<input name="answer" id='textbox' maxlength="16" type='text' placeholder="답변" style='width: 200px;'> 
+			<input class='button' id="register" type="button" value='회원가입' style="margin-top: 15px" onclick="inputCheck()" id="btn_pass">
 		</div>
 	</form>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>
