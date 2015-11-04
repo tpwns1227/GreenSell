@@ -7,15 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/cart.css">
+<link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
 <body>
 <jsp:include page="../../main/header.jsp"></jsp:include>
 
 <div class='body2'>
 	<div class='border'>찜 목록</div>
-<div class='containerC'>
-
+	</div>
+	<div class='body2'>
  <c:forEach var="list" items="${itemlist}" varStatus="sar">
 			<div class='container'>
 			
@@ -42,7 +42,7 @@
 	
 	
 </div>
-</div>
+
 <jsp:include page="../../main/bottom.jsp"></jsp:include>
 </body>
 </html>
