@@ -149,7 +149,7 @@
 			<div class='font'>${itemone.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
-			<input class='callbtn' type="button" value="연락처" style='width: 150px'>
+			<input class='callbtn' type="button" value="연락처" style='width: 150px' onclick="window.open('sell_contact','hi','width=700 height=500')">
 			<input class='callbtn' type="button" value="안전거래" style='width: 150px'>
 			<input class='callbtn' type="button" id="selectedbtn" value="찜 하기" style='width: 100px'> 
 		</div>

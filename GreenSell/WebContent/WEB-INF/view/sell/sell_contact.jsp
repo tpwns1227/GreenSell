@@ -29,8 +29,8 @@ input[type='button']:hover {
 <div class='font2'>평점 : 4.3</div>
 
 <input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >
-<input class='callbtn' type="button" value="후기 게시판" style="width: 133px; margin-top: 10px" >
-<input class='callbtn' type="button" value="확인" style="width: 133px; margin-top: 10px" >
+<input class='callbtn' type="button" value="후기 게시판" style="width: 133px; margin-top: 10px" onclick="location.href='postscript'" >
+<input class='callbtn' type="button" value="확인" style="width: 133px; margin-top: 10px" onclick="window.close()" >
 </div>
 </body>
 </html>
