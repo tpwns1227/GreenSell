@@ -1,8 +1,11 @@
 package com.greensell.model.member;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.websocket.Session;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,6 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public class MemberDaoImpl implements MemberDao {
 
-	private MemberVO mv;
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -58,7 +60,14 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public List<ItemSellVO> selected(String email) {// 찜목록보기
 		// TODO Auto-generated method stub
-		return null;
+		List<String> list = sqlSession.selectList("member.selectedlist",email);
+		System.out.println(list.size());
+		List<ItemSellVO> itemsellvo=new ArrayList<ItemSellVO>();
+		for(int i=0;i<list.size();i++){	
+		String no = list.get(i);
+		itemsellvo.add((ItemSellVO) sqlSession.selectOne("member.getitem",no));
+		}
+		return itemsellvo;
 	}
 
 	@Override
