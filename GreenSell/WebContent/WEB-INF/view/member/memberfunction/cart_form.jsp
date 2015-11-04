@@ -29,10 +29,7 @@
 								style="right: 0px">${list.itemname}</span></td>
 						</tr>
 					</table>
-
-
-
-					<div class='price'>${list.itemprice}</div>
+			<div class='price'>${list.itemprice}</div>
 				</div>
 			</div>
 		</c:forEach>
