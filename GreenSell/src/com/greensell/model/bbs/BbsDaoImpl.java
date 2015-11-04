@@ -71,7 +71,7 @@ public class BbsDaoImpl implements BbsDao {
 		count.put("bbsno", bbsno);
 		count.put("start",start);
 		count.put("end",end);
-		count.put("title", bbscontent);
+		count.put("bbscontent", bbscontent);
 		List<BbsVo> list = sqlsession.selectList("bbs.bbsselectcontent", count);
 		return list;
 	}
