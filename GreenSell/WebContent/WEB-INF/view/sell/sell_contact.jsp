@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,12 +23,12 @@ input[type='button']:hover {
 </head>
 <body>
 <div class='container3' style="width: 500px; height: auto">
-<div class='border'>윤푸</div>
+<c:forEach var="list" items="${list }">
+<div class='border'>${list.email }</div>
 <div class='font2'>연락처</div>
-<input type='text' class='textbox' value='01051315341' readonly>
-<div class='font2'>평점 : 4.3</div>
-
-
+<input type='text' class='textbox' value='${list.phone }' readonly>
+<div class='font2'>${list.point }</div>
+</c:forEach>
 <a href="mywrite?email=${email }">
 <input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >
 </a>
