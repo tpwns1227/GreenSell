@@ -30,6 +30,9 @@
 						alert("천원 이상 입력해 주세요.");
 						$("#price").focus();
 						return;
+					}else if(document.pointForm.price.value.length > 6){
+						alert("100만원 이상은 한번에 충전할 수없습니다.");
+						return;
 					}
 				}
 			}
