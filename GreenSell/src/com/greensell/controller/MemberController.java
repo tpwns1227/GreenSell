@@ -322,14 +322,14 @@ public class MemberController {
 		   Map<String, Object> map = new HashMap<String, Object>();
 		   map.put("email", email);
 		   map.put("price", price);
-		   System.out.println("헬로우");
+		
 		   int point;
 		   if(session.getAttribute("point").equals("0")){
 			   point = Integer.parseInt((String) session.getAttribute("point"));  
 		   }else{
 		   point = (Integer)session.getAttribute("point");
 		   }
-		   System.out.println("하이");
+		   
 		   
 		   point += Integer.parseInt(price);
 		   
