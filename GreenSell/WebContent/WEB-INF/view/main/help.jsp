@@ -30,7 +30,7 @@
 		<input type="hidden" value="2" name="no">
 		<input id='btn1' class='button' type="submit" value='공지사항' style="margin-top: 15px; width: 400px"> 
 	</form>
-	<form action="qna"> 
+	<form action="list"> 
 		<input type="hidden" value="3" name="no">
 		<input	id='btn2' class='button' type="submit" 
 				value='질문하기' style="margin-top: 15px; width: 400px"> 
