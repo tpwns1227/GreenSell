@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+
+//String em = (String)session.setAttribute("em", "${itemone.getEmail()}");
+
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -101,11 +107,21 @@
 		});
 		
 		
+		$("#email").click(function(){
+			if('${skey}' == '' || '${skey}' == null){
+				
+				return;
+			}
 		
+			//document.form1.target="sell_contact";
+			document.form1.submit(); 
+			window.open('sell_contact?no=${itemone.getNo()}','_blank','width=700 height=500');
+			
+		});
+
 		
 	});
-	
-	
+
 </script>
 </head>
 <body>
@@ -138,8 +154,8 @@
 			<div class='bold2'>제품명</div>
 			<div class='font'>${itemone.getItemname()}</div>
 			<div class='bold2'>상태</div>
-			<div class='font'>${itemone.getItemstate()}</div>
 			<div class='bold2'>가격</div>
+			<div class='font'>${itemone.getItemstate()}</div>
 			<div class='font'>${itemone.getItemprice()}</div>		
 			<div class='bold2'>판매방법</div>
 			<div class='font'>${itemone.getHowsell()}</div>
@@ -149,9 +165,14 @@
 			<div class='font'>${itemone.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
-			<input class='callbtn' type="button" value="연락처" style='width: 150px' onclick="window.open('sell_contact','hi','width=700 height=500')">
+			 <form name="form1" action="sell_contact?no=${no}">
+				<input type="hidden" value="${itemone.getEmail() }" name="em">
+				<input type="hidden" value="${itemone.getNo() }" name="no">
+				<input class='callbtn' id="email" type="button" value="연락처" style='width: 150px'>
+			
 			<input class='callbtn' type="button" value="안전거래" style='width: 150px'>
 			<input class='callbtn' type="button" id="selectedbtn" value="찜 하기" style='width: 100px'> 
+			</form> 
 		</div>
 		</c:if>
 		
