@@ -13,35 +13,28 @@
 		<div class='containerb'>
 			<ul>
 				<li class='bold'>상품</li>
-				<li><a href='#'>판매하기</a></li>
-				<li><a href='#'>경매 게시판</a></li>
-				<li><a href='#'>판매 게시판</a></li>
+				<li><a>판매하기</a></li>
+				<li><a>경매 게시판</a></li>
+				<li><a>판매 게시판</a></li>
 			</ul>
 		</div>
 		<div class='containerb'>
 			<ul>
 				<li class='bold'>내 정보</li>
-				<li><a href='#'>포인트 내역</a></li>
-				<li><a href='cart'>찜 목록</a></li>
-				<li><a href='#'>내가 올린 글</a></li>
+				<li><a>포인트 내역</a></li>
+				<li><a>찜 목록</a></li>
+				<li><a>내가 올린 글</a></li>
 			</ul>
 		</div>
 		<div class='containerb'>
 			<ul>
 				<li class="bold">고객지원</li>
-				<li><a href='#'>공지사항</a></li>
-				<li><a href='#'>질문하기</a></li>
-				<li><a href='#'>자주 묻는 질문</a></li>
+				<li><a>공지사항</a></li>
+				<li><a>질문하기</a></li>
+				<li><a>자주 묻는 질문</a></li>
 			</ul>
 		</div>
-		<div class='containerb'>
-			<ul>
-				<li class="bold">소셜</li>
-				<li><a href='https://www.facebook.com/profile.php?id=100009544424914'>페이스북</a></li>
-				<li><a href='#'>트위터</a></li>
-				<li><a href='https://instagram.com/yoonpooh'>인스타그램</a></li>
-			</ul>
-		</div>
+	
 		<div class='containerb' id='logob'>
 			<a href='home'> <img src='img/useimg/logo.png'
 				height='80'>
