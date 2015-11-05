@@ -82,6 +82,7 @@ var count = 8;
 	<jsp:include page="../main/header.jsp"></jsp:include>
 
 
+
 	<div class='body2'>
 		<form action="detail" method="post" name="listform">
 			<div align="center">
@@ -99,7 +100,7 @@ var count = 8;
 					for="radio6">기타</label> <br>
 
 					<input class='textbox' type="text" id="searchbar"
-					placeholder="제품명을 검색해 주세요.">
+					placeholder="제품명을 검색해 주세요." onkeydown="if(event.keyCode==13){ return false; }">
 			</div>
 			<p />
        
