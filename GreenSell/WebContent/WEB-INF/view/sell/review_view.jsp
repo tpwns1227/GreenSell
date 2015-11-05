@@ -7,10 +7,17 @@
 <title></title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script type="text/javascript">
 	function review(){
 		location.href="review_write?email=${email}";
 	}
+	$(document).ready(function(){
+	    $("tr:even").css("background-color", "#12CC66");
+	    $("tr:even").css("color", "#FFFFFF");
+	    
+	});
+	
 </script>
 <style type="text/css">
 table {
@@ -36,7 +43,7 @@ td {
 		<div class='border'>${email}의 후기</div>
 		<hr width='800px'>
 		<table style="width: 700px">
-			<tr>
+			<tr height="30px">
 				<td width="100px">
 					<div class='tabold'>작성자</div>
 				</td>
@@ -59,10 +66,14 @@ td {
 				<td>${list.wdate}</td>
 			</tr>
 			</c:forEach>
-			
+			<tr>
+			<td colspan="4" align="right">
+			<input type="button" value="후기쓰기" onclick="review()" style="width: 95px; height: 30px">
+			</td>
+			</tr>
 		</table>
 		<p/><p/>
-		<input type="button" value="후기쓰기" onclick="review()" style="width: 95px; height: 30px">
+		
 		</div>
 </body>
 </html>
