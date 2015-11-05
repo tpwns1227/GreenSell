@@ -129,7 +129,13 @@
 			<br>
 				<input class='callbtn' id="bid" type="button" value="입찰하기" style='width: 295px'>
 				<input class='callbtn' id="selectedbtn" type="button" value="찜 하기" style='width: 95px'>
-				<br><font size="4px"><strong>입찰자</strong></font><br><label id="nowemail">${auctionitem.getNowemail()}</label>
+				<br><font size="4px"><strong>입찰자</strong></font><br>
+				<c:if test="${auctionitem.getNowemail()==auctionitem.getEmail()}">
+				<label id="nowemail">없음</label>
+				</c:if>
+				<c:if test="${auctionitem.getNowemail()!=auctionitem.getEmail()}">
+				<label id="nowemail">${auctionitem.getNowemail()}</label>
+				</c:if>
 			</c:if>
 		</div>
 			
@@ -174,7 +180,7 @@
 			<div class='bold2'>카테고리</div>
 			<div class='font'>${auctionitem.getCategory()}</div>
 			<div class='bold2'>판매자</div>
-			<div class='font'>${auctionitem.getEmail()}</div>
+			<div class='font' id="wemail">${auctionitem.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${auctionitem.getItemdetail()}</textarea>
 		</div>
