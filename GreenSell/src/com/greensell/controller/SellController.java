@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.greensell.bbs.beans.ReplyVo;
 import com.greensell.member.beans.MemberPSVO;
+import com.greensell.model.member.MemberDao;
+import com.greensell.model.member.MemberDaoImpl;
 import com.greensell.model.sell.SellDao;
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
@@ -297,15 +299,28 @@ public class SellController {
 	}
 	
 	@RequestMapping("/bid")
-	public @ResponseBody String bid(Model m, @RequestParam String bidprice, @RequestParam String email, @RequestParam String itemno) throws SQLException{
+	public @ResponseBody String bid(HttpSession session, Model m, @RequestParam String bidprice,
+			@RequestParam String email, @RequestParam String itemno) throws SQLException{
 		
+		AuctionVO oldavo = dao.selectbid(Integer.parseInt(itemno));
+		map.put("oldprice", oldavo.getNowprice());
+		map.put("oldemail", oldavo.getNowemail());
+		dao.returnbidprice(map);
 		
 		map.put("nowprice", Integer.parseInt(bidprice));
 		map.put("email", email);
 		map.put("itemno", Integer.parseInt(itemno));
 		if(dao.bidupdate(map)){
 		 AuctionVO avo = dao.selectbid(Integer.parseInt(itemno));
-		 return "{nowprice:'"+avo.getNowprice()+"', nowemail:'"+avo.getNowemail()+"',tendernumber:'"+avo.getTendernumber()+"'}";
+		 dao.bidpriceminus(map);
+		 
+		 int  point = Integer.parseInt((String) session.getAttribute("point"));  
+		   point -= Integer.parseInt(bidprice);
+		   
+		  String poin = Integer.toString(point);
+		  session.setAttribute("point", poin);
+		 
+		 return "{point:'"+ poin +"', nowprice:'"+avo.getNowprice()+"', nowemail:'"+avo.getNowemail()+"',tendernumber:'"+avo.getTendernumber()+"'}";
 		}
 		return "실패";	
 	}

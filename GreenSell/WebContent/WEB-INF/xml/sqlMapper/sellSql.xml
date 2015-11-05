@@ -126,6 +126,14 @@
    <select id="selectPS" parameterType="String" resultType="com.greensell.member.beans.MemberPSVO">
    	select * from postscript where email=#{email}
    </select>
+   
+   <update id="returnbidprice" parameterType="map">
+   	update member set point=point+#{oldprice} where email=#{oldemail}
+   </update>
+   
+   <update id="bidpriceminus" parameterType="map">
+   	update member set point=point-#{nowprice} where email=#{email}
+   </update>
     
     
 </mapper>

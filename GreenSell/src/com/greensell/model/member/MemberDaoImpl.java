@@ -47,6 +47,7 @@ public class MemberDaoImpl implements MemberDao {
 	public String selectpoint(String email) throws SQLException {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.selectpoint", email);
+		
 	}
 
 	@Override

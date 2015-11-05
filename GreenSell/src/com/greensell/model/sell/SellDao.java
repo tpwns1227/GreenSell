@@ -39,6 +39,8 @@ public interface SellDao {
 	public Postbean selectreview(String email) throws SQLException;	//후기 게시판 출력하기
 	public List<Integer> selectpointlist(String email) throws SQLException;
 	public List<MemberPSVO> selectPS(String email) throws SQLException;
+	public boolean returnbidprice(Map<String, Object> map) throws SQLException;
+	public boolean bidpriceminus(Map<String, Object> map) throws SQLException;
 	
-
+	
 }

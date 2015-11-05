@@ -330,18 +330,14 @@ public class MemberController {
 		   Map<String, Object> map = new HashMap<String, Object>();
 		   map.put("email", email);
 		   map.put("price", price);
-		
-		   int point;
-			   System.out.println("여기");
-			   point = Integer.parseInt((String) session.getAttribute("point"));  
-
-			   point += Integer.parseInt(price);
 			   
+			 int  point = Integer.parseInt((String) session.getAttribute("point"));  
+			   point += Integer.parseInt(price);
 			  String poin = Integer.toString(point);
-			  System.out.println(poin);
+			  session.setAttribute("point", poin);
 		   dao.updatePoint(map);
 		   dao.pointDeposit(map);
-		   session.setAttribute("point", poin);
+		   
 		   return "redirect:home";
 	   }
 	   

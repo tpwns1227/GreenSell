@@ -24,12 +24,20 @@
 							}
 							
 							
+							
 							var price = parseInt($("#bidprice").val());
 							var stpr = parseInt($("#startpr").val());
 							var nowpr = parseInt($("#nowpr").val());
+							var point = parseInt('${point}');
 							var nowemail = '${skey}';
 							var ino = '${itemno}';
 							var checkValue = $("#bidprice").val();
+							
+							if(point<price){
+								alert("잔액이 부족합니다.");
+								return;
+							}
+							
 							if (checkValue == '' || checkValue == null) {//공백 체크
 								alert('가격을 입력해 주세요.');
 								$("#bidprice").focus();
@@ -49,8 +57,11 @@
 													+ "&email=" + nowemail
 													+ "&itemno=" + ino,
 											success : function(data) {
+												
 												var json = eval("(" + data
 														+ ")");
+												opener.$("#point").html(
+														"<font color='red'>"+json.point+"</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트");
 												opener.$("#nowprice").html(
 														json.nowprice);
 												opener.$("#num").html(

@@ -195,6 +195,18 @@ public boolean insertpost(MemberPSVO mp) throws SQLException {//후기게시판
 			List<MemberPSVO> psList = sqlSession.selectList("selectPS", email);
 			return psList;
 		}
-
-
+	@Override
+	public boolean returnbidprice(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		int i = sqlSession.update("returnbidprice", map);
+		return (i>0)? true:false;
+	}
+	
+@Override
+		public boolean bidpriceminus(Map<String, Object> map) throws SQLException {
+			// TODO Auto-generated method stub
+			int i = sqlSession.update("bidpriceminus", map);
+			return (i>0)? true:false;
+		}
+	
 }
