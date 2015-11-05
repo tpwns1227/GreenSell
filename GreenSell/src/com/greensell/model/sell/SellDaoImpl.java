@@ -161,19 +161,17 @@ public class SellDaoImpl implements SellDao {
 	}
 
 @Override
-public boolean insertpost(MemberPSVO m) throws SQLException {//후기게시판
-	int t = sqlSession.insert("postinsert", m);
+public boolean insertpost(MemberPSVO mp) throws SQLException {//후기게시판
+	int t = sqlSession.insert("sell.postinsert", mp);
     if(t==1){return true;}
 	return false;
 }
 
 @Override
-public List<MemberPSVO> postscript(MemberPSVO mp) throws SQLException {//후기게시판 가져오기
-	List<MemberPSVO> list=sqlSession.selectList("postselect",mp);
-    
-	return list;
-}
-   
-   
-   
+	public List<ItemSellVO> writerlist(String email) throws SQLException {
+		// TODO Auto-generated method stub
+	List<ItemSellVO> list = sqlSession.selectList("sell.writerlist",email);
+    return list;
+	}
+
 }

@@ -28,8 +28,19 @@ input[type='button']:hover {
 <input type='text' class='textbox' value='01051315341' readonly>
 <div class='font2'>평점 : 4.3</div>
 
+${email}
+${email}
+
+안녕하세요
+<a href="mywrite?email=${email }">
 <input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >
-<input class='callbtn' type="button" value="후기 게시판" style="width: 133px; margin-top: 10px" onclick="location.href='postscript'" >
+</a>
+
+<form>
+<a href="postscript?email=${email }">
+<input class='callbtn' type="button" value="후기 게시판" style="width: 133px; margin-top: 10px">
+</a>
+</form>
 <input class='callbtn' type="button" value="확인" style="width: 133px; margin-top: 10px" onclick="window.close()" >
 </div>
 </body>

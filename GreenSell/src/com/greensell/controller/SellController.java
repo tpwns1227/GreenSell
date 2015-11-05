@@ -303,30 +303,34 @@ public class SellController {
 	}
 	//연락처보기 클릭시
 	@RequestMapping("/sell_contact")
-	public String contact(){
-		
+	public String contact(HttpSession session,Model m,@RequestParam int no) throws SQLException{
+	ItemSellVO ivo=	dao.itemDetail(no);
+		//session.getAttribute(ivo.getEmail());
+		m.addAttribute("email",ivo.getEmail());
+		m.addAttribute("no",ivo.getNo());
 		return "sell/sell_contact";
 	}
-	//후기게시판 클릭시
-	@RequestMapping("/postscript")
-	public String postscript(MemberPSVO mp,Model m){
-		try {
-			List<MemberPSVO> post=dao.postscript(mp);
-			m.addAttribute("comment",post);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "sell/postscript";
+	
+	//연락처보기 클릭시
+	@RequestMapping("/mywrite")
+	public String contact(@RequestParam String email, Model m) throws SQLException{
+		List<ItemSellVO> list = dao.writerlist(email);
+		m.addAttribute("itemlist",list);
+		return "member/memberfunction/mywrite_form";
 	}
+	
+	
 	//후기게시판 등록
 	@RequestMapping("/postok")
 	public String postok(MemberPSVO mp){
 		
 		try {
+			System.out.println(mp.getEmail()+"이메일");
+			System.out.println(mp.getNo()+"no");
+			System.out.println(mp.getWdate()+"Wdate");
 			if(dao.insertpost(mp))
-			
-			return "sell/postscript";
+			System.out.println("입력되었습니다.");
+			return "redirect:sell/sell_contact";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

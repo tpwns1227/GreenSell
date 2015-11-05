@@ -23,16 +23,16 @@
 				<td width='150px' colspan='2'>작성일</td>
 			</tr>
 					<tr>
-						<td align="center">awre${cm.conetnt}</td>
-						<td>${cm.email}aweraw</td>
-						<td>${cm.wdate}awer</td>
+						<td align="center">${cm.content}</td>
+						<td>${cm.email}</td>
+						<td>${cm.wdate}</td>
 						<td>
 							<form action="postdelete">
-								<input type="hidden" value="${cm.cmno}" name="cmno"> <input
-									type="hidden" value="${skey}" name="skey"> <input
-									type="hidden" value="${cm.no}" name="no"> 
 									<input type="hidden" value="${cm.email}" name="email">
 									<input type="hidden" value="${cm.point}" name="point">
+									<input type="hidden" value="${cm.content}" name="content">
+									<input type="hidden" value="${skey}" name="wemail">
+									
 								<c:if test="${cm.email==skey}">
 									<input class='button' type="submit" value="삭제">
 									<br>
@@ -40,17 +40,24 @@
 							</form> <br>
 			</c:forEach>
 			
-			<div class='p'>댓글 내용</div>
-		<form name="cmreply" action="postok" method="post">
-			<input type="hidden" value="${skey}" name="email">
-			 <input	type="hidden" value="${cm.no}" name="no">
-			<textarea name="ceontent" rows="2" cols="80"></textarea>
+			<div class='p'>댓글 내용나라${cm.email }나라나라</div>
+		<form name="postok" action="postok" method="post">
+		<div class='p'>평점</div>
+		<select style="width: 400px" name="point">
+			<option selected="selected">1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+		</select>
+			<textarea name="content" rows="2" cols="80"></textarea>
 			
+			<input type="hidden" value="${ct.getEmail()}" name="email">
+			<input type="hidden" value="${ct.getPoint()}" name="point">
+			<input type="hidden" value="${ct.getContent()}" name="content">
 			<input class='button' type="submit" value="확인">
 		</form>
 	</div>
-
-
 </table>
 </body>
 </html>
