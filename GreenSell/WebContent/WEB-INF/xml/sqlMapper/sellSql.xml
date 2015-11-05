@@ -38,7 +38,7 @@
    		<!-- select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%' -->
    		select b.* from 
    		(select a.*, rownum rnum from 
-   		(select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%' order by no desc) a) b
+   		(select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%') a) b
    		where <![CDATA[rnum <= #{count}]]>
    	</select>
    	
@@ -108,5 +108,12 @@
   <select id="postselect" parameterType="int" resultType="com.greensell.member.beans.MemberPSVO">
      select * from postscript where no=#{no}
   </select>
+  
+  	<!-- 글쓴이가 작성한 글 가져오기  -->
+   <select id="writerlist" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
+   	select * from itemsell where email=#{email}
+   
+   </select>
+    
     
 </mapper>
