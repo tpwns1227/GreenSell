@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <meta charset='UTF-8'>
+
 <html>
 <head>
 <title></title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
+<script type="text/javascript">
+	function review(){
+		location.href="review_write"
+	}
+</script>
 <style type="text/css">
 table {
 	margin-left: 50px;
@@ -51,6 +57,8 @@ td {
 				<td>20151103</td>
 				<td>5</td>
 			</tr>
+			
 		</table>
+		<input type="button" value="후기쓰기" onclick="review()">
 </body>
 </html>
