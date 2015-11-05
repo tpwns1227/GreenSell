@@ -303,11 +303,10 @@ public class SellController {
 	}
 	//연락처보기 클릭시
 	@RequestMapping("/sell_contact")
-	public String contact(HttpSession session,Model m,@RequestParam int no) throws SQLException{
-	ItemSellVO ivo=	dao.itemDetail(no);
-		//session.getAttribute(ivo.getEmail());
-		m.addAttribute("email",ivo.getEmail());
-		m.addAttribute("no",ivo.getNo());
+	public String contact(HttpSession session,Model m) throws SQLException{
+	
+		session.getAttribute("skey");
+		
 		return "sell/sell_contact";
 	}
 	
