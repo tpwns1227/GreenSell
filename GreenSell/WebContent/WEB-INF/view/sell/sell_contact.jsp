@@ -24,20 +24,21 @@ input[type='button']:hover {
 <body>
 <div class='container3' style="width: 500px; height: auto">
 
-<div class='border'>${info.email }</div>
+<div class='border'>${info.email}</div>
+<div class='border'>${info.nickname}</div>
 <div class='font2'>연락처</div>
 <input type='text' class='textbox' value='${info.phone }' readonly>
-<div class='font2'>${starpoint}</div>
 
-<a href="mywrite?email=${email }">
+<div class='font2'><span>별점</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${starpoint}</div>
+
+<a href="mywrite?email=${info.email}">
 <input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >
 </a>
 
-<form>
-<a href="review_list">
+<a href="review_list?email=${info.email}">
 <input class='callbtn' type="button" value="후기 게시판" style="width: 133px; margin-top: 10px">
 </a>
-</form>
+
 <input class='callbtn' type="button" value="확인" style="width: 133px; margin-top: 10px" onclick="window.close()" >
 </div>
 </body>

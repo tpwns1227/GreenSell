@@ -11,17 +11,19 @@
 	<%-- <jsp:include page="../main/header.jsp"></jsp:include> --%>
 	<form action="reviewok">
 	<div class='container'>
-		<div class='border'>후기작성</div>
+		<div class='border'>${email} 후기 작성</div>
 		<div class='p'>평점</div>
 		<select style="width: 400px" name="point">
-			<option selected>1</option>
+			<option  selected>1</option>
 			<option>2</option>
 			<option>3</option>
 			<option>4</option>
 			<option>5</option>
 		</select>
 		<div class='p'>내용</div>
-		<textarea placeholder="내용" name="content"></textarea>
+		<input type="hidden" name="email" value="${email}">
+		<input type="hidden" name="wemail" value="${skey}">	
+			<textarea placeholder="내용" name="content"></textarea>
 		<input class='button' type='submit' value='작성'>
 	</div>
 	</form>

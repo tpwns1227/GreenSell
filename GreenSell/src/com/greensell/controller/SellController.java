@@ -326,11 +326,12 @@ public class SellController {
 		for(int i=0; i<pointlist.size();i++){
 			su += pointlist.get(i);
 		}
-		float f = su;
+		
 		if(pointlist.size()!=0){
-		m.addAttribute("starpoint", su/pointlist.size());
+			float f = su;
+			m.addAttribute("starpoint", f/pointlist.size());
 		}else{
-			m.addAttribute("startpoint", 0);
+			m.addAttribute("starpoint", "0");
 		}
 		return "sell/sell_contact";
 	}
@@ -345,30 +346,26 @@ public class SellController {
 	
 	//후기게시판
 	@RequestMapping("/review_list")
-	public String reviewlist(){
+	public String reviewlist(Model m, @RequestParam String email){
+		m.addAttribute("email",email);
 		return "sell/review_view";
 	}
 	//후기 게시판 등록 폼
 	@RequestMapping("/review_write")
-	public String reviewwirte(){
+	public String reviewwirte(@RequestParam String email, Model m){
+		m.addAttribute("email", email);
 		return "sell/review";
 	}
 	
 	
 	//후기게시판 등록
 	@RequestMapping("/reviewok")
-	public String postok(MemberPSVO mp,HttpSession session,@RequestParam String email){
-		try {
+	public String postok(MemberPSVO mp, HttpSession session,@RequestParam String email) throws SQLException{
 			mp.setEmail(email);
 			mp.setWemail((String) session.getAttribute("skey"));
 			if(dao.insertpost(mp))
 			System.out.println("입력되었습니다.");
-			return "redirect:sell/sell_contact";
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "sell/postscript";
+			return "redirect:sell_contact?email="+email;
 	}
 	
 	

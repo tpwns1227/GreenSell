@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/member.css">
 <script type="text/javascript">
 	function review(){
-		location.href="review_write"
+		location.href="review_write?email=${email}";
 	}
 </script>
 <style type="text/css">
@@ -33,10 +33,13 @@ td {
 </head>
 <body>
 	<div class='container' style="width: 500px; height: auto">
-		<div class='border'>후기</div>
+		<div class='border'>${email}의 후기</div>
 		<hr width='400px'>
-		<table width='400px'>
+		<table>
 			<tr>
+				<td width="50px">
+					<div class='tabold'>작성자</div>
+				</td>
 				<td width="250px">
 					<div class='tdbold'>내용</div>
 				</td>
@@ -47,18 +50,17 @@ td {
 					<div class='tdbold'>평점</div>
 				</td>
 			</tr>
+			
 			<tr>
-				<td>이 새끼 최소 섹스마스터</td>
-				<td>20151103</td>
-				<td>4</td>
-			</tr>
-			<tr>
-				<td>직거래했는데 친절해요 ㅎㅎ</td>
-				<td>20151103</td>
-				<td>5</td>
+				<td>내용</td>
+				<td>날짜</td>
+				<td>평점</td>
 			</tr>
 			
+			
 		</table>
-		<input type="button" value="후기쓰기" onclick="review()">
+		<p/><p/>
+		<input type="button" value="후기쓰기" onclick="review()" style="width: 95px; height: 30px">
+		</div>
 </body>
 </html>
