@@ -72,7 +72,7 @@ function test() {
 		         data : "phone="+$("input[name='phone']").val(),
 		         success : function(data){
 		        	 var str = '';
-		        	 if(data == '중복된번호입니다')
+		        	 if(data == '사용불가')
 		        		 str = "<font color=red>"+data+"</font>";
 		        		 else 
 		        		str = "<font color=green>"+data+"</font>"; 

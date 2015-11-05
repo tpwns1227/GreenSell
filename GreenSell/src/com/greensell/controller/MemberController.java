@@ -326,14 +326,14 @@ public class MemberController {
 		   int point;
 			   System.out.println("여기");
 			   point = Integer.parseInt((String) session.getAttribute("point"));  
-		 
-		   
-		   
-		   point += Integer.parseInt(price);
-		   
+
+			   point += Integer.parseInt(price);
+			   
+			  String poin = Integer.toString(point);
+			  System.out.println(poin);
 		   dao.updatePoint(map);
 		   dao.pointDeposit(map);
-		   session.setAttribute("point", point);
+		   session.setAttribute("point", poin);
 		   return "redirect:home";
 	   }
 	   

@@ -38,7 +38,7 @@
    		<!-- select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%' -->
    		select b.* from 
    		(select a.*, rownum rnum from 
-   		(select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%') a) b
+   		(select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%' order by no desc) a) b
    		where <![CDATA[rnum <= #{count}]]>
    	</select>
    	
