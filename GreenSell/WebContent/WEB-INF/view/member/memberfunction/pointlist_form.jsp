@@ -7,6 +7,12 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
 <title>Insert title here</title>
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("tr:even").css("background-color", "#12CC66");
+});
+</script>
 <style type="text/css">
 table {
 	margin-left: 50px;
@@ -27,25 +33,25 @@ td {
 </style>
 
 </head>
-<body>
+<body style="width: 500px">
 
 	<div class='container' style="width: 500px; height: auto">
 		<div class='border'>포인트 내역</div>
 		<hr width='400px'>
 		<table width='400px'>
 			<tr>
-				<td width="50px">
+				<th width="50px">
 					<div class='tdbold'>입출금</div>
-				</td>
-				<td width="100px">
+				</th>
+				<th width="100px">
 					<div class='tdbold'>가격</div>
-				</td>
-				<td>
+				</th>
+				<th>
 				<div class='tdbold'>수수료</div>
-				</td>
-				<td width="150px">
+				</th>
+				<th width="150px">
 					<div class='tdbold'>날짜</div>
-				</td>
+				</th>
 			</tr>
 			<c:if test="${point.size()>0}">  
 <c:forEach var="point" items="${point}" varStatus="status">
