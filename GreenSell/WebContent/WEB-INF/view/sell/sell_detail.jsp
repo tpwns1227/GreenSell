@@ -165,7 +165,7 @@
 			<div class='font'>${itemone.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
-			 <form name="form1"">
+			 <form name="form1">
 				<input type="hidden" value="${itemone.getEmail() }" name="em">
 				<input type="hidden" value="${itemone.getNo() }" name="no">
 				<input class='callbtn' id="email" type="button" value="연락처" style='width: 150px'>
@@ -173,8 +173,9 @@
 			<input class='callbtn' type="button" value="안전거래" style='width: 150px'>
 			<input class='callbtn' type="button" id="selectedbtn" value="찜 하기" style='width: 100px'> 
 			
-		</div>
+		
 		</form>
+		</div>
 		</c:if>
 		
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
