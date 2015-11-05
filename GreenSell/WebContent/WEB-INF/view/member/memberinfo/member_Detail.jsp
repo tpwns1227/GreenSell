@@ -31,7 +31,7 @@
 		
 		$("#pointlist").click(function(){
 			window.open('pointlist_form', "post",
-			         "toolbar=no ,width=1000 ,height=500 ,directories=no,"
+			         "toolbar=no ,width=500 ,height=300 ,directories=no,"
 		               + "status=yes,scrollbars=yes,menubar=no");
 		});
 		
