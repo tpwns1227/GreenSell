@@ -106,7 +106,7 @@
 				return;
 				}
 			var no=${no}
-			window.open('sell_contact?no=${itemone.getNo()}','_blank','width=700 height=500');
+			window.open('sell_contact?no=${itemone.getNo()}','_blank','width=1000 height=700');
 				//document.form1.target="sell_contact?no=";
 				document.form1.submit(); 
 				
