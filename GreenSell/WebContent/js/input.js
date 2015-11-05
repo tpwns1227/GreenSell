@@ -60,6 +60,11 @@ $(document).ready(function() {
 		}
 		
 		if ($(this).attr('id') == 'pricebtn') {
+			if(document.sellForm.itemprice.value.substring(0,1)>0){}
+			else{
+			alert("앞자리는 0이 올 수 없습니다.");
+			return;
+			}
 			if($("#itemprice").val()=='' || $("#itemprice").val()==null){
 				alert('가격을 입력해 주세요.');
 				$("#itemprice").focus();
@@ -71,11 +76,14 @@ $(document).ready(function() {
 					$("#itemprice").focus();
 					return;
 				}else{
-					if(document.sellForm.itemprice.value.length < 4){
+					if(document.sellForm.itemprice.value.length < 4 ){
 						alert("천원 이상 입력해 주세요.");
 						$("#itemprice").focus();
 						return;
 					}
+					
+					
+					
 				}
 			}
 			
