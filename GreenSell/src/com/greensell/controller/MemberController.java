@@ -322,7 +322,7 @@ public class MemberController {
 		   Map<String, Object> map = new HashMap<String, Object>();
 		   map.put("email", email);
 		   map.put("price", price);
-		   int point = (Integer)session.getAttribute("point");
+		   int point = Integer.parseInt((String) session.getAttribute("point"));
 		   point += Integer.parseInt(price);
 		   dao.updatePoint(map);
 		   dao.pointDeposit(map);

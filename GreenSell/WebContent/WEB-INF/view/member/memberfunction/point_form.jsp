@@ -31,10 +31,9 @@
 						$("#price").focus();
 						return;
 					}
-
 				}
-
 			}
+			document.pointForm.submit();
 		});
 	});
 </script>
