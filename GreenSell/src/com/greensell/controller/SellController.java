@@ -31,6 +31,7 @@ import com.greensell.member.beans.MemberPSVO;
 import com.greensell.model.sell.SellDao;
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
+import com.greensell.sell.beans.Postbean;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -61,7 +62,7 @@ public class SellController {
 		return "/sell/sell_detail";
 	}
 
-	@RequestMapping("/home") // home 페이지 출력
+	@RequestMapping("/") // home 페이지 출력
 	public String viewHome(Model m) throws SQLException {
 		List<ItemSellVO> list = dao.allitemList();
 		List<String> fristimg = new ArrayList<String>();
@@ -303,8 +304,12 @@ public class SellController {
 	}
 	//연락처보기 클릭시
 	@RequestMapping("/sell_contact")
-	public String contact(HttpSession session,Model m) throws SQLException{
+	public String contact(HttpSession session,Model m,ItemSellVO ivo,@RequestParam int no) throws SQLException{
 	
+		ivo =dao.itemDetail(no);
+		List<Postbean> list = dao.selectreview(ivo.getEmail());
+		System.out.println("123123123");
+		m.addAttribute("list",list);
 		session.getAttribute("skey");
 		
 		return "sell/sell_contact";
@@ -332,9 +337,10 @@ public class SellController {
 	
 	//후기게시판 등록
 	@RequestMapping("/reviewok")
-	public String postok(MemberPSVO mp){
-		
+	public String postok(MemberPSVO mp,HttpSession session,@RequestParam String email){
 		try {
+			mp.setEmail(email);
+			mp.setWemail((String) session.getAttribute("skey"));
 			if(dao.insertpost(mp))
 			System.out.println("입력되었습니다.");
 			return "redirect:sell/sell_contact";
