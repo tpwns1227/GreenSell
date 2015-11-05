@@ -147,7 +147,6 @@ public class MemberDaoImpl implements MemberDao {
 			return true;
 
 	}
-
 	@Override
 	public boolean idcheck(String email) throws SQLException {// 아이디 중복여부
 		// TODO Auto-generated method stub
@@ -256,6 +255,8 @@ public class MemberDaoImpl implements MemberDao {
 			return true;
 		return false;
 	}
+
+
 	
 	
 

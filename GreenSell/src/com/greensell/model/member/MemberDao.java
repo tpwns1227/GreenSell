@@ -19,7 +19,7 @@ public interface MemberDao {
 
 		public boolean updatePoint(Map<String, Object> map) throws SQLException;
 		public boolean pointDeposit(Map<String, Object> map) throws SQLException;
-	public List<PointVO> pointList(String email);
+		public List<PointVO> pointList(String email);
 	   public boolean insert(MemberVO membervo)throws SQLException; //회원 추가
 	   public boolean delete(String email)throws SQLException; //회원 삭제
 	   public boolean update(MemberVO membervo)throws SQLException; //회원 정보 수정
@@ -48,5 +48,5 @@ public interface MemberDao {
 	   public String passwordget(String email) throws SQLException;
 	   public List<ItemSellVO> mywritesell(String email) throws SQLException;
 	   public int getadmin(String email) throws SQLException;
-	   
+
 }

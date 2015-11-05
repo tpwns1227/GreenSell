@@ -124,4 +124,5 @@
 		insert into point values(no_point_seq.nextval,#{email},sysdate,#{price},0,0 )
 	</insert>
 	
+	
 </mapper>

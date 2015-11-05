@@ -107,7 +107,6 @@ public class MemberController {
 	   	public @ResponseBody String phonechk(@RequestParam String phone) throws SQLException{
 		   String ph = "(01[016789])-(\\d{3,4})-(\\d{4})";
 		   Pattern p = Pattern.compile(ph);
-		   System.out.println(ph); 
 		   if(!p.matcher(phone).matches()){
 			   return "사용불가";
 		   }else{
@@ -140,6 +139,8 @@ public class MemberController {
 		   }
 	   }
 	   
+	   
+	   
 	   @RequestMapping(value = "/qustion_answer", method = RequestMethod.POST)
 	   public @ResponseBody String qustion_answerchk(@RequestParam String email,
 			   @RequestParam String qanswer) throws SQLException{
@@ -153,8 +154,13 @@ public class MemberController {
 	   
 	   @RequestMapping(value = "/nickchk", method = RequestMethod.POST)
 	    public @ResponseBody String nickchk(@RequestParam String nickname) throws SQLException {
-			   boolean idchk = dao.nickcheck(nickname);  
-				  if(idchk){
+		  
+		   String regex = "[a-zA-Z0-9가-힣]+";
+		   Pattern p = Pattern.compile(regex);
+		   if(!p.matcher(nickname).matches()){	return "사용불가"; 
+		   }
+		   boolean nickchk = dao.nickcheck(nickname);  
+				  if(nickchk){
 					  return "사용불가";
 				  }else{
 				   return "사용가능";

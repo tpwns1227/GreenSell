@@ -81,7 +81,6 @@ function test() {
 		      }); 
      		}
 		   }); 
-	   
 	});  
 
 
@@ -103,6 +102,7 @@ function test() {
 		   
 			<div class='p'>이름</div>
 			<input name='name' id='textbox' type='text' placeholder="이름" maxlength="6">
+			<span id="namechk" style="margin-left: 15px"></span>
 			<div class='p'>별명</div>
 			<div style='text-align: left; margin-left: 50px'>
 			<input name='nickname' id='textbox' type='text' placeholder="별명" maxlength="10"
