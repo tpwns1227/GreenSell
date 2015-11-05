@@ -44,6 +44,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="../../main/header.jsp"/>
 	<form name='pointForm' action='point'>
 		<div class='container'>
 			<div class='border'>포인트 충전</div>
@@ -56,5 +57,6 @@
 				class='button' value='충전' style="margin-top: 25px">
 		</div>
 	</form>
+	<jsp:include page="../../main/bottom.jsp"/>
 </body>
 </html>
