@@ -12,6 +12,7 @@ import com.greensell.bbs.beans.ReplyVo;
 import com.greensell.member.beans.MemberPSVO;
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
+import com.greensell.sell.beans.Postbean;
 
 public class SellDaoImpl implements SellDao {
 
@@ -172,6 +173,13 @@ public boolean insertpost(MemberPSVO mp) throws SQLException {//후기게시판
 		// TODO Auto-generated method stub
 	List<ItemSellVO> list = sqlSession.selectList("sell.writerlist",email);
     return list;
+	}
+
+@Override
+	public List<Postbean> selectreview(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		List<Postbean> reviews = sqlSession.selectList("sell.selectreview",email);
+		return reviews;
 	}
 
 }
