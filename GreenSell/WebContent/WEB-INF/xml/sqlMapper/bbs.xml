@@ -102,5 +102,6 @@
   <!-- email로 등급 검색하기 -->
   <select id="grade" parameterType="String" resultType="int">
      select grade from member where email=#{email}
-  </select>  
+  </select>
+  
 </mapper>
