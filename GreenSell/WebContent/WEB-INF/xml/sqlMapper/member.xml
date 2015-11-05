@@ -115,12 +115,12 @@
 	</select>
 	
 	<!-- 포인트 넣기 -->
-	<update id="updatePoint" parameterType="String">
-		update member set point = point+#{price} where email=#{email}
+	<update id="updatePoint" parameterType="map">
+		update member set point=point+#{price} where email=#{email}
 	</update>
 	
 	<!-- 포인트 내역 (충전) -->
-	<insert id="pointDeposit" parameterType="String"> 
+	<insert id="pointDeposit" parameterType="map"> 
 		insert into point values(no_point_seq.nextval,#{email},sysdate,#{price},0,0 )
 	</insert>
 	

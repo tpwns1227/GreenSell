@@ -317,18 +317,16 @@ public class MemberController {
 	   
 	   @RequestMapping("/point")
 	   public String updatePoint(HttpSession session,@RequestParam String price, Model m) throws SQLException{
-		   
+		   System.out.println(session.getAttribute("point"));
 		   String email = (String) session.getAttribute("skey");
 		   Map<String, Object> map = new HashMap<String, Object>();
 		   map.put("email", email);
 		   map.put("price", price);
 		
 		   int point;
-		   if(session.getAttribute("point").equals("0")){
+			   System.out.println("여기");
 			   point = Integer.parseInt((String) session.getAttribute("point"));  
-		   }else{
-		   point = (Integer)session.getAttribute("point");
-		   }
+		 
 		   
 		   
 		   point += Integer.parseInt(price);
