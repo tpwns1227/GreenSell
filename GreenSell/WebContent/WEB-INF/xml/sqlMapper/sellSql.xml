@@ -123,6 +123,9 @@
    	select point from postscript where email=#{email}
    </select>
    
+   <select id="selectPS" parameterType="String" resultType="com.greensell.member.beans.MemberPSVO">
+   	select * from postscript where email=#{email}
+   </select>
     
     
 </mapper>

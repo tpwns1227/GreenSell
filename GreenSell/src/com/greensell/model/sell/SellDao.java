@@ -38,6 +38,7 @@ public interface SellDao {
 	public boolean insertpost(MemberPSVO m) throws SQLException;//후기게시판 넣기
 	public Postbean selectreview(String email) throws SQLException;	//후기 게시판 출력하기
 	public List<Integer> selectpointlist(String email) throws SQLException;
+	public List<MemberPSVO> selectPS(String email) throws SQLException;
 	
 
 }

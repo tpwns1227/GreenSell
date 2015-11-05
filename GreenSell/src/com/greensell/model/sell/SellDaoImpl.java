@@ -189,6 +189,12 @@ public boolean insertpost(MemberPSVO mp) throws SQLException {//후기게시판
 			return list;
 		}
 	
+	@Override
+		public List<MemberPSVO> selectPS(String email) throws SQLException {
+			// TODO Auto-generated method stub
+			List<MemberPSVO> psList = sqlSession.selectList("selectPS", email);
+			return psList;
+		}
 
 
 }

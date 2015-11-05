@@ -346,7 +346,10 @@ public class SellController {
 	
 	//후기게시판
 	@RequestMapping("/review_list")
-	public String reviewlist(Model m, @RequestParam String email){
+	public String reviewlist(Model m, @RequestParam String email) throws SQLException{
+		
+		List<MemberPSVO> list = dao.selectPS(email);
+		m.addAttribute("PSlist",list);
 		m.addAttribute("email",email);
 		return "sell/review_view";
 	}
