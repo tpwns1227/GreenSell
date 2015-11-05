@@ -83,6 +83,18 @@ function inputCheck() {
 		document.register_form.answer.focus();
 		return;
 	}
+	
+	
+	if(document.register_form.password.value.length < 6){
+		alert("비밀번호는 최소 6자 이상 입력하셔야 합니다.");
+		return;
+	}
+	
+	if($("#idchk").text()=='사용불가' || $("#nickchk").text()=='사용불가' || $("#phonechk").text()=='사용불가'){
+		return;
+	}
+	document.register_form.submit();
+	
 
 	
 }

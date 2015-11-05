@@ -1,6 +1,6 @@
 package com.greensell.member.beans;
 
-//ÈÄ±â ºó 
+//ï¿½Ä±ï¿½ ï¿½ï¿½ 
 public class MemberPSVO {
 	
 	private int no;
@@ -9,6 +9,7 @@ public class MemberPSVO {
 	private String content;
 	private String point;
 	private String wemail;
+	
 	public int getNo() {
 		return no;
 	}

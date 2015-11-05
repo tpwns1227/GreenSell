@@ -23,7 +23,7 @@
 	function pointform(){
 		
 		if('${skey}' != '')
-		location.href='point_form';
+			location.href='point_form';
 		else
 		alert('로그인 후에 이용해 주세요.');
 		return;

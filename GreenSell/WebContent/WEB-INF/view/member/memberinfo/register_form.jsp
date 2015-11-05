@@ -20,19 +20,6 @@ function test() {
 	
 	$(document).ready(function(){ 
 		
-		$("#register").click(function(){
-			var pw1 = $("#password").val();
-			var pw2 = $("#password2").val();
-			if(pw1.length<6 && pw2.length<6){
-				alert("비밀번호는 최소 6자 이상 입력하셔야 합니다.");
-				return;
-			}
-			
-			if($("#idchk").text()=='사용불가' || $("#nickchk").text()=='사용불가' || $("#phonechk").text()=='사용불가'){
-				return;
-			}
-			document.register_form.submit();
-		});
 		
 		
 	   $("input[name='email']").keyup(function(){  

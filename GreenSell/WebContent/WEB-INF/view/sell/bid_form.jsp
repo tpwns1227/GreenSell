@@ -13,6 +13,11 @@
 				$("#okbtn").click(
 						function() {
 							
+							if($("#wemail").val()=='${skey}'){
+								alert("판매자는 입찰이 불가능 합니다");
+								return;
+							}
+							
 							if($("#nowemail").val()=='${skey}'){
 								alert('이미 입찰하셨습니다.');
 								return;
@@ -85,10 +90,12 @@
 			<input type="hidden" id="nowpr">
 			<input type="hidden" id="startpr">
 			<input type="hidden" id="nowemail">
+			<input type="hidden" id="wemail">
 			<script>
 				$("#nowpr").val(opener.$("#nowprice").html());
 				$("#startpr").val(opener.$("#startprice").html());
 				$("#nowemail").val(opener.$("#nowemail").html());
+				$("#wemail").val(opener.$("#wemail").html());
 			</script>
 			
 	</div>

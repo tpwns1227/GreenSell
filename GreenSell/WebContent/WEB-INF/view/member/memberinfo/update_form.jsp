@@ -172,7 +172,7 @@ function test() {
 			</div>
 			<div id="pw" style="display: none">
 				<div class='p'>비밀번호 확인</div>
-				<input name="password" id='textbox' type='text'><br /> <input
+				<input name="password" id='textbox' type="password"><br /> <input
 					id="okbtn" class='button2' type="button" value='확인'
 					style="margin-top: 15px;"> <input type="button" id="cancle" class='button2'
 					value="취소" style="margin-top: 15px;">

@@ -33,9 +33,8 @@ public interface SellDao {
 	public boolean bidupdate(Map<String, Object> map) throws SQLException;
 	public AuctionVO selectbid(int itemno) throws SQLException;
 	public List<ItemSellVO> searchitemList(Map<String, Object> map) throws SQLException;
-	
+	public List<ItemSellVO> writerlist(String email) throws SQLException; //홈에서 중고 및 경매 리스트 통합 출력
 	public boolean insertpost(MemberPSVO m) throws SQLException;//후기게시판 넣기
-	public List<MemberPSVO> postscript(MemberPSVO mp)throws SQLException;//후기게시판 목록불어오기
 	
 	
 }
