@@ -114,8 +114,9 @@
    	select * from itemsell where email=#{email}
    
    </select>
+   
    <select id="selectreview">
-   	Select m.email m.phone p.point from member m point p on m.email = p.email where m.email=#{email}
+   	select m.email, m.phone, p.point from member m inner join point p on m.email = p.email where m.email=#{email}
    </select>
    
     
