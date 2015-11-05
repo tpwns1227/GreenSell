@@ -242,6 +242,20 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.selectList("member.point", email);
 	      
 	}
+
+	@Override
+	public boolean updatePoint(Map<String, Object> map) throws SQLException {
+		int i = sqlSession.update("member.updatePoint", map);
+		return (i > 0) ? true : false;
+	}
+
+	@Override
+	public boolean pointDeposit(Map<String, Object> map) throws SQLException {
+		int t = sqlSession.insert("member.pointDeposit", map);
+		if (t == 1)
+			return true;
+		return false;
+	}
 	
 	
 

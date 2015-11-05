@@ -34,6 +34,8 @@ public class MemberController {
 	   @Autowired
 	   MemberDao dao;
 	   
+	   
+	   
 	   @RequestMapping("/result") //회원가입하면 이동되는 페이지
 	    public String insert(MemberVO v){
 	      //DB연동      
@@ -293,9 +295,7 @@ public class MemberController {
 	   
 	   
 	   @RequestMapping("/point_form")//포인트충전
-	   public String point() throws SQLException{
-		   
-		   
+	   public String point() throws SQLException{  
 		   return "member/memberfunction/point_form";
 	   }
 	   
@@ -314,6 +314,22 @@ public class MemberController {
 		   
 		   return "member/memberfunction/mywrite_form";
 	   }
+	   
+	   @RequestMapping("/point")
+	   public String updatePoint(HttpSession session,@RequestParam String price, Model m) throws SQLException{
+		   
+		   String email = (String) session.getAttribute("skey");
+		   Map<String, Object> map = new HashMap<String, Object>();
+		   map.put("email", email);
+		   map.put("price", price);
+		   int point = (Integer)session.getAttribute("point");
+		   point += Integer.parseInt(price);
+		   dao.updatePoint(map);
+		   dao.pointDeposit(map);
+		   session.setAttribute("point", point);
+		   return "main/home";
+	   }
+	   
 	   
 	   
 }

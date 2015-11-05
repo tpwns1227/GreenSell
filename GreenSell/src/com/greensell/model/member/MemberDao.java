@@ -17,6 +17,8 @@ import com.greensell.sell.beans.ItemSellVO;
 
 public interface MemberDao {
 
+		public boolean updatePoint(Map<String, Object> map) throws SQLException;
+		public boolean pointDeposit(Map<String, Object> map) throws SQLException;
 	public List<PointVO> pointList(String email);
 	   public boolean insert(MemberVO membervo)throws SQLException; //회원 추가
 	   public boolean delete(String email)throws SQLException; //회원 삭제
