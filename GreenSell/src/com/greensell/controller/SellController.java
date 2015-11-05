@@ -311,23 +311,31 @@ public class SellController {
 		return "sell/sell_contact";
 	}
 	
-	//연락처보기 클릭시
+	//내가 작성한 글 클릭시
 	@RequestMapping("/mywrite")
-	public String contact(@RequestParam String email, Model m) throws SQLException{
+	public String writerview(@RequestParam String email, Model m) throws SQLException{
 		List<ItemSellVO> list = dao.writerlist(email);
 		m.addAttribute("itemlist",list);
 		return "member/memberfunction/mywrite_form";
 	}
 	
+	//후기게시판
+	@RequestMapping("/review_list")
+	public String reviewlist(){
+		return "sell/review_view";
+	}
+	//후기 게시판 등록 폼
+	@RequestMapping("/review_write")
+	public String reviewwirte(){
+		return "sell/review";
+	}
+	
 	
 	//후기게시판 등록
-	@RequestMapping("/postok")
+	@RequestMapping("/reviewok")
 	public String postok(MemberPSVO mp){
 		
 		try {
-			System.out.println(mp.getEmail()+"이메일");
-			System.out.println(mp.getNo()+"no");
-			System.out.println(mp.getWdate()+"Wdate");
 			if(dao.insertpost(mp))
 			System.out.println("입력되었습니다.");
 			return "redirect:sell/sell_contact";
