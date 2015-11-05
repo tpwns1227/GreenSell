@@ -117,7 +117,7 @@ function write(){
            </select>
            <input type="text" name="search" size="20">
            <input type="submit" value="글찾기">
-          <c:if test="${amdin>0}">
+          <c:if test="${amdin>0 or no==3}">
          <input type="button" name="write" value="글쓰기" onclick="location.href='write?no=${no}'">
          </c:if>
            </td>
