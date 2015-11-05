@@ -327,8 +327,11 @@ public class SellController {
 			su += pointlist.get(i);
 		}
 		float f = su;
-		System.out.println(f/pointlist.size());
+		if(pointlist.size()!=0){
 		m.addAttribute("starpoint", su/pointlist.size());
+		}else{
+			m.addAttribute("startpoint", 0);
+		}
 		return "sell/sell_contact";
 	}
 	
