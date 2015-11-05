@@ -327,7 +327,7 @@ public class MemberController {
 		   dao.updatePoint(map);
 		   dao.pointDeposit(map);
 		   session.setAttribute("point", point);
-		   return "main/home";
+		   return "redirect:home";
 	   }
 	   
 	   
