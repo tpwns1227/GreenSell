@@ -23,7 +23,8 @@
 	function pointform(){
 		
 		if('${skey}' != '')
-		location.href='point_form';
+			window.open('point_form', 'post', "toolbar=no ,width=900 ,height=400 ,directories=no,"
+		               + "status=yes,scrollbars=yes,menubar=no")
 		else
 		alert('로그인 후에 이용해 주세요.');
 		return;

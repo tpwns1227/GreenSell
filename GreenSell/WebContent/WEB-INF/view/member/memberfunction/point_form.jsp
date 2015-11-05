@@ -36,7 +36,9 @@
 					}
 				}
 			}
+			
 			document.pointForm.submit();
+			
 		});
 	});
 </script>
