@@ -306,8 +306,10 @@ public class MemberController {
 	   }
 	   
 	   @RequestMapping("/mywriteForm")
-	   public String mywriteview(HttpSession session, Model m) throws SQLException{
-		   String email = (String)session.getAttribute("skey");
+	   public String mywriteview(HttpSession session, Model m, @RequestParam(required=false) String email) throws SQLException{
+		   if(email == null){
+		   email = (String)session.getAttribute("skey");
+		   }
 		   List<ItemSellVO> list = dao.mywritesell(email);
 		   List<String> fristimg = new ArrayList<String>();
 			  for (int j = 0; j < list.size(); j++) {

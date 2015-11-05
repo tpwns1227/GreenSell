@@ -31,7 +31,7 @@ input[type='button']:hover {
 
 <div class='font2'><span>별점</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${starpoint}</div>
 
-<a href="mywrite?email=${info.email}">
+<a href="mywriteForm?email=${info.email}">
 <input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >
 </a>
 

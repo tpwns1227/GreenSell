@@ -335,14 +335,7 @@ public class SellController {
 		}
 		return "sell/sell_contact";
 	}
-	
-	//내가 작성한 글 클릭시
-	@RequestMapping("/mywrite")
-	public String writerview(@RequestParam String email, Model m) throws SQLException{
-		List<ItemSellVO> list = dao.writerlist(email);
-		m.addAttribute("itemlist",list);
-		return "member/memberfunction/mywrite_form";
-	}
+
 	
 	//후기게시판
 	@RequestMapping("/review_list")
