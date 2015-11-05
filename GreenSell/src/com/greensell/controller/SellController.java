@@ -75,7 +75,20 @@ public class SellController {
 		
 		return "/main/home";
 	}
-
+	
+	@RequestMapping("/home") // home 페이지 출력
+	public String viewhome(Model m) throws SQLException {
+		List<ItemSellVO> list = dao.allitemList();
+		List<String> fristimg = new ArrayList<String>();
+		m.addAttribute("itemlist", list);
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
+		m.addAttribute("fristimg", fristimg);
+		
+		return "/main/home";
+	}
 	
 
 	// UTF
@@ -304,14 +317,18 @@ public class SellController {
 	}
 	//연락처보기 클릭시
 	@RequestMapping("/sell_contact")
-	public String contact(HttpSession session,Model m,ItemSellVO ivo,@RequestParam int no) throws SQLException{
-	
-		ivo =dao.itemDetail(no);
-		List<Postbean> list = dao.selectreview(ivo.getEmail());
-		System.out.println("123123123");
-		m.addAttribute("list",list);
-		session.getAttribute("skey");
+	public String contact(@RequestParam String email, Model m) throws SQLException{
 		
+		Postbean post = dao.selectreview(email);
+		m.addAttribute("info", post);
+		List<Integer> pointlist = dao.selectpointlist(email);
+		int su = 0;
+		for(int i=0; i<pointlist.size();i++){
+			su += pointlist.get(i);
+		}
+		float f = su;
+		System.out.println(f/pointlist.size());
+		m.addAttribute("starpoint", su/pointlist.size());
 		return "sell/sell_contact";
 	}
 	

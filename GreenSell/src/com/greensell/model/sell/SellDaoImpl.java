@@ -176,10 +176,19 @@ public boolean insertpost(MemberPSVO mp) throws SQLException {//후기게시판
 	}
 
 @Override
-	public List<Postbean> selectreview(String email) throws SQLException {
+	public Postbean selectreview(String email) throws SQLException {
 		// TODO Auto-generated method stub
-		List<Postbean> reviews = sqlSession.selectList("sell.selectreview",email);
+		Postbean reviews = sqlSession.selectOne("sell.selectreview",email);
 		return reviews;
 	}
+	
+@Override
+		public List<Integer> selectpointlist(String email) throws SQLException {
+			// TODO Auto-generated method stub
+			List<Integer> list = sqlSession.selectList("getpointlist", email);
+			return list;
+		}
+	
+
 
 }

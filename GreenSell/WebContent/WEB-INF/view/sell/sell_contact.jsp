@@ -23,12 +23,12 @@ input[type='button']:hover {
 </head>
 <body>
 <div class='container3' style="width: 500px; height: auto">
-<c:forEach var="list" items="${list }">
-<div class='border'>${list.email }</div>
+
+<div class='border'>${info.email }</div>
 <div class='font2'>연락처</div>
-<input type='text' class='textbox' value='${list.phone }' readonly>
-<div class='font2'>${list.point }</div>
-</c:forEach>
+<input type='text' class='textbox' value='${info.phone }' readonly>
+<div class='font2'>${starpoint}</div>
+
 <a href="mywrite?email=${email }">
 <input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >
 </a>

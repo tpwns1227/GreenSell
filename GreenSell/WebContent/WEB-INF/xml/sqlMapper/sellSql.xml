@@ -115,8 +115,12 @@
    
    </select>
    
-   <select id="selectreview">
+   <select id="selectreview" parameterType="String" resultType="com.greensell.sell.beans.Postbean">
    	select m.email, m.phone, p.point from member m inner join point p on m.email = p.email where m.email=#{email}
+   </select>
+   
+   <select id="getpointlist" parameterType="String" resultType="int">
+   	select point from postscript email=#{email}
    </select>
    
     
