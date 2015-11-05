@@ -319,7 +319,7 @@ public class MemberController {
 			  
 			  m.addAttribute("fristimg", fristimg);
 			  m.addAttribute("itemlist", list);
-		   
+			  m.addAttribute("email", email);
 		   return "member/memberfunction/mywrite_form";
 	   }
 	   

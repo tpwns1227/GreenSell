@@ -12,7 +12,13 @@
 <body>
 
 <div class='body2'>
+		<c:if test="${skey==email}">
 		<div class='border'>내가 올린 글</div>
+		</c:if>
+		<c:if test="${skey!=email}">
+		<div class='border'>${email}이 올린 글</div>
+		</c:if>
+		
 	</div>
 	<div class='body2' style="margin-bottom: 50px">
 		<c:forEach var="list" items="${itemlist}" varStatus="sar">
