@@ -2,14 +2,17 @@ package com.greensell.sell.beans;
 
 public class Postbean {
 	
-	private int point;
+	private String nickname;
 	private String email;
 	private String phone;
-	public int getPoint() {
-		return point;
+
+	
+	
+	public String getNickname() {
+		return nickname;
 	}
-	public void setPoint(int point) {
-		this.point = point;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getEmail() {
 		return email;
