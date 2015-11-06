@@ -454,6 +454,18 @@ public class SellController {
 		return null;
 	}
 	
+	//안전거래에서 구매자가 클릭시
+	@RequestMapping("/safe_sell")
+	public String safe_sell(){
+		return "/sell/safe_sell";
+	}
+	
+	//안전거래에서 판매자가 클릭시
+	@RequestMapping("/safe_buy")
+	public String safe_buy(){
+		return "/sell/safe_buy";
+	}
+	
 	
 	
 }
