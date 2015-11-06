@@ -140,5 +140,17 @@ public class BbsDaoImpl implements BbsDao {
 	   System.out.println(grade);
       return grade;
    }
+   
+   @Override
+	public List<BbsVo> selectSearch(int bbsno, int page, String title) throws SQLException {
+		// TODO Auto-generated method stub
+	   Map<String,Object> count = new HashMap<String,Object>();
+	      count.put("bbsno", bbsno);
+	      count.put("page", page);
+	      count.put("title", title);
+	      List<BbsVo> list = sqlsession.selectList("bbs.bbssearch", count);
+	      return list;
+	}
+   
 
 }

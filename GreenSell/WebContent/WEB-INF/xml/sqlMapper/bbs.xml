@@ -104,4 +104,15 @@
      select grade from member where email=#{email}
   </select>
   
+  <select id="bbssearch" parameterType="map" resultType="com.greensell.bbs.beans.BbsVo">
+   select no,title,bbscontent,email,bbsdate,hits,bbsno
+   from (select no,title,bbscontent,email,bbsdate,hits,bbsno,rownum rn
+       from ( select no,title,bbscontent,email,bbsdate,hits,bbsno
+               from bbs where title like '%'||#{title}||'%'   
+               order by no desc
+             )
+       )
+   where bbsno=#{bbsno} and rn between (((#{page})*10)-9) and ((#{page})*10)
+  </select>
+  
 </mapper>

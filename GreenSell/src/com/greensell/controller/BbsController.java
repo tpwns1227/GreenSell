@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greensell.bbs.beans.BbsVo;
@@ -59,6 +60,27 @@ public class BbsController {
     	m.addAttribute("page",page);
     	 return "bbs/bbsList";
       }
+      
+      @RequestMapping("/searchbbs")
+      public String searchbbs(@RequestParam String title,Model m ,HttpSession session,@RequestParam(required=false) String no, @RequestParam(defaultValue="1") int page) throws SQLException{  
+    	System.out.println(title);
+    	System.out.println(no);
+    	System.out.println(page);
+    	
+    	  if(no==null){
+    	  no = (String)session.getAttribute("no");
+    	}
+    	int bbsno = Integer.parseInt(no);
+    	List<BbsVo> bbslist = dao.selectSearch(bbsno, page, title);
+    	  System.out.println(bbslist.size());
+    	m.addAttribute("bbslist", bbslist);
+    	  System.out.println(bbslist.size());
+    	  session.setAttribute("no", no);
+    	m.addAttribute("totalcount",dao.count(bbsno));
+    	m.addAttribute("page",page);
+    	 return "bbs/bbsSearch";
+      }
+      
    
    @RequestMapping("/qna")
    public String qna(){

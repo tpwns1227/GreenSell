@@ -39,5 +39,7 @@ public interface BbsDao {
    
    public int grade(String email)throws SQLException;
    
+   public List<BbsVo> selectSearch(int bbsno, int page, String title)throws SQLException;
+   
 }
 

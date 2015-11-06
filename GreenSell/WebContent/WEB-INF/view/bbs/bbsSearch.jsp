@@ -1,42 +1,6 @@
-<%@page import="com.greensell.model.bbs.PageCount"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/bbs.css">
-<title>Green Sell</title>
-<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-	
-	    $("tr:even").css("background-color", "#12CC66");
-	    setInterval(function () {  
-	    $("#search").click(function(){  
-		   
-			   $.ajax({ 
-		         type : "get", 
-		         url : "searchbbs", 
-		         data : "no=${no}&title="+$("#searchbox").val(),
-		         success : function(data){ 
-		        	  
-		        	 $("#searchresult").html(data);
-		         } 
-		      });
-});
-	    },1000);
-	    
-	    
-});
-</script>
-<body>
-<jsp:include page="../main/header.jsp"></jsp:include>
-<div id="searchresult">
 <center>
 	<table style="width: 900px">
 		<tr>
@@ -140,9 +104,4 @@ $(document).ready(function(){
 			</div>
 	</div>
 
-</center></div>
-</body>
-
-
-<jsp:include page="../main/bottom.jsp"></jsp:include>
-</html>
+</center>
