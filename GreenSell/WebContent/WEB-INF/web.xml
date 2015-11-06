@@ -11,6 +11,16 @@
 		</init-param>
 	</filter>
 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/er/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/er/error.jsp</location>
+	</error-page>
+
 	<filter-mapping>
 		<filter-name>Encoding Filter</filter-name>
 		<url-pattern>/*</url-pattern>
