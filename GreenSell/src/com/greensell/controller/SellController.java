@@ -44,7 +44,6 @@ public class SellController {
 	SellDao dao;
 	
 	Map<String, Object> map = new HashMap<String, Object>();
-
 	@RequestMapping("/sell_detail") // 글 클릭시 상세보기로 이동
 	public String detailform(@RequestParam int no, Model m, HttpSession session) throws SQLException {
 
