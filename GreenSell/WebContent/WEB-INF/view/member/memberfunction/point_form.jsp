@@ -3,7 +3,7 @@
 <meta charset='utf-8'>
 <html>
 <head>
-<title></title>
+<title>Green Sell</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
