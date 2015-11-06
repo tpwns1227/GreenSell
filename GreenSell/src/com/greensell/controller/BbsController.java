@@ -44,12 +44,20 @@ public class BbsController {
    }
    
    //게시글 보기 
-      @RequestMapping("/Iist")
-      public String list(Model m ,@RequestParam int no, @RequestParam(defaultValue="1") int page) throws SQLException{  
-    	List<BbsVo> bbslist = dao.selectAll(no, page);
-    	m.addAttribute("bbslist", bbslist);
+      @RequestMapping("/list")
+      public String list(Model m ,HttpSession session,@RequestParam(required=false) String no, @RequestParam(defaultValue="1") int page) throws SQLException{  
+    	if(no==null){
+    	  no = (String)session.getAttribute("no");
+    	}
+    	int bbsno = Integer.parseInt(no);
+    	List<BbsVo> bbslist = dao.selectAll(bbsno, page);
     	  
-    	  return "bbs/bbsList";
+    	m.addAttribute("bbslist", bbslist);
+    	  System.out.println(bbslist.size());
+    	  session.setAttribute("no", no);
+    	m.addAttribute("totalcount",dao.count(bbsno));
+    	m.addAttribute("page",page);
+    	 return "bbs/bbsList";
       }
    
    @RequestMapping("/qna")
