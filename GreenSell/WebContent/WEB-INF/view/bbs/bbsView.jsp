@@ -100,7 +100,7 @@
 		</table>
 		</c:forEach>
 		<!--  댓글 내용쓰기 grade이 1일때만 가능-->
-		<c:if test="${grade==1}">
+		<c:if test="${grade==1 && view.bbsno==3}">
 		<div class='p'>답글 내용</div>
 		<form name="cmreply" action="cmok" method="post">
 			<input type="hidden" value="${skey}" name="email">
