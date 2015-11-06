@@ -26,7 +26,7 @@ public class BbsController {
    @Autowired
    BbsDao dao;
    //게시글 쓰기
-   @RequestMapping("/writesex")
+   @RequestMapping("/write")
    public String write(@RequestParam int no,Model m){
       
       m.addAttribute("no",no);
@@ -44,7 +44,7 @@ public class BbsController {
    }
    
    //게시글 보기 
-      @RequestMapping("/list")
+      @RequestMapping("/Iist")
       public String list(Model m ,@RequestParam int no, @RequestParam(defaultValue="1") int page) throws SQLException{  
     	List<BbsVo> bbslist = dao.selectAll(no, page);
     	m.addAttribute("bbslist", bbslist);
