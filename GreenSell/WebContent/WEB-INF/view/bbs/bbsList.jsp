@@ -2,9 +2,14 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.greensell.model.bbs.PageCount" %>
-<%
 
-       int limit = 10;
+<%=session.getAttribute("pagnum") %>
+<%=Integer.parseInt(String.valueOf(session.getAttribute("pagnum"))) %>
+
+<%
+		session.getAttribute("pagnum");
+		
+      	 int limit = 10;
          int offset = 0;
          int pagelink = 0;
          String offset_get = request.getParameter("offset");
@@ -35,7 +40,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Green Sell</title>
 <script type="text/javascript">
    function goUrl(url) {
       location.href=url;
@@ -90,7 +95,7 @@ function write(){
             </div>
          </tr>
            </c:forEach>
-        </c:when>     
+        </c:when>
        <c:otherwise>
        <c:forEach var="list" items="${selectAll}" begin="0" end="9">
        <tr>
@@ -115,8 +120,9 @@ function write(){
               <option id="title" value="title" selected>제 목</option>
               <option id="bbscontent" value="bbscontent">내 용</option>
            </select>
-           <input type="text" name="search" size="20">
-           <input type="submit" value="글찾기">
+           <input type="text" name="search" size="20" maxlength="10">
+           <input type="hidden"  value="${no}" name=no>
+           <input type="submit" value="글찾기" >
           <c:if test="${amdin>0 or no==3}">
          <input type="button" name="write" value="글쓰기" onclick="location.href='write?no=${no}'">
          </c:if>
@@ -124,26 +130,34 @@ function write(){
        </tr>
      </table>
 </form>
+
 <% 
    //페이지 처리하기
-   PageCount pc;
+   PageCount pc = new PageCount();
+   PageCount pc2 = new PageCount();
+   
+	pc = new PageCount(String.valueOf(session.getAttribute("pagnum")));
+   	//pc.setNo(Integer.parseInt(String.valueOf(session.getAttribute("pagnum"))));
+
    if(ftitle!=null)
    {
       int rcnt = (Integer)request.getAttribute("counttitle");
-      pc = new PageCount(rcnt);
+      pc2 = new PageCount(rcnt);
    }
    else if(fcontent!=null)
    {
       int rcnt = (Integer)request.getAttribute("countcontent");
-      pc = new PageCount(rcnt);
+      pc2 = new PageCount(rcnt);
    }
    else
    {
       int rcnt = (Integer)request.getAttribute("count");
-      pc = new PageCount(rcnt);
+      pc2 = new PageCount(rcnt);
    }
+  
 %>
-<%= pc.showPaging(pagelink,"list") %>
+
+<%= pc.showPaging(pagelink,"list")%>
 
 </body>
 <jsp:include page="../main/bottom.jsp"></jsp:include>

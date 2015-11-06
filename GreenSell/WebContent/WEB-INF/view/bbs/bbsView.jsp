@@ -22,7 +22,7 @@
 		}
 	}
 </script>
-<title>Insert title here</title>
+<title>Green Sell</title>
 </head>
 <body>
 

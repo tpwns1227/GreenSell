@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/bbs.css">
-<title>게시판 글쓰기</title>
+<title>Green Sell</title>
 <script type="text/javascript">
 	function goUrl(url) {
 		location.href = url;
