@@ -26,7 +26,7 @@ public class BbsController {
    @Autowired
    BbsDao dao;
    //게시글 쓰기
-   @RequestMapping("/write")
+   @RequestMapping("/writesex")
    public String write(@RequestParam int no,Model m){
       
       m.addAttribute("no",no);
