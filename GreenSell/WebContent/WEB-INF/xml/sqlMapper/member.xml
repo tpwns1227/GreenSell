@@ -119,9 +119,13 @@
 		update member set point=point+#{price} where email=#{email}
 	</update>
 	
+	<update id="collectPoint" parameterType="map">
+		update member set point=point-#{price} where email=#{email}
+	</update>
+	
 	<!-- 포인트 내역 (충전) -->
 	<insert id="pointDeposit" parameterType="map"> 
-		insert into point values(no_point_seq.nextval,#{email},sysdate,#{price},0,0 )
+		insert into point values(no_point_seq.nextval,#{email},sysdate,#{price},#{sort},#{commission})
 	</insert>
 	
 	

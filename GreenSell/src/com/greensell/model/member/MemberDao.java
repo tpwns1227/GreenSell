@@ -48,5 +48,6 @@ public interface MemberDao {
 	   public String passwordget(String email) throws SQLException;
 	   public List<ItemSellVO> mywritesell(String email) throws SQLException;
 	   public int getadmin(String email) throws SQLException;
+	   public boolean collectPoint(Map<String, Object> map) throws SQLException;
 
 }

@@ -22,25 +22,25 @@
 					$("#price").focus();
 					return;
 				} else {
-					if (document.pointForm.price.value.length < 4) {
+					if (document.collectForm.price.value.length < 4) {
 						alert("천원 이상 입력해 주세요.");
 						$("#price").focus();
-						return;
-					}else if(document.pointForm.price.value.length > 6){
-						alert("100만원 이상은 한번에 충전할 수없습니다.");
 						return;
 					}
 				}
 			}
-			
-			if(document.pointForm.price.value.substring(0,1)>0){}
+			if(document.collectForm.price.value.substring(0,1)>0){}
 			else{
 			alert("금액을 다시 확인해 주세요.");
 			return;
 			}
-			
-			
-			document.pointForm.submit();
+			var point = parseInt('${point}');
+			if(document.collectForm.price.value > point){
+				alert("회수 할 수 있는 금액 한도를 넘었습니다.");
+				return;
+			}
+
+			document.collectForm.submit();
 			
 		});
 	});
@@ -48,16 +48,18 @@
 </head>
 <body>
 <jsp:include page="../../main/header.jsp"/>
-	<form name='pointForm' action='point'>
+	<form name='collectForm' action='pointcollect'>
 		<div class='container'>
-			<div class='border'>포인트 충전</div>
+			<div class='border'>포인트 회수</div>
 			<div class='p'>이메일</div>
-			<input type='text' name="email" class='textbox' value='${skey}'
-				readonly>
-			<div class='p'>충전금액</div>
+			<input type='text' name="email" class='textbox' value='${skey}' readonly>
+			<div class='p'>계좌</div>
+			<input type="text" class='textbox' style="width: 100" readonly value="${mvo.bank}">
+			<input type='text' name="email" class='textbox' style="width: 300" value='${mvo.account}' readonly>
+			<div class='p'>회수금액</div>
 			<input type='text' id="price" name='price' class='textbox'
 				placeholder='금액'> <input type='button' id="btn"
-				class='button' value='충전' style="margin-top: 25px">
+				class='button' value='회수' style="margin-top: 25px">
 		</div>
 	</form>
 	<jsp:include page="../../main/bottom.jsp"/>

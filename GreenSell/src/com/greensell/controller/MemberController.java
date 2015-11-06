@@ -324,13 +324,14 @@ public class MemberController {
 	   }
 	   
 	   @RequestMapping("/point")
-	   public String updatePoint(HttpSession session,@RequestParam String price, Model m) throws SQLException{
+	   public String updatePoint(HttpSession session,@RequestParam String price) throws SQLException{
 		   System.out.println(session.getAttribute("point"));
 		   String email = (String) session.getAttribute("skey");
 		   Map<String, Object> map = new HashMap<String, Object>();
 		   map.put("email", email);
 		   map.put("price", price);
-			   
+		   map.put("commission", 0);
+		   map.put("sort", 0);
 			 int  point = Integer.parseInt((String) session.getAttribute("point"));  
 			   point += Integer.parseInt(price);
 			  String poin = Integer.toString(point);
@@ -341,6 +342,34 @@ public class MemberController {
 		   return "redirect:home";
 	   }
 	   
+	   @RequestMapping("/collect_form")
+		public String collectForm(HttpSession session, Model m){
+			MemberVO mvo = dao.memberdetail((String)session.getAttribute("skey"));
+			m.addAttribute("mvo", mvo);
+			return "member/memberfunction/point_collect";
+		}
+	   
+	   @RequestMapping("/pointcollect")
+	   public String collect(HttpSession session, @RequestParam String price) throws SQLException{
+
+		   String email = (String) session.getAttribute("skey");
+		   Map<String, Object> map = new HashMap<String, Object>();
+		   int pr = (int)(Integer.parseInt(price) * 0.05);
+		   
+		   map.put("email", email);
+		   map.put("price", price);
+		   map.put("commission", pr);
+		   map.put("sort", 1);
+		   
+			 int  point = Integer.parseInt((String) session.getAttribute("point"));  
+			  point -= Integer.parseInt(price);
+			  String poin = Integer.toString(point);
+			  session.setAttribute("point", poin);
+		   dao.collectPoint(map);
+		   dao.pointDeposit(map);
+		   
+		   return "redirect:home";
+	   }
 	   
 	   
 }

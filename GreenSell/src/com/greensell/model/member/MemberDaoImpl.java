@@ -256,7 +256,13 @@ public class MemberDaoImpl implements MemberDao {
 			return true;
 		return false;
 	}
-
+	
+	@Override
+	public boolean collectPoint(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		int i = sqlSession.update("collectPoint", map);
+		return (i>0)? true:false;
+	}
 
 	
 	
