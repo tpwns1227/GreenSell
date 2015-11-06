@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/member.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Green Sell</title>
 </head>
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script>
