@@ -112,6 +112,20 @@
 				
 						
 		});
+		
+		$("#safe").click(function(){
+			if('${skey}' == '' || '${skey}' == null){
+				return;
+				}
+			var no=1;
+			if(no){//safe_buy
+				window.open('safe_buy','_blank','width=500 heigth=400');
+			}
+			else if(no!=1){//safe_sell
+				window.open('safe_sell','_blank','width=500 heigth=400');	
+			}
+			document.form1.submit();
+		});
 
 	});
 	
@@ -170,7 +184,7 @@
 				<input type="hidden" value="${itemone.getNo() }" name="no">
 				<input class='callbtn' id="email" type="button" value="연락처" style='width: 150px'>
 				
-			<input class='callbtn' type="button" value="안전거래" style='width: 150px'>
+			<input class='callbtn' type="button" id="safe" value="안전거래" style='width: 150px'>
 			<input class='callbtn' type="button" id="selectedbtn" value="찜 하기" style='width: 100px'> 
 			
 		
