@@ -1,164 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.greensell.model.bbs.PageCount" %>
-
-<%=session.getAttribute("pagnum") %>
-<%=Integer.parseInt(String.valueOf(session.getAttribute("pagnum"))) %>
-
-<%
-		session.getAttribute("pagnum");
-		
-      	 int limit = 10;
-         int offset = 0;
-         int pagelink = 0;
-         String offset_get = request.getParameter("offset");
-         if(offset_get==null)
-         {
-            offset =0;
-         }
-         else
-         {
-            offset = Integer.parseInt(offset_get);
-         }
-         
-         String pagelink_get = request.getParameter("pagelink");
-         if(pagelink_get==null)
-         {
-            pagelink = 1;
-         }
-         else
-         {
-            pagelink = Integer.parseInt(pagelink_get);
-         }
-         String ftitle = request.getParameter("search");
-         String fcontent = request.getParameter("search");
-/*          System.out.println(ftitle);
-         System.out.println(fcontent); */
-    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/bbs.css">
 <title>Green Sell</title>
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script type="text/javascript">
-   function goUrl(url) {
-      location.href=url;
-   }
-   
-function write(){
-      if(session==true){
-         return location.href='write';
-      }
-      else {
-         alert("로그인 해주세요");
-      }
-   }
+
+$(document).ready(function(){
+	
+	$(document).ready(function(){
+	    $("tr:even").css("background-color", "#12CC66");
+	});
+	
+});
+
 </script>
-</head>
+<body>
 <jsp:include page="../main/header.jsp"></jsp:include>
-<body><br><br><br>
-   <form name="bbslistform">
-   <input type="hidden" value="pagelink" name="page">
-   <input type="hidden" value="${list.email }" name="email">
-   <table width="550" align="center">
-       <tr>
-          <td width="8%" align="center" bgcolor="#47CFF2">&nbsp;번호</td>
-          <td width="40%" align="center" bgcolor="#47CFF2">&nbsp;제목</td>
-          <td width="20%" align="center" bgcolor="#47CFF2">&nbsp;이름</td>
-          <td width="22%" align="center" bgcolor="#47CFF2">&nbsp;일자</td>
-          <td width="10%" align="center" bgcolor="#47CFF2">&nbsp;조회수</td>
-       </tr>
-       <c:choose>
-          <c:when test="find.title != null">
-           <c:forEach var="list"  items="${selecttitle}" begin="0" end="9">
-           <tr>
-         <div class='container'>
-            <td align="center"><div class='no'>${list.no}</div></td>
-            <td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
-            <td align="center"><div class='email'>${list.email}</div></td>
-            <td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
-            <td align="center"><div class='hits'>${list.hits}</div></td>
-         </div>
-         </tr>
-         </c:forEach>
-         </c:when>
-        <c:when test="find.bbscontent != null">
-            <c:forEach var="list"  items="${seleccontent}" begin="0" end="9">
-          <tr>
-            <div class='container'> 
-               <td align="center"><div class='no'>${list.no}</div></td>
-               <td align="center"><div class='title'><a href="view?no=${list.no}">${list.title}</a></div></td>
-               <td align="center"><div class='email'>${list.email}</div></td>
-               <td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
-               <td align="center"><div class='hits'>${list.hits}</div></td>
-            </div>
-         </tr>
-           </c:forEach>
-        </c:when>
-       <c:otherwise>
-       <c:forEach var="list" items="${selectAll}" begin="0" end="9">
-       <tr>
-            <div class='container'>
-               <td align="center"><div class='no'>${list.no}</div></td>
-               <td align="center"><div class='title'><a href="view?no=${list.no}&email=${list.email}" >${list.title}</a></div></td>
-               <td align="center"><div class='email'>${list.email}</div></td>
-               <td align="center"><div class='bbsdate'>${list.bbsdate}</div></td>
-               <td align="center"><div class='hits'>${list.hits}</div></td>
-            </div>
-      </tr>
-      </c:forEach>
-      </c:otherwise>
-      </c:choose>
-   </table>
-</form>
-<form>
-    <table width="550" align="center" border="1">
-        <tr>
-           <td align="center">
-          <select name="find">
-              <option id="title" value="title" selected>제 목</option>
-              <option id="bbscontent" value="bbscontent">내 용</option>
-           </select>
-           <input type="text" name="search" size="20" maxlength="10">
-           <input type="hidden"  value="${no}" name=no>
-           <input type="submit" value="글찾기" >
-          <c:if test="${amdin>0 or no==3}">
-         <input type="button" name="write" value="글쓰기" onclick="location.href='write?no=${no}'">
-         </c:if>
-           </td>
-       </tr>
-     </table>
-</form>
 
-<% 
-   //페이지 처리하기
-   PageCount pc = new PageCount();
-   PageCount pc2 = new PageCount();
-   
-	pc = new PageCount(String.valueOf(session.getAttribute("pagnum")));
-   	//pc.setNo(Integer.parseInt(String.valueOf(session.getAttribute("pagnum"))));
-
-   if(ftitle!=null)
-   {
-      int rcnt = (Integer)request.getAttribute("counttitle");
-      pc2 = new PageCount(rcnt);
-   }
-   else if(fcontent!=null)
-   {
-      int rcnt = (Integer)request.getAttribute("countcontent");
-      pc2 = new PageCount(rcnt);
-   }
-   else
-   {
-      int rcnt = (Integer)request.getAttribute("count");
-      pc2 = new PageCount(rcnt);
-   }
-  
-%>
-
-<%= pc.showPaging(pagelink,"list")%>
-
+<center>
+	<table style="width: 900px">
+		<tr>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		<c:forEach var="list" items="${bbslist}">
+		<tr>
+			<td align="center" width="500"><a href="view?no=${list.no}&email=${list.email}">${list.title}</a></td>
+			<td align="center">${list.email}</td>
+			<td align="center">${list.bbsdate}</td>
+			<td align="center">${list.hits}</td>
+		</tr>
+		</c:forEach>
+		<tr>
+			<td>
+				페이징
+			</td>
+		</tr>
+	</table>
+	
+	<div>
+	
+			<div class="container">
+				<input type="text" class="textbox" style="width: 150px"> 
+				<input type="button" style="width: 100px; height: 40px" value="검색">
+				
+				<input type="button" style="width: 100px; height: 40px" value="글쓰기">
+			</div>
+		
+	</div>
+	
+</center>
 </body>
+
+
 <jsp:include page="../main/bottom.jsp"></jsp:include>
 </html>

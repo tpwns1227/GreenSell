@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.Generated;
+import javax.servlet.http.HttpSession;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,39 +45,11 @@ public class BbsController {
    
    //게시글 보기 
       @RequestMapping("/list")
-      public String list(@RequestParam int no,
-            @RequestParam(required=false,defaultValue="") String title,
-            @RequestParam(required=false,defaultValue="") String bbscontent,
-            @RequestParam(defaultValue="1") int count,
-            @RequestParam(required=false,defaultValue="") String ftitle,
-            @RequestParam(required=false,defaultValue="") String fcontent,
-            Model m){
-         //int plus=no+1;
-            //System.out.println("숫자 ="+no+" 더하기="+plus+"title="+title+"bbscontent="+bbscontent+"ftitle="+ftitle+"fcontent="+fcontent+"=page="+pagelink);
-    	  m.addAttribute("no",no);
-         try {
-            List<BbsVo> list = dao.selectAll(no,count,count);
-            
-            List<BbsVo> list2 = dao.selectTitle(no,count,count,ftitle);
-            
-            List<BbsVo> list3 = dao.selectContent(no,count,count,bbscontent);
-             
-            int num = dao.count(no);
-            int num2 = dao.counttitle(no, ftitle);
-            int num3 = dao.countcontent(no, bbscontent);
-            System.out.println();
-            m.addAttribute("selectAll", list);
-            m.addAttribute("selecttitle", list2);
-            m.addAttribute("selectcontent", list3);
-            m.addAttribute("count", num);
-            m.addAttribute("bbsno", count);
-            m.addAttribute("counttitle", num2);
-            m.addAttribute("countcontent", num3);
-         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-         }
-         return "bbs/bbsList";
+      public String list(Model m ,@RequestParam int no, @RequestParam(defaultValue="1") int page) throws SQLException{  
+    	List<BbsVo> bbslist = dao.selectAll(no, page);
+    	m.addAttribute("bbslist", bbslist);
+    	  
+    	  return "bbs/bbsList";
       }
    
    @RequestMapping("/qna")
@@ -86,14 +59,13 @@ public class BbsController {
    
    //게시글 상세보기
       @RequestMapping("/view")
-      public String view(@RequestParam int no,BbsVo b,Model m,ReplyVo r,@RequestParam String email){
+      public String view(HttpSession session,@RequestParam int no,BbsVo b,Model m,ReplyVo r,@RequestParam String email){
            //System.out.println(no);
          try{
             //System.out.println("이메일 : "+email);
             //이메일로 등급찾기
-        	 System.out.println("view 시작");
-        	 System.out.println(email);
-            int grade=dao.grade(email);
+        	 
+            int grade=dao.grade((String)session.getAttribute("skey"));
             m.addAttribute("grade",grade);
             //System.out.println(grade);
             
@@ -102,7 +74,7 @@ public class BbsController {
             List<ReplyVo> replyvo=dao.selectComment(r);
             m.addAttribute("view", bbsVo);
             m.addAttribute("comment",replyvo);
-           
+           System.out.println(bbsVo.getBbsno());
             
             dao.hitUp(b);
          }

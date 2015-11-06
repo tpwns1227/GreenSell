@@ -45,11 +45,10 @@ public class BbsDaoImpl implements BbsDao {
    }
 
    @Override
-   public List<BbsVo> selectAll(int bbsno,int start, int end) throws SQLException{
+   public List<BbsVo> selectAll(int bbsno,int page) throws SQLException{
       Map<String,Integer> count = new HashMap<String,Integer>();
       count.put("bbsno", bbsno);
-      count.put("start",start);
-      count.put("end",end);
+      count.put("page", page);
       List<BbsVo> list = sqlsession.selectList("bbs.bbsselectall", count);
       return list;
    }

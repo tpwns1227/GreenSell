@@ -22,7 +22,7 @@
 		}
 	}
 </script>
-<title>Green Sell</title>
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 		<input class='textbox' value='${view.title}' readonly type='text'>
 		<div class='p'>작성자</div>
 		<input class='textbox' type='text' value='${view.email}' readonly>
-		<table width='400px'>
+		<table style="width: 400px">
 			<tr>
 				<td width='200px'><div class='p'>작성일</div></td>
 				<td width='200px'><div class='p'>조회수</div></td>
@@ -65,118 +65,52 @@
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
 			onclick="location.href='list?no=${view.bbsno}'">
 			<c:forEach var="cm" items="${comment}">
-			<div class='p'>댓글</div>
-			<table width='400px' style='margin-left: 50px'>
+			<div class='border'>답글</div>
+			<table style='margin-left: 50px; width: 400px'>
 			<tr>
-				<td width='150px'>내용</td>
 				<td width='150px'>작성자</td>
-				<td width='150px' colspan='2'>작성일</td>
+				<td width='150px'>작성일</td>
 			</tr>
 					<tr>
-						<td align="center">${cm.cmcontent}</td>
+						
 						<td>${cm.email}</td>
 						<td>${cm.cmdate}</td>
-						<td>
+					</tr>
+					<tr>
+					<td colspan="2">
+						<textarea readonly name="cmcontent" rows="2" cols="80" maxlength="800">${cm.cmcontent}</textarea> 
+					</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="right">
 							<form action="cmdelete">
 								<input type="hidden" value="${cm.cmno}" name="cmno"> <input
 									type="hidden" value="${skey}" name="skey"> <input
 									type="hidden" value="${cm.no}" name="no"> <input
 									type="hidden" value="${cm.email}" name="email">
 								<c:if test="${cm.email==skey}">
-									<input class='button' type="submit" value="삭제">
+									<input class='button' style="width: 100px" type="submit" value="삭제">
 									<br>
 								</c:if>
-							</form> <br>
-			</c:forEach>
+							</form>
+						</td>
+					</tr>
+							
+			
 		</table>
+		</c:forEach>
 		<!--  댓글 내용쓰기 grade이 1일때만 가능-->
 		<c:if test="${grade==1}">
-		<div class='p'>댓글 내용</div>
+		<div class='p'>답글 내용</div>
 		<form name="cmreply" action="cmok" method="post">
 			<input type="hidden" value="${skey}" name="email">
 			 <input	type="hidden" value="${view.no}" name="no">
-			<textarea name="cmcontent" rows="2" cols="80" maxlength="50"></textarea>
+			<textarea name="cmcontent" rows="2" cols="80" maxlength="800"></textarea>
 			
 			<input class='button' type="submit" value="확인" onclick="return CM()">
 		</form>
-	</div>
 	</c:if>
-
-	<!--  섹스 -->
-	<%-- <table align="center" width="500">
-		<tr>
-			<td colspan="1">제목 : ${view.title}
-				<p>작성자 : ${view.email} 날짜 : ${view.bbsdate} 조회수 : ${view.hits}
-				<hr>
-				<p>
-					내용<br>${view.bbscontent} <br>
-				<hr>
-			</td>
-		</tr>
-
-		<c:forEach var="cm" items="${comment}">
-			<div class='container'>
-				<tr>
-					<td align="center"><div>${cm.email}
-							${cm.cmdate}
-							<p>${cm.cmcontent}</td>
-					<td>
-						<form action="cmdelete">
-							<input type="hidden" value="${cm.cmno}" name="cmno"> <input
-								type="hidden" value="${skey}" name="skey"> <input
-								type="hidden" value="${cm.no}" name="no"> <input
-								type="hidden" value="${cm.email}" name="email">
-							<c:if test="${cm.email==skey}">
-								<input type="submit" value="삭제">
-								<br>
-							</c:if>
-						</form> <br>
-			</div>
-
-			</td>
-			</tr>
-			</div>
-		</c:forEach>
-
-		<tr>
-			<!--session값 확인해서 수정,삭제 활성화  -->
-			<!-- 수정 클릭시 게시글 번호를 넘겨 BbsUpdate.jsp로 이동 -->
-			<td align="right">
-				<!--작성자아이디와 로그인 정보가 일치 했을때  --> <c:if test="${view.email==skey}">
-
-					<input type="button" id="up" value="수정"
-						onclick="location.href='update?no=${view.no}'">
-					<form action="delete">
-						<input type="submit" id="de" value="삭제"
-							onclick="location.href='delete'"> <input type="hidden"
-							value="${view.no}" name="no"> <input type="hidden"
-							value="${view.bbsno}" name="bbsno">
-
-					</form>
-				</c:if> <input type="button" value="목록"
-				onclick="location.href='list?no=${view.bbsno}'">
-			</td>
-		</tr>
-
-		<tr>
-		</tr>
-
-
-		<tr>
-			<td>댓글 입력
-				<p>
-				<form name="cmreply" action="cmok" method="post">
-					<input type="hidden" value="${skey}" name="email"> <input
-						type="hidden" value="${view.no}" name="no">
-					<textarea name="cmcontent" rows="2" cols="80"></textarea>
-					<input type="submit" value="확인" onclick="return CM()">
-
-				</form>
-				</p>
-
-			</td>
-		</tr>
-	</table> --%>
+</div>
 
 </body>
 <jsp:include page="../main/bottom.jsp"></jsp:include>
