@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/input.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
-<script type="text/javascript" src="/GreenSell/js/input"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var category = '${itemone.category}';
@@ -80,7 +79,7 @@
 			
 		var exp = $("#img1").val().substr($("#img1").val().lastIndexOf('.')+1);
 		exp = exp.toUpperCase();
-		if(exp=='JPG' || exp=='PNG' || exp=='BMP' || exp=='JPEG' || exp=='GIF'){
+		if(exp=='' || exp=='JPG' || exp=='PNG' || exp=='BMP' || exp=='JPEG' || exp=='GIF'){
 		}else{
 			alert('JPG, PNG, BMP, GIF 형식의 파일만 지원합니다.');
 			return;
@@ -89,7 +88,7 @@
 		if(exp2!=null){
 		var exp2 = $("#img2").val().substr($("#img2").val().lastIndexOf('.')+1);
 		exp2 = exp2.toUpperCase();
-		if(exp2=='JPG' || exp2=='PNG' || exp2=='BMP' || exp2=='JPEG' || exp2=='GIF' || exp2==null || exp2==''){
+		if(exp2=='' || exp2=='JPG' || exp2=='PNG' || exp2=='BMP' || exp2=='JPEG' || exp2=='GIF' || exp2==null || exp2==''){
 		}else{
 			alert('JPG, PNG, BMP, GIF 형식의 파일만 지원합니다.');
 			return;
@@ -98,7 +97,7 @@
 		if(exp3!=null){
 		var exp3 = $("#img3").val().substr($("#img3").val().lastIndexOf('.')+1);
 		exp3 = exp3.toUpperCase();
-		if(exp3=='JPG' || exp3=='PNG' || exp3=='BMP' || exp3=='JPEG' || exp3=='GIF' || exp3==null || exp3==''){
+		if(exp3=='' || exp3=='JPG' || exp3=='PNG' || exp3=='BMP' || exp3=='JPEG' || exp3=='GIF' || exp3==null || exp3==''){
 		}else{
 			alert('JPG, PNG, BMP, GIF 형식의 파일만 지원합니다.');
 			return;
@@ -107,7 +106,7 @@
 		if(exp4!=null){
 		exp4 = $("#img4").val().substr($("#img4").val().lastIndexOf('.')+1);
 		exp4 = exp4.toUpperCase();
-		if(exp4=='JPG' || exp4=='PNG' || exp4=='BMP' || exp4=='JPEG' || exp4=='GIF'|| exp4==null || exp4==''){
+		if(exp4=='' || exp4=='JPG' || exp4=='PNG' || exp4=='BMP' || exp4=='JPEG' || exp4=='GIF'|| exp4==null || exp4==''){
 		}else{
 			alert('JPG, PNG, BMP, GIF 형식의 파일만 지원합니다.');
 			return;
@@ -172,10 +171,23 @@
 			<div id='image1'>
 				<c:forEach items="${names}" var="img" varStatus="v">
 					<input type="file" id="img${v.count}" onchange="ch${v.count}()"
-						name="imgname${v.count}" />
+						name="imgname${v.count}" value="${img}" />
 					<label class='img${v.count}' for="img${v.count}">${img}</label>
 				</c:forEach>
+				<c:if test="${names.size()<4}">
+					<c:forEach begin="${names.size()+1}" end="4" varStatus="v">
+					<input type="file" id="img${names.size()+v.count}" onchange="ch${names.size()+v.count}()"
+						name="imgname${names.size()+v.count}" />
+					<label class='img${names.size()+v.count}' for="img${names.size()+v.count}">
+					<c:if test="${img!=null}">${img}</c:if>
+					<c:if test="${img==null}">클릭</c:if>
+					</label>
+					</c:forEach>
+				</c:if>
+				
 			</div>
+			
+			
 			<div class='p'>가격</div>
 			<input class='textbox' id="itemprice" maxlength="" name="itemprice" type='text'
 				value="${itemone.itemprice}" placeholder="가격">

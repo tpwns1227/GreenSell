@@ -57,7 +57,6 @@ public class SellController {
 			m.addAttribute("itemone", ivo);
 
 		}
-
 		List<String> list = dao.getImagenames(no); // 이미지 뿌리기
 		m.addAttribute("imglist", list);
 		session.setAttribute("itemno", no);
@@ -132,10 +131,7 @@ public class SellController {
 				new DefaultFileRenamePolicy());
 		List<String> names = dao.getImagenames(Integer.parseInt(multi.getParameter("no")));
 		uploadDir = uploadDir + "\\";
-		for (int i = 0; i < names.size(); i++) {
-			File oldfile = new File(uploadDir + names.get(i));
-			oldfile.delete();
-		}
+		
 		ItemSellVO itsv = new ItemSellVO();
 		itsv.setNo(Integer.parseInt(multi.getParameter("no")));
 		itsv.setItemname(multi.getParameter("itemname"));
@@ -147,27 +143,52 @@ public class SellController {
 		String imgname2 = multi.getFilesystemName("imgname2");
 		String imgname3 = multi.getFilesystemName("imgname3");
 		String imgname4 = multi.getFilesystemName("imgname4");
+		System.out.println(imgname1);
+		System.out.println(imgname2);
+		System.out.println(imgname3);
+		System.out.println(imgname4);
+		String img[] = {imgname1, imgname2, imgname3, imgname4};
+		System.out.println(img[0]);
+		System.out.println(img[1]);
+		System.out.println(img[2]);
+		System.out.println(img[3]);
 		
+		for (int i = 0; i < names.size(); i++) {
+			if(img[i]!=null){
+			File oldfile = new File(uploadDir + names.get(i));
+			oldfile.delete();
+			}
+		}
+		map.put("itemno", itsv.getNo());
 		if (dao.itemUpdate(itsv)) {
 			if (imgname1 != null) {
 				map.put("oldimg", names.get(0));
 				map.put("imgname", imgname1);
 				dao.imgupdate(map);
 			}
-			if (imgname2 != null) {
+			if (imgname2 != null && names.size()>=2) {
 				map.put("oldimg", names.get(1));
 				map.put("imgname", imgname2);
 				dao.imgupdate(map);
+			}else if(imgname2 != null && names.size()<2){
+				map.put("imgname", imgname2);
+				dao.imginsert(map);
 			}
-			if (imgname3 != null) {
+			if (imgname3 != null && names.size()>=3) {
 				map.put("oldimg", names.get(2));
 				map.put("imgname", imgname3);
 				dao.imgupdate(map);
-			} 
-			if (imgname4 != null) {
+			}else if(imgname3 != null && names.size()<3){
+				map.put("imgname", imgname3);
+				dao.imginsert(map);
+			}
+			if (imgname4 != null && names.size()>=4) {
 				map.put("oldimg", names.get(3));
 				map.put("imgname", imgname4);
 				dao.imgupdate(map);
+			}else if(imgname4 != null && names.size()<4){
+				map.put("imgname", imgname4);
+				dao.imginsert(map);
 			}
 		}
 
