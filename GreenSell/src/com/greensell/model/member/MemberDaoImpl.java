@@ -47,7 +47,6 @@ public class MemberDaoImpl implements MemberDao {
 	public String selectpoint(String email) throws SQLException {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.selectpoint", email);
-		
 	}
 
 	@Override
@@ -159,6 +158,15 @@ public class MemberDaoImpl implements MemberDao {
 		else
 			return true; // 아이디가 디비에 존재해
 	}
+	@Override
+	public boolean accountchk(String account) throws SQLException {
+		// TODO Auto-generated method stub
+		String ac = sqlSession.selectOne("member.accountchk",account);
+		if(ac==null)
+			return false;
+		else
+			return true;
+	}
 
 	@Override
 	public boolean nickcheck(String nickname) throws SQLException {// 닉네임 존재여부
@@ -256,13 +264,9 @@ public class MemberDaoImpl implements MemberDao {
 			return true;
 		return false;
 	}
-	
-	@Override
-	public boolean collectPoint(Map<String, Object> map) throws SQLException {
-		// TODO Auto-generated method stub
-		int i = sqlSession.update("collectPoint", map);
-		return (i>0)? true:false;
-	}
+
+
+
 
 	
 	
