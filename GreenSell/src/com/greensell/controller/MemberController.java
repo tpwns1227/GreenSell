@@ -11,7 +11,9 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,346 +32,363 @@ import com.greensell.sell.beans.ItemSellVO;
 
 @Controller
 public class MemberController {
-	
-	   @Autowired
-	   MemberDao dao;
-	   
-	   
-	   
-	   @RequestMapping("/result") //회원가입하면 이동되는 페이지
-	    public String insert(MemberVO v){
-	      //DB연동      
-	      try {
-	    	  
-	         if(dao.insert(v)){
-	         }
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      }
-	      return "redirect:login_form";
-	   }
-	
-	   @RequestMapping("/login_form") //로그인폼으로 이동
-	   public String loginView(){
-		   return "/member/memberinfo/login_form";
-	   }
-	   
-	   @RequestMapping("/register_form") // 회원가입 폼으로 이동
-	   public String registerView(){
-		   return "/member/memberinfo/register_form";
-	   }
-	   
-	   @RequestMapping("/login_check") // 로그인 여부 확인
-	   public String loginCheck(@RequestParam String email, @RequestParam String password,
-			   					Model m, HttpSession session) throws SQLException{
-		   	boolean pwchk = false;
-		    boolean idchk =	dao.idcheck(email); //트루이면 아이디가 존재함
-		   	if(idchk){
-		   	  	pwchk = dao.logincheck(email, password);
-		   	}else{
-		   		m.addAttribute("result","이메일이 존재하지 않습니다.");
-				 return "member/memberinfo/login_form";
-		   	}
-		  if(pwchk) {
-			  m.addAttribute("result", "로그인 성공되었습니다.");
-			  session.setAttribute("skey", email);
-			  session.setAttribute("amdin", dao.getadmin(email));
-			  session.setAttribute("point", dao.selectpoint(email));
-			  return "redirect:home";
-		  }else{
-			  m.addAttribute("result","로그인에 실패되었습니다.");
-			  return "member/memberinfo/login_form";
-		  }  
-	   }
-	   
-	   @RequestMapping("/logout") //로그아웃
-	   public String logout(HttpSession session){
-			   session.invalidate();
-			   return "redirect:home";
-	   }
-	   
-	   @RequestMapping(value = "/idchk", method = RequestMethod.POST)
-	    public @ResponseBody String idchk(@RequestParam String email) throws SQLException {
-		   String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
-		   Pattern p = Pattern.compile(regex);
-		   if(!p.matcher(email).matches()){	return "사용불가"; 
-		   }else{
-			   boolean idchk = dao.idcheck(email);
-				  
-				  if(idchk){
-					  return "사용불가";
-				  }else{
-				   return "사용가능";
-				  }
-		   }
-	   }
-	   @RequestMapping(value = "/phonechk", method = RequestMethod.POST)
-	   	public @ResponseBody String phonechk(@RequestParam String phone) throws SQLException{
-		   String ph = "(01[016789])-(\\d{3,4})-(\\d{4})";
-		   Pattern p = Pattern.compile(ph);
-		   if(!p.matcher(phone).matches()){
-			   return "사용불가";
-		   }else{
-			   boolean phonechk = dao.phonechk(phone);
-			   if(phonechk){
-				   return "사용불가";
-			   }else{
-				   return "사용가능";
-			   }
-		   }
-	   }
-	   
-	   @RequestMapping("/updatepw")
-	   public String updatepw(@RequestParam String password,
-			   				  @RequestParam String email) throws SQLException{
-		   Map<String, String> map = new HashMap<String, String>();
-		   map.put("email", email);
-		   map.put("password", password);
-		   dao.updatepw(map);
-		   return "member/memberinfo/login_form";
-	   }
-	   
-	   @RequestMapping(value = "/emailchk", method = RequestMethod.POST)
-	   public @ResponseBody String emailchk(@RequestParam String email) throws SQLException{
-		   String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
-		   Pattern p = Pattern.compile(regex);
-		   if(!p.matcher(email).matches()){	return "사용불가"; 
-		   }else{
-		   return dao.getQuestion(email);
-		   }
-	   }
-	   
-	   
-	   
-	   @RequestMapping(value = "/qustion_answer", method = RequestMethod.POST)
-	   public @ResponseBody String qustion_answerchk(@RequestParam String email,
-			   @RequestParam String qanswer) throws SQLException{
-		   if(!qanswer.equals(dao.getanswer(email))){
-			  return "질문과 답이 일치하지 않습니다.";
-		  }else{ 
-		  return "ok";
-		  }
-	   }
-	   
-	   
-	   @RequestMapping(value = "/nickchk", method = RequestMethod.POST)
-	    public @ResponseBody String nickchk(@RequestParam String nickname) throws SQLException {
-		  
-		   String regex = "[a-zA-Z0-9가-힣]+";
-		   Pattern p = Pattern.compile(regex);
-		   if(!p.matcher(nickname).matches()){	return "사용불가"; 
-		   }
-		   boolean nickchk = dao.nickcheck(nickname);  
-				  if(nickchk){
-					  return "사용불가";
-				  }else{
-				   return "사용가능";
-				  }
-		   }
-	   
-	   
-	 /*  @RequestMapping("/id_check") // 아이디 중복확인
-	   public String idCheck(@RequestParam String email,@RequestParam String password,
-			   				Model m)throws SQLException{
-		   
-		   boolean ch = dao.idcheck(email);
-		   if(ch){
-			  m.addAttribute("check", true);
-		   }else{
-			   m.addAttribute("check",false);
-		   }   
-		   return "member/memberinfo/register_form";
-	   }*/
-	   
-	   @RequestMapping("/idchk") //아이디 중복검사 (윤세준)
-	   public String registeridchk(@RequestParam String email, Model m) throws SQLException{
-		  
-		   boolean b = dao.idcheck(email);
-		   if(!b){ //아이디가 없어서 중복확인 ok.
-			   m.addAttribute("chkresult", "사용하셔도 좋은 아이디입니다.");
-		   }else{//아이디가 있어서 중복확인 fail
-			   m.addAttribute("chkresult", "이미 존재하는 아이디입니다.");
-		   }
-		   
-		   return "member/memberinfo/register_form";
-	   }
-	   
-	   @RequestMapping(value = "/updateForm")//회원정보 수정폼띄우기
-	   public String updateForm(HttpSession session, Model m){ 
-		   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
-		   m.addAttribute("member",vo);
-		   return "member/memberinfo/update_form";		   
-	   }
 
-	   @RequestMapping(value = "/update_form")//회원정보 수정하기
-	   public String memberupdate(MemberVO vo, Model m) throws SQLException{
-		   if(vo.getPassword().equals(dao.passwordget(vo.getEmail()))){
-			   if(dao.update(vo)){
-				   return "redirect:member_Detail";
-			   }
-		   }
-		   MemberVO memvo=dao.memberdetail(vo.getEmail());
-		   m.addAttribute("member",memvo);
-		   m.addAttribute("result", "비밀번호가 일치하지 않습니다.");
-		   return "member/memberinfo/update_form";
-	   }
-	   
-	   @RequestMapping("/zip_form")//우편번호찾기폼띄우기
-	   public String zipSearch(){
-		   return "member/memberinfo/zip_form";
-	   }
-	   
-	   @RequestMapping(value = "/zip_result", method = RequestMethod.POST)
-	   public String zip_result(@RequestParam String address, Model m,HttpSession session, ZipVo vo) throws SQLException{
-		 
-		   List<ZipVo> list = dao.zipvo(address);
-		  m.addAttribute("result", list);
-		 session.setAttribute("zipp", vo.getZipcode());
-		 return "member/memberinfo/zip_form";
-	   }
-	   
-	   @RequestMapping("/searchPw_form")//비밀번호 찾기 폼
-	   public String pwSearch(){
-		   return "member/memberinfo/find_form";
-	   }
-	   
-	   @RequestMapping("/serarchPw")
-	   public String search_pw(@RequestParam String password,Model m) throws SQLException{
-		    MemberVO mv = dao.selectpwd(password);
-		   m.addAttribute("pass",mv);
-		   return "member/memberinfo/find_form";
-	   } 
-	   
-	   @RequestMapping("/member_Detail")//Detail폼띄우기
-	   public String member_Detail(HttpSession session, Model m){
-		   String skey = (String)session.getAttribute("skey");
-		   if(skey==null) return "redirect:home"; 
-		   else{
-			   MemberVO vo=dao.memberdetail((String)session.getAttribute("skey"));
-			   m.addAttribute("member",vo);
-			   return "member/memberinfo/member_Detail";
-		   }
-	   }
-	   @RequestMapping("/cart_form")//찜목록이동하기
-	   public String cart_form(@RequestParam String email, Model m) throws SQLException {
-		  List<ItemSellVO> list = dao.selected(email);
-		  List<String> fristimg = new ArrayList<String>();
-		  for (int j = 0; j < list.size(); j++) {
-				List<String> imglist = dao.getImagenames(list.get(j).getNo());
-				fristimg.add(imglist.get(0));
+	@Autowired
+	MemberDao dao;
+
+	@RequestMapping("/result") // 회원가입하면 이동되는 페이지
+	public String insert(MemberVO v) {
+		// DB연동
+		try {
+
+			if (dao.insert(v)) {
 			}
-		  m.addAttribute("fristimg", fristimg);
-		  m.addAttribute("itemlist", list);
-		   return "member/memberfunction/cart_form";
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	   
-	   @RequestMapping("/selected_delete")
-	   public String cart_delete(@RequestParam String no, @RequestParam String email) throws SQLException{
-		   Map<String, Object> map = new HashMap<String, Object>();
-		   map.put("itemno", no);
-		   map.put("email", email);
-		   dao.cart_delete(map);
-		   return "redirect:cart_form?email="+email;
-	   }
-	   
-	   @RequestMapping("/delete_form")//회원탈퇴하기
-	   public String delete_form(){
-		   return "member/memberinfo/delete_form";
-	   }
-	   
-	   @RequestMapping("/delete_result")
-	   public String delete2(HttpSession session, @RequestParam String password) throws SQLException{
-		   String email = (String) session.getAttribute("skey");
-		   boolean pwchk = dao.logincheck(email, password);
-		   System.out.println(email);
-		   System.out.println(pwchk);
-		   if (pwchk == true){
-			   dao.delete(email);
-			   session.invalidate();
-			   return "/member/memberinfo/login_form";
-		   }
-		   return "/home"; // 회원탈퇴할때 비밀번호가 다를경우 수정좀		  
-	   }
-	   
-	   @RequestMapping("/pointlist_form") // 포인트내역
-	   public String pointList( HttpSession session, Model m) throws SQLException{
-		   String email = (String)session.getAttribute("skey");
-		   List<PointVO> list = dao.pointList(email);
-		   m.addAttribute("point", list);
-		   return "member/memberfunction/pointlist_form";
-	   }
-	   
-	   
-	   @RequestMapping("/point_form")//포인트충전
-	   public String point() throws SQLException{  
-		   return "member/memberfunction/point_form";
-	   }
-	   
-	   @RequestMapping("/mywriteForm")
-	   public String mywriteview(HttpSession session, Model m, @RequestParam(required=false) String email) throws SQLException{
-		   if(email == null){
-		   email = (String)session.getAttribute("skey");
-		   }
-		   List<ItemSellVO> list = dao.mywritesell(email);
-		   List<String> fristimg = new ArrayList<String>();
-			  for (int j = 0; j < list.size(); j++) {
-					List<String> imglist = dao.getImagenames(list.get(j).getNo());
-					fristimg.add(imglist.get(0));
-				}
-			  
-			  m.addAttribute("fristimg", fristimg);
-			  m.addAttribute("itemlist", list);
-			  m.addAttribute("email", email);
-		   return "member/memberfunction/mywrite_form";
-	   }
-	   
-	   @RequestMapping("/point")
-	   public String updatePoint(HttpSession session,@RequestParam String price) throws SQLException{
-		   System.out.println(session.getAttribute("point"));
-		   String email = (String) session.getAttribute("skey");
-		   Map<String, Object> map = new HashMap<String, Object>();
-		   map.put("email", email);
-		   map.put("price", price);
-		   map.put("commission", 0);
-		   map.put("sort", 0);
-			 int  point = Integer.parseInt((String) session.getAttribute("point"));  
-			   point += Integer.parseInt(price);
-			  String poin = Integer.toString(point);
-			  session.setAttribute("point", poin);
-		   dao.updatePoint(map);
-		   dao.pointDeposit(map);
-		   
-		   return "redirect:home";
-	   }
-	   
-	   @RequestMapping("/collect_form")
-		public String collectForm(HttpSession session, Model m){
-			MemberVO mvo = dao.memberdetail((String)session.getAttribute("skey"));
-			m.addAttribute("mvo", mvo);
-			return "member/memberfunction/point_collect";
-		}
-	   
-	   @RequestMapping("/pointcollect")
-	   public String collect(HttpSession session, @RequestParam String price) throws SQLException{
+		return "redirect:login_form";
+	}
 
-		   String email = (String) session.getAttribute("skey");
-		   Map<String, Object> map = new HashMap<String, Object>();
-		   int pr = (int)(Integer.parseInt(price) * 0.05);
-		   
-		   map.put("email", email);
-		   map.put("price", price);
-		   map.put("commission", pr);
-		   map.put("sort", 1);
-		   
-			 int  point = Integer.parseInt((String) session.getAttribute("point"));  
-			  point -= Integer.parseInt(price);
-			  String poin = Integer.toString(point);
-			  session.setAttribute("point", poin);
-		   dao.collectPoint(map);
-		   dao.pointDeposit(map);
-		   
-		   return "redirect:home";
-	   }
-	   
-	   
+	@RequestMapping("/login_form") // 로그인폼으로 이동
+	public String loginView() {
+		return "/member/memberinfo/login_form";
+	}
+
+	@RequestMapping("/register_form") // 회원가입 폼으로 이동
+	public String registerView() {
+		return "/member/memberinfo/register_form";
+	}
+
+	@RequestMapping("/login_check") // 로그인 여부 확인
+	public String loginCheck(@RequestParam String email, @RequestParam String password, Model m, HttpSession session)
+			throws SQLException {
+		boolean pwchk = false;
+		boolean idchk = dao.idcheck(email); // 트루이면 아이디가 존재함
+		if (idchk) {
+			pwchk = dao.logincheck(email, password);
+		} else {
+			m.addAttribute("result", "이메일이 존재하지 않습니다.");
+			return "member/memberinfo/login_form";
+		}
+		if (pwchk) {
+			m.addAttribute("result", "로그인 성공되었습니다.");
+			session.setAttribute("skey", email);
+			session.setAttribute("amdin", dao.getadmin(email));
+			session.setAttribute("point", dao.selectpoint(email));
+			return "redirect:home";
+		} else {
+			m.addAttribute("result", "로그인에 실패되었습니다.");
+			return "member/memberinfo/login_form";
+		}
+	}
+
+	@RequestMapping("/logout") // 로그아웃
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:home";
+	}
+
+	@RequestMapping(value = "/idchk", method = RequestMethod.POST)
+	public @ResponseBody String idchk(@RequestParam String email) throws SQLException {
+		String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		Pattern p = Pattern.compile(regex);
+		if (!p.matcher(email).matches()) {
+			return "사용불가";
+		} else {
+			boolean idchk = dao.idcheck(email);
+
+			if (idchk) {
+				return "사용불가";
+			} else {
+				return "사용가능";
+			}
+		}
+	}
+
+	@RequestMapping(value = "/accountchk", method = RequestMethod.POST)
+	public @ResponseBody String accountchk(@RequestParam String account)
+			throws SQLException {
+		String sinhan = "([0-9]d{3})-(\\d{4})-(\\d{4})-(\\d{2})";
+		String kb = "(01[016789])-(\\d{3,4})-(\\d{4})";
+		String nh = "([0-9]d{3})-(\\d{4})-(\\d{4})-(\\d{2})";
+		Pattern s = Pattern.compile(sinhan);
+		Pattern k = Pattern.compile(kb);
+		Pattern n = Pattern.compile(nh);
+
+		boolean accountchk = dao.accountchk(account);
+		
+			if (s.matcher(account).matches()) {
+				System.out.println("신한");
+				if (accountchk) {
+					return "사용불가";
+				}
+
+				else {
+					return "사용가능";
+				}
+			}
+		
+
+			if (k.matcher(account).matches()) {
+				System.out.println("국민은행");
+				if (accountchk) {
+					return "사용불가";
+				}
+
+				else {
+					return "사용가능";
+				}
+			}
+		
+
+			if (n.matcher(account).matches()) {
+				System.out.println("농협은행");
+				if (accountchk) {
+					return "사용불가";
+				}
+
+				else {
+					return "사용가능";
+				}
+			}
+
+		
+		return "사용불가";
+	}
+
+	@RequestMapping(value = "/phonechk", method = RequestMethod.POST)
+	public @ResponseBody String phonechk(@RequestParam String phone) throws SQLException {
+		String ph = "(01[016789])-(\\d{3,4})-(\\d{4})";
+		Pattern p = Pattern.compile(ph);
+		if (!p.matcher(phone).matches()) {
+			return "사용불가";
+		} else {
+			boolean phonechk = dao.phonechk(phone);
+			if (phonechk) {
+				return "사용불가";
+			} else {
+				return "사용가능";
+			}
+		}
+	}
+
+	@RequestMapping("/updatepw")
+	public String updatepw(@RequestParam String password, @RequestParam String email) throws SQLException {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email", email);
+		map.put("password", password);
+		dao.updatepw(map);
+		return "member/memberinfo/login_form";
+	}
+
+	@RequestMapping(value = "/emailchk", method = RequestMethod.POST)
+	public @ResponseBody String emailchk(@RequestParam String email) throws SQLException {
+		String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+		Pattern p = Pattern.compile(regex);
+		if (!p.matcher(email).matches()) {
+			return "사용불가";
+		} else {
+			return dao.getQuestion(email);
+		}
+	}
+
+	@RequestMapping(value = "/qustion_answer", method = RequestMethod.POST)
+	public @ResponseBody String qustion_answerchk(@RequestParam String email, @RequestParam String qanswer)
+			throws SQLException {
+		if (!qanswer.equals(dao.getanswer(email))) {
+			return "질문과 답이 일치하지 않습니다.";
+		} else {
+			return "ok";
+		}
+	}
+
+	@RequestMapping(value = "/nickchk", method = RequestMethod.POST)
+	public @ResponseBody String nickchk(@RequestParam String nickname) throws SQLException {
+
+		String regex = "[a-zA-Z0-9가-힣]+";
+		Pattern p = Pattern.compile(regex);
+		if (!p.matcher(nickname).matches()) {
+			return "사용불가";
+		}
+		boolean nickchk = dao.nickcheck(nickname);
+		if (nickchk) {
+			return "사용불가";
+		} else {
+			return "사용가능";
+		}
+	}
+
+	/*
+	 * @RequestMapping("/id_check") // 아이디 중복확인 public String
+	 * idCheck(@RequestParam String email,@RequestParam String password, Model
+	 * m)throws SQLException{
+	 * 
+	 * boolean ch = dao.idcheck(email); if(ch){ m.addAttribute("check", true);
+	 * }else{ m.addAttribute("check",false); } return
+	 * "member/memberinfo/register_form"; }
+	 */
+
+	@RequestMapping("/idchk") // 아이디 중복검사 (윤세준)
+	public String registeridchk(@RequestParam String email, Model m) throws SQLException {
+
+		boolean b = dao.idcheck(email);
+		if (!b) { // 아이디가 없어서 중복확인 ok.
+			m.addAttribute("chkresult", "사용하셔도 좋은 아이디입니다.");
+		} else {// 아이디가 있어서 중복확인 fail
+			m.addAttribute("chkresult", "이미 존재하는 아이디입니다.");
+		}
+
+		return "member/memberinfo/register_form";
+	}
+
+	@RequestMapping(value = "/updateForm") // 회원정보 수정폼띄우기
+	public String updateForm(HttpSession session, Model m) {
+		MemberVO vo = dao.memberdetail((String) session.getAttribute("skey"));
+		m.addAttribute("member", vo);
+		return "member/memberinfo/update_form";
+	}
+
+	@RequestMapping(value = "/update_form") // 회원정보 수정하기
+	public String memberupdate(MemberVO vo, Model m) throws SQLException {
+		if (vo.getPassword().equals(dao.passwordget(vo.getEmail()))) {
+			if (dao.update(vo)) {
+				return "redirect:member_Detail";
+			}
+		}
+		MemberVO memvo = dao.memberdetail(vo.getEmail());
+		m.addAttribute("member", memvo);
+		m.addAttribute("result", "비밀번호가 일치하지 않습니다.");
+		return "member/memberinfo/update_form";
+	}
+
+	@RequestMapping("/zip_form") // 우편번호찾기폼띄우기
+	public String zipSearch() {
+		return "member/memberinfo/zip_form";
+	}
+
+	@RequestMapping(value = "/zip_result", method = RequestMethod.POST)
+	public String zip_result(@RequestParam String address, Model m, HttpSession session, ZipVo vo) throws SQLException {
+
+		List<ZipVo> list = dao.zipvo(address);
+		m.addAttribute("result", list);
+		session.setAttribute("zipp", vo.getZipcode());
+		return "member/memberinfo/zip_form";
+	}
+
+	@RequestMapping("/searchPw_form") // 비밀번호 찾기 폼
+	public String pwSearch() {
+		return "member/memberinfo/find_form";
+	}
+
+	@RequestMapping("/serarchPw")
+	public String search_pw(@RequestParam String password, Model m) throws SQLException {
+		MemberVO mv = dao.selectpwd(password);
+		m.addAttribute("pass", mv);
+		return "member/memberinfo/find_form";
+	}
+
+	@RequestMapping("/member_Detail") // Detail폼띄우기
+	public String member_Detail(HttpSession session, Model m) {
+		String skey = (String) session.getAttribute("skey");
+		if (skey == null)
+			return "redirect:home";
+		else {
+			MemberVO vo = dao.memberdetail((String) session.getAttribute("skey"));
+			m.addAttribute("member", vo);
+			return "member/memberinfo/member_Detail";
+		}
+	}
+
+	@RequestMapping("/cart_form") // 찜목록이동하기
+	public String cart_form(@RequestParam String email, Model m) throws SQLException {
+		List<ItemSellVO> list = dao.selected(email);
+		List<String> fristimg = new ArrayList<String>();
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
+		m.addAttribute("fristimg", fristimg);
+		m.addAttribute("itemlist", list);
+		return "member/memberfunction/cart_form";
+	}
+
+	@RequestMapping("/selected_delete")
+	public String cart_delete(@RequestParam String no, @RequestParam String email) throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("itemno", no);
+		map.put("email", email);
+		dao.cart_delete(map);
+		return "redirect:cart_form?email=" + email;
+	}
+
+	@RequestMapping("/delete_form") // 회원탈퇴하기
+	public String delete_form() {
+		return "member/memberinfo/delete_form";
+	}
+
+	@RequestMapping("/delete_result")
+	public String delete2(HttpSession session, @RequestParam String password) throws SQLException {
+		String email = (String) session.getAttribute("skey");
+		boolean pwchk = dao.logincheck(email, password);
+		System.out.println(email);
+		System.out.println(pwchk);
+		if (pwchk == true) {
+			dao.delete(email);
+			session.invalidate();
+			return "/member/memberinfo/login_form";
+		}
+		return "/home"; // 회원탈퇴할때 비밀번호가 다를경우 수정좀
+	}
+
+	@RequestMapping("/pointlist_form") // 포인트내역
+	public String pointList(HttpSession session, Model m) throws SQLException {
+		String email = (String) session.getAttribute("skey");
+		List<PointVO> list = dao.pointList(email);
+		m.addAttribute("point", list);
+		return "member/memberfunction/pointlist_form";
+	}
+
+	@RequestMapping("/point_form") // 포인트충전
+	public String point() throws SQLException {
+		return "member/memberfunction/point_form";
+	}
+
+	@RequestMapping("/mywriteForm")
+	public String mywriteview(HttpSession session, Model m) throws SQLException {
+		String email = (String) session.getAttribute("skey");
+		List<ItemSellVO> list = dao.mywritesell(email);
+		List<String> fristimg = new ArrayList<String>();
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
+
+		m.addAttribute("fristimg", fristimg);
+		m.addAttribute("itemlist", list);
+
+		return "member/memberfunction/mywrite_form";
+	}
+
+	@RequestMapping("/point")
+	public String updatePoint(HttpSession session, @RequestParam String price, Model m) throws SQLException {
+		System.out.println(session.getAttribute("point"));
+		String email = (String) session.getAttribute("skey");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("email", email);
+		map.put("price", price);
+
+		int point;
+		System.out.println("여기");
+		point = Integer.parseInt((String) session.getAttribute("point"));
+
+		point += Integer.parseInt(price);
+
+		String poin = Integer.toString(point);
+		System.out.println(poin);
+		dao.updatePoint(map);
+		dao.pointDeposit(map);
+		session.setAttribute("point", poin);
+		return "redirect:home";
+	}
+
 }
