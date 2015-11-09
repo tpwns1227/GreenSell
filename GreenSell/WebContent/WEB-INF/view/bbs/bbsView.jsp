@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
+<%-- <%
 	String skey = (String) session.getAttribute("skey");
-%>
+%> --%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,6 +31,7 @@
 
 
 	<div class='container'>
+	
 		<div class='border'>글보기</div>
 		<div class='p'>제목</div>
 		<input class='textbox' value='${view.title}' readonly type='text'>
@@ -52,6 +53,8 @@
 			<input type="button" class='button' id="up" value="수정"
 				onclick="location.href='update?no=${view.no}'"
 				style='margin-top: 5px; width: 400px'>
+				</c:if>
+				<c:if test="${view.email==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
 			<form action="delete">
 				<input type="submit" class='button' id="de" value="삭제"
 					onclick="location.href='delete'"
