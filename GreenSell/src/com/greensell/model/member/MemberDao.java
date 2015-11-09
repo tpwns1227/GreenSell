@@ -57,4 +57,6 @@ public interface MemberDao {
 	   public List<ItemSellVO> buylist(String email) throws SQLException;
 	   public List<String> buyto(String email) throws SQLException;
 	   public boolean takeover(String itemno) throws SQLException;
+	   public boolean insertMessage(Map<String, Object> map) throws SQLException;
+	   
 }

@@ -514,7 +514,13 @@ public class MemberController {
 		 Map<String, Object> map = new HashMap<String, Object>();
 		 map.put("price", price);
 		 map.put("email", item.getEmail());
-		 dao.updatePoint(map);//판매자의 포인트를 가격만큼 지불
+		 dao.updatePoint(map);//판매자의 포인트를 가격만큼 지불	 
+		 map.put("rvemail", item.getEmail());
+			String str = "안녕하세요. 관리자 입니다." + email +"님 으로 부터 물품 인수가 확인되었습니다. "+
+					"재 접속 하시면 판매 대금을 확인 하실 수 있습니다.";
+			map.put("content", str);//판매자 에게 메시지 보내기
+			dao.insertMessage(map);//메시지 저장
+		 
 		return "redirect:buy_form?email=" + email;
 	}
 	

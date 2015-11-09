@@ -329,4 +329,12 @@ public class MemberDaoImpl implements MemberDao {
 		return (i>0)? true:false;
 	}
 	
+	@Override
+	public boolean insertMessage(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		int i = sqlSession.insert("member.insertmessage", map);
+		return (i>0)? true:false;
+	}
+	
+	
 }

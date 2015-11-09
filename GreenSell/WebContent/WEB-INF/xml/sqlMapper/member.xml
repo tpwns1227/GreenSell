@@ -134,7 +134,7 @@
 	
 	<!-- 메세지 리스트 출력 -->
 	<select id="selectmessage" parameterType="String" resultType="com.greensell.member.beans.MessageVO">
-		select * from message where rvemail=#{email}
+		select * from message where rvemail=#{email} order by mdate desc
 	</select>
 	
 	<!-- 메세지 상세보기 -->
@@ -164,5 +164,10 @@
 	<update id="updateto" parameterType="String">
 		update buy set takeover='완료' where itemno=#{itemno}
 	</update>
+	
+	 <insert id="insertmessage" parameterType="map">
+    	insert into message values(no_meg_seq.nextval,'관리자',#{rvemail},#{content},'인수 확인',sysdate)
+    </insert>
+	
 	
 </mapper>
