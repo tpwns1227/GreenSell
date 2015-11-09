@@ -446,5 +446,11 @@ public class MemberController {
 		m.addAttribute("email",email);
 		return "member/message/remsgWrite";
 	}
-
+	
+	//메시지 삭제하기
+	@RequestMapping("msgdelete")
+	public String msgreview(@RequestParam int no) throws SQLException{
+		if(dao.messagedelete(no)) return "redirect:msglistview";
+		return "member/message/remsgWrite";
+	}
 }
