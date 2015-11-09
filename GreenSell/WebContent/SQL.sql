@@ -150,6 +150,8 @@ mdate date not null,
 foreign key (email) references member(email) on delete cascade
 );
 
+select * from message
+
 drop table Message
 drop table buy;
 drop table member;
