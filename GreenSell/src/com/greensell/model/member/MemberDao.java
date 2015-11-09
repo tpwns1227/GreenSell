@@ -9,6 +9,7 @@ import org.apache.tomcat.jni.Mmap;
 import com.greensell.bbs.beans.BbsVo;
 import com.greensell.member.beans.MemberPSVO;
 import com.greensell.member.beans.MemberVO;
+import com.greensell.member.beans.MessageVO;
 import com.greensell.member.beans.PointVO;
 import com.greensell.member.beans.ZipVo;
 import com.greensell.sell.beans.AuctionVO;
@@ -49,5 +50,7 @@ public interface MemberDao {
 	   public List<ItemSellVO> mywritesell(String email) throws SQLException;
 	   public int getadmin(String email) throws SQLException;
 	   public boolean accountchk(String account) throws SQLException;//계좌번호조회다
-
+	   public List<MessageVO> messagelist(String email) throws SQLException;	//메세지 리스트 출력
+	   public boolean messageinsert(Map<String, Object> map) throws SQLException;	//메시지 입력하기
+	   public MessageVO messagedetail(int no) throws SQLException; //메시지 상세보기
 }

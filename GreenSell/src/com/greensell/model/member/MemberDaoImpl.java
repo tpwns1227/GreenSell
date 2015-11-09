@@ -264,11 +264,29 @@ public class MemberDaoImpl implements MemberDao {
 			return true;
 		return false;
 	}
-
-
-
-
 	
 	
+	//메시지 리스트 출력
+	@Override
+	public List<MessageVO> messagelist(String email) throws SQLException {
+		// TODO Auto-generated method stub
+	 List<MessageVO> list =	sqlSession.selectList("member.selectmessage",email);
+		return list;
+	}
+	
+	//메시지 입력하기
+	@Override
+	public boolean messageinsert(Map<String, Object> map) throws SQLException {
+		int i = sqlSession.insert("member.messageinsert", map);
+		return (i > 0) ? true : false;
+	}
+	
+	//메시지 상세보기
+	@Override
+	public MessageVO messagedetail(int no) throws SQLException {
+		// TODO Auto-generated method stub
+		MessageVO mvo = sqlSession.selectOne("member.selectmessagedetail", no);
+		return mvo;
+	}
 
 }
