@@ -61,10 +61,13 @@ function pointcollect(){
 			<%
 				} else {
 			%>
-			<a>${skey}님 환영합니다...</a>
 			<a id="point"><font color="red">${point}</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트</a>
 			<a href="member_Detail">내 정보</a>
 			<a href="logout">로그아웃</a>
+			<p>
+			<p>
+			<a>${skey}님 환영합니다...</a>
+			<a href="msglistview">메시지 보기</a>
 			<%
 				}
 			%>
@@ -78,10 +81,10 @@ function pointcollect(){
 				href="itemList">중고 게시판</a> <a href="help">고객지원</a><a href="javascript:pointform()">포인트 충전</a>
 				<a href="javascript:pointcollect()">포인트 회수</a>
 		</div>
-		<div class='search'>
+		<!-- <div class='search'>
 			<input id='box' type='text' placeholder='Search...' /> <input
 				id='button' value='검색' type='button' />
-		</div>
+		</div> -->
 	</div>
 	<div>
 		<hr>

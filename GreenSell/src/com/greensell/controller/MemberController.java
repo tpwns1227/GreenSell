@@ -432,7 +432,7 @@ public class MemberController {
 	}
 	
 	//메시지 리스트 보기
-	@RequestMapping("msglistview")
+	@RequestMapping("/msglistview")
 	public String messagelistview(HttpSession session,Model m) throws SQLException{
 		String email = (String) session.getAttribute("skey");	//사용자 정보 넣기
 		List<MessageVO> list =	dao.messagelist(email);			//사용자의 email리스트 출력
@@ -442,14 +442,14 @@ public class MemberController {
 	}
 	
 	//메시지 입력폼 이동
-	@RequestMapping("msgwrite")
+	@RequestMapping("/msgwrite")
 	public String messagewrite(HttpSession session, MessageVO mvo,Model m) throws SQLException{
 		
 		return "member/message/msgWrite";
 	}
 	
 	//메시지 쓰기
-	@RequestMapping("msgwriteok")
+	@RequestMapping("/msgwriteok")
 	public String messagewrite(HttpSession session, MessageVO mvo,Model m,@RequestParam String title,@RequestParam String content,@RequestParam String rvemail) throws SQLException{
 	 	
 	String email = (String)session.getAttribute("skey");	
@@ -465,7 +465,7 @@ public class MemberController {
 	}
 	
 	//메시지 상세보기
-	@RequestMapping("msgview")
+	@RequestMapping("/msgview")
 	public String msgview(Model m,@RequestParam int no) throws SQLException{
 		
 		MessageVO mvo = dao.messagedetail(no);
@@ -475,14 +475,14 @@ public class MemberController {
 	}
 	
 	//메시지 답장하기
-	@RequestMapping("msgreview")
+	@RequestMapping("/msgreview")
 	public String msgreview(@RequestParam String email,Model m){
 		m.addAttribute("email",email);
 		return "member/message/remsgWrite";
 	}
 	
 	//메시지 삭제하기
-	@RequestMapping("msgdelete")
+	@RequestMapping("/msgdelete")
 	public String msgreview(@RequestParam int no) throws SQLException{
 		if(dao.messagedelete(no)) return "redirect:msglistview";
 		return "member/message/remsgWrite";
