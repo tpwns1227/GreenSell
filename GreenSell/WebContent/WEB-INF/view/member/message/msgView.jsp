@@ -49,20 +49,19 @@
 		<div class='p'>내용</div>
 		<textarea>${view.content}</textarea>
 		
-			<c:if test="${view.rvemail==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
-			<form action="delete">
-				<input type="submit" class='button' id="de" value="삭제"
-					onclick="location.href='delete'"
-					style='margin-top: 5px; width: 400px'>
-					 <input type="hidden"value="${view.no}" name="no">
-					 <input type="hidden" value="${view.rvemail}" name="rvemail">
-			</form>
 <!--  댓글 내용 보기-->
-		</c:if>
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
 			onclick="location.href='msglistview'">
 		<input class='button' type='button' value='답장' style='margin-top: 5px'
 			onclick="location.href='msgreview?email=${view.sendemail}'">
+			
+			<c:if test="${view.rvemail==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
+			<form action="msgdelete?no=${no }">
+				<input type="submit" class='button' id="de" value="삭제"
+					style='margin-top: 5px; width: 400px'>
+					 <input type="hidden"value="${view.no}" name="no">
+			</form>
+		</c:if>
 </div>
 
 </body>
