@@ -22,6 +22,20 @@ function test() {
 			.ready(
 					function() {
 
+						if ('${member.bank}' == '농협')
+							$("#nh").attr("selected", "selected");
+						else if ('${member.bank}' == '국민')
+							$("#kb").attr("selected", "selected");
+						else
+							$("#sinhan").attr("selected", "selected");
+
+						if ('${member.question}' == '가장기억에 남는 선생님은?')
+							$("#q1").attr("selected", "selected");
+						else if ('${member.question}' == '나의 고향은?')
+							$("#q2").attr("selected", "selected");
+						else
+							$("#q3").attr("selected", "selected");
+
 						$("#updatebtn").click(
 								function() {
 									if ($("#phonechk").text() == '사용불가'
@@ -41,40 +55,6 @@ function test() {
 							$("#info").css('display', '');
 							$("#pw").css('display', 'none');
 						});
-
-						$("input[name='nickname']")
-								.keyup(
-										function() {
-											if ($("input[name='nickname']")
-													.val() == '') {
-												$("#nickchk").html('');
-											} else {
-												$
-														.ajax({
-															type : "post",
-															url : "nickchk",
-															data : "nickname="
-																	+ $(
-																			"input[name='nickname']")
-																			.val(),
-															success : function(
-																	data) {
-																var str = '';
-																if (data == '사용불가')
-																	str = "<font color=red>"
-																			+ data
-																			+ "</font>";
-																else
-																	str = "<font color=green>"
-																			+ data
-																			+ "</font>";
-																$("#nickchk")
-																		.html(
-																				str);
-															}
-														});
-											}
-										});
 
 						$("input[name='phone']").keyup(
 								function() {
@@ -101,19 +81,63 @@ function test() {
 									}
 								});
 
-						if ('${member.bank}' == '농협')
-							$("#nh").attr("selected", "selected");
-						else if ('${member.bank}' == '국민')
-							$("#km").attr("selected", "selected");
-						else
-							$("#sh").attr("selected", "selected");
+						
+						$("input[name='phone']").keyup(function() {
+							
+							if ($("input[name='phone']").val() == '') {
+								
+								$("#phonechk").html('');
+							} else {
+								$.ajax({
+									type : "post",
+									url : "phonechk",
+									data : "phone=" + $("input[name='phone']").val(),
+									success : function(data) {
+										var str = '';
+										if (data == '사용불가')
+											str = "<font color=red>" + data + "</font>";
+										else
+											str = "<font color=green>" + data + "</font>";
+										$("#phonechk").html(str);
+									}
+								});
+							}
+						});
 
-						if ('${member.question}' == '가장기억에 남는 선생님은?')
-							$("#q1").attr("selected", "selected");
-						else if ('${member.question}' == '나의 고향은?')
-							$("#q2").attr("selected", "selected");
-						else
-							$("#q3").attr("selected", "selected");
+						$("input[name='account']").keyup(function() {
+							if ($("input[name='account']").val() == '') {
+								$("#accountchk").html('');
+							} else {
+								$.ajax({
+									type : "post",
+									url : "accountchk",
+									data : {
+										      account:$("input[name='account']").val(),
+										      bank:$('#bank').val()
+									       },
+									success : function(data) {
+										var str = '';
+										
+										$("select[name='bank']").change(function() {
+											
+											if ($("#sinhan").val() == '신한') {
+												$("option[value='신한']").attr("selected",selected)
+											} else if ($("#kb").val() == '국민') {
+												$("option[value='국민']").attr("selected",selected)
+											} else {
+												$("option[value='농협']").attr("selected",selected)
+											}
+										});
+
+										if (data == '사용불가')
+											str = "<font color=red>" + data + "</font>";
+										else
+											str = "<font color=green>" + data + "</font>";
+										$("#accountchk").html(str);
+									}
+								});
+							}
+						});
 
 					});
 </script>
@@ -135,7 +159,7 @@ function test() {
 				<div class='p'>별명</div>
 				<div style='text-align: left; margin-left: 50px'>
 					<input name='nickname' id='textbox' type='text' placeholder="별명"
-						value="${member.nickname}" style='width: 300px'><span
+						value="${member.nickname}" style='width: 400px' readonly="readonly"><span
 						id="nickchk" style='margin-left: 15px'></span>
 				</div>
 				<div class='p'>연락처</div>
@@ -153,12 +177,15 @@ function test() {
 					name="address" id='zip2' type='text' value="${member.address}"
 					placeholder="상세주소" style="margin-top: 10px; width: 400px">
 				<div class='p'>계좌번호</div>
-				<select name='bank' class='rf'>
+				<div style='text-align: left; margin-left: 50px'>
+				<select name='bank' class='rf' id="bank" style='width: 150px'>
 					<option id="nh" value='농협'>농협은행</option>
-					<option id="km" value='국민'>국민은행</option>
-					<option id="sh" value='신한'>신한은행</option>
+					<option id="kb" value='국민'>국민은행</option>
+					<option id="sinhan" value='신한'>신한은행</option>
 				</select> <input name="account" id='textbox' value="${member.account}"
-					type='text' placeholder="계좌번호" style='width: 200px;'>
+					type='text' placeholder="계좌번호" style='width: 150px;'>
+					<span id="accountchk" style='margin-left: 15px'></span>
+					</div>
 				<div class='p'>비밀번호 Q&A</div>
 				<select name='question' class='rf'>
 					<option id="q1" value='가장기억에 남는 선생님은?'>가장기억에 남는 선생님은?</option>
