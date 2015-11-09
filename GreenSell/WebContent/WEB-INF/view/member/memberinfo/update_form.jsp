@@ -55,6 +55,7 @@ function test() {
 							$("#info").css('display', '');
 							$("#pw").css('display', 'none');
 						});
+						
 
 						$("input[name='phone']").keyup(
 								function() {
