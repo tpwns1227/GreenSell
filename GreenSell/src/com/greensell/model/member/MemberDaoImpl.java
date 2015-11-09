@@ -289,4 +289,9 @@ public class MemberDaoImpl implements MemberDao {
 		return mvo;
 	}
 
+	@Override
+	public boolean messagedelete(int no) throws SQLException {
+		int i = sqlSession.insert("member.messagedelete", no);
+		return (i > 0) ? true : false;
+	}
 }
