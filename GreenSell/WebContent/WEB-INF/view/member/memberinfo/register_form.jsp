@@ -87,18 +87,21 @@
 				$.ajax({
 					type : "post",
 					url : "accountchk",
-					data : "account=" + $("input[name='account']").val(),
+					data : {
+						      account:$("input[name='account']").val(),
+						      bank:$('#bank').val()
+					       },
 					success : function(data) {
 						var str = '';
 						
 						$("select[name='bank']").change(function() {
 							
-							if ($("#신한").val() == '신한') {
-								$("option[value='신한']").attr("selected")
-							} else if ($("#국민").val() == '국민') {
-								$("option[value='국민']").attr("selected")
+							if ($("#sinhan").val() == '신한') {
+								$("option[value='신한']").attr("selected",selected)
+							} else if ($("#kb").val() == '국민') {
+								$("option[value='국민']").attr("selected",selected)
 							} else {
-								$("option[value='농협']").attr("selected")
+								$("option[value='농협']").attr("selected",selected)
 							}
 						});
 
@@ -107,6 +110,27 @@
 						else
 							str = "<font color=green>" + data + "</font>";
 						$("#accountchk").html(str);
+					}
+				});
+			}
+		});
+				$("input[name='name']").keyup(function() {
+			
+				if ($("input[name='name']").val() == '') {
+				
+					$("#namechk").html('');
+				} else {
+					$.ajax({
+						type : "post",
+						url : "namechk",
+						data : "name=" + $("input[name='name']").val(),
+						success : function(data) {
+						var str = '';
+						if (data == '사용불가')
+							str = "<font color=red>" + data + "</font>";
+						else
+							str = "<font color=green>" + data + "</font>";
+						$("#namechk").html(str);
 					}
 				});
 			}
@@ -128,8 +152,10 @@
 			</div>
 
 			<div class='p'>이름</div>
+			<div style='text-align: left; margin-left: 50px'>
 			<input name='name' id='textbox' type='text' placeholder="이름"
-				maxlength="6"> <span id="namechk" style="margin-left: 15px"></span>
+				maxlength="6" style='width: 300px'> <span id="namechk" style="margin-left: 15px; "></span>
+			</div>
 			<div class='p'>별명</div>
 			<div style='text-align: left; margin-left: 50px'>
 				<input name='nickname' id='textbox' type='text' placeholder="별명"
@@ -156,13 +182,15 @@
 				style="margin-top: 10px; width: 400px">
 
 			<div class='p'>계좌번호</div>
-			<select name='bank' class='rf'>
-				<option  value='국민' id="국민">국민은행</option>
-				<option  value='신한' id="신한">신한은행</option>
-				<option value='농협' id="농협">농협은행</option>
+			<div style='text-align: left; margin-left: 50px'>
+			<select name='bank' class='rf' id="bank" style='width: 150px'>
+				<option  value='국민' id="kb">국민은행</option>
+				<option  value='신한' id="sinhan">신한은행</option>
+				<option value='농협' id="nh">농협은행</option>
 			</select> <input name="account" id='textbox' maxlength="20" type='text'
-				placeholder="계좌번호" style='width: 200px;'> <span
+				placeholder="계좌번호" style='width: 150px;'> <span
 				id="accountchk" style="margin-left: 15px"></span>
+				</div>
 			<div class='p'>비밀번호 Q&A</div>
 			<select name='question' class='rf'>
 				<option value='가장기억에 남는 선생님은?'>가장기억에 남는 선생님은?</option>
