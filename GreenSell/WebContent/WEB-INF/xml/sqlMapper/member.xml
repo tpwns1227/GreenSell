@@ -143,4 +143,9 @@
 		insert into message values(no_meg_seq.nextval,#{email},#{nickname},#{content},#{title},sysdate)
 	</insert>
 	
+	<!-- 계좌번호 확인 -->
+	<select id="accountchk" parameterType="String" resultType="String">
+		select account from member where account=#{account}
+	</select>
+	
 </mapper>
