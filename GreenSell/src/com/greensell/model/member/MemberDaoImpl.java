@@ -80,6 +80,18 @@ public class MemberDaoImpl implements MemberDao {
 		}
 		return itemsellvo;
 	}
+	
+	@Override
+	public List<ItemSellVO> buylist(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		List<String> list = sqlSession.selectList("member.buylist",email);
+		List<ItemSellVO> itemsellvo=new ArrayList<ItemSellVO>();
+		for(int i=0;i<list.size();i++){	
+		String no = list.get(i);
+		itemsellvo.add((ItemSellVO) sqlSession.selectOne("member.getitem",no));
+		}
+		return itemsellvo;
+	}
 
 	@Override
 	public List<ItemSellVO> sellItem(String email) {// 판매할 상품보기
@@ -302,4 +314,19 @@ public class MemberDaoImpl implements MemberDao {
 		int i = sqlSession.insert("member.messagedelete", no);
 		return (i > 0) ? true : false;
 	}
+	
+	@Override
+	public List<String> buyto(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		List<String> list = sqlSession.selectList("member.takeover", email);
+		return list;
+	}
+	
+	@Override
+	public boolean takeover(String itemno) throws SQLException {
+		// TODO Auto-generated method stub
+		int i = sqlSession.update("member.updateto",itemno);
+		return (i>0)? true:false;
+	}
+	
 }

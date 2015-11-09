@@ -28,6 +28,7 @@ import com.greensell.member.beans.MessageVO;
 import com.greensell.member.beans.PointVO;
 import com.greensell.member.beans.ZipVo;
 import com.greensell.model.member.MemberDao;
+import com.greensell.model.sell.SellDao;
 import com.greensell.sell.beans.AuctionVO;
 import com.greensell.sell.beans.ItemSellVO;
 
@@ -36,6 +37,8 @@ public class MemberController {
 
 	@Autowired
 	MemberDao dao;
+	@Autowired
+	SellDao sdao;
 
 	@RequestMapping("/result") // 회원가입하면 이동되는 페이지
 	public String insert(MemberVO v) {
@@ -487,4 +490,34 @@ public class MemberController {
 		if(dao.messagedelete(no)) return "redirect:msglistview";
 		return "member/message/remsgWrite";
 	}
+	
+	@RequestMapping("/buy_form") // 구매 목록 이동하기
+	public String buy_form(@RequestParam String email, Model m) throws SQLException {
+		List<ItemSellVO> list = dao.buylist(email);
+		List<String> takeoverlist = dao.buyto(email);
+		List<String> fristimg = new ArrayList<String>();
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
+		m.addAttribute("fristimg", fristimg);
+		m.addAttribute("itemlist", list);
+		m.addAttribute("tolist", takeoverlist);
+		return "member/memberfunction/buy_form";
+	}
+	
+	@RequestMapping("/takeoverok")
+	public String takeoverok(@RequestParam String no, @RequestParam String email) throws SQLException {
+		dao.takeover(no);//인수중을 완료로 바꾸고 
+		ItemSellVO item = sdao.itemDetail(Integer.parseInt(no));
+		 int price = item.getItemprice();		
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("price", price);
+		 map.put("email", item.getEmail());
+		 dao.updatePoint(map);//판매자의 포인트를 가격만큼 지불
+		return "redirect:buy_form?email=" + email;
+	}
+	
+	
+	
 }

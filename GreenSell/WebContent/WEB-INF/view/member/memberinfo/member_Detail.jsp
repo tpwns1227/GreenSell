@@ -22,6 +22,12 @@
 		document.detail.action = 'cart_form';
 		document.detail.submit();
 	}
+	
+	function buy() {
+		document.detail.action = 'buy_form';
+		document.detail.submit();
+	}
+	
 	$(document).ready(function(){
 		$("#mywrite").click(function(){
 			var win = window.open('mywriteForm', "post",
@@ -88,6 +94,9 @@
 				<input class='button2' type="button" id="mywrite" value='내가 올린 글'> 
 				<input class='button2' type="button" value='찜 목록'
 				onclick="like()">
+				<input class='button2' type="button" value='구매 목록'
+				onclick="buy()">
+				
 		</div>
 	</form>
 	<jsp:include page="../../main/bottom.jsp"></jsp:include>

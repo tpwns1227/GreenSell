@@ -28,6 +28,10 @@
 		select itemno from selected where email=#{email}
 	</select>
 	
+	<select id="buylist" resultType="String" parameterType="String">
+		select itemno from buy where email=#{email}
+	</select>
+	
 	<select id="getitem" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
 		select * from itemsell where no=#{itemno}
 	</select>
@@ -153,6 +157,12 @@
 		select account from member where account=#{account}
 	</select>
 	
+	<select id="takeover" parameterType="String" resultType="String">
+		select takeover from buy where email=#{email}
+	</select>
 	
+	<update id="updateto" parameterType="String">
+		update buy set takeover='완료' where itemno=#{itemno}
+	</update>
 	
 </mapper>
