@@ -39,33 +39,26 @@
 		<input class='textbox' type='text' value='${view.email}' readonly>
 		<table style="width: 400px">
 			<tr>
-				<td width='200px'><div class='p'>작성일</div></td>
-				<td width='200px'><div class='p'>조회수</div></td>
+				<td width='300px'><div class='p'>작성일</div></td>
 			</tr>
 		</table>
 		<input class='textbox' type='text' value='${view.mdate}' readonly
-			style='width: 200px'> <input class='textbox' type='text'
-			value='${view.hits}' readonly style='width: 200px'>
+			style='width: 300px'>
 		<div class='p'>내용</div>
-		<textarea readonly>${view.content}</textarea>
-		<c:if test="${view.email==skey}">
-
-			<input type="button" class='button' id="up" value="수정"
-				onclick="location.href='update?no=${view.no}'"
-				style='margin-top: 5px; width: 400px'>
-				</c:if>
-				<c:if test="${view.email==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
+		<textarea>${view.content}</textarea>
+		
+			<c:if test="${view.email==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
 			<form action="delete">
 				<input type="submit" class='button' id="de" value="삭제"
 					onclick="location.href='delete'"
 					style='margin-top: 5px; width: 400px'>
-					 <input type="hidden"value="${view.no}" name="no"> 
+					 <input type="hidden"value="${view.no}" name="no">
 					 <input type="hidden" value="${view.email}" name="email">
 			</form>
 <!--  댓글 내용 보기-->
 		</c:if>
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
-			onclick="location.href='msglist?email=${view.bbsno}'">
+			onclick="location.href='msglist?email=${view.no}'">
 			<%-- <c:forEach var="cm" items="${comment}">
 			<div class='border'>답장</div>
 			<table style='margin-left: 50px; width: 400px'>
