@@ -416,17 +416,18 @@ public class MemberController {
 	
 	//메시지 쓰기
 	@RequestMapping("msgwriteok")
-	public String messagewrite(HttpSession session, MessageVO mvo,Model m,@RequestParam String title,@RequestParam String content,@RequestParam String email) throws SQLException{
+	public String messagewrite(HttpSession session, MessageVO mvo,Model m,@RequestParam String title,@RequestParam String content,@RequestParam String sendemail) throws SQLException{
 	 	
-	MemberVO memvo = dao.memberdetail(email);
+	MemberVO memvo = dao.memberdetail(sendemail);
 	Map<String, Object> map = new HashMap<String, Object>();
-	if(email!=null){return"member/message/msgWrite";}
-	map.put("email", email);
+	map.put("sendemail", sendemail);
+	map.put("rvemail", session.getAttribute("skey"));
 	map.put("nickname",memvo.getNickname());
 	map.put("content", content);
 	map.put("title",title );
 
 	dao.messageinsert(map);
+	System.out.println("메세지가 입력되었습니다.");
 		return "member/message/msgList";
 	}
 	
@@ -438,6 +439,13 @@ public class MemberController {
 		System.out.println("여기가 나오니 ?");
 		m.addAttribute("view",mvo);		
 		return "member/message/msgView";
-	}	
+	}
+	
+	//메시지 답장하기
+	@RequestMapping("msgreview")
+	public String msgreview(@RequestParam String email,Model m){
+		m.addAttribute("email",email);
+		return "member/message/remsgWrite";
+	}
 
 }
