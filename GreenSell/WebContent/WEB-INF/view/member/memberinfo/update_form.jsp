@@ -56,7 +56,6 @@ function test() {
 							$("#pw").css('display', 'none');
 						});
 						
-
 						$("input[name='phone']").keyup(
 								function() {
 									if ($("input[name='phone']").val() == '') {
