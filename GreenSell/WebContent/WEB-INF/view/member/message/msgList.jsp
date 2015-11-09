@@ -47,7 +47,7 @@ $(document).ready(function(){
 		</tr>
 		<c:forEach var="list" items="${list}">
 		<tr>
-			 <td align="center" width="500"><a href="view?no=${list.getNo()}&email=${list.getEmail()}">${list.getTitle()}</a></td>
+			 <td align="center" width="500"><a href="msgview?no=${list.no}&email=${list.email}">${list.getTitle()}</a></td>
 			<td align="center">${list.getEmail()}</td>
 			<td align="center">${list.getMdate()}</td> 
 		</tr>
@@ -136,7 +136,7 @@ $(document).ready(function(){
 			<div class="container">
 				<input type="text" id="searchbox" class="textbox" style="width: 150px"> 
 				<input type="button" id="search" style="width: 100px; height: 40px" value="검색">
-				<input type="button" style="width: 100px; height: 40px" value="글쓰기" onclick="location.href='write?no=${no}'">
+				<input type="button" style="width: 100px; height: 40px" value="글쓰기" onclick="location.href='msgwrite?email=${skey}'">
 			</div>
 	</div>
 

@@ -14,7 +14,7 @@
 <script type="text/javascript">
 	function CM() {
 		if (document.cmreply.cmcontent.value == "") {
-			alert("댓글을 넣어주세요.");
+			alert("내용을 넣어주세요.");
 			document.cmreply.cmcontent.focus();
 			return false;
 		} else {
@@ -32,7 +32,7 @@
 
 	<div class='container'>
 	
-		<div class='border'>글보기</div>
+		<div class='border'>메세지 쓰기</div>
 		<div class='p'>제목</div>
 		<input class='textbox' value='${view.title}' readonly type='text'>
 		<div class='p'>작성자</div>
@@ -43,11 +43,11 @@
 				<td width='200px'><div class='p'>조회수</div></td>
 			</tr>
 		</table>
-		<input class='textbox' type='text' value='${view.bbsdate}' readonly
+		<input class='textbox' type='text' value='${view.mdate}' readonly
 			style='width: 200px'> <input class='textbox' type='text'
 			value='${view.hits}' readonly style='width: 200px'>
 		<div class='p'>내용</div>
-		<textarea readonly>${view.bbscontent}</textarea>
+		<textarea readonly>${view.content}</textarea>
 		<c:if test="${view.email==skey}">
 
 			<input type="button" class='button' id="up" value="수정"
@@ -60,15 +60,14 @@
 					onclick="location.href='delete'"
 					style='margin-top: 5px; width: 400px'>
 					 <input type="hidden"value="${view.no}" name="no"> 
-					 <input type="hidden"value="${view.bbsno}" name="bbsno">
 					 <input type="hidden" value="${view.email}" name="email">
 			</form>
 <!--  댓글 내용 보기-->
 		</c:if>
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
-			onclick="location.href='list?no=${view.bbsno}'">
-			<c:forEach var="cm" items="${comment}">
-			<div class='border'>답글</div>
+			onclick="location.href='msglist?email=${view.bbsno}'">
+			<%-- <c:forEach var="cm" items="${comment}">
+			<div class='border'>답장</div>
 			<table style='margin-left: 50px; width: 400px'>
 			<tr>
 				<td width='150px'>작성자</td>
@@ -101,9 +100,9 @@
 							
 			
 		</table>
-		</c:forEach>
+		</c:forEach> --%>
 		<!--  댓글 내용쓰기 grade이 1일때만 가능-->
-		<c:if test="${grade==1 && view.bbsno==3}">
+		<%-- <c:if test="${grade==1 && view.bbsno==3}">
 		<div class='p'>답글 내용</div>
 		<form name="cmreply" action="cmok" method="post">
 			<input type="hidden" value="${skey}" name="email">
@@ -112,7 +111,7 @@
 			
 			<input class='button' type="submit" value="확인" onclick="return CM()">
 		</form>
-	</c:if>
+	</c:if> --%>
 </div>
 
 </body>
