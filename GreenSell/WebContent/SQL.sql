@@ -153,6 +153,8 @@ foreign key (rvemail) references member(email) on delete cascade
 
 select * from message
 
+delete message where no=15
+
 drop table Message
 drop table buy;
 drop table member;
