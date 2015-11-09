@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.greensell.member.beans.MemberVO;
+import com.greensell.member.beans.MessageVO;
 import com.greensell.member.beans.PointVO;
 import com.greensell.member.beans.ZipVo;
 import com.greensell.model.member.MemberDao;
@@ -378,7 +379,6 @@ public class MemberController {
 		map.put("price", price);
 
 		int point;
-		System.out.println("여기");
 		point = Integer.parseInt((String) session.getAttribute("point"));
 
 		point += Integer.parseInt(price);
@@ -390,5 +390,48 @@ public class MemberController {
 		session.setAttribute("point", poin);
 		return "redirect:home";
 	}
+	
+	//메시지 리스트 보기
+	@RequestMapping("msglistview")
+	public String messagelistview(HttpSession session,Model m) throws SQLException{
+		String email = (String) session.getAttribute("skey");
+		List<MessageVO> list =	dao.messagelist(email);
+		m.addAttribute("list",list);
+		
+		return "member/message/msgList";
+	}
+	
+	//메시지 입력폼 이동
+	@RequestMapping("msgwrite")
+	public String messagewrite(HttpSession session, MessageVO mvo,Model m) throws SQLException{
+		
+		return "member/message/msgWrite";
+	}
+	
+	//메시지 쓰기
+	@RequestMapping("msgwriteok")
+	public String messagewrite(HttpSession session, MessageVO mvo,Model m,@RequestParam String title,@RequestParam String content,@RequestParam String email) throws SQLException{
+	 	
+	MemberVO memvo = dao.memberdetail(email);
+	Map<String, Object> map = new HashMap<String, Object>();
+	if(email!=null){return"member/message/msgWrite";}
+	map.put("email", email);
+	map.put("nickname",memvo.getNickname());
+	map.put("content", content);
+	map.put("title",title );
+
+	dao.messageinsert(map);
+		return "member/message/msgList";
+	}
+	
+	//메시지 상세보기
+	@RequestMapping("msgview")
+	public String msgview(Model m,@RequestParam int no) throws SQLException{
+		
+		MessageVO mvo = dao.messagedetail(no);
+		System.out.println("여기가 나오니 ?");
+		m.addAttribute("view",mvo);		
+		return "member/message/msgView";
+	}	
 
 }
