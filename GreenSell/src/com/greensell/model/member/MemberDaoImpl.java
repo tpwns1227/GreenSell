@@ -265,6 +265,15 @@ public class MemberDaoImpl implements MemberDao {
 		return false;
 	}
 	
+	@Override
+	public boolean collectPoint(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		int t = sqlSession.insert("member.collectPoint", map);
+		if (t == 1)
+			return true;
+		return false;
+	}
+	
 	
 	//메시지 리스트 출력
 	@Override
