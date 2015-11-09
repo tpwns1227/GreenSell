@@ -142,12 +142,13 @@ create table zipcode  (
 
 create table Message(
 no number primary key,
-email varchar2(50) not null,
-nickname varchar2(30) not null,
+sendemail varchar2(50) not null,
+rvemail varchar2(50) not null,
 content varchar2(3000) not null,
 title varchar2(20) not null,
 mdate date not null,
-foreign key (email) references member(email) on delete cascade
+foreign key (sendemail) references member(email) on delete cascade
+foreign key (rvemail) references member(email) on delete cascade
 );
 
 select * from message
