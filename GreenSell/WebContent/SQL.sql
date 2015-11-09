@@ -140,7 +140,17 @@ create table zipcode  (
    bunji                VARCHAR2(30)
 )
 
-drop table zipcode
+create table Message(
+no number primary key,
+email varchar2(50) not null,
+nickname varchar2(30) not null,
+content varchar2(3000) not null,
+title varchar2(20) not null,
+mdate date not null,
+foreign key (email) references member(email) on delete cascade
+);
+
+drop table Message
 drop table buy;
 drop table member;
 drop table itemsell;
@@ -163,3 +173,4 @@ create sequence no_itemimg_seq start with 1 increment by 1;
 create sequence no_auction_seq start with 1 increment by 1;
 create sequence no_selected_seq start with 1 increment by 1;
 create sequence no_buy_seq start with 1 increment by 1;
+create sequence no_meg_seq start with 1 increment by 1;
