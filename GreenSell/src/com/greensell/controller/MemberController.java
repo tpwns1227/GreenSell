@@ -400,8 +400,8 @@ public class MemberController {
 	//메시지 리스트 보기
 	@RequestMapping("msglistview")
 	public String messagelistview(HttpSession session,Model m) throws SQLException{
-		String email = (String) session.getAttribute("skey");
-		List<MessageVO> list =	dao.messagelist(email);
+		String email = (String) session.getAttribute("skey");	//사용자 정보 넣기
+		List<MessageVO> list =	dao.messagelist(email);			//사용자의 email리스트 출력
 		m.addAttribute("list",list);
 		
 		return "member/message/msgList";
@@ -416,19 +416,19 @@ public class MemberController {
 	
 	//메시지 쓰기
 	@RequestMapping("msgwriteok")
-	public String messagewrite(HttpSession session, MessageVO mvo,Model m,@RequestParam String title,@RequestParam String content,@RequestParam String sendemail) throws SQLException{
+	public String messagewrite(HttpSession session, MessageVO mvo,Model m,@RequestParam String title,@RequestParam String content,@RequestParam String rvemail) throws SQLException{
 	 	
-	MemberVO memvo = dao.memberdetail(sendemail);
+	String email = (String)session.getAttribute("skey");	
+	MemberVO memvo = dao.memberdetail(email);
 	Map<String, Object> map = new HashMap<String, Object>();
-	map.put("sendemail", sendemail);
-	map.put("rvemail", session.getAttribute("skey"));
-	map.put("nickname",memvo.getNickname());
+	map.put("sendemail", email);
+	map.put("rvemail", rvemail);
 	map.put("content", content);
 	map.put("title",title );
 
 	dao.messageinsert(map);
 	System.out.println("메세지가 입력되었습니다.");
-		return "member/message/msgList";
+		return "redirect:msglistview";
 	}
 	
 	//메시지 상세보기
@@ -437,6 +437,7 @@ public class MemberController {
 		
 		MessageVO mvo = dao.messagedetail(no);
 		System.out.println("여기가 나오니 ?");
+		mvo.getSendemail();
 		m.addAttribute("view",mvo);		
 		return "member/message/msgView";
 	}
