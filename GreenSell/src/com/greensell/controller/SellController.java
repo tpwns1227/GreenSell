@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.greensell.bbs.beans.ReplyVo;
 import com.greensell.member.beans.MemberPSVO;
+import com.greensell.member.beans.MemberVO;
 import com.greensell.model.member.MemberDao;
 import com.greensell.model.member.MemberDaoImpl;
 import com.greensell.model.sell.SellDao;
@@ -42,6 +43,8 @@ public class SellController {
 	// 자동 매핑
 	@Autowired
 	SellDao dao;
+	@Autowired
+	MemberDao mdao;
 	
 	Map<String, Object> map = new HashMap<String, Object>();
 	@RequestMapping("/sell_detail") // 글 클릭시 상세보기로 이동
@@ -454,16 +457,32 @@ public class SellController {
 		return null;
 	}
 	
-	//안전거래에서 구매자가 클릭시
-	@RequestMapping("/safe_sell")
-	public String safe_sell(){
-		return "/sell/safe_sell";
-	}
-	
-	//안전거래에서 판매자가 클릭시
-	@RequestMapping("/safe_buy")
-	public String safe_buy(){
-		return "/sell/safe_buy";
+	@RequestMapping("/sellok")
+	public @ResponseBody String sellok(HttpSession session,@RequestParam String price,@RequestParam String itemname, 
+			@RequestParam String rvemail, @RequestParam String itemno) throws SQLException{
+		String buyemail = (String) session.getAttribute("skey");
+		
+		MemberVO mvo = new MemberVO();
+		mvo = mdao.memberdetail(buyemail);
+		map.put("email", buyemail);
+		map.put("itemno", itemno);
+		dao.insertbuy(map);//구매 테이블에 정보넣기
+		map.put("rvemail", rvemail);
+		String str = "안녕하세요. 관리자 입니다." + buyemail +"님 으로 부터 구매신청이 들어왔습니다. '우편번호:"+mvo.getZipcode() +" 주소:"+ mvo.getAddress()
+		+"' 이곳으로 "+itemname+"제품을 보내주시기 바랍니다. 인수가 확인되면 판매금액을 받으실 수 있습니다.";
+		map.put("content", str);//판매자 에게 메시지 보내기
+		dao.insertMessage(map);//메시지 저장
+		int point;
+		point = Integer.parseInt((String) session.getAttribute("point"));
+		point -= Integer.parseInt(price);
+		String poin = Integer.toString(point);
+		map.put("price", price);
+		mdao.collectPoint(map);  //가격만큼 포인트 차감
+		System.out.println(itemno);
+		dao.updatesellstate(itemno);
+		session.setAttribute("point",poin);
+		
+		return poin;
 	}
 	
 	

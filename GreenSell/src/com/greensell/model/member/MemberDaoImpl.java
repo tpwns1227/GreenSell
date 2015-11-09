@@ -90,8 +90,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public MemberVO memberdetail(String email) {// 회원정보 상세보기
 		// TODO Auto-generated method stub
-		MemberVO mem = sqlSession.selectOne("member.selectDetail", email);
-		return mem;
+		return sqlSession.selectOne("member.selectDetail", email);
 	}
 
 	@Override

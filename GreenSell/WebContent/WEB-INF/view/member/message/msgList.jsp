@@ -130,14 +130,14 @@ $(document).ready(function(){
 	out.print(str);	
 	%> --%>
 
-	<div>
+	<%-- <div>
 	
 			<div class="container">
 				<input type="text" id="searchbox" class="textbox" style="width: 150px"> 
 				<input type="button" id="search" style="width: 100px; height: 40px" value="검색">
 				<input type="button" style="width: 100px; height: 40px" value="글쓰기" onclick="location.href='msgwrite?email=${skey}'">
 			</div>
-	</div>
+	</div> --%>
 
 </center></div>
 </body>

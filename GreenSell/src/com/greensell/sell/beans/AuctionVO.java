@@ -10,7 +10,14 @@ public class AuctionVO {
 	   private String howsell;
 	   private String itemdetail;
 	   private String email;
+	   private String sellstate;
 	
+	public String getSellstate() {
+		return sellstate;
+	}
+	public void setSellstate(String sellstate) {
+		this.sellstate = sellstate;
+	}
 	private int startprice;
 	private int nowprice;
 	private String finishtime;

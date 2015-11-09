@@ -41,6 +41,8 @@ public interface SellDao {
 	public List<MemberPSVO> selectPS(String email) throws SQLException;
 	public boolean returnbidprice(Map<String, Object> map) throws SQLException;
 	public boolean bidpriceminus(Map<String, Object> map) throws SQLException;
-	
+	public boolean insertbuy(Map<String, Object> map) throws SQLException;
+	public boolean insertMessage(Map<String, Object> map) throws SQLException;
+	public boolean updatesellstate(String itemno) throws SQLException;
 	
 }

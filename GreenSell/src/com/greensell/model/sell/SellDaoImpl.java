@@ -208,5 +208,27 @@ public boolean insertpost(MemberPSVO mp) throws SQLException {//후기게시판
 			int i = sqlSession.update("bidpriceminus", map);
 			return (i>0)? true:false;
 		}
+
+@Override
+	public boolean insertbuy(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		int i = sqlSession.insert("sell.insertbuy", map);
+		return (i>0)? true:false;
+	}
+
+@Override
+	public boolean insertMessage(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+	int i = sqlSession.insert("sell.insertmessage", map);
+	return (i>0)? true:false;
+	}
+
+@Override
+	public boolean updatesellstate(String itemno) throws SQLException {
+		// TODO Auto-generated method stub
+	int i = sqlSession.update("sell.updatesellstate", itemno);
+	return (i>0)? true:false;
+	}
+
 	
 }

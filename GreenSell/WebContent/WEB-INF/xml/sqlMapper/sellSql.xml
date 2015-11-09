@@ -69,7 +69,7 @@
   	</update>
   	
   	<insert id="insertitem" parameterType="com.greensell.sell.beans.ItemSellVO">
-     	insert into itemsell values(no_itemsell_seq.nextval,#{itemname},#{itemprice},#{itemstate},#{category},#{howsell},#{itemdetail},#{email})
+     	insert into itemsell values(no_itemsell_seq.nextval,#{itemname},#{itemprice},#{itemstate},#{category},#{howsell},#{itemdetail},#{email},'판매중')
    </insert>
    
    <insert id="imginsert" parameterType="map">
@@ -135,5 +135,16 @@
    	update member set point=point-#{nowprice} where email=#{email}
    </update>
     
+    <insert id="insertbuy" parameterType="map">
+    	insert into buy values(no_buy_seq.nextval,#{itemno},#{email},'인수중')
+    </insert>
+    
+    <insert id="insertmessage" parameterType="map">
+    	insert into message values(no_meg_seq.nextval,'관리자',#{rvemail},#{content},'판매요청',sysdate)
+    </insert>
+    
+  	<update id="updatesellstate" parameterType="String">
+  		update itemsell set sellstate='판매 완료' where no=#{itemno}
+  	</update>
     
 </mapper>

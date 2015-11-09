@@ -103,6 +103,7 @@
 		
 		$("#email").click(function(){
 			if('${skey}' == '' || '${skey}' == null){
+				alert("이용하시려면 먼저 로그인을 해주세요.");
 				return;
 				}
 			var no=${no}
@@ -112,19 +113,44 @@
 				
 						
 		});
+		var point = parseInt('${point}');
+		var price = parseInt('${itemone.getItemprice()}');
 		
 		$("#safe").click(function(){
 			if('${skey}' == '' || '${skey}' == null){
+				alert("이용하시려면 먼저 로그인을 해주세요.")
 				return;
 				}
-			var no=1;
-			if(no){//safe_buy
-				window.open('safe_buy','_blank','width=500 heigth=400');
+			if('${skey}'=='${itemone.email}'){
+				alert("자신의 게시물에는 거래신청을 할 수 없습니다.");
+				return;
 			}
-			else if(no!=1){//safe_sell
-				window.open('safe_sell','_blank','width=500 heigth=400');	
+			if(point<price){
+				alert('포인트가 부족합니다.');
+				return;
 			}
-			document.form1.submit();
+			if($("#sellresult").text()=='판매 완료'){
+				alert('이미 판매된 상품입니다.');
+				return;
+			}
+				
+			if(confirm("정말로 입찰하시겠습니까?\n 입찰 하시게 되면 포인트에서 차감됩니다.")){
+				
+				$.ajax({
+					type:"post",
+					url: "sellok",
+					data: "itemno=${itemone.no}&rvemail=${itemone.email}&itemname=${itemone.itemname}&price=${itemone.itemprice}",
+					success : function(data){ 
+						$("#point").html("<font color='red'>"+data+"</font>");
+					}
+				});
+				
+				$("#sellresult").html("<font size='5px' color='red'>판매 완료</font>");
+			}else{
+				return;
+			}
+				
+			
 		});
 
 	});
@@ -134,10 +160,11 @@
 </head>
 <body>
 
-
+		
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='test'>
 	<div class="container3">
+		
 		<div class='img' style='text-align: left;'>
 			<img src='/GreenSell/img/item/${imglist.get(0)}' class='mimg'>
 			
@@ -165,6 +192,7 @@
 			
 		<c:if test="${itemone.getHowsell() == '중고'}">
 		<div class='info'>
+		<span id="sellresult"><font size='5px' color='red'>${itemone.getSellstate()}</font></span>
 			<div class='bold2'>제품명</div>
 			<div class='font'>${itemone.getItemname()}</div>
 			<div class='bold2'>상태</div>
@@ -179,7 +207,7 @@
 			<div class='font'>${itemone.getEmail()}</div>
 			<div class='bold2'>설명</div>
 			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
-			 <form name="form1">
+			 
 				<input type="hidden" value="${itemone.getEmail() }" name="em">
 				<input type="hidden" value="${itemone.getNo() }" name="no">
 				<input class='callbtn' id="email" type="button" value="연락처" style='width: 150px'>
@@ -188,7 +216,7 @@
 			<input class='callbtn' type="button" id="selectedbtn" value="찜 하기" style='width: 100px'> 
 			
 		
-		</form>
+		
 		</div>
 		</c:if>
 		
