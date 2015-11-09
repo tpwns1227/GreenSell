@@ -134,7 +134,7 @@
 	</select>
 	
 	<!-- 메세지 상세보기 -->
-	<select id="selectmessagedetail" parameterType="no" resultType="com.greensell.member.beans.MessageVO">
+	<select id="selectmessagedetail" parameterType="int" resultType="com.greensell.member.beans.MessageVO">
 		select * from message where no=#{no}
 	</select>
 	
