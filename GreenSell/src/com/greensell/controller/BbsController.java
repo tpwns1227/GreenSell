@@ -95,14 +95,15 @@ public class BbsController {
             //System.out.println("이메일 : "+email);
             //이메일로 등급찾기
         	 
+            //System.out.println(grade);
+            System.out.println("================================================================");
+            BbsVo bbsVo = dao.view(no);
+            System.out.println(bbsVo.getTitle());
+            //System.out.println(bbsVo.getBbsno());
+            m.addAttribute("view", bbsVo);
             int grade=dao.grade((String)session.getAttribute("skey"));
             m.addAttribute("grade",grade);
-            //System.out.println(grade);
-            
-            BbsVo bbsVo = dao.view(no);
-            //System.out.println(bbsVo.getBbsno());
             List<ReplyVo> replyvo=dao.selectComment(r);
-            m.addAttribute("view", bbsVo);
             m.addAttribute("comment",replyvo);
            System.out.println(bbsVo.getBbsno());
             
