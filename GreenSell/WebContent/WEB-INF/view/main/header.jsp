@@ -61,6 +61,7 @@ function pointcollect(){
 			<%
 				} else {
 			%>
+			<a>${skey}님 환영합니다...</a>
 			<a id="point"><font color="red">${point}</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트</a>
 			<a href="member_Detail">내 정보</a>
 			<a href="logout">로그아웃</a>
