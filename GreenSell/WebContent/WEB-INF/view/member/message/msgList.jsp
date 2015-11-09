@@ -47,8 +47,8 @@ $(document).ready(function(){
 		</tr>
 		<c:forEach var="list" items="${list}">
 		<tr>
-			 <td align="center" width="500"><a href="msgview?no=${list.no}&email=${list.email}">${list.getTitle()}</a></td>
-			<td align="center">${list.getEmail()}</td>
+			 <td align="center" width="500"><a href="msgview?no=${list.no}&email=${list.getSendemail()}">${list.getTitle()}</a></td>
+			<td align="center">${list.getSendemail()}</td>
 			<td align="center">${list.getMdate()}</td> 
 		</tr>
 		</c:forEach>

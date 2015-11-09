@@ -32,11 +32,13 @@
 
 	<div class='container'>
 	
-		<div class='border'>메세지 쓰기</div>
+		<div class='border'>메세지 보기</div>
 		<div class='p'>제목</div>
 		<input class='textbox' value='${view.title}' readonly type='text'>
-		<div class='p'>작성자</div>
-		<input class='textbox' type='text' value='${view.email}' readonly>
+		<div class='p'>보낸이</div>
+		<input class='textbox' type='text' value='${view.getSendemail()}' readonly>
+		<div class='p'>받는이</div>
+		<input class='textbox' type="text" value='${view.getRvemail() }'>
 		<table style="width: 400px">
 			<tr>
 				<td width='300px'><div class='p'>작성일</div></td>
@@ -47,64 +49,20 @@
 		<div class='p'>내용</div>
 		<textarea>${view.content}</textarea>
 		
-			<c:if test="${view.email==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
+			<c:if test="${view.rvemail==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
 			<form action="delete">
 				<input type="submit" class='button' id="de" value="삭제"
 					onclick="location.href='delete'"
 					style='margin-top: 5px; width: 400px'>
 					 <input type="hidden"value="${view.no}" name="no">
-					 <input type="hidden" value="${view.email}" name="email">
+					 <input type="hidden" value="${view.rvemail}" name="rvemail">
 			</form>
 <!--  댓글 내용 보기-->
 		</c:if>
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
-			onclick="location.href='msglist?email=${view.no}'">
-			<%-- <c:forEach var="cm" items="${comment}">
-			<div class='border'>답장</div>
-			<table style='margin-left: 50px; width: 400px'>
-			<tr>
-				<td width='150px'>작성자</td>
-				<td width='150px'>작성일</td>
-			</tr>
-					<tr>
-						
-						<td>${cm.email}</td>
-						<td>${cm.cmdate}</td>
-					</tr>
-					<tr>
-					<td colspan="2">
-						<textarea readonly name="cmcontent" rows="2" cols="80" maxlength="800">${cm.cmcontent}</textarea> 
-					</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="right">
-							<form action="cmdelete">
-								<input type="hidden" value="${cm.cmno}" name="cmno"> <input
-									type="hidden" value="${skey}" name="skey"> <input
-									type="hidden" value="${cm.no}" name="no"> <input
-									type="hidden" value="${cm.email}" name="email">
-								<c:if test="${cm.email==skey}">
-									<input class='button' style="width: 100px" type="submit" value="삭제">
-									<br>
-								</c:if>
-							</form>
-						</td>
-					</tr>
-							
-			
-		</table>
-		</c:forEach> --%>
-		<!--  댓글 내용쓰기 grade이 1일때만 가능-->
-		<%-- <c:if test="${grade==1 && view.bbsno==3}">
-		<div class='p'>답글 내용</div>
-		<form name="cmreply" action="cmok" method="post">
-			<input type="hidden" value="${skey}" name="email">
-			 <input	type="hidden" value="${view.no}" name="no">
-			<textarea name="cmcontent" rows="2" cols="80" maxlength="800"></textarea>
-			
-			<input class='button' type="submit" value="확인" onclick="return CM()">
-		</form>
-	</c:if> --%>
+			onclick="location.href='msglistview'">
+		<input class='button' type='button' value='답장' style='margin-top: 5px'
+			onclick="location.href='msgreview?email=${view.sendemail}'">
 </div>
 
 </body>

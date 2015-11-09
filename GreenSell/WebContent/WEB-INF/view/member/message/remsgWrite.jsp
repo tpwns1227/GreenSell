@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
-	String email = (String) session.getAttribute("skey");
+	String logemail = (String) session.getAttribute("skey");
 %>
 
 <html>
@@ -40,22 +40,19 @@
 
 	<form name="MsgWriteForm" action="msgwriteok" method="post">
 <div class='container'>
-	
-		<div class='border'>메세지 쓰기</div>
+		<div class='border'>답장하기</div>
 		<div class='p'>제목</div>
-		<input name="title" class='textbox' type='text' placeholder="제목">
-		<div class='p'>보낸이</div>
-		<input name="sendemail" class='textbox' type='text' value='${skey }' readonly>
+		<input class='textbox' maxlength="50" name="title" type='text' placeholder="제목" >
 		<div class='p'>받는이</div>
-		<input name="rvemail" class='textbox' type="text" placeholder="받는이">		
+		<input name="rvemail" class='textbox' type='text' placeholder="받는이" value="${email}" readonly>
+		<div class='p'>보내는 이</div>
+		<input name="sendemail" class='textbox' type='text' placeholder="보내는이" value="<%=logemail%>" readonly>
 		<div class='p'>내용</div>
-		<textarea name="content" placeholder="내용"></textarea>
-		
-		<!--  목록 보기-->
-		<input class='button' type='submit' value='작성' style='margin-top: 5px'
-			onclick="return MSG()">
-		<input class='button' type='button' value='목록' style='margin-top: 5px'
-			onclick="location.href='msglistview'">
+		<textarea placeholder="내용" maxlength="1000" name="content"></textarea>
+		<input class='button' type='button' value='목록' style='width: 200px'
+			onclick="goUrl('msglistview?email=${logemail}');">
+			<input class='button' type='submit' value='작성'
+			style='width: 200px' onclick="return MSG()"/>
 </div>
 	</form>
 
