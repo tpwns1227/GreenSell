@@ -45,18 +45,19 @@ $(document).ready(function(){
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
-		<c:forEach var="list" items="${bbslist}">
+		<c:forEach var="list" items="${list}">
 		<tr>
-			<td align="center" width="500"><a href="view?no=${list.no}&email=${list.email}">${list.title}</a></td>
-			<td align="center">${list.email}</td>
-			<td align="center">${list.bbsdate}</td>
-			<td align="center">${list.hits}</td>
+			 <td align="center" width="500"><a href="view?no=${list.getNo()}&email=${list.getEmail()}">${list.getTitle()}</a></td>
+			<td align="center">${list.getEmail()}</td>
+			<td align="center">${list.getMdate()}</td> 
 		</tr>
 		</c:forEach>
 	</table>
-	<%
-	int totalcount = (Integer)request.getAttribute("totalcount");	
-	int nowpage = (Integer)request.getAttribute("page");	
+	
+	<%--페이지 처리하기 추후에 수정하기--%>
+	<%-- <%
+	int totalcount = (Integer)request.getAttribute("totalcount");
+	int nowpage = (Integer)request.getAttribute("page");
 	int totalpage = (totalcount/10)+1;
 	String str = "";
 	str = "<table width=\"550\" border\"1\" align=\"center\">";
@@ -128,14 +129,13 @@ $(document).ready(function(){
 	str = str +"</td></tr></table>";
 
 	out.print(str);	
-	%>
+	%> --%>
 
 	<div>
 	
 			<div class="container">
 				<input type="text" id="searchbox" class="textbox" style="width: 150px"> 
 				<input type="button" id="search" style="width: 100px; height: 40px" value="검색">
-				
 				<input type="button" style="width: 100px; height: 40px" value="글쓰기" onclick="location.href='write?no=${no}'">
 			</div>
 	</div>
