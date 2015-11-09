@@ -161,7 +161,7 @@ public class MemberController {
 				}
 			}
 		}
-	}
+	} 
 
 	@RequestMapping(value = "/phonechk", method = RequestMethod.POST)
 	public @ResponseBody String phonechk(@RequestParam String phone) throws SQLException {
