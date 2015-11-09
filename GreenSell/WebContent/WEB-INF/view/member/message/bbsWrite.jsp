@@ -35,7 +35,7 @@
 </script>
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"></jsp:include>
+	<jsp:include page="../../main/header.jsp""></jsp:include>
 
 	<form name="BbsWriteForm" action="writeok" method="post">
 		<input type="hidden" name="mode" value="W" />
@@ -57,5 +57,5 @@
 	</form>
 
 </body>
-<jsp:include page="../main/bottom.jsp"></jsp:include>
+<jsp:include page="../../main/bottom.jsp"></jsp:include>
 </html>
