@@ -105,56 +105,62 @@ public class MemberController {
 			}
 		}
 	}
+	@RequestMapping(value="/namechk", method=RequestMethod.POST)
+	public @ResponseBody String namechk(@RequestParam String name){
+		String nm = "[가-힣]{2,7}";
+		Pattern p = Pattern.compile(nm);
+		if(!p.matcher(name).matches()){
+			return "사용불가";
+		}else{
+			return "사용가능";
+		}
+	}
 
 	@RequestMapping(value = "/accountchk", method = RequestMethod.POST)
-	public @ResponseBody String accountchk(@RequestParam String account)
+	public @ResponseBody String accountchk(@RequestParam String account,@RequestParam String bank)
 			throws SQLException {
-		String sinhan = "([0-9]d{3})-(\\d{4})-(\\d{4})-(\\d{2})";
-		String kb = "(01[016789])-(\\d{3,4})-(\\d{4})";
-		String nh = "([0-9]d{3})-(\\d{4})-(\\d{4})-(\\d{2})";
+		String sinhan = "(^11[016789])-(\\d{3})-(\\d{6})";
+		String kb = "(\\d{6})-(\\d{2})-(\\d{6})";
+		String nh = "(^35[0-9])-(\\d{4})-(\\d{4})-(\\d{2})";
 		Pattern s = Pattern.compile(sinhan);
 		Pattern k = Pattern.compile(kb);
 		Pattern n = Pattern.compile(nh);
-
 		boolean accountchk = dao.accountchk(account);
-		
-			if (s.matcher(account).matches()) {
-				System.out.println("신한");
+
+		if(bank.equals("신한")){
+			if(!s.matcher(account).matches()){
+				return "사용불가";
+			}else{
+				
 				if (accountchk) {
 					return "사용불가";
-				}
-
-				else {
+				} else {
 					return "사용가능";
 				}
 			}
-		
-
-			if (k.matcher(account).matches()) {
-				System.out.println("국민은행");
+		}else if (bank.equals("농협")){
+			if(!n.matcher(account).matches()){
+				return "사용불가";
+			}else{
+				
 				if (accountchk) {
 					return "사용불가";
-				}
-
-				else {
+				} else {
 					return "사용가능";
 				}
 			}
-		
-
-			if (n.matcher(account).matches()) {
-				System.out.println("농협은행");
+		}else{
+			if(!k.matcher(account).matches()){
+				return "사용불가";
+			}else{
+				
 				if (accountchk) {
 					return "사용불가";
-				}
-
-				else {
+				} else {
 					return "사용가능";
 				}
 			}
-
-		
-		return "사용불가";
+		}
 	}
 
 	@RequestMapping(value = "/phonechk", method = RequestMethod.POST)
