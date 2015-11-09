@@ -427,7 +427,6 @@ public class MemberController {
 	map.put("title",title );
 
 	dao.messageinsert(map);
-	System.out.println("메세지가 입력되었습니다.");
 		return "redirect:msglistview";
 	}
 	
@@ -436,7 +435,6 @@ public class MemberController {
 	public String msgview(Model m,@RequestParam int no) throws SQLException{
 		
 		MessageVO mvo = dao.messagedetail(no);
-		System.out.println("여기가 나오니 ?");
 		mvo.getSendemail();
 		m.addAttribute("view",mvo);		
 		return "member/message/msgView";
@@ -448,5 +446,11 @@ public class MemberController {
 		m.addAttribute("email",email);
 		return "member/message/remsgWrite";
 	}
-
+	
+	//메시지 삭제하기
+	@RequestMapping("msgdelete")
+	public String msgreview(@RequestParam int no) throws SQLException{
+		if(dao.messagedelete(no)) return "redirect:msglistview";
+		return "member/message/remsgWrite";
+	}
 }

@@ -140,14 +140,14 @@ create table zipcode  (
    bunji                VARCHAR2(30)
 )
 
-create table Message(
+create table Message(	--밑에 시퀀스도 추가하세요. (메세지 테이블)
 no number primary key,
 sendemail varchar2(50) not null,
 rvemail varchar2(50) not null,
 content varchar2(3000) not null,
 title varchar2(20) not null,
 mdate date not null,
-foreign key (sendemail) references member(email) on delete cascade
+foreign key (sendemail) references member(email) on delete cascade,
 foreign key (rvemail) references member(email) on delete cascade
 );
 

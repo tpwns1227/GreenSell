@@ -143,9 +143,16 @@
 		insert into message values(no_meg_seq.nextval,#{sendemail},#{rvemail},#{content},#{title},sysdate)
 	</insert>
 	
+	<!-- 메세지 삭제하기 -->
+	<delete id="messagedelete" parameterType="int">
+		delete message where no=#{no}
+	</delete>
+	
 	<!-- 계좌번호 확인 -->
 	<select id="accountchk" parameterType="String" resultType="String">
 		select account from member where account=#{account}
 	</select>
+	
+	
 	
 </mapper>

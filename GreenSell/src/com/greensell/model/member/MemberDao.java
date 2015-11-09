@@ -53,4 +53,5 @@ public interface MemberDao {
 	   public List<MessageVO> messagelist(String email) throws SQLException;	//메세지 리스트 출력
 	   public boolean messageinsert(Map<String, Object> map) throws SQLException;	//메시지 입력하기
 	   public MessageVO messagedetail(int no) throws SQLException; //메시지 상세보기
+	   public boolean messagedelete(int no) throws SQLException; //메세지 삭제하기
 }
