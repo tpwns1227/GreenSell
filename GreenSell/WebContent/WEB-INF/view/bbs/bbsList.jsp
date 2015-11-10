@@ -30,6 +30,15 @@ $(document).ready(function(){
 });
 	    },1000);
 	    
+	    $("#write").click(function(){
+	    	if('${skey}'=='' || '${skey}'== null){
+	    		alert("로그인후에 이용해 주세요...");
+	    		location.href='login_form';
+	    		return;
+	    	}
+	    	location.href='write?no=${no}';
+	    });
+	    
 	    
 });
 </script>
@@ -60,7 +69,9 @@ $(document).ready(function(){
 	if((totalcount%10)==0){
 		totalpage-=1;
 	}
-	
+	if(totalpage==0){
+		totalpage=1;
+	}
 	String str = "";
 	str = "<table width=\"550\" border\"1\" align=\"center\">";
 	str = str+"<tr><td align=\"center\" bgcolor=\"#12CC66\">";
@@ -139,7 +150,7 @@ $(document).ready(function(){
 				<input type="text" id="searchbox" class="textbox" style="width: 150px"> 
 				<input type="button" id="search" style="width: 100px; height: 40px" value="검색">
 				<c:if test="${grade>0 || no==3}">
-				<input type="button" style="width: 100px; height: 40px" value="글쓰기" onclick="location.href='write?no=${no}'">
+				<input type="button" id="write" style="width: 100px; height: 40px" value="글쓰기">
 				</c:if>
 			</div>
 	</div>
