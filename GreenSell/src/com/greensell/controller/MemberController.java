@@ -374,7 +374,7 @@ public class MemberController {
 			List<String> imglist = dao.getImagenames(list.get(j).getNo());
 			fristimg.add(imglist.get(0));
 		}
-
+		m.addAttribute("email", email);
 		m.addAttribute("fristimg", fristimg);
 		m.addAttribute("itemlist", list);
 

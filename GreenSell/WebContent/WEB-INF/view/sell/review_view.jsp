@@ -66,14 +66,15 @@ td {
 				<td>${list.wdate}</td>
 			</tr>
 			</c:forEach>
+		</table>
+		<p/><p/>
+		<table style="width: 700px">
 			<tr>
-			<td colspan="4" align="right">
+			<td colspan="4" align="center">
 			<input type="button" value="후기쓰기" onclick="review()" style="width: 95px; height: 30px">
 			</td>
 			</tr>
 		</table>
-		<p/><p/>
-		
 		</div>
 </body>
 </html>

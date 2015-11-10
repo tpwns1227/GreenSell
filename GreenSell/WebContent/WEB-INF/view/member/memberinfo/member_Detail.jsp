@@ -24,13 +24,13 @@
 	}
 	
 	function buy() {
-		document.detail.action = 'buy_form';
+		document.detail.action = 'buy_form?';
 		document.detail.submit();
 	}
 	
 	$(document).ready(function(){
 		$("#mywrite").click(function(){
-			var win = window.open('mywriteForm', "post",
+			var win = window.open('mywriteForm?email=${skey}', "post",
 			         "toolbar=no ,width=1000 ,height=500 ,directories=no,"
 			               + "status=yes,scrollbars=yes,menubar=no");
 		});
@@ -84,8 +84,10 @@
 				style='width: 200px;' readonly name="answer">
 			<div class='p'>포인트</div>
 			<input name="point" id='textbox' type='text' value='${member.point}'
-				readonly style="width: 300px"> <input id="pointlist"
+				readonly style="width: 200px"> <input id="pointlist"
 				class='button2' type="button" value='내역'>
+				<input class='button2' type="button" value='구매 목록'
+				onclick="buy()">
 				
 			<input id="update" class='button2' type="button" value='정보수정'
 				onclick='updateMember()' style="margin-top: 15px;"> <input
@@ -94,8 +96,7 @@
 				<input class='button2' type="button" id="mywrite" value='내가 올린 글'> 
 				<input class='button2' type="button" value='찜 목록'
 				onclick="like()">
-				<input class='button2' type="button" value='구매 목록'
-				onclick="buy()">
+				
 				
 		</div>
 	</form>

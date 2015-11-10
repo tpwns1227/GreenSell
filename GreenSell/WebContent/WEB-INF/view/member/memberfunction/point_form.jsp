@@ -55,7 +55,7 @@
 			<input type='text' name="email" class='textbox' value='${skey}'
 				readonly>
 			<div class='p'>충전금액</div>
-			<input type='text' id="price" name='price' class='textbox'
+			<input type='text' id="price" maxlength="6" name='price' class='textbox'
 				placeholder='금액'> <input type='button' id="btn"
 				class='button' value='충전' style="margin-top: 25px">
 		</div>

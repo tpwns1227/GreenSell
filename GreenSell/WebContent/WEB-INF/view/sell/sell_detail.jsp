@@ -232,8 +232,8 @@
 			</c:if>
 			<c:if test="${auctionitem.getHowsell()=='경매'}">
 			<br>
-				<input class='callbtn' id="bid" type="button" value="입찰하기" style='width: 295px'>
-				<input class='callbtn' id="selectedbtn" type="button" value="찜 하기" style='width: 95px'>
+				<input class='callbtn' id="bid" type="button" value="입찰하기" style='width: 150px'>
+				<input class='callbtn' id="selectedbtn" type="button" value="찜 하기" style='width: 90px'>
 				<input class='callbtn' id="email" type="button" value="연락처" style='width: 150px'>
 				<br><font size="4px"><strong>입찰자</strong></font><br>
 				<c:if test="${auctionitem.getNowemail()==auctionitem.getEmail()}">

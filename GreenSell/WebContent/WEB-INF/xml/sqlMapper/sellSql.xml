@@ -124,7 +124,7 @@
    </select>
    
    <select id="selectPS" parameterType="String" resultType="com.greensell.member.beans.MemberPSVO">
-   	select * from postscript where email=#{email}
+   	select * from postscript where email=#{email} order by wdate desc
    </select>
    
    <update id="returnbidprice" parameterType="map">

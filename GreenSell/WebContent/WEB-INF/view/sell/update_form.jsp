@@ -53,28 +53,34 @@
 				alert("상세설명을 입력해 주세요.");
 				return;
 			}
-			
-			if ($(this).attr('id') == 'pricebtn') {
-				if($("#itemprice").val()=='' || $("#itemprice").val()==null){
-					alert('가격을 입력해 주세요.');
+				
+				if ($("#itemprice").val() == '') {
+					alert("가격을 입력해 주세요.");
 					$("#itemprice").focus();
 					return;
-				}else{
-					var chk =  /^\d+$/;
-					if(!chk.test($("#itemprice").val())){
+				} else {
+					var chk = /^\d+$/;
+					if (!chk.test($("#itemprice").val())) {
 						alert('숫자만 입력해 주세요.');
 						$("#itemprice").focus();
 						return;
-					}else{
-						if(document.sellForm.itemprice.value.length < 4){
+					} else {
+						if (document.updateForm.itemprice.value.length < 4) {
 							alert("천원 이상 입력해 주세요.");
 							$("#itemprice").focus();
+							return;
+						}else if(document.updateForm.itemprice.value.length > 6){
+							alert("100만원 이상은 한번에 충전할 수없습니다.");
 							return;
 						}
 					}
 				}
 				
-			}
+				if(document.updateForm.itemprice.value.substring(0,1)>0){}
+				else{
+				alert("금액을 다시 확인해 주세요.");
+				return;
+				}
 			
 			
 		var exp = $("#img1").val().substr($("#img1").val().lastIndexOf('.')+1);

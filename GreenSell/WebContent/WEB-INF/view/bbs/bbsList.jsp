@@ -147,7 +147,7 @@ $(document).ready(function(){
 	<div>
 	
 			<div class="container">
-				<input type="text" id="searchbox" class="textbox" style="width: 150px"> 
+				<input type="text" id="searchbox"  class="textbox" style="width: 150px; height: 33px"> 
 				<input type="button" id="search" style="width: 100px; height: 40px" value="검색">
 				<c:if test="${grade>0 || no==3}">
 				<input type="button" id="write" style="width: 100px; height: 40px" value="글쓰기">
