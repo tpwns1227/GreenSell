@@ -9,12 +9,12 @@ response.setHeader("Cache-Control", "no-cache");
 
 if(session.getAttribute("skey")==null){
 %>
-<script>history.go(-1)</script>
-<%
-}else if(request.getHeader("referer").substring(request.getHeader("referer").lastIndexOf("/"), request.getHeader("referer").length())=="buy_form?"){
-	response.sendRedirect("member_Detail");
-}
+
+<%}else if(request.getHeader("referer").substring(request.getHeader("referer").lastIndexOf("/")+1, request.getHeader("referer").length()).equals("buy_form?")){
 %>
+<script>history.go(-2)</script>
+<%
+} %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -24,10 +24,10 @@ if(session.getAttribute("skey")==null){
 </head>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
-
 	<div class='body2'>
 		<div class='border'>구매 목록</div>
 	</div>
+	<%=request.getHeader("referer").substring(request.getHeader("referer").lastIndexOf("/")+1, request.getHeader("referer").length()) %>
 	<div class='body2' style="margin-bottom: 50px">
 		<c:forEach var="list" items="${itemlist}" varStatus="sar">
 			<div class='container'>

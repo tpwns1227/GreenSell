@@ -85,6 +85,15 @@ public class MemberController {
 			return "member/memberinfo/login_form";
 		}
 	}
+	
+	/*@RequestMapping("*")
+	public void pointupdate(HttpSession session) throws SQLException{
+		System.out.println("dsfdsfs");
+		String email=(String) session.getAttribute("skey");
+		if(session.getAttribute("skey")!=null){
+		session.setAttribute("point", dao.selectpoint(email));
+		}
+	}*/
 
 	@RequestMapping("/logout") // 로그아웃
 	public String logout(HttpSession session) {

@@ -29,7 +29,7 @@
 	</select>
 	
 	<select id="buylist" resultType="String" parameterType="String">
-		select itemno from buy where email=#{email}
+		select itemno from buy where email=#{email} order by no desc
 	</select>
 	
 	<select id="getitem" parameterType="String" resultType="com.greensell.sell.beans.ItemSellVO">
@@ -158,7 +158,7 @@
 	</select>
 	
 	<select id="takeover" parameterType="String" resultType="String">
-		select takeover from buy where email=#{email}
+		select takeover from buy where email=#{email} order by itemno desc
 	</select>
 	
 	<update id="updateto" parameterType="String">
