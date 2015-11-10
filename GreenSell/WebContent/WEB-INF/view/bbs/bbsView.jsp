@@ -81,7 +81,7 @@
 					</tr>
 					<tr>
 					<td colspan="2">
-						<textarea readonly name="cmcontent" rows="2" cols="80" maxlength="800">${cm.cmcontent}</textarea> 
+						<textarea readonly name="cmcontent" style="height: 50px" rows="2" cols="80" maxlength="800">${cm.cmcontent}</textarea> 
 					</td>
 					</tr>
 					<tr>
