@@ -179,3 +179,8 @@ create sequence no_auction_seq start with 1 increment by 1;
 create sequence no_selected_seq start with 1 increment by 1;
 create sequence no_buy_seq start with 1 increment by 1;
 create sequence no_meg_seq start with 1 increment by 1;
+
+
+alter table buy add(takeover varchar2(15));
+alter table itemsell add(sellstate varchar2(15));
+
