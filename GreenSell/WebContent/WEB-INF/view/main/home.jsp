@@ -25,7 +25,9 @@
 					<img src='/GreenSell/img/item/${fristimg[var.index]}' class='img'></a>
 				</div>
 				
-				<div class='item'>${list.itemname}</div>
+				<table style="width: 250px"><tr><td><div>${list.howsell}</div></td>
+				<td align="right"><div class='item'>${list.itemname}</div></td></tr></table>
+				
 				<div class='price'>${list.itemprice}</div>
 			</div>
 		</c:forEach>
