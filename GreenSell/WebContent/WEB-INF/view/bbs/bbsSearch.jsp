@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <center>
 	<table style="width: 900px">
-		<tr>
+		<tr height="30px">
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach var="list" items="${bbslist}">
-		<tr>
+		<tr height="30px">
 			<td align="center" width="500"><a href="view?no=${list.no}&email=${list.email}">${list.title}</a></td>
 			<td align="center">${list.email}</td>
 			<td align="center">${list.bbsdate}</td>
@@ -22,9 +22,13 @@
 	int totalcount = (Integer)request.getAttribute("totalcount");	
 	int nowpage = (Integer)request.getAttribute("page");	
 	int totalpage = (totalcount/10)+1;
+	if((totalcount%10)==0){
+		totalpage-=1;
+	}
+	
 	String str = "";
 	str = "<table width=\"550\" border\"1\" align=\"center\">";
-	str = str+"<tr><td align=\"center\" bgcolor=\"#CCCCCC\">";
+	str = str+"<tr><td align=\"center\" bgcolor=\"#12CC66\">";
 	int selectpageing = (nowpage/10);
 	
 	if(selectpageing==0){
@@ -99,8 +103,9 @@
 			<div class="container">
 				<input type="text" id="searchbox" class="textbox" style="width: 150px"> 
 				<input type="button" id="search" style="width: 100px; height: 40px" value="검색">
-				
+				<c:if test="${grade>0 || no==3}">
 				<input type="button" style="width: 100px; height: 40px" value="글쓰기" onclick="location.href='write?no=${no}'">
+				</c:if>
 			</div>
 	</div>
 

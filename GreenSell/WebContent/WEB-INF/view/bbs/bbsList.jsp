@@ -22,9 +22,9 @@ $(document).ready(function(){
 		         type : "get", 
 		         url : "searchbbs", 
 		         data : "no=${no}&title="+$("#searchbox").val(),
-		         success : function(data){ 
-		        	  
+		         success : function(data){ 	  
 		        	 $("#searchresult").html(data);
+		        	 $("tr:even").css("background-color", "#12CC66");
 		         } 
 		      });
 });
@@ -38,14 +38,14 @@ $(document).ready(function(){
 <div id="searchresult">
 <center>
 	<table style="width: 900px">
-		<tr>
+		<tr height="30px">
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach var="list" items="${bbslist}">
-		<tr>
+		<tr height="30px">
 			<td align="center" width="500"><a href="view?no=${list.no}&email=${list.email}">${list.title}</a></td>
 			<td align="center">${list.email}</td>
 			<td align="center">${list.bbsdate}</td>
@@ -57,6 +57,10 @@ $(document).ready(function(){
 	int totalcount = (Integer)request.getAttribute("totalcount");	
 	int nowpage = (Integer)request.getAttribute("page");	
 	int totalpage = (totalcount/10)+1;
+	if((totalcount%10)==0){
+		totalpage-=1;
+	}
+	
 	String str = "";
 	str = "<table width=\"550\" border\"1\" align=\"center\">";
 	str = str+"<tr><td align=\"center\" bgcolor=\"#12CC66\">";
