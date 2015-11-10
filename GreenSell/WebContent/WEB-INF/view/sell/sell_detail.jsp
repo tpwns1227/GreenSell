@@ -27,7 +27,7 @@
 					           + "status=yes,scrollbars=yes,menubar=no");
 				
 				});
-			
+		
 		
 		
 	var chk = '';
@@ -107,6 +107,12 @@
 				location.href="login_form";
 				return;
 			}
+			
+			if('${skey}'=='${auctionitem.email}' || '${skey}'=='${itemone.email}'){
+				alert("자신의 게시물에는 찜을 할수 없습니다.");
+				return;
+			}
+			
 			if('${auctionitem.howsell}'=='경매'){
 				howsell='경매';
 				itemno='${auctionitem.no}'}else{
@@ -151,10 +157,15 @@
 				alert("이용하시려면 먼저 로그인을 해주세요.");
 				return;
 				}
+			
 			var no=${no}
+			if('${auctionitem.getHowsell()}'=='경매'){
+				window.open('sell_contact?email=${auctionitem.email}','_blank','width=1000 height=700');
+			}
+			else
+			{
 			window.open('sell_contact?email=${itemone.getEmail()}','_blank','width=1000 height=700');
-				//document.form1.target="sell_contact?no=";
-				document.form1.submit(); 
+			}	
 				
 						
 		});
@@ -225,6 +236,7 @@
 			<br>
 				<input class='callbtn' id="bid" type="button" value="입찰하기" style='width: 295px'>
 				<input class='callbtn' id="selectedbtn" type="button" value="찜 하기" style='width: 95px'>
+				<input class='callbtn' id="email" type="button" value="연락처" style='width: 150px'>
 				<br><font size="4px"><strong>입찰자</strong></font><br>
 				<c:if test="${auctionitem.getNowemail()==auctionitem.getEmail()}">
 				<label id="nowemail">없음</label>

@@ -52,8 +52,8 @@
 <!--  댓글 내용 보기-->
 		<input class='button' type='button' value='목록' style='margin-top: 5px'
 			onclick="location.href='msglistview'">
-		<input class='button' type='button' value='답장' style='margin-top: 5px'
-			onclick="location.href='msgreview?email=${view.sendemail}'">
+		<%-- <input class='button' type='button' value='답장' style='margin-top: 5px'
+			onclick="location.href='msgreview?email=${view.sendemail}'"> --%>
 			
 			<c:if test="${view.rvemail==skey || grade==1}">	<%--운영자도 삭제가능함 --%>
 			<form action="msgdelete?no=${no }">

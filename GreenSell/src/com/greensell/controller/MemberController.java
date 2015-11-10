@@ -417,7 +417,7 @@ public class MemberController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("email", email);
 		map.put("price", price);
-		map.put("sort", 0);
+		map.put("sort", 1);
 		
 		int pric = Integer.parseInt(price);
 		
