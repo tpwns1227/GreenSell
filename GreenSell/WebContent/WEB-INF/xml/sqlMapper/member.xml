@@ -115,7 +115,7 @@
 	</update>
 	
 	<select id="point" parameterType="String" resultType="com.greensell.member.beans.PointVO">
-		select * from point where email=#{email}
+		select * from point where email=#{email} order by pdate desc
 	</select>
 	
 	<!-- 포인트 넣기 -->

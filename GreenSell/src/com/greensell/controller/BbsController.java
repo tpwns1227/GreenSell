@@ -101,8 +101,10 @@ public class BbsController {
             System.out.println(bbsVo.getTitle());
             //System.out.println(bbsVo.getBbsno());
             m.addAttribute("view", bbsVo);
-            int grade=dao.grade((String)session.getAttribute("skey"));
-            m.addAttribute("grade",grade);
+            if((String)session.getAttribute("skey")!=null){
+            	int grade=dao.grade((String)session.getAttribute("skey"));
+                m.addAttribute("grade",grade);
+            }
             List<ReplyVo> replyvo=dao.selectComment(r);
             m.addAttribute("comment",replyvo);
            System.out.println(bbsVo.getBbsno());
