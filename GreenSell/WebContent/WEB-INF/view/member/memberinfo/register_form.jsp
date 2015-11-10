@@ -94,7 +94,7 @@
 					success : function(data) {
 						var str = '';
 						
-						$("select[name='bank']").change(function() {
+						/* $("select[name='bank']").change(function() {
 							
 							if ($("#sinhan").val() == '신한') {
 								$("option[value='신한']").attr("selected","selected");
@@ -103,7 +103,7 @@
 							} else {
 								$("option[value='농협']").attr("selected","selected");
 							}
-						});
+						}); */
 
 						if (data == '사용불가')
 							str = "<font color=red>" + data + "</font>";
@@ -153,7 +153,7 @@
 
 			<div class='p'>이름</div>
 			<div style='text-align: left; margin-left: 50px'>
-			<input name='name' id='textbox' type='text' placeholder="이름"
+			<input name='name' id='name' class='textbox' type='text' placeholder="이름"
 				maxlength="6" style='width: 300px'> <span id="namechk" style="margin-left: 15px; "></span>
 			</div>
 			<div class='p'>별명</div>
@@ -187,7 +187,7 @@
 				<option  value='국민' id="kb">국민은행</option>
 				<option  value='신한' id="sinhan">신한은행</option>
 				<option value='농협' id="nh">농협은행</option>
-			</select> <input name="account" id='textbox' maxlength="20" type='text'
+			</select> <input name="account" id='account' class="textbox" maxlength="20" type='text'
 				placeholder="계좌번호" style='width: 150px;'> <span
 				id="accountchk" style="margin-left: 15px"></span>
 				</div>

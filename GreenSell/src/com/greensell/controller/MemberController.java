@@ -412,16 +412,13 @@ public class MemberController {
 	
 	@RequestMapping("/pointcollect")
 	public String collectPoint(HttpSession session, @RequestParam String price, Model m) throws SQLException {
-		System.out.println(session.getAttribute("point"));
 		String email = (String) session.getAttribute("skey");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("email", email);
-		map.put("price", price);
 		map.put("sort", 1);
-		
 		int pric = Integer.parseInt(price);
-		
 		map.put("commission", (pric*0.05));
+		map.put("price", pric-(pric*0.05));
 		
 		int point;
 		point = Integer.parseInt((String) session.getAttribute("point"));
