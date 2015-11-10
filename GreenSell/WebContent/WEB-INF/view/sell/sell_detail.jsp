@@ -125,14 +125,15 @@
 				alert("자신의 게시물에는 거래신청을 할 수 없습니다.");
 				return;
 			}
-			if(point<price){
-				alert('포인트가 부족합니다.');
-				return;
-			}
 			if($("#sellresult").text()=='판매 완료'){
 				alert('이미 판매된 상품입니다.');
 				return;
 			}
+			if(point<price){
+				alert('포인트가 부족합니다.');
+				return;
+			}
+			
 				
 			if(confirm("정말로 입찰하시겠습니까?\n 입찰 하시게 되면 포인트에서 차감됩니다.")){
 				
