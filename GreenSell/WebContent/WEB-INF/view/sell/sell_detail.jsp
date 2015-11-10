@@ -157,8 +157,6 @@
 				alert("이용하시려면 먼저 로그인을 해주세요.");
 				return;
 				}
-			
-			var no=${no}
 			if('${auctionitem.getHowsell()}'=='경매'){
 				window.open('sell_contact?email=${auctionitem.email}','_blank','width=1000 height=700');
 			}

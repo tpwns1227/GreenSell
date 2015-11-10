@@ -39,6 +39,15 @@ function pointcollect(){
 		
 	}
 	
+	function msglist(){
+		if('${skey}' != '')
+			location.href='msglistview';
+		else
+		alert('로그인 후에 이용해 주세요.');
+		return;
+		
+	}
+	
 </script>
 </head>
 <body>
