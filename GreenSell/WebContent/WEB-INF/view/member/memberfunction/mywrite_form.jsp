@@ -33,6 +33,9 @@ if(session.getAttribute("skey")==null){
 		
 	</div>
 	<div class='body2' style="margin-bottom: 50px">
+	<c:if test="${itemlist.size()==0}">
+			올린 글 이 없습니다.
+		</c:if>
 		<c:forEach var="list" items="${itemlist}" varStatus="sar">
 			<div class='container'>
 

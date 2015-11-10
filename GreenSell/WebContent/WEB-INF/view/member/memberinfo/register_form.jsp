@@ -175,7 +175,7 @@
 			</div>
 			<div class='p'>주소</div>
 			<input class='textbox' name="zipcode" id='zip' type='text'
-				placeholder="우편번호" style='width: 200px'> <input
+				placeholder="우편번호" readonly style='width: 200px'> <input
 				class='button' type='button' value='검색' style='width: 200px'
 				onclick="test()"> <br> <input class='textbox'
 				name="address" id='zip2' type='text' placeholder="상세주소"

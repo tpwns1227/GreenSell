@@ -27,8 +27,10 @@ if(session.getAttribute("skey")==null){
 	<div class='body2'>
 		<div class='border'>구매 목록</div>
 	</div>
-	<%=request.getHeader("referer").substring(request.getHeader("referer").lastIndexOf("/")+1, request.getHeader("referer").length()) %>
 	<div class='body2' style="margin-bottom: 50px">
+		<c:if test="${itemlist.size()==0}">
+			구매한 목록이 없습니다.
+		</c:if>
 		<c:forEach var="list" items="${itemlist}" varStatus="sar">
 			<div class='container'>
 				<div class='img'>

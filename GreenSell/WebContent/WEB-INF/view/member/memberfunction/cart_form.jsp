@@ -27,6 +27,9 @@ if(session.getAttribute("skey")==null){
 		<div class='border'>찜 목록</div>
 	</div>
 	<div class='body2' style="margin-bottom: 50px">
+	<c:if test="${itemlist.size()==0}">
+			찜 목록이 없습니다.
+		</c:if>
 		<c:forEach var="list" items="${itemlist}" varStatus="sar">
 			<div class='container'>
 

@@ -182,7 +182,7 @@ function test() {
 						style="margin-left: 15px"></span>
 				</div>
 				<div class='p'>주소</div>
-				<input class='textbox' name="zipcode" id='zip' type='text'
+				<input class='textbox' name="zipcode" readonly id='zip' type='text'
 					placeholder="우편번호" value="${member.zipcode}" style='width: 200px'>
 				<input class='button' type='button' value='검색' style='width: 200px'
 					onclick="test()"> <br> <input class='textbox'

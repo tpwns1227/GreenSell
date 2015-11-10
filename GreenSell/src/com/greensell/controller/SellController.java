@@ -366,8 +366,8 @@ public class SellController {
 		}
 		
 		if(pointlist.size()!=0){
-			float f = su;
-			m.addAttribute("starpoint", f/pointlist.size());
+			double f = su;
+			m.addAttribute("starpoint", Math.round((f/pointlist.size())*10d)/10d);
 		}else{
 			m.addAttribute("starpoint", "0");
 		}

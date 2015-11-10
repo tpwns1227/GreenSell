@@ -62,7 +62,7 @@ if(session.getAttribute("skey")==null){
 <jsp:include page="../../main/header.jsp"/>
 	<form name='collectForm' action='pointcollect'>
 		<div class='container'>
-			<div class='border'>포인트 회수</div>
+			<div class='border'>포인트 환전</div>
 			<div class='p'>이메일</div>
 			<input type='text' name="email" class='textbox' value='${skey}' readonly>
 			<div class='p'>계좌</div>
