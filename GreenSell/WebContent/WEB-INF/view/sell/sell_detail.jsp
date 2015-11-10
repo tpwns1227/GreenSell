@@ -14,6 +14,7 @@
 			if('${skey}' == '' || '${skey}' == null){
 				alert('로그인을 한 후에 이용해 주세요.');
 				location.href="login_form";
+				return;
 			}
 				if($("#fintime").text()=='마감종료'){
 					alert("이미 마감된 상품입니다.");
@@ -100,6 +101,12 @@
 		$("#selectedbtn").click(function(){
 			var howsell='';
 			var itemno=0;
+			
+			if('${skey}' == '' || '${skey}' == null){
+				alert('로그인을 한 후에 이용해 주세요.');
+				location.href="login_form";
+				return;
+			}
 			if('${auctionitem.howsell}'=='경매'){
 				howsell='경매';
 				itemno='${auctionitem.no}'}else{
