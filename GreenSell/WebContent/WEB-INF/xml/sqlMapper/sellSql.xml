@@ -146,5 +146,9 @@
   	<update id="updatesellstate" parameterType="String">
   		update itemsell set sellstate='판매 완료' where no=#{itemno}
   	</update>
+  	
+  	<select id="buychk" resultType="String" parameterType="String">
+  		select no from buy where itemno=#{itemno}
+  	</select>
     
 </mapper>

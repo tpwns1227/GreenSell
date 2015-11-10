@@ -230,5 +230,15 @@ public boolean insertpost(MemberPSVO mp) throws SQLException {//후기게시판
 	return (i>0)? true:false;
 	}
 
+@Override
+	public boolean chkbuy(String itemno) throws SQLException {
+		// TODO Auto-generated method stub
+		String buychk = sqlSession.selectOne("buychk", itemno);
+		if(buychk==null)
+			return false; //존재x
+		else
+			return true; //존재
+	}
+
 	
 }

@@ -44,5 +44,6 @@ public interface SellDao {
 	public boolean insertbuy(Map<String, Object> map) throws SQLException;
 	public boolean insertMessage(Map<String, Object> map) throws SQLException;
 	public boolean updatesellstate(String itemno) throws SQLException;
+	public boolean chkbuy(String itemno) throws SQLException;
 	
 }

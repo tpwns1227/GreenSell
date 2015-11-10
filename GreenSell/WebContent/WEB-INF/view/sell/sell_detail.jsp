@@ -10,27 +10,61 @@
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script>
 	$(document).ready(function(){
-		$(":button").click(function(){
+		$("#bid").click(function(){
 			if('${skey}' == '' || '${skey}' == null){
 				alert('로그인을 한 후에 이용해 주세요.');
 				location.href="login_form";
 			}
-			$("#bid").click(function(){
+				if($("#fintime").text()=='마감종료'){
+					alert("이미 마감된 상품입니다.");
+					return;
+				}
+				
+				
 				var bid = window.open('bid_form', "post",
 					     "toolbar=no ,width=450 ,height=200 ,directories=no,"
 					           + "status=yes,scrollbars=yes,menubar=no");
 				
 				});
 			
-		});
 		
+		
+	var chk = '';
+	setInterval(function () {	
+		var str = $("#fintime").text();
+		var d = str.substring(0,str.indexOf('일'));
+		if(d<0){
+			clearInterval(timer);
+			$("#fintime").html("<font size='5px' color='red'>마감종료</font>");
+			
+			$.ajax({
+				url: 'buychk',
+				data: 'itemno=${auctionitem.no}',
+				type:'post',
+				success : function(data){ 
+					chk=data;
+				}
+			});
+		}
+		if(chk=='미존재' && $("#nowemail").text()!='없음'){
+			$.ajax({
+				type:"post",
+				url: "auctionok",
+				data: "itemno=${auctionitem.no}&rvemail=${auctionitem.email}&itemname=${auctionitem.itemname}&buyemail=${auctionitem.getNowemail()}",
+				success : function(data){
+					chk='존재';
+				}
+			});
+		}
+		
+	},1);
 		
 		
 		
 		var findate = new Date('${auctionitem.finishtime}');
 		var finmonth = findate.getMonth();
 		var findate = findate.getDate();
-		setInterval(function () {        // 타이머
+		var timer = setInterval(function () {        // 타이머
 			 $.ajax({ 
 		         url : "time",
 		         success : function(data){ 
@@ -55,8 +89,12 @@
 		        	 $("#fintime").html((i-1)+"일   "+fh+"시간"+fm+"분"+fs+"초 전");
 		         } 		 
 		      });
-			 
         }, 1000);
+		
+		
+		
+		
+		
 		
 		
 		$("#selectedbtn").click(function(){
@@ -156,7 +194,6 @@
 
 	});
 	
-	
 </script>
 </head>
 <body>
@@ -223,6 +260,7 @@
 		
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
 		<div class='info2'>
+			
 			<div class='bold2'>제품명</div>
 			<div class='font'>${auctionitem.getItemname()}</div>
 			<div class='bold2'>상태</div>
