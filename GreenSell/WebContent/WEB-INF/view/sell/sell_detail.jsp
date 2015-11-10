@@ -153,10 +153,19 @@ if(session.getAttribute("skey")==null){
 		
 		
 		$("#updateitem").click(function(){
+			if($("#sellresult").text()=='판매 완료'){
+				alert("이미 판매가 완료된 상품은 수정하실 수 없습니다.");
+				return;
+			}
+			
 			location.href="updateitem_form?no=${itemone.no}";
 		});
 		
 		$("#deleteitem").click(function(){
+			if($("#sellresult").text()=='판매 완료'){
+				alert("이미 판매가 완료된 상품은 수정하실 수 없습니다.");
+				return;
+			}
 			if(confirm('정말로 삭제하시겠습니까? \r\n 두번 안 묻습니다.'))
 			{
 			location.href="deleteitem?no=${itemone.no}";

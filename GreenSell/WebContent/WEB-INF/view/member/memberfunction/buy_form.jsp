@@ -11,6 +11,8 @@ if(session.getAttribute("skey")==null){
 %>
 <script>history.go(-1)</script>
 <%
+}else if(request.getHeader("referer").substring(request.getHeader("referer").lastIndexOf("/"), request.getHeader("referer").length())=="buy_form?"){
+	response.sendRedirect("member_Detail");
 }
 %>
 <html>
@@ -29,7 +31,6 @@ if(session.getAttribute("skey")==null){
 	<div class='body2' style="margin-bottom: 50px">
 		<c:forEach var="list" items="${itemlist}" varStatus="sar">
 			<div class='container'>
-
 				<div class='img'>
 					<a href="sell_detail?no=${list.no}"><img
 						src='/GreenSell/img/item/${fristimg[sar.index]}' class='img'></a>
