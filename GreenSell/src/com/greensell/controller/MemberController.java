@@ -128,6 +128,7 @@ public class MemberController {
 		Pattern s = Pattern.compile(sinhan);
 		Pattern k = Pattern.compile(kb);
 		Pattern n = Pattern.compile(nh);
+		System.out.println(account);
 		boolean accountchk = dao.accountchk(account);
 
 		if(bank.equals("신한")){
@@ -142,15 +143,14 @@ public class MemberController {
 				}
 			}
 		}else if (bank.equals("농협")){
-			if(!n.matcher(account).matches()){
-				return "사용불가";
-			}else{
-				
+			if(n.matcher(account).matches() || k.matcher(account).matches()){
 				if (accountchk) {
 					return "사용불가";
 				} else {
 					return "사용가능";
 				}
+			}else{	
+				return "사용불가";
 			}
 		}else{
 			if(!k.matcher(account).matches()){

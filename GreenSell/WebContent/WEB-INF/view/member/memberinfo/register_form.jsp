@@ -97,11 +97,11 @@
 						$("select[name='bank']").change(function() {
 							
 							if ($("#sinhan").val() == '신한') {
-								$("option[value='신한']").attr("selected",selected)
+								$("option[value='신한']").attr("selected","selected");
 							} else if ($("#kb").val() == '국민') {
-								$("option[value='국민']").attr("selected",selected)
+								$("option[value='국민']").attr("selected","selected");
 							} else {
-								$("option[value='농협']").attr("selected",selected)
+								$("option[value='농협']").attr("selected","selected");
 							}
 						});
 

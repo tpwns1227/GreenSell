@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%   
-response.setHeader("cache-control","no-store"); // http 1.1   
-response.setHeader("Pragma","no-cache"); // http 1.0   
-response.setDateHeader("Expires",0); // proxy server 에 cache방지.   
-%>    
+<%
+ response.setHeader("Cache-Control","no-cache");
+ response.setHeader("Pragma","no-cache");
+ response.setDateHeader("Expires",0);
+%>  
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

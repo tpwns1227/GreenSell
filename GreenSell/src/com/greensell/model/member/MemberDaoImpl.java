@@ -173,6 +173,7 @@ public class MemberDaoImpl implements MemberDao {
 	public boolean accountchk(String account) throws SQLException {
 		// TODO Auto-generated method stub
 		String ac = sqlSession.selectOne("member.accountchk",account);
+		System.out.println(ac);
 		if(ac==null)
 			return false;
 		else
