@@ -25,15 +25,23 @@
 					<img src='/GreenSell/img/item/${fristimg[var.index]}' class='img'></a>
 				</div>
 				
-				<table style="width: 250px"><tr><td><div>${list.howsell}</div></td>
+				<table style="width: 250px; border-spacing: 0px "><tr><td><div>${list.howsell}</div></td>
 				<td align="right"><c:if test="${list.itemname.length()>13}">
 					${list.itemname.substring(0,8)}...
 				</c:if>
 				<c:if test="${list.itemname.length()<=13}">
 					${list.itemname}
-				</c:if></td></tr></table>
-				
-				<div class='price'>${list.itemprice}</div>
+				</c:if></td></tr>
+				<tr style="border-spacing: 0px "><td>
+				<c:if test="${list.sellstate=='판매중'}">
+				<font color="blue">${list.sellstate}</font>
+				</c:if>
+				<c:if test="${list.sellstate=='판매 완료'}">
+				<font color="red">${list.sellstate}</font>
+				</c:if></td><td align="right">
+				${list.itemprice}
+				</td></tr>
+				</table>
 			</div>
 		</c:forEach>
 
