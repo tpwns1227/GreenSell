@@ -8,11 +8,11 @@
    select no,title,bbscontent,email,bbsdate,hits,bbsno
    from (select no,title,bbscontent,email,bbsdate,hits,bbsno,rownum rn
        from ( select no,title,bbscontent,email,bbsdate,hits,bbsno
-               from bbs
+               from bbs where bbsno=#{bbsno}
                order by no desc
              )
        )
-   where bbsno=#{bbsno} and rn between (((#{page})*10)-9) and ((#{page})*10)
+   where rn between (((#{page})*10)-9) and ((#{page})*10)
   </select>
    
    <!-- 각 게시판 별로 글 리스트 제목으로 검색하기 -->
