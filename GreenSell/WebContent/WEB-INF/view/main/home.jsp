@@ -26,7 +26,12 @@
 				</div>
 				
 				<table style="width: 250px"><tr><td><div>${list.howsell}</div></td>
-				<td align="right"><div class='item'>${list.itemname}</div></td></tr></table>
+				<td align="right"><c:if test="${list.itemname.length()>13}">
+					${list.itemname.substring(0,8)}...
+				</c:if>
+				<c:if test="${list.itemname.length()<=13}">
+					${list.itemname}
+				</c:if></td></tr></table>
 				
 				<div class='price'>${list.itemprice}</div>
 			</div>

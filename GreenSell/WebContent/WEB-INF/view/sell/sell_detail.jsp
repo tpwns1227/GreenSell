@@ -88,7 +88,11 @@
 		        	 var fh = 23 - nowdate.getHours();
 		        	 var fm = 59 - nowdate.getMinutes();
 		        	 var fs = 60 - nowdate.getSeconds();
-		        	 $("#fintime").html((i-1)+"일   "+fh+"시간"+fm+"분"+fs+"초 전");
+		        	 if((i-1)!=0){
+		        		 $("#fintime").html((i-1)+"일   "+fh+"시간"+fm+"분"+fs+"초 전");
+		        	 }else{
+		        		 $("#fintime").html(fh+"시간"+fm+"분"+fs+"초 전");
+		        	 }
 		         } 		 
 		      });
         }, 1000);

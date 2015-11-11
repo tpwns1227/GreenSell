@@ -118,9 +118,31 @@ var count = 8;
 										src="/GreenSell/img/item/${fristimg[status.index]}"
 										class='img'></a>
 	</div>
-	<div class='item'>
-	  ${list.itemname}
-	</div>
+	
+	<table width='250px'>
+		<tr>
+			<td width='100' align='left'><span>
+			<c:if test="${list.sellstate=='판매중'}">
+				<font color="blue">${list.sellstate}</font>
+			</c:if>
+			<c:if test="${list.sellstate=='판매 완료'}">
+				<font color="red">${list.sellstate}</font>
+			</c:if>
+			</span></td>
+			<td width='150' align='right'><span class='item'
+				style="right: 0px">
+				<c:if test="${list.itemname.length()>13}">
+					${list.itemname.substring(0,8)}...
+				</c:if>
+				<c:if test="${list.itemname.length()<=13}">
+					${list.itemname}
+				</c:if>
+				
+				
+				</span></td>
+		</tr>
+	</table>
+	
 	<div class='price'>
 		${list.itemprice}
 	</div>
