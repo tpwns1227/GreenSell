@@ -337,5 +337,11 @@ public class MemberDaoImpl implements MemberDao {
 		return (i>0)? true:false;
 	}
 	
+	@Override
+	public String gettakeover(int no) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("gettakeover",no);
+	}
+	
 	
 }

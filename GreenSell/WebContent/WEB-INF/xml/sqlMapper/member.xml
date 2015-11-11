@@ -168,6 +168,10 @@
 	 <insert id="insertmessage" parameterType="map">
     	insert into message values(no_meg_seq.nextval,'관리자',#{rvemail},#{content},'인수 확인',sysdate)
     </insert>
+    
+    <select id="gettakeover" parameterType="int" resultType="String">
+    	select takeover from buy where itemno=#{no}
+    </select>
 	
 	
 </mapper>

@@ -502,11 +502,13 @@ public class MemberController {
 	@RequestMapping("/buy_form") // 구매 목록 이동하기
 	public String buy_form(@RequestParam String email, Model m) throws SQLException {
 		List<ItemSellVO> list = dao.buylist(email);
-		List<String> takeoverlist = dao.buyto(email);
+		List<String> takeoverlist = new ArrayList<String>();
 		List<String> fristimg = new ArrayList<String>();
 		for (int j = 0; j < list.size(); j++) {
 			List<String> imglist = dao.getImagenames(list.get(j).getNo());
 			fristimg.add(imglist.get(0));
+			String take = dao.gettakeover(list.get(j).getNo());
+			takeoverlist.add(take);
 		}
 		m.addAttribute("fristimg", fristimg);
 		m.addAttribute("itemlist", list);

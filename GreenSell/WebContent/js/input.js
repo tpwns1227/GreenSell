@@ -96,7 +96,7 @@ $(document).ready(function() {
 			}
 		}
 		
-		t -= 600;
+		t -= 350;
 		$("#slidebox").animate({
 			top : t
 		}, 500, function() {
@@ -127,7 +127,7 @@ $(document).ready(function() {
 	});
 
 	$("input[value='이전']").click(function() {
-		t += 600;
+		t += 350;
 		$("#slidebox").animate({
 			top : t
 		}, 500, function() {
@@ -151,16 +151,19 @@ $(document).ready(function() {
 function ch() {
 	document.querySelector('.img1').innerHTML = document.querySelector('#img1').value;
 	document.getElementById('image2').innerHTML = "<input type='file' id='img2' onchange='ch2()' name='imgname2'><label class='img2' for='img2'>클릭</label>";
+	$('.pp').css('margin-top','90px');
 };
 
 function ch2() {
 	document.querySelector('.img2').innerHTML = document.querySelector('#img2').value;
 	document.getElementById('image3').innerHTML = "<input type='file' id='img3' onchange='ch3()' name='imgname3'><label class='img3' for='img3'>클릭</label>";
+	$('.pp').css('margin-top','65px');
 };
 
 function ch3() {
 	document.querySelector('.img3').innerHTML = document.querySelector('#img3').value;
 	document.getElementById('image4').innerHTML = "<input type='file' id='img4' onchange='ch4()' name='imgname4'><label class='img4' for='img4'>클릭</label>";
+	$('.pp').css('margin-top','40px');
 };
 
 function ch4() {

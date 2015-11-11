@@ -36,7 +36,7 @@ if(session.getAttribute("skey")==null){
 			<div id="slide">
 				<div id="slidebox" style="top: 0px; position: absolute">
 
-					<div class="next">
+					<div class="next3">
 						<div class='p'>제품명</div>
 						<input name="itemname" id="itemname" class='textbox' type='text'
 							placeholder="제품명" maxlength="30">
@@ -85,7 +85,7 @@ if(session.getAttribute("skey")==null){
 
 
 					<div class="next">
-						<div class='p'>사진추가</div>
+						<div class='pp'>사진추가</div>
 
 						<div id='image1'>
 							<input type="file" id="img1" onchange="ch()" name="imgname1" />
@@ -153,8 +153,8 @@ if(session.getAttribute("skey")==null){
 						</div>
 					</div>
 
-					<div style="margin-top: 150px; height: 450px;">
-						<div class='p'>상세설명</div>
+					<div class='next2'>
+						<div class='ppp'>상세설명</div>
 						<textarea id="detail" maxlength="1000" name="itemdetail" placeholder="상세설명"></textarea>
 
 						<div class='bt'>

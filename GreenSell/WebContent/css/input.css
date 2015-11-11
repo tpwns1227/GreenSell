@@ -9,7 +9,7 @@
 
 .textbox {
 	background-color: white;
-	border: 1px solid #eee;
+	border: 1px solid #12cc66;
 	padding: 0px 1.1em;
 	width: 400px;
 	height: 40px;
@@ -19,7 +19,20 @@
 .p {
 	text-align: left;
 	font-size: 16px;
-	margin: 20px 0px 10px 50px;
+	margin: 115px 0px 10px 50px;
+}
+
+.pp {
+	text-align: left;
+	font-size: 16px;
+	margin: 115px 0px 10px 50px;
+}
+
+.ppp {
+	
+	text-align: left;
+	font-size: 16px;
+	margin: 50px 0px 10px 50px;
 }
 
 .button {
@@ -29,14 +42,34 @@
 	font-size: 16px;
 }
 
+form {
+	margin: 0px;
+}
+.next3 {
+	margin-top: 4px;
+	    margin-bottom: 8px;
+    height: 340px;
+    border: 1px solid #12cc66;
+}
+
 .next {
-	margin-top: 250px;
-	height: 350px;
+		margin-bottom: 8px;
+	    
+    height: 340px;
+    border: 1px solid #12cc66;
+
+}
+
+.next2 {
+
+	margin-bottom: 50px;
+	height: 340px;
+	border: 1px solid #12cc66;
 }
 
 #slide {
 	width: 500px;
-	height: 600px;
+	height: 350px;
 	overflow: hidden;
 	position: relative;
 	overflow: hidden;
@@ -74,14 +107,14 @@ label {
 	cursor: pointer;
 	color: #666;
 	font-size: 13pt;
-	border: 1px solid #eee;
+	border: 1px solid #12cc66;
 }
 
 textarea {
-	border: 1px solid #EEE;
+	border: 1px solid #12cc66;
 	padding: 1.1em 1.1em;
 	width: 400px;
-	height: 200px;
+	height: 160px;
 	font-size: 13pt;
 }
 
@@ -89,6 +122,6 @@ select {
     background-color: white;
     width: 400px;
     height: 40px;
-    border: 1px solid #eee;
+    border: 1px solid #12cc66;
     font-size: 15px;
 }
