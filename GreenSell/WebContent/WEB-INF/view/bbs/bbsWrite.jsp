@@ -5,8 +5,7 @@ response.setHeader("Cache-Control","no-store");
 response.setHeader("Pragma","no-cache");   
 response.setDateHeader("Expires",0);   
 response.setHeader("Cache-Control", "no-cache");
-
-if(session.getAttribute("skey")==null || (Integer)session.getAttribute("grade")!=1){
+if(session.getAttribute("skey")==null || !session.getAttribute("amdin").equals("1") && !request.getAttribute("no").equals(3)){
 %>
 <script>history.go(-1)</script>
 <%

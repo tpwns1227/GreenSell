@@ -49,12 +49,14 @@ public class SellController {
 	Map<String, Object> map = new HashMap<String, Object>();
 	@RequestMapping("/sell_detail") // 글 클릭시 상세보기로 이동
 	public String detailform(@RequestParam int no, Model m, HttpSession session) throws SQLException {
-
-		ItemSellVO ivo = dao.itemDetail(no); // 게시글 한가지의 정보를 가져온다.
+		System.out.println(no);
+		ItemSellVO ivo = dao.itemDetail(no);// 게시글 한가지의 정보를 가져온다.
 		// System.out.println(ivo.getEmail());
+		System.out.println(ivo.getHowsell());
 		if (ivo.getHowsell().equals("경매")) {
 			AuctionVO avo = dao.auctionitemDetail(no);
 			m.addAttribute("auctionitem", avo);
+			System.out.println(avo);
 		} else {
 			m.addAttribute("itemone", ivo);
 

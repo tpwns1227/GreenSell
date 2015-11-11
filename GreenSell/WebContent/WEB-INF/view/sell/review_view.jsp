@@ -80,9 +80,9 @@ td {
 			</c:forEach>
 		</table>
 		<p/><p/>
-		<table style="width: 700px">
-			<tr>
-			<td colspan="4" align="center">
+		<table style="width: 700px; background: white">
+			<tr style="background-color: #FFFFFF">
+			<td colspan="4" align="center" style="background-color: #FFFFFF">
 			<input type="button" value="후기쓰기" onclick="review()" style="width: 95px; height: 30px">
 			</td>
 			</tr>

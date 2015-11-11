@@ -284,7 +284,6 @@
 		
 		</div>
 		</c:if>
-		
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
 		<div class='info2'>
 			
