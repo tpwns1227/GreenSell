@@ -70,6 +70,28 @@ function test() {
 						
 						$("input[name='phone']").keyup(
 								function() {
+									
+									var phone=$("input[name='phone']").val();
+									var length=phone.length;
+									var split = phone.split("-");
+									if(length==4 && phone.substr(3)!="-"){
+										var phonestr = phone.substring(0,3)+"-"+phone.substr(3);
+										$("input[name='phone']").val(phonestr);
+									}
+									if(length==8 && phone.substr(7)!="-"){
+										var phonestr = phone.substring(0,3)+"-"+phone.substring(4,7)+"-"+phone.substr(7);
+										$("input[name='phone']").val(phonestr);
+									}
+									if(length==13){
+										var phonestr = split[0]+"-"+split[1]+split[2].substring(0,1)+"-"+split[2].substr(1);
+										$("input[name='phone']").val(phonestr);
+									}
+									if(length==12 && split[1].length==4){
+										var phonestr = split[0]+"-"+split[1].substring(0,3)+"-"+split[1].substring(3,4)+split[2];
+										$("input[name='phone']").val(phonestr);
+									}
+									
+									
 									if ($("input[name='phone']").val() == '') {
 										$("#phonechk").html('');
 									} else {
