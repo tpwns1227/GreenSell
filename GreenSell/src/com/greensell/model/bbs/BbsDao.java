@@ -2,6 +2,8 @@ package com.greensell.model.bbs;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
+
 import com.greensell.bbs.beans.*;
 import com.greensell.member.beans.*;
 
@@ -40,6 +42,8 @@ public interface BbsDao {
    public int grade(String email)throws SQLException;
    
    public List<BbsVo> selectSearch(int bbsno, int page, String title)throws SQLException;
+   
+   public int searchcount(Map<String, Object> map) throws SQLException;
    
 }
 

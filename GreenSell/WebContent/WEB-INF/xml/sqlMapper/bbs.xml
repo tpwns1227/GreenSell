@@ -44,6 +44,16 @@
    select count(no) from bbs where bbsno=#{bbsno}
   </select>
   
+  <select id="searchcount" parameterType="map" resultType="int">
+  		select count(*)
+   from (select no,title,bbscontent,email,bbsdate,hits,bbsno,rownum rn
+       from ( select no,title,bbscontent,email,bbsdate,hits,bbsno
+               from bbs where title like '%'||#{title}||'%' and bbsno=#{bbsno}  
+               order by no desc
+             )
+       )
+  </select>
+  
   <!-- 각 게시판 별로 글 리스트 받아오기 -->
   <select id="counttitle" parameterType="map" resultType="int">
    select count(no) from bbs where bbsno=#{bbsno} and title like '%' ||#{title}|| '%'

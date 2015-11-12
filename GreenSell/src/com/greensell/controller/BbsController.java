@@ -2,7 +2,9 @@ package com.greensell.controller;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Generated;
 import javax.servlet.http.HttpSession;
@@ -56,7 +58,6 @@ public class BbsController {
     	List<BbsVo> bbslist = dao.selectAll(bbsno, page);
     	  
     	m.addAttribute("bbslist", bbslist);
-    	  System.out.println(bbslist.size());
     	  session.setAttribute("no", no);
     	m.addAttribute("totalcount",dao.count(bbsno));
     	m.addAttribute("page",page);
@@ -65,20 +66,18 @@ public class BbsController {
       
       @RequestMapping("/searchbbs")
       public String searchbbs(@RequestParam String title,Model m ,HttpSession session,@RequestParam(required=false) String no, @RequestParam(defaultValue="1") int page) throws SQLException{  
-    	System.out.println(title);
-    	System.out.println(no);
-    	System.out.println(page);
-    	
+
     	  if(no==null){
     	  no = (String)session.getAttribute("no");
     	}
     	int bbsno = Integer.parseInt(no);
-    	List<BbsVo> bbslist = dao.selectSearch(bbsno, page, title);
-    	  System.out.println(bbslist.size());
+    	List<BbsVo> bbslist = dao.selectSearch(bbsno, page, title);  
     	m.addAttribute("bbslist", bbslist);
-    	  System.out.println(bbslist.size());
     	  session.setAttribute("no", no);
-    	m.addAttribute("totalcount",dao.count(bbsno));
+    	  Map<String, Object> map = new HashMap<String, Object>();
+    	  map.put("bbsno", bbsno);
+    	  map.put("title", title);
+    	m.addAttribute("totalcount",dao.searchcount(map));
     	m.addAttribute("page",page);
     	 return "bbs/bbsSearch";
       }

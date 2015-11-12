@@ -100,6 +100,12 @@ public class BbsDaoImpl implements BbsDao {
       int num = sqlsession.selectOne("bbs.count",bbsno);
       return num;
    }
+   
+   @Override
+	public int searchcount(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne("bbs.searchcount", map);
+	}
 
    @Override
    public boolean cmdelete(int cmno) throws SQLException {

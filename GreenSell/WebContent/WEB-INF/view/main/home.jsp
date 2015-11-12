@@ -8,9 +8,7 @@
 <title>Green Sell</title>
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<script>
-	
-</script>
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 </head>
 <body>
 
