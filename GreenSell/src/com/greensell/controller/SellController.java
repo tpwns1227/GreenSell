@@ -410,16 +410,29 @@ public class SellController {
 		if(category.equals("전체")){
 			category = "";
 		}
+		System.out.println(howsell);
+		System.out.println(str);
+		System.out.println(category);
+		System.out.println(count);
 		map.put("howsell", howsell);
 		map.put("str", str);
 		map.put("category", category);
 		map.put("count", count);
 		List<String> fristimg = new ArrayList<String>();
+		if(howsell.equals("중고")){
 		List<ItemSellVO> list = dao.searchitemList(map);
 		m.addAttribute("itemlist", list);
 		for (int j = 0; j < list.size(); j++) {
 			List<String> imglist = dao.getImagenames(list.get(j).getNo());
 			fristimg.add(imglist.get(0));
+		}
+		}else{
+		List<AuctionVO> list = dao.searchauctionList(map);
+		m.addAttribute("itemlist", list);
+		for (int j = 0; j < list.size(); j++) {
+			List<String> imglist = dao.getImagenames(list.get(j).getNo());
+			fristimg.add(imglist.get(0));
+		}
 		}
 		m.addAttribute("fristimg", fristimg);
 		return "sell/searchitem";
@@ -429,27 +442,32 @@ public class SellController {
 	public String viewitemlist(@RequestParam(required = false) String howsell, @RequestParam(defaultValue="8") String count
 			, Model m) throws SQLException {
 		List<String> fristimg = new ArrayList<String>();
-		List<ItemSellVO> list;
+		
 		if (howsell == null || howsell.equals("중고") || howsell.equals("7")) {
 			howsell="중고";
 			map.put("howsell", howsell);
 			map.put("count", count);
-			list = dao.olditemList(map);
+			List<ItemSellVO> list = dao.olditemList(map);
 			m.addAttribute("itemlist", list);
 			m.addAttribute("howsell", "중고");
+			for (int j = 0; j < list.size(); j++) {
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				fristimg.add(imglist.get(0));
+			}
+			m.addAttribute("fristimg", fristimg);	
 		} else {
 			howsell="경매";
 			map.put("howsell", howsell);
 			map.put("count", count);
-			list = dao.olditemList(map);
+			List<AuctionVO> list = dao.auctionitemList(map);
 			m.addAttribute("itemlist", list);
 			m.addAttribute("howsell", howsell);
+			for (int j = 0; j < list.size(); j++) {
+				List<String> imglist = dao.getImagenames(list.get(j).getNo());
+				fristimg.add(imglist.get(0));
+			}
+			m.addAttribute("fristimg", fristimg);	
 		}
-		for (int j = 0; j < list.size(); j++) {
-			List<String> imglist = dao.getImagenames(list.get(j).getNo());
-			fristimg.add(imglist.get(0));
-		}
-		m.addAttribute("fristimg", fristimg);	
 		return "/sell/itemList";
 	}
 	
