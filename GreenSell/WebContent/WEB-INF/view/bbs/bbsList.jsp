@@ -30,6 +30,7 @@ $(document).ready(function(){
 });
 	    },1000);
 	    
+	    setInterval(function () {	
 	    $("#write").click(function(){
 	    	if('${skey}'=='' || '${skey}'== null){
 	    		alert("로그인후에 이용해 주세요...");
@@ -38,6 +39,7 @@ $(document).ready(function(){
 	    	}
 	    	location.href='write?no=${no}';
 	    });
+	   },500); 
 	    
 	    
 });

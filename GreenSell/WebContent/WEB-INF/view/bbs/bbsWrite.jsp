@@ -20,6 +20,7 @@ if(!session.getAttribute("amdin").equals(1) && !request.getAttribute("no").equal
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/bbs.css">
 <title>Green Sell</title>
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script type="text/javascript">
 	function goUrl(url) {
 		location.href = url;
