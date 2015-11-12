@@ -34,12 +34,12 @@ public class SellDaoImpl implements SellDao {
       return list;
    }
 
-   /*@Override
-   public List<AuctionVO> auctionitemList() throws SQLException { //경매 itemList출력
+   @Override
+   public List<AuctionVO> auctionitemList(Map<String, Object> map) throws SQLException { //경매 itemList출력
       // TODO Auto-generated method stub
-      List<AuctionVO>   list = sqlSession.selectList("selectauctionitem");
+      List<AuctionVO>   list = sqlSession.selectList("selectauctionitem", map);
          return list;
-   }*/
+   }
 
    @Override
    public List<String> getImagenames(int no) throws SQLException { // 이미지 불러오기 
@@ -159,6 +159,12 @@ public class SellDaoImpl implements SellDao {
 	public List<ItemSellVO> searchitemList(Map<String, Object> map) throws SQLException {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("searchlist", map);
+	}
+   
+   @Override
+	public List<AuctionVO> searchauctionList(Map<String, Object> map) throws SQLException {
+		// TODO Auto-generated method stub
+	   return sqlSession.selectList("searchauction", map);
 	}
 
 @Override
