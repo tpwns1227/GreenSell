@@ -1,6 +1,6 @@
 var t = 0;
 
-$(document).ready(function() {
+$(document).ready(function(){
 
 	$("input[value='다음']").click(function() {
 
@@ -135,7 +135,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".calen").datepicker({
+	$("#calender").datepicker({
 		nextText : '▶',
 		prevText : '◀',
 		dateFormat : "yy-mm-dd",
@@ -145,8 +145,11 @@ $(document).ready(function() {
 		minDate : +1,
 		maxDate : +7
 	});
-
+	
 });
+
+
+
 
 function ch() {
 	document.querySelector('.img1').innerHTML = document.querySelector('#img1').value;
