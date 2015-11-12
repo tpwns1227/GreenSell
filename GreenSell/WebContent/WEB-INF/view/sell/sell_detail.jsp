@@ -32,6 +32,7 @@
 		
 		
 	var chk = '';
+	
 	setInterval(function () {	
 		var str = $("#fintime").text();
 		var d = str.substring(0,str.indexOf('일'));
@@ -48,7 +49,8 @@
 				}
 			});
 		}
-		if(chk=='미존재' && $("#nowemail").text()!='없음'){
+		
+		if(chk=='미존재'){
 			$.ajax({
 				type:"post",
 				url: "auctionok",
@@ -98,7 +100,20 @@
         }, 1000);
 		
 		
-		
+		setInterval(function () {	
+			if('${auctionitem.no}'!=null && '${auctionitem.no}'!=''){
+			$.ajax({
+				url: 'auctionre',
+				data: 'no=${auctionitem.no}',
+				success : function(data){ 
+					var spl = data.split(",");
+					$("#nowemail").html(spl[0]);//입찰자
+					$("#nowprice").html(spl[1]);//현재가격
+					$("#num").html(spl[2]);//입찰횟수
+					
+				}
+			});}
+		},10);
 		
 		
 		

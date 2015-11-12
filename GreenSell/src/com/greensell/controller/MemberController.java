@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import org.apache.catalina.connector.Request;
+import org.apache.taglibs.standard.tag.common.fmt.RequestEncodingSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,20 @@ public class MemberController {
 	MemberDao dao;
 	@Autowired
 	SellDao sdao;
-
+	
+	@RequestMapping("/pointre")
+	public @ResponseBody String pointupdate(HttpSession session) throws SQLException{
+		String email=(String) session.getAttribute("skey");
+		if(email!=null){
+			String point = dao.selectpoint(email);
+			session.setAttribute("point", point);
+		return point;
+		}else{
+			return null;
+		}
+			
+	}
+	
 	@RequestMapping("/result") // 회원가입하면 이동되는 페이지
 	public String insert(MemberVO v) {
 		// DB연동
@@ -86,14 +100,7 @@ public class MemberController {
 		}
 	}
 	
-	/*@RequestMapping("*")
-	public void pointupdate(HttpSession session) throws SQLException{
-		System.out.println("dsfdsfs");
-		String email=(String) session.getAttribute("skey");
-		if(session.getAttribute("skey")!=null){
-		session.setAttribute("point", dao.selectpoint(email));
-		}
-	}*/
+	
 
 	@RequestMapping("/logout") // 로그아웃
 	public String logout(HttpSession session) {
@@ -399,15 +406,15 @@ public class MemberController {
 		map.put("price", price);
 		map.put("sort", 0);
 		map.put("commission", 0);
-		int point;
+		/*int point;
 		point = Integer.parseInt((String) session.getAttribute("point"));
 		point += Integer.parseInt(price);
 		
-		String poin = Integer.toString(point);
+		String poin = Integer.toString(point);*/
 
 		dao.updatePoint(map);
 		dao.pointDeposit(map);
-		session.setAttribute("point", poin);
+		/*session.setAttribute("point", poin);*/
 		
 		return "redirect:home";
 	}
@@ -426,18 +433,20 @@ public class MemberController {
 		map.put("email", email);
 		map.put("sort", 1);
 		int pric = Integer.parseInt(price);
+
 		map.put("commission", (pric*0.05));
-		map.put("price", pric-(pric*0.05));
+		map.put("price", price);
 		
-		int point;
+		
+		/*int point;
 		point = Integer.parseInt((String) session.getAttribute("point"));
 		point -= Integer.parseInt(price);
 		
-		String poin = Integer.toString(point);
+		String poin = Integer.toString(point);*/
 
 		dao.collectPoint(map);
 		dao.pointDeposit(map);
-		session.setAttribute("point", poin);
+		/*session.setAttribute("point", poin);*/
 		
 		return "redirect:home";
 	}

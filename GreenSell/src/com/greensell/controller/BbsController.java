@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.greensell.bbs.beans.BbsVo;
 import com.greensell.bbs.beans.ReplyVo;
 import com.greensell.model.bbs.BbsDao;
+import com.greensell.model.member.MemberDao;
 import com.greensell.sell.beans.ItemSellVO;
 
 @Controller
@@ -27,6 +28,7 @@ public class BbsController {
    @Autowired
    BbsDao dao;
    //게시글 쓰기
+   
    @RequestMapping("/write")
    public String write(@RequestParam int no,Model m){
       

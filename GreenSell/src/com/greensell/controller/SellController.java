@@ -66,6 +66,13 @@ public class SellController {
 		session.setAttribute("itemno", no);
 		return "/sell/sell_detail";
 	}
+	
+	@RequestMapping("/auctionre")
+	public @ResponseBody String reauction(@RequestParam int no) throws SQLException{
+		AuctionVO avo = dao.auctionitemDetail(no);
+			String v = avo.getNowemail()+","+avo.getNowprice()+","+avo.getTendernumber();
+		return v;
+	}
 
 	@RequestMapping("/") // home 페이지 출력
 	public String viewHome(Model m) throws SQLException {
@@ -80,6 +87,8 @@ public class SellController {
 		
 		return "/main/home";
 	}
+	
+	
 	
 	@RequestMapping("/home") // home 페이지 출력
 	public String viewhome(Model m) throws SQLException {
@@ -518,7 +527,7 @@ public class SellController {
 	@RequestMapping("/auctionok")
 	public @ResponseBody String auctionok(@RequestParam String buyemail, @RequestParam String itemname, 
 			@RequestParam String rvemail, @RequestParam String itemno) throws SQLException{
-		
+		if(buyemail.equals("없음")){
 		System.out.println(buyemail);
 		MemberVO mvo = new MemberVO();
 		mvo = mdao.memberdetail(buyemail);
@@ -529,7 +538,8 @@ public class SellController {
 		String str = "안녕하세요. 관리자 입니다." + buyemail +"님 으로 부터 물건이 구매되었습니다.'우편번호:"+mvo.getZipcode() +" 주소:"+ mvo.getAddress()
 		+"' 이곳으로 "+itemname+"제품을 보내주시기 바랍니다. 인수가 확인되면 판매금액을 받으실 수 있습니다.";
 		map.put("content", str);//판매자 에게 메시지 보내기
-		dao.insertMessage(map);//메시지 저장		
+		dao.insertMessage(map);//메시지 저장
+		}
 		dao.updatesellstate(itemno);
 		
 		return "존재";

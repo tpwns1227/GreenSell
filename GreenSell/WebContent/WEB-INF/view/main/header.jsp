@@ -8,8 +8,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
 	
+	setInterval(function () {	
+		$.ajax({
+			url: 'pointre',
+			success : function(data){ 
+				$("#point").html('<font color="red">'+data+'</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트');
+				
+			}
+		});
+	},10);
+	
+	
+});
  
 	function inputform(){
 		
@@ -70,7 +84,7 @@ function pointcollect(){
 			<%
 				} else {
 			%>
-			<a id="point"><font color="red">${point}</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트</a>
+			<a id="point"></a>
 			<a href="member_Detail">내 정보</a>
 			<a href="logout">로그아웃</a>
 			<p>
