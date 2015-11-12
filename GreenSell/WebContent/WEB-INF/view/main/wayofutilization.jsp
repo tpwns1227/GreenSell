@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src="img/useimg/dealprocess.png">
+<img src="img/useimg/wayofutilization.png">
 </body>
 </html>
