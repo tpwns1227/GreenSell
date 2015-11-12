@@ -15,10 +15,12 @@
 		where <![CDATA[rnum <= #{count}]]>
 	</select>
   
-  	<!-- <select id="selectauctionitem"  resultType="com.greensell.sell.beans.AuctionVO">
-  		select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
-	from itemsell i, auction a where i.no = a.itemno and finishtime>sysdate order by finishtime asc
-  	</select> -->
+  	<select id="selectauctionitem" parameterType="map"  resultType="com.greensell.sell.beans.AuctionVO">
+  	
+  		select b.* from (select a.*, rownum rnum from (select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
+	from itemsell i, auction a where i.no = a.itemno and howsell=#{howsell} order by a.no desc) a) b 
+		where <![CDATA[rnum <= #{count}]]>
+  	</select>
   	
   	<select id="selectcategory" parameterType="map" resultType="com.greensell.sell.beans.ItemSellVO">
 		<!-- select * from itemsell where howsell=#{howsell} and category=#{category} order by no desc -->
@@ -39,7 +41,13 @@
    		select b.* from 
    		(select a.*, rownum rnum from 
    		(select * from itemsell where howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%' order by no desc) a) b
-   		where <![CDATA[rnum <= #{count}]]>
+   		where <![CDATA[rnum <= #{count}]]>	
+   	</select>
+   	
+   	<select id="searchauction" parameterType="map" resultType="com.greensell.sell.beans.AuctionVO">
+   		select b.* from (select a.*, rownum rnum from (select i.*,a.startprice,a.nowprice,a.finishtime,a.tendernumber,a.nowemail
+	from itemsell i, auction a where i.no = a.itemno and howsell=#{howsell} and  category like '%' || #{category} || '%' and itemname like '%'||#{str}||'%' order by a.no desc) a) b 
+		where <![CDATA[rnum <= #{count}]]>
    	</select>
    	
   	
