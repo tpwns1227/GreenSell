@@ -152,21 +152,30 @@ $(document).ready(function(){
 
 
 function ch() {
+	if(document.getElementById("addimg2")!=null){
+	}else{	
+		document.getElementById('image2').innerHTML = "<input type='file' id='img2' onchange='ch2()' name='imgname2'><label id='addimg2' class='img2' for='img2'>클릭</label>";
+		$('.pp').css('margin-top','90px');
+	}
 	document.querySelector('.img1').innerHTML = document.querySelector('#img1').value;
-	document.getElementById('image2').innerHTML = "<input type='file' id='img2' onchange='ch2()' name='imgname2'><label class='img2' for='img2'>클릭</label>";
-	$('.pp').css('margin-top','90px');
 };
 
 function ch2() {
-	document.querySelector('.img2').innerHTML = document.querySelector('#img2').value;
-	document.getElementById('image3').innerHTML = "<input type='file' id='img3' onchange='ch3()' name='imgname3'><label class='img3' for='img3'>클릭</label>";
+	if(document.getElementById("addimg3")!=null){
+	}else{
+	document.getElementById('image3').innerHTML = "<input type='file' id='img3' onchange='ch3()' name='imgname3'><label id='addimg3' class='img3' for='img3'>클릭</label>";
 	$('.pp').css('margin-top','65px');
+	}
+	document.querySelector('.img2').innerHTML = document.querySelector('#img2').value;
 };
 
 function ch3() {
-	document.querySelector('.img3').innerHTML = document.querySelector('#img3').value;
-	document.getElementById('image4').innerHTML = "<input type='file' id='img4' onchange='ch4()' name='imgname4'><label class='img4' for='img4'>클릭</label>";
+	if(document.getElementById("addimg4")!=null){
+	}else{	
+	document.getElementById('image4').innerHTML = "<input type='file' id='img4' onchange='ch4()' name='imgname4'><label id='addimg4' class='img4' for='img4'>클릭</label>";
 	$('.pp').css('margin-top','40px');
+	}
+	document.querySelector('.img3').innerHTML = document.querySelector('#img3').value;
 };
 
 function ch4() {

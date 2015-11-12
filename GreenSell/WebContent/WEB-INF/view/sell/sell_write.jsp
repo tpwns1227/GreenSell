@@ -21,8 +21,7 @@ if(session.getAttribute("skey")==null){
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css">
-<script src="/GreenSell/js/jquery-1.10.2.js"></script>
-<script src="/GreenSell/js/jquery-ui.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="/GreenSell/js/input.js"></script>
 </head>
 <body>

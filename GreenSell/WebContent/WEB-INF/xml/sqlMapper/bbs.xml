@@ -108,11 +108,11 @@
    select no,title,bbscontent,email,bbsdate,hits,bbsno
    from (select no,title,bbscontent,email,bbsdate,hits,bbsno,rownum rn
        from ( select no,title,bbscontent,email,bbsdate,hits,bbsno
-               from bbs where title like '%'||#{title}||'%'   
+               from bbs where title like '%'||#{title}||'%' and bbsno=#{bbsno}  
                order by no desc
              )
        )
-   where bbsno=#{bbsno} and rn between (((#{page})*10)-9) and ((#{page})*10)
+   where rn between (((#{page})*10)-9) and ((#{page})*10)
   </select>
   
 </mapper>
