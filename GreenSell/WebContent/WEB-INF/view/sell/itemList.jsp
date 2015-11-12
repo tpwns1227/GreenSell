@@ -141,10 +141,19 @@ var count = 8;
 				
 				</span></td>
 		</tr>
-	</table>
-	
+	</table>	
 	<div class='price'>
+		<c:if test="${list.howsell=='중고'}">
 		${list.itemprice}
+		</c:if>
+		<c:if test="${list.howsell=='경매'}">
+			<c:if test="${list.nowprice==0}">
+			${list.startprice}
+			</c:if>
+			<c:if test="${list.nowprice!=0}">
+			${list.nowprice}
+			</c:if>
+		</c:if>
 	</div>
 	</div>
 </div>

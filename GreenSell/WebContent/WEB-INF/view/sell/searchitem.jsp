@@ -8,9 +8,11 @@
 	
 	<div class='img'>
 		<c:out value=""></c:out>
-		<a href="sell_detail?no=${list.no}">
-		<img src="/GreenSell/img/item/${fristimg[status.index]}" class='img'></a>
+		<a href="sell_detail?no=${list.no}"><img
+										src="/GreenSell/img/item/${fristimg[status.index]}"
+										class='img'></a>
 	</div>
+	
 	<table width='250px'>
 		<tr>
 			<td width='100' align='left'><span>
@@ -30,13 +32,25 @@
 					${list.itemname}
 				</c:if>
 				
+				
 				</span></td>
 		</tr>
-	</table>
+	</table>	
 	<div class='price'>
+		<c:if test="${list.howsell=='중고'}">
 		${list.itemprice}
+		</c:if>
+		<c:if test="${list.howsell=='경매'}">
+			<c:if test="${list.nowprice==0}">
+			${list.startprice}
+			</c:if>
+			<c:if test="${list.nowprice!=0}">
+			${list.nowprice}
+			</c:if>
+		</c:if>
 	</div>
 	</div>
 </div>
+
 </c:forEach>
 </c:if>
