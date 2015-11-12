@@ -21,6 +21,7 @@ if(session.getAttribute("skey")==null){
 <title>Green Sell</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/home.css">
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 </head>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>

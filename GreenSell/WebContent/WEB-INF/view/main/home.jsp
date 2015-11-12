@@ -8,42 +8,48 @@
 <title>Green Sell</title>
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="/GreenSell/js/script.js"></script>
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
 </head>
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
+
+
+
 	<div class='body2'>
+			
 
 		<c:forEach var="list" items="${itemlist}" varStatus="var">
 			<div class='container'>
-			
+
 				<div class='img'>
-					<a href="sell_detail?no=${list.no}">
-					<img src='/GreenSell/img/item/${fristimg[var.index]}' class='img'></a>
+					<a href="sell_detail?no=${list.no}"> <img
+						src='/GreenSell/img/item/${fristimg[var.index]}' class='img'></a>
 				</div>
-				
-				<table style="width: 250px; border-spacing: 0px "><tr><td><div>${list.howsell}</div></td>
-				<td align="right"><c:if test="${list.itemname.length()>13}">
+
+				<table style="width: 250px; border-spacing: 0px">
+					<tr>
+						<td><div>${list.howsell}</div></td>
+						<td align="right"><c:if test="${list.itemname.length()>13}">
 					${list.itemname.substring(0,8)}...
-				</c:if>
-				<c:if test="${list.itemname.length()<=13}">
+				</c:if> <c:if test="${list.itemname.length()<=13}">
 					${list.itemname}
-				</c:if></td></tr>
-				<tr style="border-spacing: 0px "><td>
-				<c:if test="${list.sellstate=='판매중'}">
-				<font color="blue">${list.sellstate}</font>
-				</c:if>
-				<c:if test="${list.sellstate=='판매 완료'}">
-				<font color="red">${list.sellstate}</font>
-				</c:if></td><td align="right">
-				${list.itemprice}
-				</td></tr>
+				</c:if></td>
+					</tr>
+					<tr style="border-spacing: 0px">
+						<td colspan="2" align="right"><c:if
+								test="${list.sellstate=='판매중'}">
+								<font color="blue">${list.sellstate}</font>
+							</c:if> <c:if test="${list.sellstate=='판매 완료'}">
+								<font color="red">${list.sellstate}</font>
+							</c:if></td>
+					</tr>
 				</table>
 			</div>
 		</c:forEach>
+</div>
 
-	</div>
 	<jsp:include page="bottom.jsp"></jsp:include>
 
 </body>
