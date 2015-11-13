@@ -163,10 +163,10 @@ if(session.getAttribute("skey")==null){
 			enctype="multipart/form-data">
 			<div class='border'>게시물 수정</div>
 			<input type="hidden" name="no" value="${itemone.no}">
-			<div class='p'>제품명</div>
+			<div class='ppp'>제품명</div>
 			<input class='textbox' name="itemname" type='text' placeholder="제품명"
 				value="${itemone.itemname}">
-			<div class='p'>카테고리</div>
+			<div class='ppp'>카테고리</div>
 			<select name='category' class='pf'>
 				<option value='의류/잡화'>의류/잡화</option>
 				<option value='가구/전자'>가구/전자</option>
@@ -174,7 +174,7 @@ if(session.getAttribute("skey")==null){
 				<option value='도서/티켓'>도서/티켓</option>
 				<option value='기타'>기타</option>
 			</select>
-			<div class='p'>제품상태</div>
+			<div class='ppp'>제품상태</div>
 			<select name='itemstate' class='pf'>
 				<option value='미개봉상품'>미개봉 상품</option>
 				<option value='A급'>A급</option>
@@ -182,7 +182,7 @@ if(session.getAttribute("skey")==null){
 				<option value='C급'>C급</option>
 			</select>
 
-			<div class='p'>사진</div>
+			<div class='ppp'>사진</div>
 			<div id='image1'>
 				<c:forEach items="${names}" var="img" varStatus="v">
 					<input type="file" id="img${v.count}" onchange="ch${v.count}()"
@@ -203,10 +203,10 @@ if(session.getAttribute("skey")==null){
 			</div>
 			
 			
-			<div class='p'>가격</div>
+			<div class='ppp'>가격</div>
 			<input class='textbox' id="itemprice" maxlength="" name="itemprice" type='text'
 				value="${itemone.itemprice}" placeholder="가격">
-			<div class='p'>상세설명</div>
+			<div class='ppp'>상세설명</div>
 			<textarea name="itemdetail" maxlength="1000" id="detail" placeholder="상세설명">${itemone.itemdetail}</textarea>
 			<input type="button" id="updatebtn" class="button" value="수정"
 				style='width: 400px; margin-top: 25px;'>

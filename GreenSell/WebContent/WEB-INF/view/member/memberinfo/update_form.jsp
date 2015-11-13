@@ -18,6 +18,8 @@ if(session.getAttribute("skey")==null){
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Green Sell</title>
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/member.css">
 </head>
 <script type="text/javascript">
 
@@ -175,8 +177,7 @@ function test() {
 
 					});
 </script>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/member.css">
+
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
 
