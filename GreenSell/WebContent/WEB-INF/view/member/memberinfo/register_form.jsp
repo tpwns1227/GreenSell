@@ -190,7 +190,7 @@
 			<div class='p'>연락처</div>
 			<div style='text-align: left; margin-left: 50px'>
 				<input id='textbox' name='phone' type='text'
-					placeholder="연락처 ( - 포함 )" style='width: 300px'><span
+					placeholder="연락처 ( - 포함 )" maxlength="13" style='width: 300px'><span
 					id="phonechk" style="margin-left: 15px"></span>
 			</div>
 			<div class='p'>주소</div>

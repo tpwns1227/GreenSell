@@ -38,10 +38,10 @@ input[type='button']:hover {
 
 <div class='border'>${info.email}</div>
 <div class='border'>${info.nickname}</div>
-<div class='font2'>연락처</div>
+<div class='border'>연락처</div>
 <input type='text' class='textbox' value='${info.phone }' readonly>
 
-<div class='font2'><span>별점</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${starpoint}</div>
+<div class='border'><span>별점</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${starpoint}</div>
 
 <a href="mywriteForm?email=${info.email}">
 <input class='callbtn' type="button" value="글쓴이가 올린 글" style="width: 133px; margin-top: 10px" >

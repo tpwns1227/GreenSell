@@ -50,7 +50,7 @@
 		
 	<form action="way">
 		<input id='btn3' class='button' type="submit"	
-				value='사용 방법' style="margin-top: 15px; width: 400px">
+				value='이용 방법' style="margin-top: 15px; width: 400px">
 	</form>
 	<form action="deal">
 		<input id='btn3' class='button' type="submit"

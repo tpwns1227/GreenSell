@@ -18,10 +18,25 @@ if(session.getAttribute("skey")==null){
 <title>Green Sell</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/bbs.css">
+<script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
+<script type="text/javascript">
+
+
+/* $(document).ready(function(){
+	$("#btn").click(function(){
+		if($("#ta").text()==''){
+			alert("내용을 입력해 주세요...");
+			return;
+		}else{
+			document.review.submit();
+		}
+	});
+}); */
+</script>
 </head>
 <body> <!-- 후기작성폼 -->
 	<%-- <jsp:include page="../main/header.jsp"></jsp:include> --%>
-	<form action="reviewok">
+	<form name="review" action="reviewok">
 	<div class='container'>
 		<div class='border'>${email} 후기 작성</div>
 		<div class='p'>평점</div>
@@ -35,8 +50,8 @@ if(session.getAttribute("skey")==null){
 		<div class='p'>내용</div>
 		<input type="hidden" name="email" value="${email}">
 		<input type="hidden" name="wemail" value="${skey}">	
-			<textarea placeholder="내용" name="content"></textarea>
-		<input class='button' type='submit' value='작성'>
+			<textarea placeholder="내용"  name="content"></textarea>
+		<input class='button' id="btn" type="submit" value='작성' >
 	</div>
 	</form>
 	<%-- <jsp:include page="../main/bottom.jsp"></jsp:include> --%>

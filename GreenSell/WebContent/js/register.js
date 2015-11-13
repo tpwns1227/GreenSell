@@ -91,7 +91,7 @@ function inputCheck() {
 	}
 	
 	if($("#idchk").text()=='사용불가' || $("#nickchk").text()=='사용불가' || $("#phonechk").text()=='사용불가' ||
-		$("#name").text()=='사용불가' || $("#account").text()=='사용불가'){
+		$("#namechk").text()=='사용불가' || $("#accountchk").text()=='사용불가'){
 		alert("사용불가 항목을 확인해 주세요.");
 		return;
 	}
