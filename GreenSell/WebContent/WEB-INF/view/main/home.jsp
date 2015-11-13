@@ -22,6 +22,8 @@
       width: 100%;
       margin: auto;
   }
+  .carousel-control.left{background-image:none;}
+  .carousel-control.right{background-image:none;}
   </style>
   
 </head>
@@ -39,21 +41,20 @@
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" style="width: 1015px; height: 500px" role="listbox">
       <div class="item active">
-        <img src="/GreenSell/img/useimg/초록이3.jpg" alt="Chania" width="460" height="345">
+        <a href="way"><img src="/GreenSell/img/useimg/howtobuy2.png"></a>  
       </div>
 
       <div class="item">
-        <img src="/GreenSell/img/useimg/introduce.png" alt="Chania" width="460" height="345">
+        <a href="deal"><img src="/GreenSell/img/useimg/howtrade.png"></a>
       </div>
     
       <div class="item">
-        <img src="/GreenSell/img/useimg/logo.png" alt="Flower" width="460" height="345">
+      <a href="introduce"><img src="/GreenSell/img/useimg/areyoufirst.png"></a>
       </div>
     </div>
 
@@ -62,7 +63,7 @@
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <a class="right carousel-control" style="" href="#myCarousel" role="button" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>

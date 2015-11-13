@@ -107,8 +107,12 @@
 				data: 'no=${auctionitem.no}',
 				success : function(data){ 
 					var spl = data.split(",");
+					if(spl[2]=='0'){
+						$("#nowemail").html('없음');//입찰자
+					}else{
 					$("#nowemail").html(spl[0]);//입찰자
-					$("#nowprice").html(spl[1]);//현재가격
+					}
+					$("#nowprice").html(spl[1]+'원');//현재가격
 					$("#num").html(spl[2]);//입찰횟수
 					
 				}
@@ -236,6 +240,8 @@
 				
 			
 		});
+			
+		
 
 	});
 	
@@ -249,7 +255,7 @@
 	<div class="container3">
 		
 		<div class='img' style='text-align: left;'>
-			<img src='/GreenSell/img/item/${imglist.get(0)}' class='mimg'>
+			<img id="bigimg" src='/GreenSell/img/item/${imglist.get(0)}' class='mimg'>
 			
 			<c:forEach var="img" items="${imglist}">
 				<img src="/GreenSell/img/item/${img}" class='simg'>
@@ -277,55 +283,89 @@
 		<c:if test="${itemone.getHowsell() == '중고'}">
 		<div class='info'>
 		<span id="sellresult"><font size='5px' color='red'>${itemone.getSellstate()}</font></span>
-			<div class='bold2'>제품명</div>
-			<div class='font'>${itemone.getItemname()}</div>
-			<div class='bold2'>상태</div>
-			<div class='font'>${itemone.getItemstate()}</div>
-			<div class='bold2'>가격</div>
-			<div class='font'>${itemone.getItemprice()}</div>		
-			<div class='bold2'>판매방법</div>
-			<div class='font'>${itemone.getHowsell()}</div>
-			<div class='bold2'>카테고리</div>
-			<div class='font'>${itemone.getCategory()}</div>
-			<div class='bold2'>판매자</div>
-			<div class='font'>${itemone.getEmail()}</div>
-			<div class='bold2'>설명</div>
-			<textarea class='tb' readonly>${itemone.getItemdetail()}</textarea>
-			 
+			<div class='bold3'>제품명</div>
+			<div class='font2'>${itemone.getItemname()}</div>
+						<div class='bold3'>가격</div>
+			<div class='font2'>${itemone.getItemprice()}</div>	
+			
+			<div style='float: right;     margin-right: 88px;'>
+			<table width='400px'>
+			
+			<tr>
+			<td width="280px"><div class='bold2' style='margin-left: 0px; margin-right: 0px'>판매방법</div>
+			<div class='font' style='margin-left: 0px; margin-right: 0px'>${itemone.getHowsell()}</div></td>
+			<td><div class='bold2' style='margin-left: 0px; margin-right: 0px'>제품상태</div>
+			<div class='font' id='num' style='margin-left: 0px; margin-right: 0px'>${itemone.getItemstate()}</div></td>
+			</tr>
+			<tr>
+			<td colspan='2'><div class='bold2' style='margin-left: 0px; margin-right: 0px'>카테고리</div>
+			<div class='font' style='margin-left: 0px; margin-right: 0px'>${itemone.getCategory()}</div></td>
+			</tr>
+			<tr>
+			<td colspan='2'><div class='bold2' style='margin-right: 0px;'>판매자</div>
+			<div class='font' id="wemail" style='margin-right: 0px;'>${itemone.getEmail()}</div></td>
+			</tr>
+			</table>	
+			</div>
+			<div style='float: right;    margin-right: 88px;'>
+			<div class='bold2' style='margin-right: 0px;'>설명</div>
+			<textarea class='tb' readonly style='margin-right: 0px;'>${itemone.getItemdetail()}</textarea>
+			 </div>
+			 <div style='float: right;    margin-right: 88px;'>
 				<input type="hidden" value="${itemone.getEmail() }" name="em">
 				<input type="hidden" value="${itemone.getNo() }" name="no">
 				<input class='callbtn' id="email" type="button" value="연락처" style='width: 150px'>
 				
 			<input class='callbtn' type="button" id="safe" value="안전거래" style='width: 150px'>
 			<input class='callbtn' type="button" id="selectedbtn" value="찜 하기" style='width: 100px'> 
-			
+			</div>
 		
 		
 		</div>
 		</c:if>
 		<c:if test="${auctionitem.getHowsell()=='경매'}">
+		
+	
+		
+		
 		<div class='info2'>
 			
-			<div class='bold2'>제품명</div>
-			<div class='font'>${auctionitem.getItemname()}</div>
-			<div class='bold2'>상태</div>
-			<div class='font'>${auctionitem.getItemstate()}</div>
-			<div class='bold2'>경매시작가</div>
-			<div class='font' id="startprice">${auctionitem.getStartprice()}</div>
-			<div class='bold2'>현재가격</div>
-			<div class='font' id='nowprice'>${auctionitem.getNowprice()}</div>
-			<div class='bold2'>마감시간</div>
-			<div class='font' id="fintime"></div>
-			<div class='bold2'>입찰횟수</div>
-			<div class='font' id='num'>${auctionitem.getTendernumber()}</div>
-			<div class='bold2'>판매방법</div>
-			<div class='font'>${auctionitem.getHowsell()}</div>
-			<div class='bold2'>카테고리</div>
-			<div class='font'>${auctionitem.getCategory()}</div>
-			<div class='bold2'>판매자</div>
-			<div class='font' id="wemail">${auctionitem.getEmail()}</div>
+			<div class='bold3'>제품명</div>
+			<div class='font2'>${auctionitem.getItemname()}</div>
+			
+			<div class='bold3'>경매시작가</div>
+			<div class='font2' style="font-size: 15px" id="startprice">${auctionitem.getStartprice()}원</div>
+			<div class='bold3' >현재가격</div>
+			<div class='font2' id='nowprice' style='color: blue'>${auctionitem.getNowprice()}</div>
+			<div class='bold3'>마감시간</div>
+			<div class='font2' style='font-size: 30px; color: green' id="fintime"></div>
+			<div style='float: right'>
+			<table width='350px'>
+			<tr>
+			<td width="160px"><div class='bold2' style='margin-left: 0px; margin-right: 0px'>제품상태</div>
+			<div class='font' style='margin-left: 0px; margin-right: 0px'>${auctionitem.getItemstate()}</div></td>
+			<td><div class='bold2' style='margin-left: 0px;'>입찰횟수</div>
+			<div class='font' id='num' style='margin-left: 0px;'>${auctionitem.getTendernumber()}</div></td>
+			</tr>
+			<tr>
+			<td><div class='bold2' style='margin-left: 0px; margin-right: 0px'>판매방법</div>
+			<div class='font' style='margin-left: 0px; margin-right: 0px'>${auctionitem.getHowsell()}</div></td>
+			<td><div class='bold2' style='margin-left: 0px;'>카테고리</div>
+			<div class='font' style='margin-left: 0px'>${auctionitem.getCategory()}</div></td>
+			</tr>
+			<tr>
+			<td colspan='2'><div class='bold2'>판매자</div>
+			<div class='font' id="wemail">${auctionitem.getEmail()}</div></td>
+			</tr>
+			</table>
+			</div>
+			<div>			
+			
+			<div style='text-align: right; float: right'>
 			<div class='bold2'>설명</div>
-			<textarea class='tb' readonly>${auctionitem.getItemdetail()}</textarea>
+			<textarea style='margin-right: 85px' class='tb' readonly>${auctionitem.getItemdetail()}</textarea>
+			</div>
+			</div>	
 		</div>
 		</c:if>
 	</div>

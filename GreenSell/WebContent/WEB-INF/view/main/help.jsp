@@ -26,6 +26,13 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='container'>
 		<div class='border'>고객 지원</div>  
+	
+	<form action="introduce">
+		<input  class='button' type="submit"
+				value='홈페이지 소개' style="margin-top: 15px; width: 400px">
+	</form>
+	
+	
 	<form action="list">
 		<input type="hidden" value="2" name="no">
 		<input id='btn1' class='button' type="submit" value='공지사항' style="margin-top: 15px; width: 400px"> 
@@ -40,8 +47,15 @@
 		<input id='btn3' class='button' type="submit"	
 				value='자주 묻는 질문' style="margin-top: 15px; width: 400px">
 	</form>
-		 
 		
+	<form action="way">
+		<input id='btn3' class='button' type="submit"	
+				value='사용 방법' style="margin-top: 15px; width: 400px">
+	</form>
+	<form action="deal">
+		<input id='btn3' class='button' type="submit"
+				value='거래 절차' style="margin-top: 15px; width: 400px">
+	</form>		
 	
 	</div>
 	<jsp:include page="../main/bottom.jsp"></jsp:include>

@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src="img/useimg/wayofutilization.png">
+<jsp:include page="../main/header.jsp"></jsp:include>
+<center>
+<img src="img/useimg/wayofutilization.png" width="1200px">
+</center>
+<jsp:include page="../main/bottom.jsp"></jsp:include>
 </body>
 </html>

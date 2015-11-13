@@ -250,5 +250,21 @@ public class BbsController {
             return "redirect:view?no="+no+"&email="+email;
             
          }
+         
+       //소개글
+     	@RequestMapping("/introduce")
+     	public String introduce(){
+     		return "main/introduce";
+     	}
+     	//소개글
+     	@RequestMapping("/way")
+     	public String wayway(){
+     		return "main/wayofutilization";
+     	}
+     	//소개글
+     	@RequestMapping("/deal")
+     	public String dealdeal(){
+     		return "main/dealprocess";
+     	}
 }
    

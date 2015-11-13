@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%   
+response.setHeader("Cache-Control","no-store");   
+response.setHeader("Pragma","no-cache");   
+response.setDateHeader("Expires",0);   
+response.setHeader("Cache-Control", "no-cache");
+%>
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,6 +30,8 @@ var count = 8;
 
 		 var category = '${category}';
 		 
+		
+		 
 		/* if (category == '의류/잡화') {
 			$("input[value='의류/잡화']").attr("checked", "checked");
 		} else if (category == '가구/전자') {
@@ -35,6 +45,8 @@ var count = 8;
 		} else {
 			$("input[value='전체']").attr("checked", "checked");
 		} */
+		
+	
 		
 		$("input[name='radios']").change(function(){
 			category=$(this).val();
@@ -165,7 +177,6 @@ var count = 8;
 </div>
 
 <div style="margin-left: 1000px"><input type="button" style="width: 95px; height: 30px" id="plusimg" value="더보기"></div>
-
 
 <jsp:include page="../main/bottom.jsp"></jsp:include>
 </body>
