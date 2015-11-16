@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%   
 response.setHeader("Cache-Control","no-store");   
 response.setHeader("Pragma","no-cache");   
@@ -156,14 +157,14 @@ var count = 8;
 	</table>	
 	<div class='price'>
 		<c:if test="${list.howsell=='중고'}">
-		${list.itemprice}
+		<fmt:formatNumber value="${list.itemprice}" />원
 		</c:if>
 		<c:if test="${list.howsell=='경매'}">
 			<c:if test="${list.nowprice==0}">
-			${list.startprice}
+			<fmt:formatNumber value="${list.startprice}"/>원
 			</c:if>
 			<c:if test="${list.nowprice!=0}">
-			${list.nowprice}
+			<fmt:formatNumber value="${list.nowprice}"/>원
 			</c:if>
 		</c:if>
 	</div>

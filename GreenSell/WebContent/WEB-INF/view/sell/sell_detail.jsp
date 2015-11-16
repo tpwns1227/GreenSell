@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -112,7 +112,7 @@
 					}else{
 					$("#nowemail").html(spl[0]);//입찰자
 					}
-					$("#nowprice").html(spl[1]+'원');//현재가격
+					$("#nowprice").html(Number(spl[1]).toLocaleString().split('.')[0]+"원");
 					$("#num").html(spl[2]);//입찰횟수
 					
 				}
@@ -248,7 +248,7 @@
 </script>
 </head>
 <body>
-
+	<c:set var="nprice" value="" />
 		
 	<jsp:include page="../main/header.jsp"></jsp:include>
 	<div class='test'>
@@ -286,7 +286,7 @@
 			<div class='bold3'>제품명</div>
 			<div class='font2'>${itemone.getItemname()}</div>
 						<div class='bold3'>가격</div>
-			<div class='font2'>${itemone.getItemprice()}</div>	
+			<div class='font2'><fmt:formatNumber value="${itemone.getItemprice()}"/></div>	
 			
 			<div style='float: right;     margin-right: 88px;'>
 			<table width='400px'>
@@ -334,9 +334,9 @@
 			<div class='font2'>${auctionitem.getItemname()}</div>
 			
 			<div class='bold3'>경매시작가</div>
-			<div class='font2' style="font-size: 15px" id="startprice">${auctionitem.getStartprice()}원</div>
+			<div class='font2' style="font-size: 15px" id="startprice"><fmt:formatNumber value="${auctionitem.getStartprice()}"/>원</div>
 			<div class='bold3' >현재가격</div>
-			<div class='font2' id='nowprice' style='color: blue'>${auctionitem.getNowprice()}</div>
+			<div class='font2' id='nowprice' style='color: blue'><fmt:formatNumber pattern="#,##0" value="${auctionitem.getNowprice()}"/>원</div>
 			<div class='bold3'>마감시간</div>
 			<div class='font2' style='font-size: 30px; color: green' id="fintime"></div>
 			<div style='float: right'>

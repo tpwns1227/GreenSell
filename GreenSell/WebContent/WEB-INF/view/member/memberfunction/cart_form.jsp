@@ -20,6 +20,18 @@ if(session.getAttribute("skey")==null){
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
+<script type="text/javascript">
+	
+	function chk(a){
+		if(confirm("정말로 삭제하시겠습니까?")){
+			location.href='selected_delete?no='+a+'&email=${skey}';
+		}else{
+			return;
+		}
+		
+	}
+
+</script>
 </head>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
@@ -39,7 +51,7 @@ if(session.getAttribute("skey")==null){
 						src='/GreenSell/img/item/${fristimg[sar.index]}' class='img'></a>
 					<table width='250px'>
 						<tr>
-							<td width='100' align='left'><span><a id="" href="selected_delete?no=${list.no}&email=${skey}">삭제</a></span></td>
+							<td width='100' align='left'><span><a href="javascript:chk(${list.no})">삭제</a></span></td>
 							<td width='150' align='right'><span class='item'
 								style="right: 0px">${list.itemname}</span></td>
 						</tr>

@@ -22,6 +22,17 @@ if(session.getAttribute("skey")==null){
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <script type="text/javascript" src="/GreenSell/js/jquery.js"></script>
+<script type="text/javascript">
+
+function chk(a){
+	if(confirm("인수 확인을 하시겠습니까? \n인수하시면 취소가 불가능합니다.")){
+		location.href='takeoverok?no='+a+'&email=${skey}';
+	}else{
+		return;
+	}
+	
+}
+</script>
 </head>
 <body>
 	<jsp:include page="../../main/header.jsp"></jsp:include>
@@ -41,7 +52,7 @@ if(session.getAttribute("skey")==null){
 						<tr>
 							<td width='100' align='left'><span id="ok">
 							<c:if test="${tolist[sar.index]=='인수중'}">
-							<a href="takeoverok?no=${list.no}&email=${skey}">인수</a>
+							<a href="javascript:chk(${list.no})">인수</a>
 							</c:if>
 							<c:if test="${tolist[sar.index]=='완료'}">
 							<a>완료</a>

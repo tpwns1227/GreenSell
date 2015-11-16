@@ -341,6 +341,8 @@ public class MemberController {
 	@RequestMapping("/selected_delete")
 	public String cart_delete(@RequestParam String no, @RequestParam String email) throws SQLException {
 		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println(no);
+		System.out.println(email);
 		map.put("itemno", no);
 		map.put("email", email);
 		dao.cart_delete(map);
