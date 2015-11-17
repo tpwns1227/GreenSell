@@ -286,7 +286,7 @@
 			<div class='bold3'>제품명</div>
 			<div class='font2'>${itemone.getItemname()}</div>
 						<div class='bold3'>가격</div>
-			<div class='font2'><fmt:formatNumber value="${itemone.getItemprice()}"/></div>	
+			<div class='font2'><fmt:formatNumber value="${itemone.getItemprice()}"/>원</div>	
 			
 			<div style='float: right;     margin-right: 88px;'>
 			<table width='400px'>
