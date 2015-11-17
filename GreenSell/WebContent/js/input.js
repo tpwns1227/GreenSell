@@ -180,5 +180,4 @@ function ch3() {
 
 function ch4() {
 	document.querySelector('.img4').innerHTML = document.querySelector('#img4').value;
-
 };
