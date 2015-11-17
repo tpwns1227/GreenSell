@@ -15,7 +15,8 @@ $(document).ready(function(){
 		$.ajax({
 			url: 'pointre',
 			success : function(data){ 
-				$("#point").html('<font color="red">'+data+'</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트');
+			   var p = Number(data).toLocaleString().split('.')[0];
+				$("#point").html('<font color="red">'+p+'</font>&nbsp;&nbsp;&nbsp;&nbsp;포인트');
 				
 			}
 		});
