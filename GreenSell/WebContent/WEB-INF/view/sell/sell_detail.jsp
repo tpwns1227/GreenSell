@@ -334,9 +334,11 @@
 			<div class='font2'>${auctionitem.getItemname()}</div>
 			
 			<div class='bold3'>경매시작가</div>
-			<div class='font2' style="font-size: 15px" id="startprice"><fmt:formatNumber value="${auctionitem.getStartprice()}"/>원</div>
+			<div class='font2' id="startprice" style="font-size: 15px"><fmt:formatNumber value="${auctionitem.getStartprice()}"/>원</div>
+			<input type="hidden" id="startpr" value="${auctionitem.getStartprice()}">
 			<div class='bold3' >현재가격</div>
-			<div class='font2' id='nowprice' style='color: blue'><fmt:formatNumber pattern="#,##0" value="${auctionitem.getNowprice()}"/>원</div>
+			<div class='font2' id="nowprice" style='color: blue'><fmt:formatNumber pattern="#,##0" value="${auctionitem.getNowprice()}"/>원</div>
+			<input type="hidden" id="nowpr" value="${auctionitem.getNowprice()}">
 			<div class='bold3'>마감시간</div>
 			<div class='font2' style='font-size: 30px; color: green' id="fintime"></div>
 			<div style='float: right'>

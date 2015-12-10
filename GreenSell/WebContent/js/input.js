@@ -157,7 +157,12 @@ function ch() {
 		document.getElementById('image2').innerHTML = "<input type='file' id='img2' onchange='ch2()' name='imgname2'><label id='addimg2' class='img2' for='img2'>클릭</label>";
 		$('.pp').css('margin-top','90px');
 	}
-	document.querySelector('.img1').innerHTML = document.querySelector('#img1').value;
+	if(document.querySelector('#img1').value.length>25){
+		document.querySelector('.img1').innerHTML = document.querySelector('#img1').value.substring(0,24)+"...";
+	}else{
+		document.querySelector('.img1').innerHTML = document.querySelector('#img1').value;		
+	}
+
 };
 
 function ch2() {
@@ -166,7 +171,13 @@ function ch2() {
 	document.getElementById('image3').innerHTML = "<input type='file' id='img3' onchange='ch3()' name='imgname3'><label id='addimg3' class='img3' for='img3'>클릭</label>";
 	$('.pp').css('margin-top','65px');
 	}
-	document.querySelector('.img2').innerHTML = document.querySelector('#img2').value;
+	if(document.querySelector('#img2').value.length>25){
+		document.querySelector('.img2').innerHTML = document.querySelector('#img2').value.substring(0,24)+"...";
+	}else{
+		document.querySelector('.img2').innerHTML = document.querySelector('#img2').value;	
+	}
+	
+	
 };
 
 function ch3() {
@@ -175,9 +186,20 @@ function ch3() {
 	document.getElementById('image4').innerHTML = "<input type='file' id='img4' onchange='ch4()' name='imgname4'><label id='addimg4' class='img4' for='img4'>클릭</label>";
 	$('.pp').css('margin-top','40px');
 	}
-	document.querySelector('.img3').innerHTML = document.querySelector('#img3').value;
+	if(document.querySelector('#img3').value.length>25){
+		document.querySelector('.img3').innerHTML = document.querySelector('#img3').value.substring(0,24)+"...";
+	}else{
+		document.querySelector('.img3').innerHTML = document.querySelector('#img3').value;
+	}
+	
+	
 };
 
 function ch4() {
-	document.querySelector('.img4').innerHTML = document.querySelector('#img4').value;
+	if(document.querySelector('#img4').value.length>25){
+		document.querySelector('.img4').innerHTML = document.querySelector('#img4').value.substring(0,24)+"...";
+	}else{
+		document.querySelector('.img4').innerHTML = document.querySelector('#img4').value;
+	}
+	
 };

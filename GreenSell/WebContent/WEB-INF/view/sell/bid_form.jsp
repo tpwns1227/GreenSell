@@ -115,8 +115,8 @@ if(session.getAttribute("skey")==null){
 			<input type="hidden" id="nowemail">
 			<input type="hidden" id="wemail">
 			<script>
-				$("#nowpr").val(opener.$("#nowprice").html());
-				$("#startpr").val(opener.$("#startprice").html());
+				$("#nowpr").val(opener.$("#nowpr").val());
+				$("#startpr").val(opener.$("#startpr").val());
 				$("#nowemail").val(opener.$("#nowemail").html());
 				$("#wemail").val(opener.$("#wemail").html());
 			</script>
