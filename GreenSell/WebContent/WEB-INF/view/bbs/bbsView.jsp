@@ -108,7 +108,7 @@
 		<form name="cmreply" action="cmok" method="post">
 			<input type="hidden" value="${skey}" name="email">
 			 <input	type="hidden" value="${view.no}" name="no">
-			<textarea name="cmcontent" rows="2" cols="80" maxlength="800"></textarea>
+			<textarea name="cmcontent" rows="2" cols="80" maxlength="65"></textarea>
 			
 			<input class='button' type="submit" value="확인" onclick="return CM()">
 		</form>

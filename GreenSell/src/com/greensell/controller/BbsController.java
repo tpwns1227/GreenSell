@@ -132,6 +132,7 @@ public class BbsController {
                
                if(dao.insert(b)){
                   m.addAttribute("msg","입력되었습니다.");
+                  
                   return "bbs/bbsWriteOk";
                }
                
